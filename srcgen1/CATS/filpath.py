@@ -10,6 +10,8 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
+class fpath:
+    pass
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/CATS/filpath.py]
 ########################################################################

@@ -15,7 +15,7 @@ type s2typ = T2P000 \
     | T2Ptop0 | T2Ptop1 | T2Parg1 | T2Patx2 \
     | T2Plam1 | T2Papps | T2Pf2cl | T2Pfun1 \
     | T2Ptext | T2Puni0 | T2Pexi0 | T2Ptrcd \
-    | T2Pnone0 | T2Pnone1 | T2Perrck | T2Pother
+    | T2Pnone0 | T2Pnone1 | T2Perrck | T2Pundef
 ########################################################################
 @dataclass
 class T2P000(ABC):
@@ -33,12 +33,85 @@ class T2Pvar(T2P000):
     HX: for a type-variable
     """
     pass
-########################################################################
+######
 @dataclass
 class T2Plft(T2P000):
     """
     HX: type for a left-value
     """
+    pass
+######
+@dataclass
+class T2Ptop0(T2P000):
+    """
+    HX: type for uninitization
+    """
+    pass
+@dataclass
+class T2Ptop1(T2P000):
+    """
+    HX: type for delinearization
+    """
+    pass
+######
+@dataclass
+class T2Parg1(T2P000):
+    pass
+@dataclass
+class T2Patx2(T2P000):
+    pass
+######
+@dataclass
+class T2Plam1(T2P000):
+    pass
+@dataclass
+class T2Papps(T2P000):
+    pass
+@dataclass
+class T2Pf2cl(T2P000):
+    pass
+@dataclass
+class T2Pfun1(T2P000):
+    pass
+######
+@dataclass
+class T2Ptext(T2P000):
+    """
+    HX: externally defined
+    """
+    pass
+@dataclass
+class T2Puni0(T2P000):
+    """
+    HX: universally quantified
+    """
+    pass
+@dataclass
+class T2Pexi0(T2P000):
+    """
+    HX: existentially quantified
+    """
+    pass
+@dataclass
+class T2Ptrcd(T2P000):
+    """
+    HX: type for labeled records
+    """
+    pass
+######
+@dataclass
+class T2Pnone0(T2P000):
+    pass
+@dataclass
+class T2Pnone1(T2P000):
+    pass
+######
+@dataclass
+class T2Perrck(T2P000):
+    pass
+######
+@dataclass
+class T2Pundef(T2P000):
     pass
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/CATS/statyp2.py]
