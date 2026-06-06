@@ -9,9 +9,13 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-class fpath:
+class symbl_tbox:
     pass
+######
+type sym_t = symbl_tbox
+type symbl = symbl_tbox
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/filpath.py]
+########################################################################
+# end of [ATS3-PYDEV/srcgen1/CATS/xsymbol.py]
 ########################################################################
 ########################################################################

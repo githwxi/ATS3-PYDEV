@@ -9,9 +9,12 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-class fpath:
+class stamp_tbox:
     pass
+######
+type stamp = stamp_tbox
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/filpath.py]
+########################################################################
+# end of [ATS3-PYDEV/srcgen1/CATS/xstamp0.py]
 ########################################################################
 ########################################################################
