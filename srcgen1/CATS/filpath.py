@@ -9,8 +9,16 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-class fpath:
+@dataclass
+class drpth_tbox:
     pass
+type drpth = drpth_tbox
+########################################################################
+@dataclass
+class fpath_tbox:
+    pass
+type fpath = fpath_tbox
+########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/CATS/filpath.py]
 ########################################################################
