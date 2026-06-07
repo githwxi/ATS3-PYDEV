@@ -9,10 +9,19 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
+type sint = int
+type strn = str
+########################################################################
+@dataclass
 class stamp_tbox:
+    uint: sint
     pass
 ######
 type stamp = stamp_tbox
+######
+def \
+stamp_make_uint(uint: sint) -> stamp:
+    return stamp_tbox(uint)
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/CATS/xstamp0.py]

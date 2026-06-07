@@ -10,6 +10,9 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
+type sint = int
+type strn = str
+########################################################################
 type s2typ = T2P000 \
     | T2Pcst | T2Pvar | T2Plft \
     | T2Ptop0 | T2Ptop1 | T2Parg1 | T2Patx2 \
