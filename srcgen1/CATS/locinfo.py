@@ -17,6 +17,8 @@ from filpath import fpath
 @dataclass
 class LCSRC000(ABC):
     pass
+type lcsrc = LCSRC000
+########################################################################
 @dataclass
 class LCSRCnone0(LCSRC000):
     pass
@@ -26,9 +28,6 @@ class LCSRCsome1(LCSRC000):
 @dataclass
 class LCSRCfpath(LCSRC000):
     arg1: fpath
-########################################################################
-type lcsrc = LCSRC000 \
-    | LCSRCnone0 | LCSRCsome1 | LCSRCfpath
 ########################################################################
 @dataclass
 class postn_tbox:

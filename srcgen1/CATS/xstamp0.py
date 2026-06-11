@@ -16,9 +16,8 @@ type strn = str
 class stamp_tbox:
     uint: sint
     pass
-######
 type stamp = stamp_tbox
-######
+########################################################################
 def \
 stamp_make_uint(uint: sint) -> stamp:
     return stamp_tbox(uint)

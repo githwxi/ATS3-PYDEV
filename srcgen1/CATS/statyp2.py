@@ -13,17 +13,12 @@ from typing import Union
 type sint = int
 type strn = str
 ########################################################################
-type s2typ = T2P000 \
-    | T2Pcst | T2Pvar | T2Plft \
-    | T2Ptop0 | T2Ptop1 | T2Parg1 | T2Patx2 \
-    | T2Plam1 | T2Papps | T2Pf2cl | T2Pfun1 \
-    | T2Ptext | T2Puni0 | T2Pexi0 | T2Ptrcd \
-    | T2Pnone0 | T2Pnone1 | T2Perrck | T2Pundef
-########################################################################
 @dataclass
 class T2P000(ABC):
     pass
+type s2typ = T2P000
 ########################################################################
+######
 @dataclass
 class T2Pcst(T2P000):
     """

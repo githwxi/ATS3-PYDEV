@@ -10,12 +10,10 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-type d2exp = D2E000 \
-    | D2Evar | D2Econ | D2Ecst
-########################################################################
 class D2E000(ABC):
     pass
-######
+type d2exp = D2E000
+########################################################################
 class D2Eint(D2E000):
     """
     HX: for signed ints

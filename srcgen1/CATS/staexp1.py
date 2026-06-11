@@ -10,16 +10,12 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-type s1exp = S1E000 \
-    | S1Eid0 \
-    | S1Eint | S1Echr | S1Eflt | S1Estr
-########################################################################
 class S1E000(ABC):
     pass
-######
+type s1exp = S1E000
+########################################################################
 class S1Eid0(ABC):
     pass
-######
 class S1Eint(ABC):
     pass
 class S1Echr(ABC):
