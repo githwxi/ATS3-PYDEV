@@ -2,7 +2,7 @@
 #
 # HX-2026-06-06:
 # Sat Jun  6 12:04:46 PM EDT 2026
-# For "copying" level-2 abstract syntax of ATS3
+# For "copying" level-1 abstract syntax of ATS3
 #
 ########################################################################
 from abc import ABC
@@ -10,12 +10,22 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-@dataclass
-class S2E000(ABC):
+class S1E000(ABC):
     pass
-type s2exp = S2E000
+type s1exp = S1E000
+########################################################################
+class S1Eid0(ABC):
+    pass
+class S1Eint(ABC):
+    pass
+class S1Echr(ABC):
+    pass
+class S1Eflt(ABC):
+    pass
+class S1Estr(ABC):
+    pass
 ########################################################################
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/staexp2.py]
+# end of [ATS3-PYDEV/srcgen1/DATS/CATS/staexp1.py]
 ########################################################################
 ########################################################################

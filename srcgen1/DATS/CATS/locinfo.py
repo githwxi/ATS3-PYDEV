@@ -75,6 +75,6 @@ loctn_make_fpath \
 (arg1: fpath, arg2: postn, arg3: postn) -> loctn:
     return loctn_tbox(LCSRCfpath(arg1), arg2, arg3)
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/locinfo.py]
+# end of [ATS3-PYDEV/srcgen1/DATS/CATS/locinfo.py]
 ########################################################################
 ########################################################################

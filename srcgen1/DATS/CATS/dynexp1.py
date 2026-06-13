@@ -2,6 +2,7 @@
 #
 # HX-2026-06-06:
 # Sat Jun  6 12:04:46 PM EDT 2026
+# For "copying" level-1 abstract syntax of ATS3
 #
 ########################################################################
 from abc import ABC
@@ -9,26 +10,11 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-type sint = int
-type strn = str
-########################################################################
-from xstamp0 import stamp
-########################################################################
-@dataclass
-class symbl_tbox:
-    name: strn
-    stmp: stamp
+class D1E000(ABC):
     pass
-######
-type sym_t = symbl_tbox
-type symbl = symbl_tbox
-######
-def \
-symbl_make_arg2 \
-(name: strn, stmp: stamp) -> symbl:
-    return symbl_tbox(name, stmp)
+type d1exp = D1E000
 ########################################################################
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/xsymbol.py]
+# end of [ATS3-PYDEV/srcgen1/DATS/CATS/dynexp1.py]
 ########################################################################
 ########################################################################

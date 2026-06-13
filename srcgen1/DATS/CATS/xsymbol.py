@@ -9,17 +9,26 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-@dataclass
-class drpth_tbox:
-    pass
-type drpth = drpth_tbox
+type sint = int
+type strn = str
+########################################################################
+from xstamp0 import stamp
 ########################################################################
 @dataclass
-class fpath_tbox:
+class symbl_tbox:
+    name: strn
+    stmp: stamp
     pass
-type fpath = fpath_tbox
+######
+type sym_t = symbl_tbox
+type symbl = symbl_tbox
+######
+def \
+symbl_make_arg2 \
+(name: strn, stmp: stamp) -> symbl:
+    return symbl_tbox(name, stmp)
 ########################################################################
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/filpath.py]
+# end of [ATS3-PYDEV/srcgen1/DATS/CATS/xsymbol.py]
 ########################################################################
 ########################################################################

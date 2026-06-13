@@ -2,7 +2,6 @@
 #
 # HX-2026-06-06:
 # Sat Jun  6 12:04:46 PM EDT 2026
-# For "copying" level-1 abstract syntax of ATS3
 #
 ########################################################################
 from abc import ABC
@@ -10,22 +9,20 @@ from enum import Enum
 from dataclasses import dataclass
 from typing import Union
 ########################################################################
-class S1E000(ABC):
-    pass
-type s1exp = S1E000
+type sint = int
+type strn = str
 ########################################################################
-class S1Eid0(ABC):
+@dataclass
+class stamp_tbox:
+    uint: sint
     pass
-class S1Eint(ABC):
-    pass
-class S1Echr(ABC):
-    pass
-class S1Eflt(ABC):
-    pass
-class S1Estr(ABC):
-    pass
+type stamp = stamp_tbox
+########################################################################
+def \
+stamp_make_uint(uint: sint) -> stamp:
+    return stamp_tbox(uint)
 ########################################################################
 ########################################################################
-# end of [ATS3-PYDEV/srcgen1/CATS/staexp1.py]
+# end of [ATS3-PYDEV/srcgen1/DATS/CATS/xstamp0.py]
 ########################################################################
 ########################################################################
