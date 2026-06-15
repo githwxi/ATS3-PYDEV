@@ -50,6 +50,10 @@ fun
 PY_list_cons{a:type}
 (x0: a, xs: PY$list(a)): PY$list(a) = $extnam()
 //
+fun
+PY_list_reverse
+{a:type}(xs: PY$list(a)): PY$list(a) = $extnam()
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
