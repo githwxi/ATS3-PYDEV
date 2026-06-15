@@ -57,8 +57,17 @@ fun
 PY_optn_nil
 {a:type}((*void*)): PY$optn(a) = $extnam()
 fun
-PY_optn_cons{a:type}
-(x0: a, xs: PY$optn(a)): PY$optn(a) = $extnam()
+PY_optn_cons{a:type}(x:a): PY$optn(a) = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+list_map$f1un_PY$list
+{a:type}{b:type}(xs: list(a), fopr: a -> b): PY$list(b)
+fun
+optn_map$f1un_PY$optn
+{a:type}{b:type}(xs: optn(a), fopr: a -> b): PY$optn(b)
 //
 (* ****** ****** *)
 (* ****** ****** *)

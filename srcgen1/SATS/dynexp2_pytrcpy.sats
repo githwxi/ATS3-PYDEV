@@ -45,6 +45,12 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 //
 #staload
+"./../SATS/ats3_pydev.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
 LOC = "./../../\
 xassets/ATS3/SATS/locinfo.sats"
 #staload
@@ -97,17 +103,6 @@ PYDEV_d2parsed_pytrcpy
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#typedef PY$d2patlst = list(PY$d2pat)
-#typedef PY$d2explst = list(PY$d2exp)
-#typedef PY$d2eclist = list(PY$d2ecl)
-//
-(* ****** ****** *)
-//
-#typedef PY$d2eclistopt = optn(PY$d2eclist)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 fun
 d2pat_pytrcpy(dpat: d2pat): PY$d2pat
 fun
@@ -117,6 +112,21 @@ d2exp_pytrcpy(dexp: d2exp): PY$d2exp
 //
 fun
 d2ecl_pytrcpy(d2cl: d2ecl): PY$d2ecl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+PY$d2patlst = PY$list(PY$d2pat)
+#typedef
+PY$d2explst = PY$list(PY$d2exp)
+#typedef
+PY$d2eclist = PY$list(PY$d2ecl)
+//
+(* ****** ****** *)
+//
+#typedef
+PY$d2eclistopt = PY$optn(PY$d2eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)

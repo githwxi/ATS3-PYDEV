@@ -23,6 +23,7 @@ cleanall:: ; rm -f BUILD/PY/*_dats_out?.py
 ########################################################################
 
 SRCSATS := \
+ats3_pydev.sats \
 locinfo_pytrcpy.sats \
 dynexp2_pytrcpy.sats \
 dynexp3_pytrcpy.sats \

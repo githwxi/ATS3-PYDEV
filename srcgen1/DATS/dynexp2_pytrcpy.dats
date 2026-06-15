@@ -52,6 +52,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 #staload
+"./../SATS/ats3_pydev.sats"
+#staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
 "./../SATS/dynexp2_pytrcpy.sats"
@@ -75,6 +77,16 @@ PY_D2Eother
 ( loc0
 : PY$loctn
 , dexp: d2exp): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Cother
+( loc0
+: PY$loctn
+, d2cl: d2ecl): PY$d2ecl = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -149,15 +161,7 @@ val loc0 =
 d2patlst_pytrcpy
 (   d2ps   ) =
 (
-list_map
-<x0><y0>(d2ps)) where
-{
-#typedef x0 = d2pat
-#typedef y0 = PY$d2pat
-#impltmp
-map$fopr
-<x0><y0>(*dpat*) = d2pat_pytrcpy(*dpat*)
-}
+list_map$f1un_PY$list(d2ps, d2pat_pytrcpy))
 //
 (* ****** ****** *)
 //
@@ -165,15 +169,7 @@ map$fopr
 d2explst_pytrcpy
 (   d2es   ) =
 (
-list_map
-<x0><y0>(d2es)) where
-{
-#typedef x0 = d2exp
-#typedef y0 = PY$d2exp
-#impltmp
-map$fopr
-<x0><y0>(*dexp*) = d2exp_pytrcpy(*dexp*)
-}
+list_map$f1un_PY$list(d2es, d2exp_pytrcpy))
 //
 (* ****** ****** *)
 //
@@ -181,15 +177,7 @@ map$fopr
 d2eclist_pytrcpy
 (   dcls   ) =
 (
-list_map
-<x0><y0>(dcls)) where
-{
-#typedef x0 = d2ecl
-#typedef y0 = PY$d2ecl
-#impltmp
-map$fopr
-<x0><y0>(*d2cl*) = d2ecl_pytrcpy(*d2cl*)
-}
+list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -201,11 +189,11 @@ d2eclistopt_pytrcpy
 case+ dopt of
 |optn_nil() =>
 (
-  optn_nil((*void*)))
+  PY_optn_nil((*void*)))
 |optn_cons(dcls) =>
 (
-  optn_cons(d2eclist_pytrcpy(dcls)))
-)(*case+*)//end-of-[d2eclistopt_pytrcpy()]
+  PY_optn_cons(d2eclist_pytrcpy(dcls)))
+)(*case+*)//end-of-[d2eclistopt_pytrcpy(dopt)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
