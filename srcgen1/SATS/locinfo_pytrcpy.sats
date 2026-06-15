@@ -50,9 +50,22 @@ xassets/ATS3/SATS/locinfo.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstbox PY$lcsrc // p0tr
+//
+#abstbox PY$postn // p0tr
 #abstbox PY$loctn // p0tr
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+lcsrc_pytrcpy(lsrc: lcsrc): PY$lcsrc
+//
+(* ****** ****** *)
+//
+fun
+postn_pytrcpy(pstn: postn): PY$postn
+//
 (* ****** ****** *)
 //
 fun

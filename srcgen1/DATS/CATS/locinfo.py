@@ -7,7 +7,6 @@
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
-from typing import Union
 ########################################################################
 type sint = int
 type strn = str
@@ -24,10 +23,19 @@ class LCSRCnone0(LCSRC000):
     pass
 @dataclass
 class LCSRCsome1(LCSRC000):
-    arg1: str
+    arg1: strn
 @dataclass
 class LCSRCfpath(LCSRC000):
     arg1: fpath
+########################################################################
+#
+def PY_LCSRCnone0()->LCSRCnone0:
+    return LCSRCnone0()
+def PY_LCSRCsome1(arg1: strn)->LCSRCsome1:
+    return LCSRCsome1(arg1)
+def PY_LCSRCfpath(arg1: fpath)->LCSRCfpath:
+    return LCSRCfpath(arg1)
+#
 ########################################################################
 @dataclass
 class postn_tbox:
@@ -45,7 +53,7 @@ class postn_tbox:
 type postn = postn_tbox
 ######
 def \
-postn_make_int3 \
+PY_postn_make_int3 \
 (ntot: sint, nrow: sint, ncol: sint) -> postn:
     return postn_tbox(ntot, nrow, ncol)
 ########################################################################
@@ -66,14 +74,16 @@ class loctn_tbox:
 type loctn = loctn_tbox
 type loc_t = loctn_tbox
 ######
+#
 def \
-loctn_make_arg3 \
+PY_loctn_make_arg3 \
 (arg1: lcsrc, arg2: postn, arg3: postn) -> loctn:
     return loctn_tbox(arg1, arg2, arg3)
 def \
-loctn_make_fpath \
+PY_loctn_make_fpath \
 (arg1: fpath, arg2: postn, arg3: postn) -> loctn:
     return loctn_tbox(LCSRCfpath(arg1), arg2, arg3)
+#
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/DATS/CATS/locinfo.py]
 ########################################################################

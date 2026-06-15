@@ -7,7 +7,6 @@
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
-from typing import Union
 ########################################################################
 @dataclass
 class drpth_tbox:

@@ -44,29 +44,6 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 fun
-PY_list_nil
-{a:type}((*void*)): PY$list(a) = $extnam()
-fun
-PY_list_cons{a:type}
-(x0: a, xs: PY$list(a)): PY$list(a) = $extnam()
-//
-fun
-PY_list_reverse
-{a:type}(xs: PY$list(a)): PY$list(a) = $extnam()
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-PY_optn_nil
-{a:type}((*void*)): PY$optn(a) = $extnam()
-fun
-PY_optn_cons{a:type}(x:a): PY$optn(a) = $extnam()
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 list_map$f1un_PY$list
 {a:type}{b:type}(xs: list(a), fopr: a -> b): PY$list(b)
 fun

@@ -186,20 +186,13 @@ list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
 d2eclistopt_pytrcpy
 (   dopt   ) =
 (
-case+ dopt of
-|optn_nil() =>
-(
-  PY_optn_nil((*void*)))
-|optn_cons(dcls) =>
-(
-  PY_optn_cons(d2eclist_pytrcpy(dcls)))
-)(*case+*)//end-of-[d2eclistopt_pytrcpy(dopt)]
+optn_map$f1un_PY$optn(dopt, d2eclist_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-PYDEV_d2parsed_pytrcpy
+d2parsed_pytrcpy
 (   dpar   ) =
 let
 //
@@ -239,6 +232,13 @@ PY_d2parsed
 , parsed: PY$d2eclistopt): PY$d2parsed = $extnam()
 //
 }(*where*)//end-of-[PYDEV_d2parsed_pytrcpy(dpar)]
+//
+#extern
+fun
+PYDEV_d2parsed_pytrcpy
+(dpar: d2parsed): PY$d2parsed = $extnam()
+#implfun
+PYDEV_d2parsed_pytrcpy(dpar) = d2parsed_pytrcpy(dpar)
 //
 (* ****** ****** *)
 (* ****** ****** *)

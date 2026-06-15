@@ -97,13 +97,6 @@ xassets/ATS3/SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 fun
-PYDEV_d2parsed_pytrcpy
-(dpar: d2parsed): PY$d2parsed = $extnam()
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
 d2pat_pytrcpy(dpat: d2pat): PY$d2pat
 fun
 d2exp_pytrcpy(dexp: d2exp): PY$d2exp
@@ -145,6 +138,13 @@ d2eclist_pytrcpy(dcls: d2eclist): PY$d2eclist
 //
 fun
 d2eclistopt_pytrcpy(dopt: d2eclistopt): PY$d2eclistopt
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2parsed_pytrcpy
+(dpar: d2parsed): PY$d2parsed(*PYDEV_d2parsed_pytrcpy*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
