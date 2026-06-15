@@ -37,6 +37,32 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstbox PY$list(a:type)
+#abstbox PY$optn(a:type)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+PY_list_nil
+{a:type}((*void*)): PY$list(a) = $extnam()
+fun
+PY_list_cons{a:type}
+(x0: a, xs: PY$list(a)): PY$list(a) = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+PY_optn_nil
+{a:type}((*void*)): PY$optn(a) = $extnam()
+fun
+PY_optn_cons{a:type}
+(x0: a, xs: PY$optn(a)): PY$optn(a) = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3-PYDEV/srcgen1_SATS_ats3_pydev.sats] *)
 (***********************************************************************)

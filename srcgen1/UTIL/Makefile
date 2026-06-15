@@ -11,6 +11,7 @@ LIB2XATSOPT=ats3_pydev_lib2xatsopt
 ########################################################################
 lib2xatsopt:: ; \
 printf "import os\n" > $(LIB2XATSOPT).py && \
+printf "import sys\n" >> $(LIB2XATSOPT).py && \
 printf "$(SEP12)$(SEP12)$(SEP12)$(SEP12)$(SEP12)$(SEP12).\n" >> $(LIB2XATSOPT).py
 lib2xatsopt:: ; \
 printf "## %s\n" "`date`" >> $(LIB2XATSOPT).py && \

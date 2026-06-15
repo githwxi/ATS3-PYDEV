@@ -44,7 +44,14 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
+#staload
+LOC = "./../../\
+xassets/ATS3/SATS/locinfo.sats"
+#staload
+D1E = "./../../\
+xassets/ATS3/SATS/dynexp1.sats"
+#staload
+D2E = "./../../\
 xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
@@ -52,6 +59,51 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 #abstbox PY$d2pat // p0tr
 #abstbox PY$d2exp // p0tr
+#abstbox PY$d2ecl // p0tr
+//
+(* ****** ****** *)
+//
+#abstbox PY$d2parsed // p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef d2pat = $D2E.d2pat
+#typedef d2exp = $D2E.d2exp
+#typedef d2ecl = $D2E.d2ecl
+//
+#typedef d2patlst = list(d2pat)
+#typedef d2explst = list(d2exp)
+#typedef d2eclist = list(d2ecl)
+//
+(* ****** ****** *)
+//
+#typedef lcsrc = $LOC.lcsrc
+#typedef d1topenv = $D1E.d1topenv
+#typedef d2topenv = $D2E.d2topenv
+#typedef d2parsed = $D2E.d2parsed
+//
+(* ****** ****** *)
+//
+#typedef d2eclistopt = optn(d2eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+PYDEV_d2parsed_pytrcpy
+(dpar: d2parsed): PY$d2parsed = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef PY$d2patlst = list(PY$d2pat)
+#typedef PY$d2explst = list(PY$d2exp)
+#typedef PY$d2eclist = list(PY$d2ecl)
+//
+(* ****** ****** *)
+//
+#typedef PY$d2eclistopt = optn(PY$d2eclist)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -65,6 +117,24 @@ d2exp_pytrcpy(dexp: d2exp): PY$d2exp
 //
 fun
 d2ecl_pytrcpy(d2cl: d2ecl): PY$d2ecl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2patlst_pytrcpy(d2ps: d2patlst): PY$d2patlst
+fun
+d2explst_pytrcpy(d2es: d2explst): PY$d2explst
+//
+(* ****** ****** *)
+//
+fun
+d2eclist_pytrcpy(dcls: d2eclist): PY$d2eclist
+//
+(* ****** ****** *)
+//
+fun
+d2eclistopt_pytrcpy(dopt: d2eclistopt): PY$d2eclistopt
 //
 (* ****** ****** *)
 (* ****** ****** *)

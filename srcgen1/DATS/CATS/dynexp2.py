@@ -15,6 +15,7 @@ type char = int
 type strn = str
 type dflt = float
 ########################################################################
+########################################################################
 @dataclass
 class d2con(ABC):
     pass
@@ -25,10 +26,47 @@ class d2cst(ABC):
 class d2var(ABC):
     pass
 ########################################################################
+########################################################################
+@dataclass
+class D2P000(ABC):
+    pass
+type d2pat = D2P000
+type d2patlst = list[d2pat]
+type d2patopt = d2pat | None
+########################################################################
+@dataclass
+class D2Pcon(D2P000):
+    """
+    HX: for data constructors
+    """
+    arg1: d2con
+    ctag = "D2Pcon"
+    pass
+@dataclass
+class D2Pvar(D2P000):
+    """
+    HX: for dynamic variables
+    """
+    arg1: d2var
+    ctag = "D2Pvar"
+    pass
+########################################################################
+@dataclass
+class D2Pother(D2P000):
+    arg1: object
+    ctag = "D2Pother"
+    pass
+########################################################################
+def PY_D2Pother(arg1: object)->D2Pother:
+    return D2Pother(arg1)
+########################################################################
+########################################################################
 @dataclass
 class D2E000(ABC):
     pass
 type d2exp = D2E000
+type d2explst = list[d2exp]
+type d2expopt = d2exp | None
 ########################################################################
 @dataclass
 class D2Eint(D2E000):
@@ -139,12 +177,35 @@ class D2Eother(D2E000):
     ctag = "D2Eother"
     pass
 ########################################################################
+########################################################################
+@dataclass
+class D2C000(ABC):
+    pass
+type d2ecl = D2C000
+type d2eclist = list[d2ecl]
+type d2eclopt = d2ecl | None
+type d2eclistopt = d2eclist | None
+########################################################################
+@dataclass
+class D2Cother(D2C000):
+    arg1: object
+    ctag = "D2Cother"
+    pass
+########################################################################
+########################################################################
 def PY_D2Econ(arg1: d2con)->D2Econ:
     return D2Econ(arg1)
 def PY_D2Ecst(arg1: d2cst)->D2Ecst:
     return D2Ecst(arg1)
 def PY_D2Evar(arg1: d2var)->D2Evar:
     return D2Evar(arg1)
+########################################################################
+def PY_D2Eother(arg1: object)->D2Eother:
+    return D2Eother(arg1)
+########################################################################
+########################################################################
+def PY_D2Cother(arg1: object)->D2Cother:
+    return D2Cother(arg1)
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/DATS/CATS/dynexp2.py]

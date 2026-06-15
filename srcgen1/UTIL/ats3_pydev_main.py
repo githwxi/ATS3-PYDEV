@@ -14,6 +14,18 @@ sys.setrecursionlimit(66000)
 from ats3_pydev_lib2xatsopt import *
 ########################################################################
 ########################################################################
+if __name__ == "__main__":
+    argv = sys.argv
+    print\
+    ("ats3_pydev: argv =", argv)
+    def farg(work):
+        for xarg in argv: work(xarg)
+    if len(argv) >= 3:
+        d2parsed = \
+        PYDEV_xatsopt_args_filsats_d2parsed(farg, sys.argv[2])
+        PY_d2parsed = d2parsed_pytrcpy(d2parsed)
+########################################################################
+########################################################################
 # end of [ATS3-PYDEV/srcgen1/UTIL/ats3_pydev_main.py]
 ########################################################################
 ########################################################################

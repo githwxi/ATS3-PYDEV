@@ -44,7 +44,8 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
+#staload
+D3E = "./../../\
 xassets/ATS3/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -54,14 +55,50 @@ xassets/ATS3/SATS/dynexp3.sats"
 #abstbox PY$d3exp // p0tr
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-fun d3pat_pytrcpy(dpat: d3pat): PY$d3pat
-fun d3exp_pytrcpy(dexp: d3exp): PY$d3exp
+#abstbox PY$d3parsed // p0tr
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-fun d3ecl_pytrcpy(d3cl: d3ecl): PY$d3ecl
+#typedef d3pat = $D3E.d3pat
+#typedef d3exp = $D3E.d3exp
+#typedef d3ecl = $D3E.d3ecl
+//
+(* ****** ****** *)
+//
+#typedef d3patlst = list(d3pat)
+#typedef d3explst = list(d3exp)
+#typedef d3eclist = list(d3ecl)
+//
+(* ****** ****** *)
+//
+#typedef d3parsed = $D3E.d3parsed
+//
+(* ****** ****** *)
+//
+#typedef PY$d3patlst = list(PY$d3pat)
+#typedef PY$d3explst = list(PY$d3exp)
+#typedef PY$d3eclist = list(PY$d3ecl)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3pat_pytrcpy(dpat: d3pat): PY$d3pat
+fun
+d3exp_pytrcpy(dexp: d3exp): PY$d3exp
+//
+(* ****** ****** *)
+//
+fun
+d3ecl_pytrcpy(d3cl: d3ecl): PY$d3ecl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3parsed_pytrcpy(dpar: d3parsed): PY$d3parsed = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
