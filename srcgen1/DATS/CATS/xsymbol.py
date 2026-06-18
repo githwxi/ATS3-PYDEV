@@ -4,15 +4,14 @@
 # Sat Jun  6 12:04:46 PM EDT 2026
 #
 ########################################################################
-from abc import ABC
-from enum import Enum
-from dataclasses import dataclass
-from typing import Union
-########################################################################
 type sint = int
 type strn = str
 ########################################################################
-from xstamp0 import stamp
+from abc import ABC
+from enum import Enum
+from dataclasses import dataclass
+########################################################################
+from DATS.CATS.xstamp0 import *
 ########################################################################
 @dataclass
 class symbl_tbox:

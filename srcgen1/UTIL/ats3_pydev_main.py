@@ -23,9 +23,12 @@ if __name__ == "__main__":
     def farg(work):
         for xarg in argv: work(xarg)
     if len(argv) >= 3:
+        fpth = sys.argv[2]
         d2parsed = \
-        PYDEV_xatsopt_args_filsats_d2parsed(farg, sys.argv[2])
+        PYDEV_xatsopt_args_filsats_d2parsed(farg, fpth)
         PY_d2parsed = PYDEV_d2parsed_pytrcpy(d2parsed)
+        # print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
+        
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/UTIL/ats3_pydev_main.py]

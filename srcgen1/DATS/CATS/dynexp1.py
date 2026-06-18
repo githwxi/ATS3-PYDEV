@@ -5,10 +5,14 @@
 # For "copying" level-1 abstract syntax of ATS3
 #
 ########################################################################
+type sint = int
+type char = int
+type strn = str
+type dflt = float
+########################################################################
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
-from typing import Union
 ########################################################################
 class D1E000(ABC):
     pass

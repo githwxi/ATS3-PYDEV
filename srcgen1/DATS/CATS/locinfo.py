@@ -4,14 +4,14 @@
 # Sat Jun  6 12:04:46 PM EDT 2026
 #
 ########################################################################
+type sint = int
+type strn = str
+########################################################################
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
 ########################################################################
-type sint = int
-type strn = str
-########################################################################
-from filpath import fpath
+from DATS.CATS.filpath import *
 ########################################################################
 @dataclass
 class LCSRC000(ABC):

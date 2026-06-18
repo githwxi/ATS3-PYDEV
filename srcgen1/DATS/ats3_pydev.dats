@@ -29,131 +29,84 @@
 (* ****** ****** *)
 //
 (*
-//
 Author: Hongwei Xi
-Start Time: June 14th, 2026
+Start Time: June 15th, 2026
 Authoremail: gmhwxiATgmailDOTcom
-//
-(*
-HX-2026-06-14:
-Sun Jun 14 02:25:56 PM EDT 2026
-*)
-//
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/locinfo.sats"
-//
-(* ****** ****** *)
-//
 #staload
-"./../SATS/filpath_pytrcpy.sats"
-#staload
-"./../SATS/locinfo_pytrcpy.sats"
+"./../SATS/ats3_pydev.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_list_nil
+{a:type}((*void*)): PY$list(a) = $extnam()
+#extern
+fun
+PY_list_cons{a:type}
+(x0: a, xs: PY$list(a)): PY$list(a) = $extnam()
+//
+#extern
+fun
+PY_list_reverse
+{a:type}(xs: PY$list(a)): PY$list(a) = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_optn_nil
+{a:type}((*void*)): PY$optn(a) = $extnam()
+#extern
+fun
+PY_optn_cons{a:type}(x:a): PY$optn(a) = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-lcsrc_pytrcpy
-(   lsrc   ) =
+list_map$f1un_PY$list
+  (xs, fopr) =
+PY_list_reverse
 (
-case+ lsrc of
-|
-LCSRCnone0
-((*void*)) => PY_LCSRCnone0()
-|
-LCSRCsome1
-(  name  ) => PY_LCSRCsome1(name)
-|
-LCSRCfpath
-(  fpth  ) =>
-(
-PY_LCSRCfpath(fpath_pytrcpy(fpth)))
-) where
+  loop( xs, rs ))
+where
 {
 //
-#extern
-fun
-PY_LCSRCnone0
-(  (*void*)  ): PY$lcsrc = $extnam()
-#extern
-fun
-PY_LCSRCsome1
-( name: strn ): PY$lcsrc = $extnam()
-#extern
-fun
-PY_LCSRCfpath
-(fpth: PY$fpath): PY$lcsrc = $extnam()
+val rs =
+(
+  PY_list_nil())
 //
-}(*where*)//end-of-[lcsrc_pytrcpy(lsrc)]
+fun loop(xs, rs) =
+(
+case+ xs of
+|list_nil() => rs
+|list_cons(x1, xs) =>
+loop(xs, PY_list_cons(fopr(x1), rs)))
 //
-(* ****** ****** *)
+}(*where*)//end-of-[list_map$f1un_PY$list(xs,fopr)]
+//
 (* ****** ****** *)
 //
 #implfun
-postn_pytrcpy
-(   pstn   ) =
-let
-val ntot =
-postn_get_ntot(pstn)
-val nrow =
-postn_get_nrow(pstn)
-val ncol =
-postn_get_ncol(pstn)
-in//let
-PY_postn_make_int3(ntot, nrow, ncol)
-end where
-{
-//
-#extern
-fun
-PY_postn_make_int3
+optn_map$f1un_PY$optn
+  (xs, fopr) =
 (
-ntot: sint,
-nrow: sint, ncol: sint): PY$postn = $extnam()
-//
-}(*where*)//end-of-[postn_pytrcpy(pstn)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-loctn_pytrcpy
-(   lctn   ) =
-let
-val lsrc =
-lcsrc_pytrcpy
-(
-  loctn_get_lsrc(lctn))
-val pbeg =
-postn_pytrcpy
-(
-  loctn_get_pbeg(lctn))
-val pend =
-postn_pytrcpy
-(
-  loctn_get_pend(lctn))
-in//let
-PY_loctn_make_arg3(lsrc, pbeg, pend)
-end where
-{
-//
-#extern
-fun
-PY_loctn_make_arg3
-(
-lsrc: PY$lcsrc,
-pbeg: PY$postn, pend: PY$postn): PY$loctn = $extnam()
-//
-}(*where*)//end-of-[loctn_pytrcpy(lctn)]
+case+ xs of
+|optn_nil() => PY_optn_nil()
+|optn_cons(x1) => PY_optn_cons(fopr(x1))
+)(*case+*)//end-of-[optn_map$f1un_PY$optn(xs,fopr)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-PYDEV/srcgen1/DATS/locinfo_pytrcpy.dats] *)
+(* end of [ATS3-PYDEV/srcgen1_DATS_ats3_pydev.dats] *)
 (***********************************************************************)

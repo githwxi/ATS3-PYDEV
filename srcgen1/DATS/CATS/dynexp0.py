@@ -5,10 +5,12 @@
 # For "copying" level-1 abstract syntax of ATS3
 #
 ########################################################################
+type sint = int
+type strn = str
+########################################################################
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
-from typing import Union
 ########################################################################
 class D0E000(ABC):
     pass

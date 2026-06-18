@@ -4,13 +4,12 @@
 # Sat Jun  6 12:04:46 PM EDT 2026
 #
 ########################################################################
+type sint = int
+type strn = str
+########################################################################
 from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
-from typing import Union
-########################################################################
-type sint = int
-type strn = str
 ########################################################################
 @dataclass
 class stamp_tbox:
