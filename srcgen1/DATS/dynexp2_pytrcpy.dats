@@ -64,6 +64,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
+"./../SATS/statyp2_pytrcpy.sats"
+#staload
 "./../SATS/dynexp2_pytrcpy.sats"
 //
 (* ****** ****** *)
@@ -342,6 +344,19 @@ end where
 val dcls =
 (
   d2eclist_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+//
+|D2Et2ped
+(d2e1, t2p2) =>
+(
+PY_D2Et2ped
+(loc0, d2e1, t2p2(*ann*))
+) where
+{
+val d2e1 = d2exp_pytrcpy(d2e1)
+val t2p2 = s2typ_pytrcpy(t2p2)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
