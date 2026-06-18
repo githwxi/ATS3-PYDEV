@@ -64,7 +64,7 @@ xassets/ATS3/SATS/staexp2.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
-"./../SATS/statyp2_pytrcpy.sats"
+"./../SATS/staexp2_pytrcpy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -79,10 +79,37 @@ PY_repr
 //
 #extern
 fun
-PY_S2Eother
+PY_S2Ta3src
+(s2t0: sort2): PY$sort2 = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_S2Ea3src
 ( s2t0
 : PY$sort2
 , sexp: s2exp): PY$s2exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+sort2_pytrcpy
+(   s2t0   ) =
+(
+case+ s2t0 of
+|
+_(*otherwise*) => PY_S2Ta3src(s2t0)
+) where
+{
+//
+val (  ) =
+(
+  printsln
+  ("sort2_pytrcpy: s2t0 = ", s2t0))
+//
+}(*where*)//end-of-[sort2_pytrcpy(s2t0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -94,7 +121,7 @@ s2exp_pytrcpy
 case+
 sexp.node() of
 |
-_(*other*) => PY_S2Eother(s2t0, sexp)
+_(*otherwise*) => PY_S2Ea3src(s2t0, sexp)
 ) where
 {
 //
@@ -102,7 +129,9 @@ val s2t0 =
 sort2_pytrcpy(sexp.sort((*0*)))
 //
 val (  ) =
-printsln("s2exp_pytrcpy: sexp = ", sexp)
+(
+  printsln("s2exp_pytrcpy: sexp = ", sexp))
+//
 val (  ) =
 printsln("s2exp_pytrcpy: s2t0 = ", PY_repr(s2t0))
 //

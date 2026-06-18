@@ -66,6 +66,8 @@ xassets/ATS3/SATS/statyp2.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
+"./../SATS/staexp2_pytrcpy.sats"
+#staload
 "./../SATS/statyp2_pytrcpy.sats"
 //
 (* ****** ****** *)
@@ -81,7 +83,7 @@ PY_repr
 //
 #extern
 fun
-PY_T2Pother
+PY_T2Pa3src
 ( s2t0
 : PY$sort2
 , styp: s2typ): PY$s2typ = $extnam()
@@ -96,7 +98,7 @@ s2typ_pytrcpy
 case+
 styp.node() of
 |
-_(*other*) => PY_T2Pother(s2t0, styp)
+_(*otherwise*) => PY_T2Pa3src(s2t0, styp)
 ) where
 {
 //
@@ -104,7 +106,9 @@ val s2t0 =
 sort2_pytrcpy(styp.sort((*0*)))
 //
 val (  ) =
-printsln("s2typ_pytrcpy: styp = ", styp)
+(
+  printsln("s2typ_pytrcpy: styp = ", styp))
+//
 val (  ) =
 printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
 //

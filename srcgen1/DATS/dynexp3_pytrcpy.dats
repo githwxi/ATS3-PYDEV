@@ -43,9 +43,17 @@ Sun Jun 14 02:25:56 PM EDT 2026
 //
 (* ****** ****** *)
 (* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #staload "./../../\
+xassets/ATS3/SATS/xsymbol.sats"
+#staload "./../../\
 xassets/ATS3/SATS/locinfo.sats"
+#staload "./../../\
+xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
 xassets/ATS3/SATS/dynexp3.sats"
 //
@@ -61,7 +69,15 @@ xassets/ATS3/SATS/dynexp3.sats"
 //
 #extern
 fun
-PY$D3Eother
+PY_repr
+{a:type}(x:a): strn = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY$D3Ea3src
 ( loc0
 : PY$loctn
 , dexp: d3exp): PY$d3exp = $extnam()
@@ -76,15 +92,19 @@ d3exp_pytrcpy
 case+
 dexp.node() of
 |
-_(*otherwise*) =>
-(
-  PY$D3Eother(loc0, dexp))
+_(*otherwise*) => PY$D3Ea3src(loc0, dexp)
 ) where
 {
 //
 val loc0 =
+loctn_pytrcpy(dexp.lctn((*0*)))
+//
+val (  ) =
 (
-  loctn_pytrcpy(dexp.lctn((*void*))))
+  printsln("d3exp_pytrcpy: dexp = ", dexp))
+//
+val (  ) =
+printsln("d3exp_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d3exp_pytrcpy(dexp)]
 //

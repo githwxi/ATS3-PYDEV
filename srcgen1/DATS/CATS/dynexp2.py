@@ -19,6 +19,8 @@ from dataclasses import dataclass
 ########################################################################
 from DATS.CATS.a3pydev import *
 from DATS.CATS.locinfo import *
+from DATS.CATS.staexp2 import *
+from DATS.CATS.statyp2 import *
 ########################################################################
 ########################################################################
 @dataclass
@@ -59,34 +61,34 @@ type d2eclistopt = fnoptn[d2eclist]
 ########################################################################
 ########################################################################
 @dataclass
-class D2Pother(D2P000):
+class D2Pa3src(D2P000):
     arg1: pyobj
-    ctag = "D2Pother"
+    ctag = "D2Pa3src"
     pass
 ########################################################################
 @dataclass
-class D2Eother(D2E000):
+class D2Ea3src(D2E000):
     arg1: pyobj
-    ctag = "D2Eother"
+    ctag = "D2Ea3src"
     pass
 ########################################################################
 @dataclass
-class D2Cother(D2C000):
+class D2Ca3src(D2C000):
     arg1: pyobj
-    ctag = "D2Cother"
+    ctag = "D2Ca3src"
     pass
 ########################################################################
-def PY_D2Pother\
-(lctn: loctn, arg1: pyobj)->D2Pother:
-    return D2Pother(lctn, arg1)
+def PY_D2Pa3src\
+(lctn: loctn, arg1: pyobj)->D2Pa3src:
+    return D2Pa3src(lctn, arg1)
 ########################################################################
-def PY_D2Eother\
-(lctn: loctn, arg1: pyobj)->D2Eother:
-    return D2Eother(lctn, arg1)
+def PY_D2Ea3src\
+(lctn: loctn, arg1: pyobj)->D2Ea3src:
+    return D2Ea3src(lctn, arg1)
 ########################################################################
-def PY_D2Cother\
-(lctn: loctn, arg1: pyobj)->D2Cother:
-    return D2Cother(lctn, arg1)
+def PY_D2Ca3src\
+(lctn: loctn, arg1: pyobj)->D2Ca3src:
+    return D2Ca3src(lctn, arg1)
 ########################################################################
 ########################################################################
 @dataclass
@@ -217,6 +219,12 @@ class D2Elet0(D2E000):
     ctag = "D2Elet0"
     pass
 @dataclass
+class D2Et2ped(D2E000):
+    arg1: d2exp
+    arg2: s2typ
+    ctag = "D2Et2ped"
+    pass
+@dataclass
 class D2Ewhere(D2E000):
     arg1: d2exp
     arg2: d2eclist
@@ -267,6 +275,16 @@ def PY_D2Elet0\
 (loc0: loctn, \
  arg1: d2eclist, arg2: d2exp)->D2Elet0:
     return D2Elet0(loc0, arg1, arg2)
+########################################################################
+def PY_D2Et2ped\
+(loc0: loctn, \
+ arg1: d2exp, arg2: s2typ)->D2Et2ped:
+    print\
+    ("PY_D2Et2ped: arg1 = ", arg1)
+    print\
+    ("PY_D2Et2ped: arg2 = ", arg2)
+    return D2Ewhere(loc0, arg1, arg2)
+########################################################################
 def PY_D2Ewhere\
 (loc0: loctn, \
  arg1: d2exp, arg2: d2eclist)->D2Ewhere:

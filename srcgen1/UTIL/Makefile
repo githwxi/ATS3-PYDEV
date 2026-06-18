@@ -21,6 +21,10 @@ printf \
 printf \
 "from DATS.CATS.locinfo import *\n" >> $(LIB2XATSOPT).py && \
 printf \
+"from DATS.CATS.staexp2 import *\n" >> $(LIB2XATSOPT).py && \
+printf \
+"from DATS.CATS.statyp2 import *\n" >> $(LIB2XATSOPT).py && \
+printf \
 "from DATS.CATS.dynexp2 import *\n" >> $(LIB2XATSOPT).py && \
 printf "$(SEP12)$(SEP12)$(SEP12)$(SEP12)$(SEP12)$(SEP12).\n" >> $(LIB2XATSOPT).py
 lib2xatsopt:: ; \
