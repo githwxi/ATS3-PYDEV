@@ -25,7 +25,7 @@ if __name__ == "__main__":
     if len(argv) >= 3:
         fpth = sys.argv[2]
         d2parsed = \
-        PYDEV_xatsopt_args_filsats_d2parsed(farg, fpth)
+        PYDEV_xatsopt_args_fildats_d2parsed(farg, fpth)
         PY_d2parsed = PYDEV_d2parsed_pytrcpy(d2parsed)
         # print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
         

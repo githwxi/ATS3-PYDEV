@@ -11,6 +11,7 @@ type sint = int
 type char = int
 type strn = str
 type dflt = float
+type pyobj = object
 ########################################################################
 from abc import ABC
 from enum import Enum
@@ -59,32 +60,32 @@ type d2eclistopt = fnoptn[d2eclist]
 ########################################################################
 @dataclass
 class D2Pother(D2P000):
-    arg1: object
+    arg1: pyobj
     ctag = "D2Pother"
     pass
 ########################################################################
 @dataclass
 class D2Eother(D2E000):
-    arg1: object
+    arg1: pyobj
     ctag = "D2Eother"
     pass
 ########################################################################
 @dataclass
 class D2Cother(D2C000):
-    arg1: object
+    arg1: pyobj
     ctag = "D2Cother"
     pass
 ########################################################################
 def PY_D2Pother\
-(lctn: loctn, arg1: object)->D2Pother:
+(lctn: loctn, arg1: pyobj)->D2Pother:
     return D2Pother(lctn, arg1)
 ########################################################################
 def PY_D2Eother\
-(lctn: loctn, arg1: object)->D2Eother:
+(lctn: loctn, arg1: pyobj)->D2Eother:
     return D2Eother(lctn, arg1)
 ########################################################################
 def PY_D2Cother\
-(lctn: loctn, arg1: object)->D2Cother:
+(lctn: loctn, arg1: pyobj)->D2Cother:
     return D2Cother(lctn, arg1)
 ########################################################################
 ########################################################################
@@ -215,6 +216,12 @@ class D2Elet0(D2E000):
     arg2: d2exp
     ctag = "D2Elet0"
     pass
+@dataclass
+class D2Ewhere(D2E000):
+    arg1: d2exp
+    arg2: d2eclist
+    ctag = "D2Ewhere"
+    pass
 ########################################################################
 ########################################################################
 @dataclass
@@ -222,6 +229,19 @@ class D2Clocal0(D2C000):
     arg1: d2eclist
     arg2: d2eclist
     ctag = "D2Clocal0"
+    pass
+########################################################################
+@dataclass
+class D2Cimplmnt0(D2C000):
+    arg1: pyobj
+    arg2: pyobj
+    arg3: pyobj
+    arg4: pyobj
+    arg5: pyobj
+    arg6: pyobj
+    arg7: pyobj
+    arg8: d2exp
+    ctag = "D2Cimplmnt0"
     pass
 ########################################################################
 ########################################################################
@@ -247,6 +267,12 @@ def PY_D2Elet0\
 (loc0: loctn, \
  arg1: d2eclist, arg2: d2exp)->D2Elet0:
     return D2Elet0(loc0, arg1, arg2)
+def PY_D2Ewhere\
+(loc0: loctn, \
+ arg1: d2exp, arg2: d2eclist)->D2Ewhere:
+    print\
+    ("PY_D2Ewhere: arg1 = ", arg1)
+    return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
 ########################################################################
 def PY_D2Clocal0\
@@ -254,14 +280,23 @@ def PY_D2Clocal0\
  arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
     return D2Clocal0(loc0, arg1, arg2)
 ########################################################################
+def PY_D2Cimplmnt0\
+(loc0: loctn, \
+ arg1: pyobj, arg2: pyobj, \
+ arg3: pyobj, arg4: pyobj, \
+ arg5: pyobj, arg6: pyobj, \
+ arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
+    return \
+    D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+########################################################################
 ########################################################################
 @dataclass
 class d2parsed(ABC):
     arg1: sint
     arg2: sint
     arg3: lcsrc
-    arg4: object # d1topenv
-    arg5: object # d2topenv
+    arg4: pyobj # d1topenv
+    arg5: pyobj # d2topenv
     arg6: d2eclistopt
     pass
 #
@@ -270,8 +305,8 @@ PY_d2parsed\
 (arg1: sint,
  arg2: sint,
  arg3: lcsrc,
- arg4: object,
- arg5: object,
+ arg4: pyobj,
+ arg5: pyobj,
  arg6: d2eclistopt) -> d2parsed:
     return d2parsed(arg1, arg2, arg3, arg4, arg5, arg6)
 #

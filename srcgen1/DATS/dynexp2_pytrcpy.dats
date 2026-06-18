@@ -157,7 +157,7 @@ PY_D2Ecst
 fun
 PY_D2Edap0
 ( loc0: PY$loctn
-, d2e1: PY$d2exp): PY$d2exp = $extnam()
+, d2e1: PY$d2exp   ): PY$d2exp = $extnam()
 //
 #extern
 fun
@@ -176,7 +176,22 @@ PY_D2Elet0
 , dcls: PY$d2eclist
 , d2e1: PY$d2exp   ): PY$d2exp = $extnam()
 //
+#extern
+fun
+PY_D2Ewhere
+( loc0: PY$loctn
+, d2e1: PY$d2exp
+, dcls: PY$d2eclist): PY$d2exp = $extnam()
+//
 (* ****** ****** *)
+//
+#extern
+fun
+PY_D2Et2ped
+( loc0: PY$loctn
+, d2e1: PY$d2exp
+, t2p2: PY$s2typ   ): PY$d2exp = $extnam()
+//
 (* ****** ****** *)
 //
 #extern
@@ -185,6 +200,21 @@ PY_D2Clocal0
 ( loc0: PY$loctn
 , head: PY$d2eclist
 , body: PY$d2eclist): PY$d2ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Cimplmnt0
+( loc0: PY$loctn
+, tknd: token
+, sqas: s2qaglst
+, tqas: t2qaglst
+, dimp: dimpl
+, tias: t2iaglst
+, f2as: f2arglst
+, sres: s2res
+, d2e1: PY$d2exp   ): PY$d2ecl = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -196,7 +226,7 @@ d2pat_pytrcpy
 case+
 dpat.node() of
 |
-_(*other*) => PY_D2Pother(loc0, dpat)
+_(*otherwise*) => PY_D2Pother(loc0, dpat)
 ) where
 {
 //
@@ -204,11 +234,9 @@ val loc0 =
 loctn_pytrcpy(dpat.lctn((*0*)))
 //
 val (  ) =
-printsln
-("d2pat_pytrcpy: dpat = ", dpat)
+printsln("d2pat_pytrcpy: dpat = ", dpat)
 val (  ) =
-printsln("\
-d2pat_pytrcpy: loc0 = ", PY_repr(loc0))
+printsln("d2pat_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d2pat_pytrcpy(dpat)]
 //
@@ -299,8 +327,25 @@ val dcls =
   d2eclist_pytrcpy(dcls)) }
 //
 (* ****** ****** *)
+//
+|D2Ewhere
+(d2e1, dcls) =>
+let
+val d2e1 =
+(
+  d2exp_pytrcpy(d2e1))
+in//let
+PY_D2Ewhere
+(loc0, d2e1(*scp*), dcls)
+end where
+{
+val dcls =
+(
+  d2eclist_pytrcpy(dcls)) }
+//
 (* ****** ****** *)
-|_(*other*) => PY_D2Eother(loc0, dexp)
+(* ****** ****** *)
+|_(*otherwise*) => PY_D2Eother(loc0, dexp)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -312,11 +357,9 @@ val loc0 =
 loctn_pytrcpy(dexp.lctn((*0*)))
 //
 val (  ) =
-printsln
-("d2exp_pytrcpy: dexp = ", dexp)
+printsln("d2exp_pytrcpy: dexp = ", dexp)
 val (  ) =
-printsln("\
-d2exp_pytrcpy: loc0 = ", PY_repr(loc0))
+printsln("d2exp_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d2exp_pytrcpy(dexp)]
 //
@@ -330,8 +373,7 @@ d2ecl_pytrcpy
 case+
 d2cl.node() of
 //
-|
-D2Clocal0
+|D2Clocal0
 (head, body) =>
 (
 PY_D2Clocal0
@@ -346,9 +388,28 @@ val body =
   d2eclist_pytrcpy(body)) }
 //
 (* ****** ****** *)
-(* ****** ****** *)
+//
 |
-_(*other*) => PY_D2Cother(loc0, d2cl)
+D2Cimplmnt0
+(tknd
+,sqas, tqas
+,dimp
+,tias, f2as
+,sres, d2e1) =>
+(
+PY_D2Cimplmnt0
+(loc0
+,tknd
+,sqas, tqas, dimp
+,tias, f2as, sres, d2e1))
+where
+{
+val d2e1 = d2exp_pytrcpy(d2e1)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|_(*otherwise*) => PY_D2Cother(loc0, d2cl)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -359,11 +420,9 @@ val loc0 =
 loctn_pytrcpy(d2cl.lctn((*0*)))
 //
 val (  ) =
-printsln
-("d2ecl_pytrcpy: d2cl = ", d2cl)
+printsln("d2ecl_pytrcpy: d2cl = ", d2cl)
 val (  ) =
-printsln("\
-d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
+printsln("d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d2ecl_pytrcpy(d2cl)]
 //
