@@ -56,8 +56,6 @@ xassets/ATS3/SATS/locinfo.sats"
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
 xassets/ATS3/SATS/staexp2.sats"
-#staload "./../../\
-xassets/ATS3/SATS/statyp2.sats"
 //
 (* ****** ****** *)
 //
@@ -81,38 +79,38 @@ PY_repr
 //
 #extern
 fun
-PY_T2Pother
+PY_S2Eother
 ( s2t0
 : PY$sort2
-, styp: s2typ): PY$s2typ = $extnam()
+, sexp: s2exp): PY$s2exp = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #implfun
-s2typ_pytrcpy
-(   styp   ) =
+s2exp_pytrcpy
+(   sexp   ) =
 (
 case+
-styp.node() of
+sexp.node() of
 |
-_(*other*) => PY_T2Pother(s2t0, styp)
+_(*other*) => PY_S2Eother(s2t0, sexp)
 ) where
 {
 //
 val s2t0 =
-sort2_pytrcpy(styp.sort((*0*)))
+sort2_pytrcpy(sexp.sort((*0*)))
 //
 val (  ) =
-printsln("s2typ_pytrcpy: styp = ", styp)
+printsln("s2exp_pytrcpy: sexp = ", sexp)
 val (  ) =
-printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
+printsln("s2exp_pytrcpy: s2t0 = ", PY_repr(s2t0))
 //
-}(*where*)//end-of-[s2typ_pytrcpy(styp)]
+}(*where*)//end-of-[s2exp_pytrcpy(sexp)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-PYDEV/srcgen1/DATS/statyp2_pytrcpy.dats] *)
+(* end of [ATS3-PYDEV/srcgen1/DATS/staexp2_pytrcpy.dats] *)
 (***********************************************************************)
