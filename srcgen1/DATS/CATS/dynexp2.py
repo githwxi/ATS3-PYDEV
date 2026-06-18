@@ -19,6 +19,7 @@ from dataclasses import dataclass
 from DATS.CATS.a3pydev import *
 from DATS.CATS.locinfo import *
 ########################################################################
+########################################################################
 @dataclass
 class d2con(ABC):
     pass
@@ -140,7 +141,7 @@ class D2Estr(D2E000):
     """
     ctag = "D2Estr"
     pass
-######
+########################################################################
 @dataclass
 class D2Ei00(D2E000):
     """
@@ -181,7 +182,7 @@ class D2Es00(D2E000):
     arg1: strn
     ctag = "D2Es00"
     pass
-######
+########################################################################
 @dataclass
 class D2Econ(D2E000):
     """
@@ -222,6 +223,14 @@ class D2Clocal0(D2C000):
     arg2: d2eclist
     ctag = "D2Clocal0"
     pass
+########################################################################
+########################################################################
+def PY_D2Pcon\
+(lctn: loctn, arg1: d2con)->D2Pcon:
+    return D2Pcon(lctn, arg1)
+def PY_D2Pvar\
+(lctn: loctn, arg1: d2var)->D2Pvar:
+    return D2Pvar(lctn, arg1)
 ########################################################################
 ########################################################################
 def PY_D2Econ\
