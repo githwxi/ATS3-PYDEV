@@ -36,81 +36,61 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (*
 HX-2026-06-14:
-Sun Jun 14 02:25:56 PM EDT 2026
+Sun Jun 14 12:12:04 PM EDT 2026
 *)
 //
 *)
 //
 (* ****** ****** *)
-(* ****** ****** *)
-#include
-"./../HATS/mytmplib00.hats"
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#staload "./../../\
-xassets/ATS3/SATS/xsymbol.sats"
-#staload "./../../\
-xassets/ATS3/SATS/locinfo.sats"
-#staload "./../../\
-xassets/ATS3/SATS/lexing0.sats"
-#staload "./../../\
-xassets/ATS3/SATS/statyp2.sats"
-//
 (* ****** ****** *)
 //
 #staload
 "./../SATS/ats3_pydev.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #staload
-"./../SATS/locinfo_pytrcpy.sats"
+LOC = "./../../\
+xassets/ATS3/SATS/locinfo.sats"
 #staload
-"./../SATS/statyp2_pytrcpy.sats"
+S2E = "./../../\
+xassets/ATS3/SATS/staexp2.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
+#abstbox PY$sort2 // p0tr
+#abstbox PY$s2exp // p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef sort2 = $S2E.sort2
+#typedef s2exp = $S2E.s2exp
+//
+#typedef s2explst = list(s2exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 fun
-PY_repr
-{a:type}(x:a): strn = $extnam()
+sort2_pytrcpy(s2t0: sort2): PY$sort2
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-#extern
 fun
-PY_T2Pother
-( s2t0
-: PY$sort2
-, styp: s2typ): PY$s2typ = $extnam()
+s2exp_pytrcpy(sexp: s2exp): PY$s2exp
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#implfun
-s2typ_pytrcpy
-(   styp   ) =
-(
-case+
-styp.node() of
-|
-_(*other*) => PY_T2Pother(s2t0, styp)
-) where
-{
-//
-val s2t0 =
-sort2_pytrcpy(styp.sort((*0*)))
-//
-val (  ) =
-printsln("s2typ_pytrcpy: styp = ", styp)
-val (  ) =
-printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
-//
-}(*where*)//end-of-[s2typ_pytrcpy(styp)]
+fun
+s2explst_pytrcpy(s2es: s2explst): PY$s2explst
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-PYDEV/srcgen1/DATS/statyp2_pytrcpy.dats] *)
+(* end of [ATS3-PYDEV/srcgen1/SATS/staexp2_pytrcpy.sats] *)
 (***********************************************************************)

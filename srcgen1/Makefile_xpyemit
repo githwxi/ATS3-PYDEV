@@ -26,6 +26,8 @@ SRCSATS := \
 ats3_pydev.sats \
 filpath_pytrcpy.sats \
 locinfo_pytrcpy.sats \
+staexp2_pytrcpy.sats \
+statyp2_pytrcpy.sats \
 dynexp2_pytrcpy.sats \
 dynexp3_pytrcpy.sats \
 
@@ -35,6 +37,8 @@ SRCDATS := \
 ats3_pydev.dats \
 filpath_pytrcpy.dats \
 locinfo_pytrcpy.dats \
+staexp2_pytrcpy.dats \
+statyp2_pytrcpy.dats \
 dynexp2_pytrcpy.dats \
 dynexp3_pytrcpy.dats \
 
