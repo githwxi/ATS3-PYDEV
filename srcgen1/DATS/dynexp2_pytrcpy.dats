@@ -184,6 +184,17 @@ PY_D2Elet0
 , dcls: PY$d2eclist
 , d2e1: PY$d2exp   ): PY$d2exp = $extnam()
 //
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Eseqn
+( loc0: PY$loctn
+, d2es: PY$d2explst
+, d2e1: PY$d2exp   ): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+//
 #extern
 fun
 PY_D2Ewhere
@@ -451,6 +462,23 @@ end where
 val dcls =
 (
   d2eclist_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+//
+|D2Eseqn
+(d2es, d2e1) =>
+(
+PY_D2Eseqn
+(loc0, d2es, d2e1))
+where
+{
+//
+val
+d2es =
+d2explst_pytrcpy(d2es)
+//
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
 //
 (* ****** ****** *)
 //

@@ -208,6 +208,7 @@ class D2Pvar(D2P000):
     pass
 ########################################################################
 ########################################################################
+#
 @dataclass
 class D2Eint(D2E000):
     """
@@ -248,7 +249,9 @@ class D2Estr(D2E000):
     arg1: pyobj
     ctag = "D2Estr"
     pass
+#
 ########################################################################
+#
 @dataclass
 class D2Ei00(D2E000):
     """
@@ -289,7 +292,9 @@ class D2Es00(D2E000):
     arg1: strn
     ctag = "D2Es00"
     pass
+#
 ########################################################################
+#
 @dataclass
 class D2Econ(D2E000):
     """
@@ -315,7 +320,9 @@ class D2Evar(D2E000):
     arg1: d2var
     ctag = "D2Evar"
     pass
+#
 ########################################################################
+#
 @dataclass
 class D2Edap0(D2E000):
     arg1: d2exp
@@ -328,13 +335,30 @@ class D2Edapp(D2E000):
     arg3: d2exp
     ctag = "D2Edapp"
     pass
+#
 ########################################################################
+#
 @dataclass
 class D2Elet0(D2E000):
     arg1: d2eclist
     arg2: d2exp
     ctag = "D2Elet0"
     pass
+#
+@dataclass
+class D2Eseqn(D2E000):
+    arg1: d2explst
+    arg2: d2exp
+    ctag = "D2Eseqn"
+    pass
+#
+@dataclass
+class D2Ewhere(D2E000):
+    arg1: d2exp
+    arg2: d2eclist
+    ctag = "D2Ewhere"
+    pass
+#
 @dataclass
 class D2Et2pck(D2E000):
     arg1: d2exp
@@ -347,12 +371,7 @@ class D2Et2ped(D2E000):
     arg2: s2typ
     ctag = "D2Et2ped"
     pass
-@dataclass
-class D2Ewhere(D2E000):
-    arg1: d2exp
-    arg2: d2eclist
-    ctag = "D2Ewhere"
-    pass
+#
 ########################################################################
 @dataclass
 class D2Clocal0(D2C000):
@@ -439,28 +458,34 @@ def PY_D2Elet0\
     # ("PY_D2Elet0: arg2 = ", arg2)
     return D2Elet0(loc0, arg1, arg2)
 ########################################################################
+def PY_D2Eseqn\
+(loc0: loctn, arg1: d2explst, arg2: d2exp)->D2Eseqn:
+    # print\
+    # ("PY_D2Eseqn: arg1 = ", arg1)
+    # print\
+    # ("PY_D2Eseqn: arg2 = ", arg2)
+    return D2Eseqn(loc0, arg1, arg2)
+########################################################################
+def PY_D2Ewhere\
+(loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:
+    # print\
+    # ("PY_D2Ewhere: arg1 = ", arg1)
+    return D2Ewhere(loc0, arg1, arg2)
+########################################################################
 def PY_D2Et2pck\
 (loc0: loctn, arg1: d2exp, arg2: s2typ)->D2Et2pck:
     # print\
     # ("PY_D2Et2pck: arg1 = ", arg1)
     # print\
     # ("PY_D2Et2pck: arg2 = ", arg2)
-    return D2Ewhere(loc0, arg1, arg2)
+    return D2Et2pck(loc0, arg1, arg2)
 def PY_D2Et2ped\
-(loc0: loctn, \
- arg1: d2exp, arg2: s2typ)->D2Et2ped:
+(loc0: loctn, arg1: d2exp, arg2: s2typ)->D2Et2ped:
     # print\
     # ("PY_D2Et2ped: arg1 = ", arg1)
     # print\
     # ("PY_D2Et2ped: arg2 = ", arg2)
-    return D2Ewhere(loc0, arg1, arg2)
-########################################################################
-def PY_D2Ewhere\
-(loc0: loctn, \
- arg1: d2exp, arg2: d2eclist)->D2Ewhere:
-    # print\
-    # ("PY_D2Ewhere: arg1 = ", arg1)
-    return D2Ewhere(loc0, arg1, arg2)
+    return D2Et2ped(loc0, arg1, arg2)
 ########################################################################
 ########################################################################
 def PY_D2Clocal0\
