@@ -207,6 +207,36 @@ PY_D2Clocal0
 //
 #extern
 fun
+PY_D2Cvaldclst
+( loc0: PY$loctn
+, tknd: token
+, d2vs:
+(
+   PY$d2valdclist )): PY$d2ecl = $extnam()
+#extern
+fun
+PY_D2Cvardclst
+( loc0: PY$loctn
+, tknd: token
+, d2vs:
+(
+   PY$d2vardclist )): PY$d2ecl = $extnam()
+//
+#extern
+fun
+PY_D2Cfundclst
+( loc0: PY$loctn
+, tknd: token
+, t2qs: t2qaglst
+, d2cs: d2cstlst
+, d2fs:
+(
+   PY$d2fundclist )): PY$d2ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D2Cimplmnt0
 ( loc0: PY$loctn
 , tknd: token
@@ -407,6 +437,51 @@ val body =
   d2eclist_pytrcpy(body)) }
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D2Cvaldclst
+(tknd, d2vs) =>
+(
+PY_D2Cvaldclst
+(loc0, tknd, d2vs))
+where
+{
+val d2vs =
+(
+  d2valdclist_pytrcpy(d2vs))
+}
+//
+|D2Cvardclst
+(tknd, d2vs) =>
+(
+PY_D2Cvardclst
+(loc0, tknd, d2vs))
+where
+{
+val d2vs =
+(
+  d2vardclist_pytrcpy(d2vs))
+}
+//
+(* ****** ****** *)
+//
+|D2Cfundclst
+(tknd
+,tqas
+,d2cs, d2fs) =>
+(
+PY_D2Cfundclst
+(loc0, tknd
+,tqas, d2cs, d2fs))
+where
+{
+val d2fs =
+(
+  d2fundclist_pytrcpy(d2fs))
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |
 D2Cimplmnt0
@@ -471,6 +546,27 @@ d2eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2valdclist_pytrcpy
+(   d2vs   ) =
+(
+list_map$f1un_PY$list(d2vs, d2valdcl_pytrcpy))
+//
+#implfun
+d2vardclist_pytrcpy
+(   d2vs   ) =
+(
+list_map$f1un_PY$list(d2vs, d2vardcl_pytrcpy))
+//
+#implfun
+d2fundclist_pytrcpy
+(   d2fs   ) =
+(
+list_map$f1un_PY$list(d2fs, d2fundcl_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)

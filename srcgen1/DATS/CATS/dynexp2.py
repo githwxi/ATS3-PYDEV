@@ -32,6 +32,9 @@ class d2cst(ABC):
 @dataclass
 class d2var(ABC):
     pass
+type d2conlst = fnlist[d2con]
+type d2cstlst = fnlist[d2cst]
+type d2varlst = fnlist[d2var]
 ########################################################################
 ########################################################################
 @dataclass
@@ -59,6 +62,18 @@ type d2eclist = fnlist[d2ecl]
 type d2eclopt = fnoptn[d2ecl]
 type d2eclistopt = fnoptn[d2eclist]
 ########################################################################
+@dataclass
+class d2valdcl(ABC):
+    pass
+@dataclass
+class d2vardcl(ABC):
+    pass
+@dataclass
+class d2fundcl(ABC):
+    pass
+type d2valdclist = fnlist[d2valdcl]
+type d2vardclist = fnlist[d2vardcl]
+type d2fundclist = fnlist[d2fundcl]
 ########################################################################
 @dataclass
 class D2Pa3src(D2P000):
@@ -231,13 +246,19 @@ class D2Ewhere(D2E000):
     ctag = "D2Ewhere"
     pass
 ########################################################################
-########################################################################
 @dataclass
 class D2Clocal0(D2C000):
     arg1: d2eclist
     arg2: d2eclist
     ctag = "D2Clocal0"
     pass
+########################################################################
+@dataclass
+class D2Cfundclst(D2C000):
+    arg1: pyobj
+    arg2: pyobj
+    arg3: d2cstlst
+    arg4: d2fundclist
 ########################################################################
 @dataclass
 class D2Cimplmnt0(D2C000):

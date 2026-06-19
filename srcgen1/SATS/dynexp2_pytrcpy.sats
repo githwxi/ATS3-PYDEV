@@ -69,6 +69,12 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#abstbox PY$d2valdcl // p0tr
+#abstbox PY$d2vardcl // p0tr
+#abstbox PY$d2fundcl // p0tr
+//
+(* ****** ****** *)
+//
 #abstbox PY$d2parsed // p0tr
 //
 (* ****** ****** *)
@@ -84,10 +90,22 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#typedef d2valdcl = $D2E.d2valdcl
+#typedef d2vardcl = $D2E.d2vardcl
+#typedef d2fundcl = $D2E.d2fundcl
+//
+(* ****** ****** *)
+//
 #typedef lcsrc = $LOC.lcsrc
 #typedef d1topenv = $D1E.d1topenv
 #typedef d2topenv = $D2E.d2topenv
 #typedef d2parsed = $D2E.d2parsed
+//
+(* ****** ****** *)
+//
+#typedef d2valdclist = list(d2valdcl)
+#typedef d2vardclist = list(d2vardcl)
+#typedef d2fundclist = list(d2fundcl)
 //
 (* ****** ****** *)
 //
@@ -119,6 +137,15 @@ PY$d2eclist = PY$list(PY$d2ecl)
 (* ****** ****** *)
 //
 #typedef
+PY$d2valdclist = PY$list(PY$d2valdcl)
+#typedef
+PY$d2vardclist = PY$list(PY$d2vardcl)
+#typedef
+PY$d2fundclist = PY$list(PY$d2fundcl)
+//
+(* ****** ****** *)
+//
+#typedef
 PY$d2eclistopt = PY$optn(PY$d2eclist)
 //
 (* ****** ****** *)
@@ -134,6 +161,28 @@ d2explst_pytrcpy(d2es: d2explst): PY$d2explst
 fun
 d2eclist_pytrcpy(dcls: d2eclist): PY$d2eclist
 //
+(* ****** ****** *)
+//
+fun
+d2valdcl_pytrcpy(dval: d2valdcl): PY$d2valdcl
+fun
+d2vardcl_pytrcpy(dvar: d2vardcl): PY$d2vardcl
+//
+fun
+d2fundcl_pytrcpy(dfun: d2fundcl): PY$d2fundcl
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2valdclist_pytrcpy(d2vs: d2valdclist): PY$d2valdclist
+fun
+d2vardclist_pytrcpy(d2vs: d2vardclist): PY$d2vardclist
+//
+fun
+d2fundclist_pytrcpy(d2fs: d2fundclist): PY$d2fundclist
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 fun
