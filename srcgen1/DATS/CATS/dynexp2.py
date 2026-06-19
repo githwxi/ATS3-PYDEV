@@ -158,6 +158,7 @@ class D2Eint(D2E000):
     """
     HX: for signed ints
     """
+    arg1: pyobj
     ctag = "D2Eint"
     pass
 @dataclass
@@ -165,6 +166,7 @@ class D2Ebtf(D2E000):
     """
     HX: for true / false
     """
+    arg1: pyobj
     ctag = "D2Ebtf"
     pass
 @dataclass
@@ -172,6 +174,7 @@ class D2Echr(D2E000):
     """
     HX: for chars(==int8)
     """
+    arg1: pyobj
     ctag = "D2Echr"
     pass
 @dataclass
@@ -179,6 +182,7 @@ class D2Eflt(D2E000):
     """
     HX: for double floats
     """
+    arg1: pyobj
     ctag = "D2Eflt"
     pass
 @dataclass
@@ -186,6 +190,7 @@ class D2Estr(D2E000):
     """
     HX: for constant strings
     """
+    arg1: pyobj
     ctag = "D2Estr"
     pass
 ########################################################################
@@ -338,6 +343,18 @@ def PY_D2Pvar\
 (lctn: loctn, arg1: d2var)->D2Pvar:
     return D2Pvar(lctn, arg1)
 ########################################################################
+########################################################################
+#
+def PY_D2Eint\
+(lctn: loctn, arg1: pyobj)->D2Eint:
+    return D2Eint(lctn, arg1)
+def PY_D2Ebtf\
+(lctn: loctn, arg1: pyobj)->D2Ebtf:
+    return D2Ebtf(lctn, arg1)
+def PY_D2Estr\
+(lctn: loctn, arg1: pyobj)->D2Estr:
+    return D2Estr(lctn, arg1)
+#
 ########################################################################
 #
 def PY_D2Econ\
