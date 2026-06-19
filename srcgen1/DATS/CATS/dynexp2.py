@@ -99,18 +99,23 @@ type teqd2exp = TEQD2EXP000
 ########################################################################
 #
 @dataclass
-class d2valdcl(ABC):
+class d2valdcl_tbox(ABC):
     lctn: loctn
     dpat: d2pat
     tdxp: teqd2exp
     wsxp: pyobj
     pass
 @dataclass
-class d2vardcl(ABC):
+class d2vardcl_tbox(ABC):
     pass
 @dataclass
-class d2fundcl(ABC):
+class d2fundcl_tbox(ABC):
     pass
+#
+type d2valdcl = d2valdcl_tbox
+type d2vardcl = d2vardcl_tbox
+type d2fundcl = d2fundcl_tbox
+#
 type d2valdclist = fnlist[d2valdcl]
 type d2vardclist = fnlist[d2vardcl]
 type d2fundclist = fnlist[d2fundcl]
@@ -443,7 +448,7 @@ PY_d2valdcl_make_args\
 (lctn: loctn, \
  dpat: d2pat, \
  tdxp: teqd2exp, wsxp: pyobj)->d2valdcl:
-    return d2valdcl(lctn, dpat, tdxp, wsxp)
+    return d2valdcl_tbox(lctn, dpat, tdxp, wsxp)
 #
 ########################################################################
 ########################################################################

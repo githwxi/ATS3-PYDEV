@@ -37,6 +37,7 @@ def PY_LCSRCfpath(arg1: fpath)->LCSRCfpath:
     return LCSRCfpath(arg1)
 #
 ########################################################################
+#
 @dataclass
 class postn_tbox:
     """
@@ -49,14 +50,8 @@ class postn_tbox:
     nrow: sint
     ncol: sint
     pass
-######
 type postn = postn_tbox
-######
-def \
-PY_postn_make_int3 \
-(ntot: sint, nrow: sint, ncol: sint) -> postn:
-    return postn_tbox(ntot, nrow, ncol)
-########################################################################
+#
 @dataclass
 class loctn_tbox:
     """
@@ -70,10 +65,15 @@ class loctn_tbox:
     lsrc: lcsrc
     pbeg: postn
     pend: postn
-######
+    pass
 type loctn = loctn_tbox
-type loc_t = loctn_tbox
-######
+#
+########################################################################
+#
+def \
+PY_postn_make_int3 \
+(ntot: sint, nrow: sint, ncol: sint) -> postn:
+    return postn_tbox(ntot, nrow, ncol)
 #
 def \
 PY_loctn_make_arg3 \
