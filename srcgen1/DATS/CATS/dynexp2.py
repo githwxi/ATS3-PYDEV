@@ -37,6 +37,33 @@ type d2cstlst = fnlist[d2cst]
 type d2varlst = fnlist[d2var]
 ########################################################################
 ########################################################################
+#
+@dataclass
+class S2RES000(ABC):
+    pass
+@dataclass
+class \
+S2RESnone(S2RES000):
+    pass
+@dataclass
+class \
+S2RESsome(S2RES000):
+    arg1: pyobj
+    arg2: s2exp
+    pass
+type s2res = S2RES000
+########################################################################
+#
+def \
+PY_S2RESnone()->S2RESnone:
+    return S2RESnone()
+def \
+PY_S2RESsome\
+(arg1: pyobj, arg2: s2exp)->S2RESsome:
+    return S2RESsome(arg1, arg2)
+#
+########################################################################
+########################################################################
 @dataclass
 class D2P000(ABC):
     lctn: loctn
@@ -124,9 +151,20 @@ class d2valdcl_tbox(ABC):
     pass
 @dataclass
 class d2vardcl_tbox(ABC):
+    lctn: loctn
+    dpid: pyobj
+    vpid: pyobj
+    sres: s2expopt
+    tdxp: teqd2exp
     pass
 @dataclass
 class d2fundcl_tbox(ABC):
+    lctn: loctn
+    dpid: pyobj
+    farg: pyobj
+    sres: s2res
+    tdxp: teqd2exp
+    wsxp: wths2exp
     pass
 #
 type d2valdcl = d2valdcl_tbox
@@ -418,16 +456,19 @@ def PY_D2Et2ped\
     return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
 def PY_D2Ewhere\
-(loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:
+(loc0: loctn, \
+ arg1: d2exp, arg2: d2eclist)->D2Ewhere:
     # print\
     # ("PY_D2Ewhere: arg1 = ", arg1)
     return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
 ########################################################################
 def PY_D2Clocal0\
-(loc0: loctn, arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
+(loc0: loctn, \
+ arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
     return D2Clocal0(loc0, arg1, arg2)
 ########################################################################
+#
 def PY_D2Cvaldclst\
 (loc0: loctn, \
  arg1: pyobj, arg2: d2valdclist)->D2Cvaldclst:
@@ -436,6 +477,13 @@ def PY_D2Cvardclst\
 (loc0: loctn, \
  arg1: pyobj, arg2: d2vardclist)->D2Cvardclst:
     return D2Cvardclst(loc0, arg1, arg2)
+#
+def PY_D2Cfundclst\
+(loc0: loctn, \
+ arg1: pyobj, arg2: pyobj, \
+ arg3: pyobj, arg4: d2fundclist)->D2Cfundclst: 
+    return D2Cfundclst(loc0, arg1, arg2, arg3, arg4) 
+#
 ########################################################################
 def PY_D2Cimplmnt0\
 (loc0: loctn, \
@@ -478,11 +526,38 @@ PY_TEQD2EXPsome\
 ########################################################################
 #
 def \
+PY_WTHS2EXPnone()->wths2exp:
+    return WTHS2EXPnone()
+def \
+PY_WTHS2EXPsome\
+(arg1: pyobj, arg2: s2exp)->wths2exp:
+    return WTHS2EXPsome(arg1, arg2)
+#
+########################################################################
+#
+def \
 PY_d2valdcl_make_args\
 (lctn: loctn, \
  dpat: d2pat, \
  tdxp: teqd2exp, wsxp: pyobj)->d2valdcl:
     return d2valdcl_tbox(lctn, dpat, tdxp, wsxp)
+#
+def \
+PY_d2vardcl_make_args\
+(lctn: loctn, \
+ dpid: pyobj, \
+ vpid: pyobj, \
+ sres: s2expopt, tdxp: teqd2exp)->d2vardcl:
+    return d2vardcl_tbox(lctn, dpid, vpid, sres, tdxp)
+#
+def \
+PY_d2fundcl_make_args\
+(lctn: loctn, \
+ dpid: pyobj, \
+ farg: pyobj,
+ sres: s2res,
+ tdxp: teqd2exp, wsxp: wths2exp)->d2fundcl:
+    return d2fundcl_tbox(lctn, dpid, farg, sres, tdxp, wsxp)
 #
 ########################################################################
 ########################################################################

@@ -258,7 +258,7 @@ PY_D2Cimplmnt0
 , dimp: dimpl
 , tias: t2iaglst
 , f2as: f2arglst
-, sres: s2res
+, sres: PY$s2res
 , d2e1: PY$d2exp   ): PY$d2ecl = $extnam()
 //
 (* ****** ****** *)
@@ -281,6 +281,18 @@ PY_d2vardcl_make_args
 , tdxp: PY$teqd2exp): PY$d2vardcl = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_d2fundcl_make_args
+( lctn: PY$loctn
+, dpid: d2var
+, farg: f2arglst
+, sres: PY$s2res
+, tdxp: PY$teqd2exp
+, wsxp: PY$wths2exp): PY$d2fundcl = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -292,6 +304,41 @@ d2exp_fprint(dexp, g_print$out<>())
 #impltmp
 g_print<d2ecl>(d2cl) =
 d2ecl_fprint(d2cl, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2res_pytrcpy
+(   sres   ) =
+(
+case+ sres of
+|S2RESnone
+( (*void*) ) =>
+(
+PY_S2RESnone((*0*)))
+|S2RESsome
+(seff, s2e1) =>
+(
+PY_S2RESsome(seff, s2e1))
+where
+{
+val s2e1 = s2exp_pytrcpy(s2e1) }
+) where
+{
+//
+#extern
+fun
+PY_S2RESnone
+(   (*nil*)   ): PY$s2res = $extnam()
+#extern
+fun
+PY_S2RESsome
+(
+seff: s2eff,
+s2e1: PY$s2exp): PY$s2res = $extnam()
+//
+}(*where*)//end-of-[s2res_pytrcpy(sres)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -556,6 +603,8 @@ PY_D2Cimplmnt0
 ,tias, f2as, sres, d2e1))
 where
 {
+//
+val sres = s2res_pytrcpy(sres)
 val d2e1 = d2exp_pytrcpy(d2e1)
 }
 //
@@ -743,6 +792,45 @@ in//let
 PY_d2vardcl_make_args(loc0,
   dpid, vpid(*view*), sres, dini(*init*)))
 end(*let*)//end-of-[d2vardcl_pytrcpy(dvar)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2fundcl_pytrcpy
+(   dfun   ) =
+let
+//
+val loc0 =
+loctn_pytrcpy
+(
+d2fundcl_get_lctn(dfun))
+//
+val dpid =
+(
+d2fundcl_get_dpid(dfun))
+//
+val f2as =
+(
+d2fundcl_get_farg(dfun))
+
+val sres =
+s2res_pytrcpy
+(
+d2fundcl_get_sres(dfun))
+//
+val tdxp =
+teqd2exp_pytrcpy
+(
+d2fundcl_get_tdxp(dfun))
+val wsxp =
+wths2exp_pytrcpy
+(d2fundcl_get_wsxp(dfun))
+//
+in//let
+(
+PY_d2fundcl_make_args(loc0,
+  dpid(*fid*),f2as(*arg*),sres,tdxp,wsxp))
+end(*let*)//end-of-[d2fundcl_pytrcpy(dfun)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

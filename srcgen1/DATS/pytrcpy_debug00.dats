@@ -196,6 +196,103 @@ end(*let*)//end-of-[s2typ_fprint(styp,out0)]
 (* ****** ****** *)
 //
 #implfun
+s2exp_fprint
+(sexp, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+sexp.node() of
+//
+(* ****** ****** *)
+//
+|S2Eint _ => prints("S2Eint(...)")
+|S2Ebtf _ => prints("S2Ebtf(...)")
+|S2Echr _ => prints("S2Echr(...)")
+|S2Estr _ => prints("S2Estr(...)")
+//
+(* ****** ****** *)
+//
+|S2Ecst _ => prints("S2Ecst(...)")
+|S2Evar _ => prints("S2Evar(...)")
+//
+|S2Eany _ => prints("S2Eany(...)")
+//
+(* ****** ****** *)
+//
+|S2Etop0 _ => prints("S2Etop0(...)")
+|S2Etop1 _ => prints("S2Etop1(...)")
+//
+(* ****** ****** *)
+//
+|S2Ecsts _ => prints("S2Ecsts(...)")
+//
+(* ****** ****** *)
+//
+|S2Earg1 _ => prints("S2Earg1(...)")
+|S2Eatx2 _ => prints("S2Eatx2(...)")
+//
+(* ****** ****** *)
+//
+|S2Eapps _ => prints("S2Eapps(...)")
+|S2Elam1 _ => prints("S2Elam1(...)")
+//
+(* ****** ****** *)
+//
+|S2Efun1 _ => prints("S2Efun1(...)")
+//
+(* ****** ****** *)
+//
+|S2Emet0 _ => prints("S2Emet0(...)")
+//
+(* ****** ****** *)
+//
+|S2Eexi0 _ => prints("S2Eexi0(...)")
+|S2Euni0 _ => prints("S2Euni0(...)")
+//
+(* ****** ****** *)
+//
+|S2Elist _ => prints("S2Elist(...)")
+//
+(* ****** ****** *)
+//
+|S2Etype _ => prints("S2Etype(...)")
+//
+(* ****** ****** *)
+//
+|S2Etext _ => prints("S2Etext(...)")
+//
+(* ****** ****** *)
+//
+|S2Etrcd _ => prints("S2Etrcd(...)")
+//
+(* ****** ****** *)
+//
+|S2Eimpr _ => prints("S2Eimpr(...)")
+|S2Eprgm _ => prints("S2Eprgm(...)")
+//
+|S2Ecast _ => prints("S2Ecast(...)")
+//
+(* ****** ****** *)
+//
+|S2Enone0 _ => prints("S2Enone0(...)")
+|S2Enone1 _ => prints("S2Enone1(...)")
+|S2Enone2 _ => prints("S2Enone2(...)")
+//
+(* ****** ****** *)
+//
+|S2Eerrck _ => prints("S2Eerrck(...)")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[s2exp_fprint(sexp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2pat_fprint
 (dpat, out0) =
 let
