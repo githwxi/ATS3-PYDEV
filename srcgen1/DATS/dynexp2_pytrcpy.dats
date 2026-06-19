@@ -143,21 +143,18 @@ PY_D2Estr
 #extern
 fun
 PY_D2Evar
-( loc0
-: PY$loctn
-, dvar: d2var): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, dvar: PY$d2var): PY$d2exp = $extnam()
 #extern
 fun
 PY_D2Econ
-( loc0
-: PY$loctn
-, dcon: d2con): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, dcon: PY$d2con): PY$d2exp = $extnam()
 #extern
 fun
 PY_D2Ecst
-( loc0
-: PY$loctn
-, dcst: d2cst): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, dcst: PY$d2cst): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
 //
@@ -320,6 +317,44 @@ d2ecl_fprint(d2cl, g_print$out<>())
 (* ****** ****** *)
 //
 #implfun
+d2var_pytrcpy
+(   dvar   ) =
+let
+//
+val lctn =
+loctn_pytrcpy
+(
+d2var_get_lctn(dvar))
+//
+val name =
+symbl_pytrcpy
+(
+d2var_get_name(dvar))
+//
+val stmp =
+stamp_pytrcpy
+(
+d2var_get_stmp(dvar))
+//
+in//let
+(
+  PY_d2var(lctn, name, stmp))
+end where
+{
+//
+#extern
+fun
+PY_d2var
+( lctn: PY$loctn
+, name: PY$symbl
+, stmp: PY$stamp): PY$s2res = $extnam()
+//
+}(*where*)//end-of-[d2var_pytrcpy(dvar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2res_pytrcpy
 (   sres   ) =
 (
@@ -410,16 +445,31 @@ dexp.node() of
 //
 |D2Evar
 (   d2v1   ) =>
+let
+val d2v1 =
+d2var_pytrcpy(d2v1)
+in//let
 (
   PY_D2Evar(loc0, d2v1))
+end//let
 |D2Econ
 (   d2c1   ) =>
+let
+val d2c1 =
+d2con_pytrcpy(d2c1)
+in//let
 (
   PY_D2Econ(loc0, d2c1))
+end//let
 |D2Ecst
 (   d2c1   ) =>
+let
+val d2c1 =
+d2cst_pytrcpy(d2c1)
+in//let
 (
   PY_D2Ecst(loc0, d2c1))
+end//let
 //
 (* ****** ****** *)
 //

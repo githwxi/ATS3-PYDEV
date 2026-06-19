@@ -17,6 +17,10 @@ printf \
 printf \
 "from DATS.CATS.a3pydev import *\n" >> $(LIB2XATSOPT).py && \
 printf \
+"from DATS.CATS.xstamp0 import *\n" >> $(LIB2XATSOPT).py && \
+printf \
+"from DATS.CATS.xsymbol import *\n" >> $(LIB2XATSOPT).py && \
+printf \
 "from DATS.CATS.filpath import *\n" >> $(LIB2XATSOPT).py && \
 printf \
 "from DATS.CATS.locinfo import *\n" >> $(LIB2XATSOPT).py && \

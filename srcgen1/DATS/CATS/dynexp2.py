@@ -18,23 +18,58 @@ from enum import Enum
 from dataclasses import dataclass
 ########################################################################
 from DATS.CATS.a3pydev import *
+from DATS.CATS.xstamp0 import *
+from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
 from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
 ########################################################################
 ########################################################################
 @dataclass
-class d2con(ABC):
+class d2con_tbox(ABC):
+    lctn: loctn
+    name: symbl
+    stmp: stamp
     pass
 @dataclass
-class d2cst(ABC):
+class d2cst_tbox(ABC):
+    lctn: loctn
+    name: symbl
+    stmp: stamp
     pass
 @dataclass
-class d2var(ABC):
+class d2var_tbox(ABC):
+    lctn: loctn
+    name: symbl
+    stmp: stamp
     pass
+#
+type d2con = d2con_tbox
+type d2cst = d2con_tbox
+type d2var = d2var_tbox
+#
 type d2conlst = fnlist[d2con]
 type d2cstlst = fnlist[d2cst]
 type d2varlst = fnlist[d2var]
+#
+type d2conopt = fnoptn[d2con]
+type d2cstopt = fnoptn[d2cst]
+type d2varopt = fnoptn[d2var]
+#
+########################################################################
+#
+def PY_d2con\
+(lctn: loctn, name: symbl, stmp: stamp)->d2con:
+    return d2con_tbox(lctn, name, stmp)
+#
+def PY_d2cst\
+(lctn: loctn, name: symbl, stmp: stamp)->d2cst:
+    return d2cst_tbox(lctn, name, stmp)
+#
+def PY_d2var\
+(lctn: loctn, name: symbl, stmp: stamp)->d2var:
+    return d2var_tbox(lctn, name, stmp)
+#
 ########################################################################
 ########################################################################
 #
@@ -380,6 +415,7 @@ class D2Clocal0(D2C000):
     ctag = "D2Clocal0"
     pass
 ########################################################################
+#
 @dataclass
 class D2Cvaldclst(D2C000):
     arg1: pyobj
@@ -388,13 +424,14 @@ class D2Cvaldclst(D2C000):
 class D2Cvardclst(D2C000):
     arg1: pyobj
     arg2: d2vardclist
-########################################################################
+#
 @dataclass
 class D2Cfundclst(D2C000):
     arg1: pyobj
     arg2: pyobj
     arg3: d2cstlst
     arg4: d2fundclist
+#
 ########################################################################
 @dataclass
 class D2Cimplmnt0(D2C000):
@@ -410,12 +447,14 @@ class D2Cimplmnt0(D2C000):
     pass
 ########################################################################
 ########################################################################
+#
 def PY_D2Pcon\
 (lctn: loctn, arg1: d2con)->D2Pcon:
     return D2Pcon(lctn, arg1)
 def PY_D2Pvar\
 (lctn: loctn, arg1: d2var)->D2Pvar:
     return D2Pvar(lctn, arg1)
+#
 ########################################################################
 ########################################################################
 #

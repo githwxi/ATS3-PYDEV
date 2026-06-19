@@ -63,6 +63,13 @@ xassets/ATS3/SATS/dynexp2.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstbox PY$d2con // p0tr
+#abstbox PY$d2cst // p0tr
+#abstbox PY$d2var // p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstbox PY$s2res // p0tr
 #abstbox PY$s2eff // p0tr
 #abstbox PY$d2pat // p0tr
@@ -83,6 +90,12 @@ xassets/ATS3/SATS/dynexp2.sats"
 #abstbox PY$d2parsed // p0tr
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef d2con = $D2E.d2con
+#typedef d2cst = $D2E.d2cst
+#typedef d2var = $D2E.d2var
+//
 (* ****** ****** *)
 //
 #typedef s2res = $D2E.s2res
@@ -134,6 +147,16 @@ d2exp_fprint
 fun
 d2ecl_fprint
 (d2cl: d2ecl, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2con_pytrcpy(dcon: d2con): PY$d2con
+fun
+d2cst_pytrcpy(dcst: d2cst): PY$d2cst
+fun
+d2var_pytrcpy(dvar: d2var): PY$d2var
 //
 (* ****** ****** *)
 (* ****** ****** *)
