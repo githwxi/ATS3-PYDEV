@@ -62,8 +62,28 @@ type d2eclist = fnlist[d2ecl]
 type d2eclopt = fnoptn[d2ecl]
 type d2eclistopt = fnoptn[d2eclist]
 ########################################################################
+#
+@dataclass
+class TEQD2EXP000(ABC):
+    pass
+@dataclass
+class TEQD2EXPnone(ABC):
+    pass
+@dataclass
+class TEQD2EXPsome(ABC):
+    arg1: pyobj
+    arg2: d2exp
+    pass
+type teqd2exp = TEQD2EXP000
+#
+########################################################################
+#
 @dataclass
 class d2valdcl(ABC):
+    lctn: loctn
+    dpat: d2pat
+    tdxp: teqd2exp
+    wsxp: pyobj
     pass
 @dataclass
 class d2vardcl(ABC):
@@ -228,10 +248,29 @@ class D2Evar(D2E000):
     pass
 ########################################################################
 @dataclass
+class D2Edap0(D2E000):
+    arg1: d2exp
+    ctag = "D2Edap0"
+    pass
+@dataclass
+class D2Edapp(D2E000):
+    arg1: d2exp
+    arg2: sint
+    arg3: d2exp
+    ctag = "D2Edapp"
+    pass
+########################################################################
+@dataclass
 class D2Elet0(D2E000):
     arg1: d2eclist
     arg2: d2exp
     ctag = "D2Elet0"
+    pass
+@dataclass
+class D2Et2pck(D2E000):
+    arg1: d2exp
+    arg2: s2typ
+    ctag = "D2Et2pck"
     pass
 @dataclass
 class D2Et2ped(D2E000):
@@ -252,6 +291,15 @@ class D2Clocal0(D2C000):
     arg2: d2eclist
     ctag = "D2Clocal0"
     pass
+########################################################################
+@dataclass
+class D2Cvaldclst(D2C000):
+    arg1: pyobj
+    arg2: d2valdclist
+@dataclass
+class D2Cvardclst(D2C000):
+    arg1: pyobj
+    arg2: d2vardclist
 ########################################################################
 @dataclass
 class D2Cfundclst(D2C000):
@@ -282,6 +330,7 @@ def PY_D2Pvar\
     return D2Pvar(lctn, arg1)
 ########################################################################
 ########################################################################
+#
 def PY_D2Econ\
 (lctn: loctn, arg1: d2con)->D2Econ:
     return D2Econ(lctn, arg1)
@@ -291,40 +340,64 @@ def PY_D2Ecst\
 def PY_D2Evar\
 (lctn: loctn, arg1: d2var)->D2Evar:
     return D2Evar(lctn, arg1)
+#
+########################################################################
+#
+def PY_D2Edap0\
+(loc0: loctn, arg1: d2exp)->D2Edap0:
+    return D2Edap0(loc0, arg1)
+def PY_D2Edapp\
+(loc0: loctn, \
+ arg1: d2exp, arg2: sint, arg3: d2exp)->D2Edapp:
+    return D2Edapp(loc0, arg1, arg2, arg3)
+#
 ########################################################################
 def PY_D2Elet0\
-(loc0: loctn, \
- arg1: d2eclist, arg2: d2exp)->D2Elet0:
+(loc0: loctn, arg1: d2eclist, arg2: d2exp)->D2Elet0:
+    # print\
+    # ("PY_D2Elet0: arg2 = ", arg2)
     return D2Elet0(loc0, arg1, arg2)
 ########################################################################
+def PY_D2Et2pck\
+(loc0: loctn, arg1: d2exp, arg2: s2typ)->D2Et2pck:
+    # print\
+    # ("PY_D2Et2pck: arg1 = ", arg1)
+    # print\
+    # ("PY_D2Et2pck: arg2 = ", arg2)
+    return D2Ewhere(loc0, arg1, arg2)
 def PY_D2Et2ped\
 (loc0: loctn, \
  arg1: d2exp, arg2: s2typ)->D2Et2ped:
-    print\
-    ("PY_D2Et2ped: arg1 = ", arg1)
-    print\
-    ("PY_D2Et2ped: arg2 = ", arg2)
+    # print\
+    # ("PY_D2Et2ped: arg1 = ", arg1)
+    # print\
+    # ("PY_D2Et2ped: arg2 = ", arg2)
     return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
 def PY_D2Ewhere\
-(loc0: loctn, \
- arg1: d2exp, arg2: d2eclist)->D2Ewhere:
-    print\
-    ("PY_D2Ewhere: arg1 = ", arg1)
+(loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:
+    # print\
+    # ("PY_D2Ewhere: arg1 = ", arg1)
     return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
 ########################################################################
 def PY_D2Clocal0\
-(loc0: loctn, \
- arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
+(loc0: loctn, arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
     return D2Clocal0(loc0, arg1, arg2)
+########################################################################
+def PY_D2Cvaldclst\
+(loc0: loctn, \
+ arg1: pyobj, arg2: d2valdclist)->D2Cvaldclst:
+    return D2Cvaldclst(loc0, arg1, arg2)
+def PY_D2Cvardclst\
+(loc0: loctn, \
+ arg1: pyobj, arg2: d2vardclist)->D2Cvardclst:
+    return D2Cvardclst(loc0, arg1, arg2)
 ########################################################################
 def PY_D2Cimplmnt0\
 (loc0: loctn, \
- arg1: pyobj, arg2: pyobj, \
- arg3: pyobj, arg4: pyobj, \
- arg5: pyobj, arg6: pyobj, \
- arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
+ arg1: pyobj, arg2: pyobj, arg3: pyobj, arg4: pyobj, \
+ arg5: pyobj, arg6: pyobj, arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
     return \
     D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 ########################################################################
@@ -348,6 +421,25 @@ PY_d2parsed\
  arg5: pyobj,
  arg6: d2eclistopt) -> d2parsed:
     return d2parsed(arg1, arg2, arg3, arg4, arg5, arg6)
+#
+########################################################################
+#
+def \
+PY_TEQD2EXPnone()->teqd2exp:
+    return TEQD2EXPnone()
+def \
+PY_TEQD2EXPsome\
+(arg1: pyobj, arg2: d2exp)->teqd2exp:
+    return TEQD2EXPsome(arg1, arg2)
+#
+########################################################################
+#
+def \
+PY_d2valdcl_make_args\
+(lctn: loctn, \
+ dpat: d2pat, \
+ tdxp: teqd2exp, wsxp: pyobj)->d2valdcl:
+    return d2valdcl(lctn, dpat, tdxp, wsxp)
 #
 ########################################################################
 ########################################################################

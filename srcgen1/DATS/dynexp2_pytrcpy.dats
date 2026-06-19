@@ -64,6 +64,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
+"./../SATS/staexp2_pytrcpy.sats"
+#staload
 "./../SATS/statyp2_pytrcpy.sats"
 #staload
 "./../SATS/dynexp2_pytrcpy.sats"
@@ -189,6 +191,13 @@ PY_D2Ewhere
 //
 #extern
 fun
+PY_D2Et2pck
+( loc0: PY$loctn
+, d2e1: PY$d2exp
+, t2p2: PY$s2typ   ): PY$d2exp = $extnam()
+//
+#extern
+fun
 PY_D2Et2ped
 ( loc0: PY$loctn
 , d2e1: PY$d2exp
@@ -247,6 +256,31 @@ PY_D2Cimplmnt0
 , f2as: f2arglst
 , sres: s2res
 , d2e1: PY$d2exp   ): PY$d2ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_d2valdcl_make_args
+( lctn: PY$loctn
+, dpat: PY$d2pat
+, tdxp: PY$teqd2exp
+, wsxp: wths2exp   ): PY$d2valdcl = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<d2pat>(dpat) =
+d2pat_fprint(dpat, g_print$out<>())
+//
+#impltmp
+g_print<d2exp>(dexp) =
+d2exp_fprint(dexp, g_print$out<>())
+//
+#impltmp
+g_print<d2ecl>(d2cl) =
+d2ecl_fprint(d2cl, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -376,6 +410,19 @@ end where
 val dcls =
 (
   d2eclist_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+//
+|D2Et2pck
+(d2e1, t2p2) =>
+(
+PY_D2Et2pck
+(loc0, d2e1, t2p2(*ann*))
+) where
+{
+val d2e1 = d2exp_pytrcpy(d2e1)
+val t2p2 = s2typ_pytrcpy(t2p2)
+}
 //
 (* ****** ****** *)
 //
@@ -546,6 +593,70 @@ d2eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+teqd2exp_pytrcpy
+(   tdxp   ) =
+(
+case+ tdxp of
+|
+TEQD2EXPnone
+( (*void*) ) =>
+PY_TEQD2EXPnone((*void*))
+|
+TEQD2EXPsome
+(teq0, dexp) =>
+let
+val dexp =
+d2exp_pytrcpy(dexp)
+in//let
+  PY_TEQD2EXPsome(teq0, dexp) end
+) where
+{
+#extern
+fun
+PY_TEQD2EXPnone
+(   (*nil*)   ): PY$teqd2exp = $extnam()
+#extern
+fun
+PY_TEQD2EXPsome
+(
+teq0: token,
+dexp: PY$d2exp): PY$teqd2exp = $extnam()
+}(*where*)//end-of-[teqd2exp_pytrcpy(tdxp)]
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2valdcl_pytrcpy
+(   dval   ) =
+let
+//
+val loc0 =
+loctn_pytrcpy
+(
+d2valdcl_get_lctn(dval))
+//
+val dpat =
+d2pat_pytrcpy
+(
+d2valdcl_get_dpat(dval))
+//
+val tdxp =
+teqd2exp_pytrcpy
+(
+d2valdcl_get_tdxp(dval))
+//
+val wsxp =
+(
+d2valdcl_get_wsxp(dval))
+//
+in//let
+PY_d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
+end(*let*)//end-of-[d2valdcl_pytrcpy(dval)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

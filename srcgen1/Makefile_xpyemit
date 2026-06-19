@@ -35,6 +35,7 @@ dynexp3_pytrcpy.sats \
 
 SRCDATS := \
 ats3_pydev.dats \
+pytrcpy_debug00.dats \
 filpath_pytrcpy.dats \
 locinfo_pytrcpy.dats \
 staexp2_pytrcpy.dats \

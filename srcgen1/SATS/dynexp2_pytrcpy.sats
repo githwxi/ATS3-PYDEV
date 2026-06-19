@@ -69,6 +69,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#abstbox PY$teqd2exp // p0tr
+//
 #abstbox PY$d2valdcl // p0tr
 #abstbox PY$d2vardcl // p0tr
 #abstbox PY$d2fundcl // p0tr
@@ -90,6 +92,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#typedef teqd2exp = $D2E.teqd2exp
+//
 #typedef d2valdcl = $D2E.d2valdcl
 #typedef d2vardcl = $D2E.d2vardcl
 #typedef d2fundcl = $D2E.d2fundcl
@@ -110,6 +114,19 @@ xassets/ATS3/SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 #typedef d2eclistopt = optn(d2eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2pat_fprint
+(dpat: d2pat, out0: FILR): void
+fun
+d2exp_fprint
+(dexp: d2exp, out0: FILR): void
+fun
+d2ecl_fprint
+(d2cl: d2ecl, out0: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -160,6 +177,11 @@ d2explst_pytrcpy(d2es: d2explst): PY$d2explst
 //
 fun
 d2eclist_pytrcpy(dcls: d2eclist): PY$d2eclist
+//
+(* ****** ****** *)
+//
+fun
+teqd2exp_pytrcpy(tdxp: teqd2exp): PY$teqd2exp
 //
 (* ****** ****** *)
 //

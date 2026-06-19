@@ -37,6 +37,16 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#staload
+"xatslib\
+/libcats\
+/DATS/gbas000.dats"
+//
+#typedef FILR = FILR
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #abstbox PY$list(a:type)
 #abstbox PY$optn(a:type)
 //
