@@ -7,10 +7,6 @@ Fri Jun 19 09:40:50 AM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#include
-"prelude/HATS/prelude_dats.hats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 val () =
 prints

@@ -76,6 +76,13 @@ xassets/ATS3/SATS/statyp2.sats"
 (* ****** ****** *)
 //
 fun
+s2typ_fprint
+(styp: s2typ, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 s2typ_pytrcpy(styp: s2typ): PY$s2typ
 //
 (* ****** ****** *)

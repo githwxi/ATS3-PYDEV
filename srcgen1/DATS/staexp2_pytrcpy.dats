@@ -94,6 +94,16 @@ PY_S2Ea3src
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print<sort2>(s2t0) =
+sort2_fprint(s2t0, g_print$out<>())
+#impltmp
+g_print<s2exp>(sexp) =
+s2exp_fprint(sexp, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 sort2_pytrcpy
 (   s2t0   ) =

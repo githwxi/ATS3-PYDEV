@@ -55,6 +55,10 @@ xassets/ATS3/SATS/locinfo.sats"
 #staload "./../../\
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
+xassets/ATS3/SATS/staexp2.sats"
+#staload "./../../\
+xassets/ATS3/SATS/statyp2.sats"
+#staload "./../../\
 xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
@@ -273,11 +277,9 @@ PY_d2valdcl_make_args
 #impltmp
 g_print<d2pat>(dpat) =
 d2pat_fprint(dpat, g_print$out<>())
-//
 #impltmp
 g_print<d2exp>(dexp) =
 d2exp_fprint(dexp, g_print$out<>())
-//
 #impltmp
 g_print<d2ecl>(d2cl) =
 d2ecl_fprint(d2cl, g_print$out<>())

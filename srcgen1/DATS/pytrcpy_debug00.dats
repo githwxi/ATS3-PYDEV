@@ -78,6 +78,124 @@ xassets/ATS3/SATS/dynexp2.sats"
 (* ****** ****** *)
 //
 #implfun
+sort2_fprint
+(s2t0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ s2t0 of
+//
+(* ****** ****** *)
+//
+|S2Tid0 _ => prints("S2Tid0(...)")
+|S2Tint _ => prints("S2Tint(...)")
+//
+(* ****** ****** *)
+//
+|S2Tbas _ => prints("S2Tbas(...)")
+//
+(* ****** ****** *)
+//
+|S2Ttup _ => prints("S2Ttup(...)")
+//
+(* ****** ****** *)
+//
+|S2Tfun0 _ => prints("S2Tfun0(...)")
+|S2Tfun1 _ => prints("S2Tfun1(...)")
+//
+(* ****** ****** *)
+//
+|S2Tapps _ => prints("S2Tapps(...)")
+//
+(* ****** ****** *)
+//
+|S2Tnone0 _ => prints("S2Tnone0(...)")
+|S2Tnone1 _ => prints("S2Tnone1(...)")
+//
+(* ****** ****** *)
+//
+|S2Terrck _ => prints("S2Terrck(...)")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[sort2_fprint(s2t0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2typ_fprint
+(styp, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+styp.node() of
+//
+(* ****** ****** *)
+//
+|T2Pcst _ => prints("T2Pcst(...)")
+|T2Pvar _ => prints("T2Pvar(...)")
+//
+(* ****** ****** *)
+//
+|T2Plft _ => prints("T2Plft(...)")
+//
+(* ****** ****** *)
+//
+|T2Pxtv _ => prints("T2Pxtv(...)")
+//
+(* ****** ****** *)
+//
+|T2Ptop0 _ => prints("T2Ptop0(...)")
+|T2Ptop1 _ => prints("T2Ptop1(...)")
+//
+(* ****** ****** *)
+//
+|T2Parg1 _ => prints("T2Parg1(...)")
+|T2Patx2 _ => prints("T2Patx2(...)")
+//
+(* ****** ****** *)
+//
+|T2Papps _ => prints("T2Papps(...)")
+|T2Plam1 _ => prints("T2Plam1(...)")
+//
+(* ****** ****** *)
+//
+|T2Pf2cl _ => prints("T2Pf2cl(...)")
+|T2Pfun1 _ => prints("T2Pfun1(...)")
+//
+(* ****** ****** *)
+//
+|T2Ptext _ => prints("T2Ptext(...)")
+//
+(* ****** ****** *)
+//
+|T2Pexi0 _ => prints("T2Pexi0(...)")
+|T2Puni0 _ => prints("T2Puni0(...)")
+//
+(* ****** ****** *)
+//
+|T2Ptrcd _ => prints("T2Ptrcd(...)")
+//
+(* ****** ****** *)
+//
+|T2Pnone0 _ => prints("T2Pnone0(...)")
+|T2Ps2exp _ => prints("T2Ps2exp(...)")
+|T2Perrck _ => prints("T2Perrck(...)")
+//
+(* ****** ****** *)
+//
+end(*let*)//end-of-[s2typ_fprint(styp,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2pat_fprint
 (dpat, out0) =
 let

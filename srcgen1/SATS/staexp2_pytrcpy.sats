@@ -75,6 +75,16 @@ xassets/ATS3/SATS/staexp2.sats"
 (* ****** ****** *)
 //
 fun
+sort2_fprint
+(s2t0: sort2, out0: FILR): void
+fun
+s2exp_fprint
+(sexp: s2exp, out0: FILR): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 sort2_pytrcpy(s2t0: sort2): PY$sort2
 //
 (* ****** ****** *)

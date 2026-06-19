@@ -91,6 +91,16 @@ PY_T2Pa3src
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print<sort2>(s2t0) =
+sort2_fprint(s2t0, g_print$out<>())
+#impltmp
+g_print<s2typ>(styp) =
+s2typ_fprint(styp, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 s2typ_pytrcpy
 (   styp   ) =
