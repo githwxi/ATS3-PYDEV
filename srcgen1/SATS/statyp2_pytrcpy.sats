@@ -71,6 +71,15 @@ xassets/ATS3/SATS/statyp2.sats"
 #typedef s2typ = $T2P.s2typ
 //
 #typedef s2typlst = list(s2typ)
+#typedef s2typopt = optn(s2typ)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+PY$s2typlst = PY$list(PY$s2typ)
+#typedef
+PY$s2typopt = PY$optn(PY$s2typ)
 //
 (* ****** ****** *)
 (* ****** ****** *)

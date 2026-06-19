@@ -70,6 +70,15 @@ xassets/ATS3/SATS/staexp2.sats"
 #typedef s2exp = $S2E.s2exp
 //
 #typedef s2explst = list(s2exp)
+#typedef s2expopt = optn(s2exp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+PY$s2explst = PY$list(PY$s2exp)
+#typedef
+PY$s2expopt = PY$optn(PY$s2exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,6 +106,9 @@ s2exp_pytrcpy(sexp: s2exp): PY$s2exp
 //
 fun
 s2explst_pytrcpy(s2es: s2explst): PY$s2explst
+//
+fun
+s2expopt_pytrcpy(sopt: s2expopt): PY$s2expopt
 //
 (* ****** ****** *)
 (* ****** ****** *)

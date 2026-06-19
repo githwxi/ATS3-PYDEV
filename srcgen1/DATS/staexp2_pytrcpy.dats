@@ -150,6 +150,23 @@ printsln("s2exp_pytrcpy: s2t0 = ", PY_repr(s2t0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+s2explst_pytrcpy
+(   s2es   ) =
+(
+list_map$f1un_PY$list(s2es, s2exp_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+s2expopt_pytrcpy
+(   sopt   ) =
+(
+optn_map$f1un_PY$optn(sopt, s2exp_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3-PYDEV/srcgen1/DATS/staexp2_pytrcpy.dats] *)
 (***********************************************************************)

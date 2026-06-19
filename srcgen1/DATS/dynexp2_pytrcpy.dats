@@ -271,6 +271,15 @@ PY_d2valdcl_make_args
 , tdxp: PY$teqd2exp
 , wsxp: wths2exp   ): PY$d2valdcl = $extnam()
 //
+#extern
+fun
+PY_d2vardcl_make_args
+( lctn: PY$loctn
+, dpid: d2var
+, vpid: d2varopt
+, sres: PY$s2expopt
+, tdxp: PY$teqd2exp): PY$d2vardcl = $extnam()
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -657,8 +666,48 @@ val wsxp =
 d2valdcl_get_wsxp(dval))
 //
 in//let
-PY_d2valdcl_make_args(loc0,dpat,tdxp,wsxp)
+(
+PY_d2valdcl_make_args(
+  loc0, dpat, tdxp(*dopt*), wsxp(*wtyp*)))
 end(*let*)//end-of-[d2valdcl_pytrcpy(dval)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2vardcl_pytrcpy
+(   dvar   ) =
+let
+//
+val loc0 =
+loctn_pytrcpy
+(
+d2vardcl_get_lctn(dvar))
+//
+val dpid =
+//d2var_pytrcpy
+(
+d2vardcl_get_dpid(dvar))
+//
+val vpid =
+//d2varopt_pytrcpy
+(
+d2vardcl_get_vpid(dvar))
+//
+val sres =
+s2expopt_pytrcpy
+(
+d2vardcl_get_sres(dvar))
+//
+val dini =
+teqd2exp_pytrcpy
+(
+d2vardcl_get_dini(dvar))
+//
+in//let
+(
+PY_d2vardcl_make_args(loc0,
+  dpid, vpid(*view*), sres, dini(*init*)))
+end(*let*)//end-of-[d2vardcl_pytrcpy(dvar)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
