@@ -62,15 +62,35 @@ type d2eclist = fnlist[d2ecl]
 type d2eclopt = fnoptn[d2ecl]
 type d2eclistopt = fnoptn[d2eclist]
 ########################################################################
+@dataclass
+class D2Pa3src(D2P000):
+    arg1: pyobj
+    ctag = "D2Pa3src"
+    pass
+########################################################################
+@dataclass
+class D2Ea3src(D2E000):
+    arg1: pyobj
+    ctag = "D2Ea3src"
+    pass
+########################################################################
+@dataclass
+class D2Ca3src(D2C000):
+    arg1: pyobj
+    ctag = "D2Ca3src"
+    pass
+########################################################################
 #
 @dataclass
 class TEQD2EXP000(ABC):
     pass
 @dataclass
-class TEQD2EXPnone(ABC):
+class \
+TEQD2EXPnone(TEQD2EXP000):
     pass
 @dataclass
-class TEQD2EXPsome(ABC):
+class \
+TEQD2EXPsome(TEQD2EXP000):
     arg1: pyobj
     arg2: d2exp
     pass
@@ -94,24 +114,8 @@ class d2fundcl(ABC):
 type d2valdclist = fnlist[d2valdcl]
 type d2vardclist = fnlist[d2vardcl]
 type d2fundclist = fnlist[d2fundcl]
+#
 ########################################################################
-@dataclass
-class D2Pa3src(D2P000):
-    arg1: pyobj
-    ctag = "D2Pa3src"
-    pass
-########################################################################
-@dataclass
-class D2Ea3src(D2E000):
-    arg1: pyobj
-    ctag = "D2Ea3src"
-    pass
-########################################################################
-@dataclass
-class D2Ca3src(D2C000):
-    arg1: pyobj
-    ctag = "D2Ca3src"
-    pass
 ########################################################################
 def PY_D2Pa3src\
 (lctn: loctn, arg1: pyobj)->D2Pa3src:
