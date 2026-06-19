@@ -99,6 +99,23 @@ type teqd2exp = TEQD2EXP000
 ########################################################################
 #
 @dataclass
+class WTHS2EXP000(ABC):
+    pass
+@dataclass
+class \
+WTHS2EXPnone(WTHS2EXP000):
+    pass
+@dataclass
+class \
+WTHS2EXPsome(WTHS2EXP000):
+    arg1: pyobj
+    arg2: s2exp
+    pass
+type wths2exp = WTHS2EXP000
+#
+########################################################################
+#
+@dataclass
 class d2valdcl_tbox(ABC):
     lctn: loctn
     dpat: d2pat

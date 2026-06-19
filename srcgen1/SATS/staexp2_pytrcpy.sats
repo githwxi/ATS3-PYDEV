@@ -69,6 +69,8 @@ xassets/ATS3/SATS/staexp2.sats"
 #typedef sort2 = $S2E.sort2
 #typedef s2exp = $S2E.s2exp
 //
+(* ****** ****** *)
+//
 #typedef s2explst = list(s2exp)
 #typedef s2expopt = optn(s2exp)
 //

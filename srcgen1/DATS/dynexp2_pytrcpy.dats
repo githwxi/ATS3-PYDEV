@@ -269,7 +269,7 @@ PY_d2valdcl_make_args
 ( lctn: PY$loctn
 , dpat: PY$d2pat
 , tdxp: PY$teqd2exp
-, wsxp: wths2exp   ): PY$d2valdcl = $extnam()
+, wsxp: PY$wths2exp): PY$d2valdcl = $extnam()
 //
 #extern
 fun
@@ -638,6 +638,40 @@ PY_TEQD2EXPsome
 teq0: token,
 dexp: PY$d2exp): PY$teqd2exp = $extnam()
 }(*where*)//end-of-[teqd2exp_pytrcpy(tdxp)]
+//
+(* ****** ****** *)
+//
+#implfun
+wths2exp_pytrcpy
+(   wsxp   ) =
+(
+case+ wsxp of
+|
+WTHS2EXPnone
+( (*void*) ) =>
+PY_WTHS2EXPnone((*void*))
+|
+WTHS2EXPsome
+(teq0, sexp) =>
+let
+val sexp =
+s2exp_pytrcpy(sexp)
+in//let
+  PY_WTHS2EXPsome(teq0, sexp) end
+) where
+{
+#extern
+fun
+PY_WTHS2EXPnone
+(   (*nil*)   ): PY$wths2exp = $extnam()
+#extern
+fun
+PY_WTHS2EXPsome
+(
+teq0: token,
+sexp: PY$s2exp): PY$wths2exp = $extnam()
+}(*where*)//end-of-[wths2exp_pytrcpy(wsxp)]
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -662,6 +696,7 @@ teqd2exp_pytrcpy
 d2valdcl_get_tdxp(dval))
 //
 val wsxp =
+wths2exp_pytrcpy
 (
 d2valdcl_get_wsxp(dval))
 //
