@@ -283,7 +283,7 @@ PY_D2Cimplmnt0
 , tqas: t2qaglst
 , dimp: dimpl
 , tias: t2iaglst
-, f2as: f2arglst
+, f2as: PY$f2arglst
 , sres: PY$s2res
 , d2e1: PY$d2exp   ): PY$d2ecl = $extnam()
 //
@@ -313,7 +313,7 @@ fun
 PY_d2fundcl_make_args
 ( lctn: PY$loctn
 , dpid: PY$d2var
-, farg: f2arglst
+, farg: PY$f2arglst
 , sres: PY$s2res
 , tdxp: PY$teqd2exp
 , wsxp: PY$wths2exp): PY$d2fundcl = $extnam()
@@ -755,6 +755,10 @@ val tknd =
 (
   token_pytrcpy(tknd))
 //
+val f2as =
+(
+  f2arglst_pytrcpy(f2as))
+//
 val sres = s2res_pytrcpy(sres)
 val d2e1 = d2exp_pytrcpy(d2e1)
 }
@@ -796,6 +800,14 @@ d2explst_pytrcpy
 (   d2es   ) =
 (
 list_map$f1un_PY$list(d2es, d2exp_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+f2arglst_pytrcpy
+(   f2as   ) =
+(
+list_map$f1un_PY$list(f2as, f2arg_pytrcpy))
 //
 (* ****** ****** *)
 //
@@ -966,6 +978,7 @@ d2var_pytrcpy
 d2fundcl_get_dpid(dfun))
 //
 val f2as =
+f2arglst_pytrcpy
 (
 d2fundcl_get_farg(dfun))
 //

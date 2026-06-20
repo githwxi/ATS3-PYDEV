@@ -76,6 +76,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 #abstbox PY$d2exp // p0tr
 #abstbox PY$d2ecl // p0tr
 //
+#abstbox PY$f2arg // p0tr
+//
 (* ****** ****** *)
 //
 #abstbox PY$teqd2exp // p0tr
@@ -105,9 +107,13 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef d2exp = $D2E.d2exp
 #typedef d2ecl = $D2E.d2ecl
 //
+#typedef f2arg = $D2E.f2arg
+//
 #typedef d2patlst = list(d2pat)
 #typedef d2explst = list(d2exp)
 #typedef d2eclist = list(d2ecl)
+//
+#typedef f2arglst = list(f2arg)
 //
 (* ****** ****** *)
 //
@@ -148,6 +154,10 @@ fun
 d2ecl_fprint
 (d2cl: d2ecl, out0: FILR): void
 //
+fun
+f2arg_fprint
+(farg: f2arg, out0: FILR): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -174,6 +184,11 @@ d2exp_pytrcpy(dexp: d2exp): PY$d2exp
 (* ****** ****** *)
 //
 fun
+f2arg_pytrcpy(farg: f2arg): PY$f2arg
+//
+(* ****** ****** *)
+//
+fun
 d2ecl_pytrcpy(d2cl: d2ecl): PY$d2ecl
 //
 (* ****** ****** *)
@@ -185,6 +200,9 @@ PY$d2patlst = PY$list(PY$d2pat)
 PY$d2explst = PY$list(PY$d2exp)
 #typedef
 PY$d2eclist = PY$list(PY$d2ecl)
+//
+#typedef
+PY$f2arglst = PY$list(PY$f2arg)
 //
 (* ****** ****** *)
 //
@@ -207,6 +225,11 @@ fun
 d2patlst_pytrcpy(d2ps: d2patlst): PY$d2patlst
 fun
 d2explst_pytrcpy(d2es: d2explst): PY$d2explst
+//
+(* ****** ****** *)
+//
+fun
+f2arglst_pytrcpy(f2as: f2arglst): PY$f2arglst
 //
 (* ****** ****** *)
 //
