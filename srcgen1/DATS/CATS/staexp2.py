@@ -35,11 +35,16 @@ type s2expopt = fnoptn[s2exp]
 class S2Ta3src(S2T000):
     arg1: pyobj
     ctag = "S2Ta3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(sort2)"
     pass
+########################################################################
 @dataclass
 class S2Ea3src(S2E000):
     arg1: pyobj
     ctag = "S2Ea3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(s2exp)"
     pass
 ########################################################################
 def \

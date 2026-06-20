@@ -26,23 +26,37 @@ from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
 ########################################################################
 ########################################################################
+#
 @dataclass
 class d2con_tbox(ABC):
     lctn: loctn
     name: symbl
     stmp: stamp
+    def __str__(self)->strn:
+        return f"D2CON({self.name};{self.stmp})"
+    def __repr__(self)->strn:
+        return f"D2CON({self.name!r};{self.stmp!r})"
     pass
 @dataclass
 class d2cst_tbox(ABC):
     lctn: loctn
     name: symbl
     stmp: stamp
+    def __str__(self)->strn:
+        return f"D2CST({self.name};{self.stmp})"
+    def __repr__(self)->strn:
+        return f"D2CST({self.name!r};{self.stmp!r})"
     pass
+#
 @dataclass
 class d2var_tbox(ABC):
     lctn: loctn
     name: symbl
     stmp: stamp
+    def __str__(self)->strn:
+        return f"D2VAR({self.name};{self.stmp})"
+    def __repr__(self)->strn:
+        return f"D2VAR({self.name!r};{self.stmp!r})"
     pass
 #
 type d2con = d2con_tbox
@@ -106,8 +120,6 @@ class D2P000(ABC):
     ctag = "D2P000"
     def __str__(self)->strn:
         return f"{self.ctag}(...)"
-    def __repr__(self)->strn:
-        return f"{self.ctag}(...)"
     pass
 type d2pat = D2P000
 type d2patlst = fnlist[d2pat]
@@ -118,8 +130,6 @@ class D2E000(ABC):
     lctn: loctn
     ctag = "D2E000"
     def __str__(self)->strn:
-        return f"{self.ctag}(...)"
-    def __repr__(self)->strn:
         return f"{self.ctag}(...)"
     pass
 type d2exp = D2E000
@@ -142,18 +152,24 @@ type d2eclistopt = fnoptn[d2eclist]
 class D2Pa3src(D2P000):
     arg1: pyobj
     ctag = "D2Pa3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(d2pat)"
     pass
 ########################################################################
 @dataclass
 class D2Ea3src(D2E000):
     arg1: pyobj
     ctag = "D2Ea3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(d2exp)"
     pass
 ########################################################################
 @dataclass
 class D2Ca3src(D2C000):
     arg1: pyobj
     ctag = "D2Ca3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(d2ecl)"
     pass
 ########################################################################
 #
@@ -196,24 +212,36 @@ class d2valdcl_tbox(ABC):
     lctn: loctn
     dpat: d2pat
     tdxp: teqd2exp
-    wsxp: pyobj
+    wsxp: wths2exp
+    def __str__(self)->strn:
+        return f"D2VALDCL({self.dpat};{self.tdxp};{self.wsxp})"
+    def __repr__(self)->strn:
+        return f"D2VALDCL({self.dpat!r};{self.tdxp!r};{self.wsxp!r})"
     pass
 @dataclass
 class d2vardcl_tbox(ABC):
     lctn: loctn
-    dpid: pyobj
-    vpid: pyobj
+    dpid: d2var
+    vpid: d2varopt
     sres: s2expopt
     tdxp: teqd2exp
+    def __str__(self)->strn:
+        return f"D2VARDCL({self.dpid};{self.vpid};{self.sres};{self.tdxp})"
+    def __repr__(self)->strn:
+        return f"D2VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.tdxp!r})"
     pass
 @dataclass
 class d2fundcl_tbox(ABC):
     lctn: loctn
-    dpid: pyobj
+    dpid: d2var
     farg: pyobj
     sres: s2res
     tdxp: teqd2exp
     wsxp: wths2exp
+    def __str__(self)->strn:
+        return f"D2FUNDCL({self.dpid};{self.farg};{self.sres};{self.tdxp};{self.wsxp})"
+    def __repr__(self)->strn:
+        return f"D2FUNDCL({self.dpid!r};{self.farg!r};{self.sres!r};{self.tdxp!r};{self.wsxp!r})"
     pass
 #
 type d2valdcl = d2valdcl_tbox
@@ -241,19 +269,21 @@ def PY_D2Ca3src\
 ########################################################################
 @dataclass
 class D2Pcon(D2P000):
-    """
-    HX: for data constructors
-    """
     arg1: d2con
     ctag = "D2Pcon"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Pvar(D2P000):
-    """
-    HX: for dynamic variables
-    """
     arg1: d2var
     ctag = "D2Pvar"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 ########################################################################
 ########################################################################
@@ -262,36 +292,46 @@ class D2Pvar(D2P000):
 class D2Eint(D2E000):
     arg1: token
     ctag = "D2Eint"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Ebtf(D2E000):
     arg1: symbl
     ctag = "D2Ebtf"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Echr(D2E000):
     arg1: token
     ctag = "D2Echr"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Eflt(D2E000):
     arg1: token
     ctag = "D2Eflt"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Estr(D2E000):
     arg1: token
     ctag = "D2Estr"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 #
 ########################################################################
@@ -300,35 +340,35 @@ class D2Estr(D2E000):
 class D2Ei00(D2E000):
     arg1: sint
     ctag = "D2Ei00"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Eb00(D2E000):
     arg1: bool
     ctag = "D2Eb00"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Ec00(D2E000):
     arg1: char
     ctag = "D2Ec00"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Ef00(D2E000):
     arg1: dflt
     ctag = "D2Ef00"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Es00(D2E000):
     arg1: strn
     ctag = "D2Es00"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     pass
 #
@@ -338,22 +378,29 @@ class D2Es00(D2E000):
 class D2Econ(D2E000):
     arg1: d2con
     ctag = "D2Econ"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Ecst(D2E000):
     arg1: d2cst
     ctag = "D2Ecst"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
+#
 @dataclass
 class D2Evar(D2E000):
     arg1: d2var
     ctag = "D2Evar"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 #
 ########################################################################
@@ -362,8 +409,10 @@ class D2Evar(D2E000):
 class D2Edap0(D2E000):
     arg1: d2exp
     ctag = "D2Edap0"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class D2Edapp(D2E000):
@@ -371,8 +420,10 @@ class D2Edapp(D2E000):
     arg2: sint
     arg3: d2exp
     ctag = "D2Edapp"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
     pass
 #
 ########################################################################
@@ -382,8 +433,10 @@ class D2Elet0(D2E000):
     arg1: d2eclist
     arg2: d2exp
     ctag = "D2Elet0"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 @dataclass
@@ -391,8 +444,10 @@ class D2Eseqn(D2E000):
     arg1: d2explst
     arg2: d2exp
     ctag = "D2Eseqn"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 @dataclass
@@ -400,8 +455,10 @@ class D2Ewhere(D2E000):
     arg1: d2exp
     arg2: d2eclist
     ctag = "D2Ewhere"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 @dataclass
@@ -409,16 +466,20 @@ class D2Et2pck(D2E000):
     arg1: d2exp
     arg2: s2typ
     ctag = "D2Et2pck"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 @dataclass
 class D2Et2ped(D2E000):
     arg1: d2exp
     arg2: s2typ
     ctag = "D2Et2ped"
-    def __repr__(self)->strn:
+    def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 ########################################################################
@@ -434,10 +495,20 @@ class D2Clocal0(D2C000):
 class D2Cvaldclst(D2C000):
     arg1: token
     arg2: d2valdclist
+    ctag = "D2Cvaldclst"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
 @dataclass
 class D2Cvardclst(D2C000):
     arg1: token
     arg2: d2vardclist
+    ctag = "D2Cvardclst"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
 #
 @dataclass
 class D2Cfundclst(D2C000):
@@ -445,6 +516,11 @@ class D2Cfundclst(D2C000):
     arg2: pyobj
     arg3: d2cstlst
     arg4: d2fundclist
+    ctag = "D2Cfundclst"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg4})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg4!r})"
 #
 ########################################################################
 @dataclass
@@ -458,6 +534,8 @@ class D2Cimplmnt0(D2C000):
     arg7: pyobj
     arg8: d2exp
     ctag = "D2Cimplmnt0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg8})"
     pass
 ########################################################################
 ########################################################################

@@ -312,7 +312,7 @@ PY_d2vardcl_make_args
 fun
 PY_d2fundcl_make_args
 ( lctn: PY$loctn
-, dpid: d2var
+, dpid: PY$d2var
 , farg: f2arglst
 , sres: PY$s2res
 , tdxp: PY$teqd2exp
@@ -961,13 +961,14 @@ loctn_pytrcpy
 d2fundcl_get_lctn(dfun))
 //
 val dpid =
+d2var_pytrcpy
 (
 d2fundcl_get_dpid(dfun))
 //
 val f2as =
 (
 d2fundcl_get_farg(dfun))
-
+//
 val sres =
 s2res_pytrcpy
 (

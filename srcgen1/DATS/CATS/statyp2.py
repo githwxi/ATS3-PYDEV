@@ -29,6 +29,8 @@ type s2typ = T2P000
 class T2Pa3src(T2P000):
     arg1: pyobj
     ctag = "T2Pa3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(s2typ)"
     pass
 ########################################################################
 @dataclass
