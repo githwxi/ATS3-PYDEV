@@ -203,6 +203,16 @@ PY_D2Elet0
 //
 #extern
 fun
+PY_D2Eift0
+( loc0: PY$loctn
+, d2e1: PY$d2exp
+, dthn: PY$d2expopt
+, dels: PY$d2expopt): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D2Eseqn
 ( loc0: PY$loctn
 , d2es: PY$d2explst
@@ -580,6 +590,27 @@ val dcls =
 //
 (* ****** ****** *)
 //
+|D2Eift0
+(d2e1
+,dthn, dels) =>
+let
+val d2e1 =
+(
+  d2exp_pytrcpy(d2e1))
+in//let
+PY_D2Eift0(
+  loc0, d2e1, dthn, dels)
+end where
+{
+val dthn =
+(
+  d2expopt_pytrcpy(dthn))
+val dels =
+(
+  d2expopt_pytrcpy(dels)) }
+//
+(* ****** ****** *)
+//
 |D2Eseqn
 (d2es, d2e1) =>
 (
@@ -899,6 +930,12 @@ d2explst_pytrcpy
 (   d2es   ) =
 (
 list_map$f1un_PY$list(d2es, d2exp_pytrcpy))
+//
+#implfun
+d2expopt_pytrcpy
+(   dopt   ) =
+(
+optn_map$f1un_PY$optn(dopt, d2exp_pytrcpy))
 //
 (* ****** ****** *)
 //

@@ -111,7 +111,10 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef d2varopt = optn(d2var)
 //
 #typedef d2patlst = list(d2pat)
+//
 #typedef d2explst = list(d2exp)
+#typedef d2expopt = optn(d2exp)
+//
 #typedef f2arglst = list(f2arg)
 #typedef d2eclist = list(d2ecl)
 //
@@ -202,8 +205,11 @@ PY$d2varopt = PY$optn(PY$d2var)
 //
 #typedef
 PY$d2patlst = PY$list(PY$d2pat)
+//
 #typedef
 PY$d2explst = PY$list(PY$d2exp)
+#typedef
+PY$d2expopt = PY$optn(PY$d2exp)
 //
 #typedef
 PY$f2arglst = PY$list(PY$f2arg)
@@ -237,8 +243,13 @@ d2varopt_pytrcpy(dopt: d2varopt): PY$d2varopt
 //
 fun
 d2patlst_pytrcpy(d2ps: d2patlst): PY$d2patlst
+//
+(* ****** ****** *)
+//
 fun
 d2explst_pytrcpy(d2es: d2explst): PY$d2explst
+fun
+d2expopt_pytrcpy(dopt: d2expopt): PY$d2expopt
 //
 (* ****** ****** *)
 //

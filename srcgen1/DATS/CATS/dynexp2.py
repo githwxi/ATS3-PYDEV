@@ -476,6 +476,18 @@ class D2Elet0(D2E000):
     pass
 #
 @dataclass
+class D2Eift0(D2E000):
+    arg1: d2exp
+    arg2: d2expopt
+    arg3: d2expopt
+    ctag = "D2Eift0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+@dataclass
 class D2Eseqn(D2E000):
     arg1: d2explst
     arg2: d2exp
@@ -621,22 +633,19 @@ def PY_D2Edapp\
 ########################################################################
 def PY_D2Elet0\
 (loc0: loctn, arg1: d2eclist, arg2: d2exp)->D2Elet0:
-    # print\
-    # ("PY_D2Elet0: arg2 = ", arg2)
     return D2Elet0(loc0, arg1, arg2)
+########################################################################
+def PY_D2Eift0\
+(loc0: loctn, \
+ arg1: d2exp, arg2: d2expopt, arg3: d2expopt)->D2Eift0:
+    return D2Eift0(loc0, arg1, arg2, arg3)
 ########################################################################
 def PY_D2Eseqn\
 (loc0: loctn, arg1: d2explst, arg2: d2exp)->D2Eseqn:
-    # print\
-    # ("PY_D2Eseqn: arg1 = ", arg1)
-    # print\
-    # ("PY_D2Eseqn: arg2 = ", arg2)
     return D2Eseqn(loc0, arg1, arg2)
 ########################################################################
 def PY_D2Ewhere\
 (loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:
-    # print\
-    # ("PY_D2Ewhere: arg1 = ", arg1)
     return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
 def PY_D2Et2pck\
