@@ -103,6 +103,11 @@ PY_S2RESsome\
 @dataclass
 class D2P000(ABC):
     lctn: loctn
+    ctag = "D2P000"
+    def __str__(self)->strn:
+        return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type d2pat = D2P000
 type d2patlst = fnlist[d2pat]
@@ -111,6 +116,11 @@ type d2patopt = fnoptn[d2pat]
 @dataclass
 class D2E000(ABC):
     lctn: loctn
+    ctag = "D2E000"
+    def __str__(self)->strn:
+        return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type d2exp = D2E000
 type d2explst = fnlist[d2exp]
@@ -119,6 +129,9 @@ type d2expopt = fnoptn[d2exp]
 @dataclass
 class D2C000(ABC):
     lctn: loctn
+    ctag = "D2C000"
+    def __str__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type d2ecl = D2C000
 type d2eclist = fnlist[d2ecl]
@@ -249,26 +262,36 @@ class D2Pvar(D2P000):
 class D2Eint(D2E000):
     arg1: token
     ctag = "D2Eint"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Ebtf(D2E000):
     arg1: symbl
     ctag = "D2Ebtf"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Echr(D2E000):
     arg1: token
     ctag = "D2Echr"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Eflt(D2E000):
     arg1: token
     ctag = "D2Eflt"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Estr(D2E000):
     arg1: token
     ctag = "D2Estr"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 #
 ########################################################################
@@ -543,27 +566,6 @@ def PY_D2Cimplmnt0\
     D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 ########################################################################
 ########################################################################
-@dataclass
-class d2parsed(ABC):
-    arg1: sint
-    arg2: sint
-    arg3: lcsrc
-    arg4: pyobj # d1topenv
-    arg5: pyobj # d2topenv
-    arg6: d2eclistopt
-    pass
-#
-def \
-PY_d2parsed\
-(arg1: sint,
- arg2: sint,
- arg3: lcsrc,
- arg4: pyobj,
- arg5: pyobj,
- arg6: d2eclistopt) -> d2parsed:
-    return d2parsed(arg1, arg2, arg3, arg4, arg5, arg6)
-#
-########################################################################
 #
 def \
 PY_TEQD2EXPnone()->teqd2exp:
@@ -608,6 +610,28 @@ PY_d2fundcl_make_args\
  sres: s2res,
  tdxp: teqd2exp, wsxp: wths2exp)->d2fundcl:
     return d2fundcl_tbox(lctn, dpid, farg, sres, tdxp, wsxp)
+#
+########################################################################
+#
+@dataclass
+class d2parsed(ABC):
+    stadyn: sint
+    nerror: sint
+    source: lcsrc
+    t1penv: pyobj
+    t2penv: pyobj
+    parsed: d2eclistopt
+    pass
+#
+def \
+PY_d2parsed\
+(stadyn: sint,
+ nerror: sint,
+ source: lcsrc,
+ t1penv: pyobj,
+ t2penv: pyobj,
+ parsed: d2eclistopt) -> d2parsed:
+    return d2parsed(stadyn, nerror, source, t1penv, t2penv, parsed)
 #
 ########################################################################
 ########################################################################

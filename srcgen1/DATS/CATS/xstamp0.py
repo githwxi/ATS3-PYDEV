@@ -14,6 +14,8 @@ from dataclasses import dataclass
 @dataclass
 class stamp_tbox:
     uint: sint
+    def __repr__(self)->strn:
+        return f"STAMP({self.uint})"
     pass
 type stamp = stamp_tbox
 ########################################################################

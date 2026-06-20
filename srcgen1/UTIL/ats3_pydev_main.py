@@ -28,7 +28,7 @@ if __name__ == "__main__":
         d2parsed = \
         PYDEV_xatsopt_args_fildats_d2parsed(farg, fpth)
         PY_d2parsed = PYDEV_d2parsed_pytrcpy(d2parsed)
-        # print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
+        print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
 #        
 ########################################################################
 ########################################################################

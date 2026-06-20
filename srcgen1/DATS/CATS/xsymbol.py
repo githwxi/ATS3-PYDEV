@@ -17,6 +17,8 @@ from DATS.CATS.xstamp0 import *
 class symbl_tbox:
     name: strn
     stmp: stamp
+    def __repr__(self)->strn:
+        return f"SYMBL({self.name})"
     pass
 type sym_t = symbl_tbox
 type symbl = symbl_tbox
