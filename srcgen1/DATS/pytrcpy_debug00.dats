@@ -530,6 +530,26 @@ end(*let*)//end-of-[d2exp_fprint(dexp,out0)]
 (* ****** ****** *)
 //
 #implfun
+f2arg_fprint
+(farg, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+farg.node() of
+//
+|F2ARGdapp _ => prints("|F2ARGdapp(...)")
+|F2ARGsapp _ => prints("|F2ARGsapp(...)")
+|F2ARGmets _ => prints("|F2ARGmets(...)")
+//
+end(*let*)//end-of-[f2arg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2ecl_fprint
 (d2cl, out0) =
 let

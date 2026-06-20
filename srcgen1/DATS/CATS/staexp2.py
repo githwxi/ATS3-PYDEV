@@ -16,12 +16,27 @@ from enum import Enum
 from dataclasses import dataclass
 ########################################################################
 from DATS.CATS.a3pydev import *
+from DATS.CATS.xstamp0 import *
+from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
 ########################################################################
 @dataclass
 class S2T000(ABC):
     pass
 type sort2 = S2T000
+########################################################################
+@dataclass
+class s2var_tbox(ABC):
+    sort: sort2
+    name: symbl
+    stmp: stamp
+    def __str__(self)->strn:
+        return f"S2VAR({self.name};{self.stmp})"
+    def __repr__(self)->strn:
+        return f"S2VAR({self.name!r};{self.stmp!r})"
+    pass
+type s2var = s2var_tbox
+type s2varlst = fnlist[s2var]
 ########################################################################
 @dataclass
 class S2E000(ABC):

@@ -172,6 +172,42 @@ class D2Ca3src(D2C000):
         return f"{self.ctag}(d2ecl)"
     pass
 ########################################################################
+@dataclass
+class F2ARG000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class F2ARGmets(F2ARG000):
+    arg1: s2explst
+    ctag = "F2ARGmets"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class F2ARGsapp(F2ARG000):
+    arg1: s2varlst
+    arg2: s2explst
+    ctag = "F2ARGsapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+@dataclass
+class F2ARGdapp(F2ARG000):
+    arg1: sint
+    arg2: d2patlst
+    ctag = "F2ARGdapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+type f2arg = F2ARG000
+type f2arglst = fnlist[f2arg]
+########################################################################
 #
 @dataclass
 class TEQD2EXP000(ABC):
@@ -422,7 +458,7 @@ class D2Edapp(D2E000):
     ctag = "D2Edapp"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
-    def __str__(self)->strn:
+    def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
     pass
 #
@@ -648,6 +684,25 @@ def PY_D2Cimplmnt0\
     return \
     D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 ########################################################################
+########################################################################
+#
+def \
+PY_F2ARGdapp\
+(lctn: loctn, \
+ arg1: sint, arg2: d2patlst)->F2ARGdapp:
+    return F2ARGdapp(lctn, arg1, arg2)
+#
+def \
+PY_F2ARGmets\
+(lctn: loctn, arg1: s2explst)->F2ARGmets:
+    return F2ARGmets(lctn, arg1)
+#
+def \
+PY_F2ARGsapp\
+(lctn: loctn, \
+ arg1: s2varlst, arg2: s2explst)->F2ARGsapp:
+    return F2ARGsapp(lctn, arg1, arg2)
+#
 ########################################################################
 #
 def \

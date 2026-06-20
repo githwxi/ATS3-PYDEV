@@ -74,9 +74,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 #abstbox PY$s2eff // p0tr
 #abstbox PY$d2pat // p0tr
 #abstbox PY$d2exp // p0tr
-#abstbox PY$d2ecl // p0tr
-//
 #abstbox PY$f2arg // p0tr
+#abstbox PY$d2ecl // p0tr
 //
 (* ****** ****** *)
 //
@@ -105,15 +104,16 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
+#typedef f2arg = $D2E.f2arg
 #typedef d2ecl = $D2E.d2ecl
 //
-#typedef f2arg = $D2E.f2arg
+#typedef d2varlst = list(d2var)
+#typedef d2varopt = optn(d2var)
 //
 #typedef d2patlst = list(d2pat)
 #typedef d2explst = list(d2exp)
-#typedef d2eclist = list(d2ecl)
-//
 #typedef f2arglst = list(f2arg)
+#typedef d2eclist = list(d2ecl)
 //
 (* ****** ****** *)
 //
@@ -151,12 +151,11 @@ fun
 d2exp_fprint
 (dexp: d2exp, out0: FILR): void
 fun
-d2ecl_fprint
-(d2cl: d2ecl, out0: FILR): void
-//
-fun
 f2arg_fprint
 (farg: f2arg, out0: FILR): void
+fun
+d2ecl_fprint
+(d2cl: d2ecl, out0: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -195,14 +194,22 @@ d2ecl_pytrcpy(d2cl: d2ecl): PY$d2ecl
 (* ****** ****** *)
 //
 #typedef
+PY$d2varlst = PY$list(PY$d2var)
+#typedef
+PY$d2varopt = PY$optn(PY$d2var)
+//
+(* ****** ****** *)
+//
+#typedef
 PY$d2patlst = PY$list(PY$d2pat)
 #typedef
 PY$d2explst = PY$list(PY$d2exp)
-#typedef
-PY$d2eclist = PY$list(PY$d2ecl)
 //
 #typedef
 PY$f2arglst = PY$list(PY$f2arg)
+//
+#typedef
+PY$d2eclist = PY$list(PY$d2ecl)
 //
 (* ****** ****** *)
 //
@@ -219,6 +226,13 @@ PY$d2fundclist = PY$list(PY$d2fundcl)
 PY$d2eclistopt = PY$optn(PY$d2eclist)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2varlst_pytrcpy(d2vs: d2varlst): PY$d2varlst
+fun
+d2varopt_pytrcpy(dopt: d2varopt): PY$d2varopt
+//
 (* ****** ****** *)
 //
 fun

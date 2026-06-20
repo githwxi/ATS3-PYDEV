@@ -301,8 +301,8 @@ PY_d2valdcl_make_args
 fun
 PY_d2vardcl_make_args
 ( lctn: PY$loctn
-, dpid: d2var
-, vpid: d2varopt
+, dpid: PY$d2var
+, vpid: PY$d2varopt
 , sres: PY$s2expopt
 , tdxp: PY$teqd2exp): PY$d2vardcl = $extnam()
 //
@@ -327,6 +327,11 @@ d2pat_fprint(dpat, g_print$out<>())
 #impltmp
 g_print<d2exp>(dexp) =
 d2exp_fprint(dexp, g_print$out<>())
+//
+#impltmp
+g_print<f2arg>(farg) =
+f2arg_fprint(farg, g_print$out<>())
+//
 #impltmp
 g_print<d2ecl>(d2cl) =
 d2ecl_fprint(d2cl, g_print$out<>())
@@ -659,6 +664,86 @@ printsln("d2exp_pytrcpy: loc0 = ", PY_repr(loc0))
 (* ****** ****** *)
 //
 #implfun
+f2arg_pytrcpy
+(   farg   ) =
+(
+case+
+farg.node() of
+//
+|F2ARGdapp
+(npf1, d2ps) =>
+(
+PY_F2ARGdapp
+(loc0, npf1, d2ps))
+where
+{
+val d2ps =
+(
+  d2patlst_pytrcpy(d2ps)) }
+//
+|F2ARGsapp
+(s2vs, s2ps) =>
+(
+PY_F2ARGsapp
+(loc0, s2vs, s2ps))
+where
+{
+val s2vs =
+(
+  s2varlst_pytrcpy(s2vs))
+val s2ps =
+(
+  s2explst_pytrcpy(s2ps)) }
+//
+|F2ARGmets
+(   s2es   ) =>
+(
+PY_F2ARGmets(loc0, s2es))
+where
+{
+val
+s2es = s2explst_pytrcpy(s2es) }
+//
+)
+where
+{
+//
+#extern
+fun
+PY_F2ARGdapp
+(
+lctn: PY$loctn,
+npf1: sint,
+d2ps: PY$d2patlst): PY$f2arg = $extnam()
+#extern
+fun
+PY_F2ARGsapp
+(
+lctn: PY$loctn,
+s2vs: PY$s2varlst,
+s2es: PY$s2explst): PY$f2arg = $extnam()
+#extern
+fun
+PY_F2ARGmets
+(
+lctn: PY$loctn,
+s2es: PY$s2explst): PY$f2arg = $extnam()
+//
+val loc0 =
+loctn_pytrcpy(farg.lctn((*0*)))
+//
+val (  ) =
+(
+  printsln("f2arg_pytrcpy: farg = ", farg))
+val (  ) =
+printsln("f2arg_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[f2arg_pytrcpy(farg)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2ecl_pytrcpy
 (   d2cl   ) =
 (
@@ -785,6 +870,20 @@ printsln("d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
 }(*where*)//end-of-[d2ecl_pytrcpy(d2cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2varlst_pytrcpy
+(   d2vs   ) =
+(
+list_map$f1un_PY$list(d2vs, d2var_pytrcpy))
+//
+#implfun
+d2varopt_pytrcpy
+(   dopt   ) =
+(
+optn_map$f1un_PY$optn(dopt, d2var_pytrcpy))
+//
 (* ****** ****** *)
 //
 #implfun
@@ -935,12 +1034,12 @@ loctn_pytrcpy
 d2vardcl_get_lctn(dvar))
 //
 val dpid =
-//d2var_pytrcpy
+d2var_pytrcpy
 (
 d2vardcl_get_dpid(dvar))
 //
 val vpid =
-//d2varopt_pytrcpy
+d2varopt_pytrcpy
 (
 d2vardcl_get_vpid(dvar))
 //

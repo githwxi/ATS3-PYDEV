@@ -61,21 +61,31 @@ xassets/ATS3/SATS/staexp2.sats"
 (* ****** ****** *)
 //
 #abstbox PY$sort2 // p0tr
+#abstbox PY$s2var // p0tr
 #abstbox PY$s2exp // p0tr
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef sort2 = $S2E.sort2
+#typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
 //
 (* ****** ****** *)
+//
+#typedef s2varlst = list(s2var)
+#typedef s2varopt = optn(s2var)
 //
 #typedef s2explst = list(s2exp)
 #typedef s2expopt = optn(s2exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#typedef
+PY$s2varlst = PY$list(PY$s2var)
+#typedef
+PY$s2varopt = PY$optn(PY$s2var)
 //
 #typedef
 PY$s2explst = PY$list(PY$s2exp)
@@ -101,14 +111,25 @@ sort2_pytrcpy(s2t0: sort2): PY$sort2
 (* ****** ****** *)
 //
 fun
+s2var_pytrcpy(svar: s2var): PY$s2var
+//
+(* ****** ****** *)
+//
+fun
 s2exp_pytrcpy(sexp: s2exp): PY$s2exp
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-s2explst_pytrcpy(s2es: s2explst): PY$s2explst
+s2varlst_pytrcpy(s2es: s2varlst): PY$s2varlst
+fun
+s2varopt_pytrcpy(sopt: s2varopt): PY$s2varopt
 //
+(* ****** ****** *)
+//
+fun
+s2explst_pytrcpy(s2es: s2explst): PY$s2explst
 fun
 s2expopt_pytrcpy(sopt: s2expopt): PY$s2expopt
 //
