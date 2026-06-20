@@ -21,6 +21,7 @@ from DATS.CATS.a3pydev import *
 from DATS.CATS.xstamp0 import *
 from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
+from DATS.CATS.lexing0 import *
 from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
 ########################################################################
@@ -153,7 +154,7 @@ TEQD2EXPnone(TEQD2EXP000):
 @dataclass
 class \
 TEQD2EXPsome(TEQD2EXP000):
-    arg1: pyobj
+    arg1: token
     arg2: d2exp
     pass
 type teqd2exp = TEQD2EXP000
@@ -170,7 +171,7 @@ WTHS2EXPnone(WTHS2EXP000):
 @dataclass
 class \
 WTHS2EXPsome(WTHS2EXP000):
-    arg1: pyobj
+    arg1: token
     arg2: s2exp
     pass
 type wths2exp = WTHS2EXP000
@@ -246,42 +247,27 @@ class D2Pvar(D2P000):
 #
 @dataclass
 class D2Eint(D2E000):
-    """
-    HX: for signed ints
-    """
-    arg1: pyobj
+    arg1: token
     ctag = "D2Eint"
     pass
 @dataclass
 class D2Ebtf(D2E000):
-    """
-    HX: for true / false
-    """
-    arg1: pyobj
+    arg1: symbl
     ctag = "D2Ebtf"
     pass
 @dataclass
 class D2Echr(D2E000):
-    """
-    HX: for chars(==int8)
-    """
-    arg1: pyobj
+    arg1: token
     ctag = "D2Echr"
     pass
 @dataclass
 class D2Eflt(D2E000):
-    """
-    HX: for double floats
-    """
-    arg1: pyobj
+    arg1: token
     ctag = "D2Eflt"
     pass
 @dataclass
 class D2Estr(D2E000):
-    """
-    HX: for constant strings
-    """
-    arg1: pyobj
+    arg1: token
     ctag = "D2Estr"
     pass
 #
@@ -418,16 +404,16 @@ class D2Clocal0(D2C000):
 #
 @dataclass
 class D2Cvaldclst(D2C000):
-    arg1: pyobj
+    arg1: token
     arg2: d2valdclist
 @dataclass
 class D2Cvardclst(D2C000):
-    arg1: pyobj
+    arg1: token
     arg2: d2vardclist
 #
 @dataclass
 class D2Cfundclst(D2C000):
-    arg1: pyobj
+    arg1: token
     arg2: pyobj
     arg3: d2cstlst
     arg4: d2fundclist
@@ -435,7 +421,7 @@ class D2Cfundclst(D2C000):
 ########################################################################
 @dataclass
 class D2Cimplmnt0(D2C000):
-    arg1: pyobj
+    arg1: token
     arg2: pyobj
     arg3: pyobj
     arg4: pyobj
@@ -459,13 +445,13 @@ def PY_D2Pvar\
 ########################################################################
 #
 def PY_D2Eint\
-(lctn: loctn, arg1: pyobj)->D2Eint:
+(lctn: loctn, arg1: token)->D2Eint:
     return D2Eint(lctn, arg1)
 def PY_D2Ebtf\
-(lctn: loctn, arg1: pyobj)->D2Ebtf:
+(lctn: loctn, arg1: symbl)->D2Ebtf:
     return D2Ebtf(lctn, arg1)
 def PY_D2Estr\
-(lctn: loctn, arg1: pyobj)->D2Estr:
+(lctn: loctn, arg1: token)->D2Estr:
     return D2Estr(lctn, arg1)
 #
 ########################################################################
@@ -535,23 +521,23 @@ def PY_D2Clocal0\
 #
 def PY_D2Cvaldclst\
 (loc0: loctn, \
- arg1: pyobj, arg2: d2valdclist)->D2Cvaldclst:
+ arg1: token, arg2: d2valdclist)->D2Cvaldclst:
     return D2Cvaldclst(loc0, arg1, arg2)
 def PY_D2Cvardclst\
 (loc0: loctn, \
- arg1: pyobj, arg2: d2vardclist)->D2Cvardclst:
+ arg1: token, arg2: d2vardclist)->D2Cvardclst:
     return D2Cvardclst(loc0, arg1, arg2)
 #
 def PY_D2Cfundclst\
 (loc0: loctn, \
- arg1: pyobj, arg2: pyobj, \
- arg3: pyobj, arg4: d2fundclist)->D2Cfundclst: 
+ arg1: token, arg2: pyobj, \
+ arg3: d2cstlst, arg4: d2fundclist)->D2Cfundclst: 
     return D2Cfundclst(loc0, arg1, arg2, arg3, arg4) 
 #
 ########################################################################
 def PY_D2Cimplmnt0\
 (loc0: loctn, \
- arg1: pyobj, arg2: pyobj, arg3: pyobj, arg4: pyobj, \
+ arg1: token, arg2: pyobj, arg3: pyobj, arg4: pyobj, \
  arg5: pyobj, arg6: pyobj, arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
     return \
     D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
@@ -584,7 +570,7 @@ PY_TEQD2EXPnone()->teqd2exp:
     return TEQD2EXPnone()
 def \
 PY_TEQD2EXPsome\
-(arg1: pyobj, arg2: d2exp)->teqd2exp:
+(arg1: token, arg2: d2exp)->teqd2exp:
     return TEQD2EXPsome(arg1, arg2)
 #
 ########################################################################
@@ -594,7 +580,7 @@ PY_WTHS2EXPnone()->wths2exp:
     return WTHS2EXPnone()
 def \
 PY_WTHS2EXPsome\
-(arg1: pyobj, arg2: s2exp)->wths2exp:
+(arg1: token, arg2: s2exp)->wths2exp:
     return WTHS2EXPsome(arg1, arg2)
 #
 ########################################################################

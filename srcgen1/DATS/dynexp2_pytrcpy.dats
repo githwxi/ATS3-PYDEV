@@ -74,6 +74,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
+"./../SATS/lexing0_pytrcpy.sats"
+#staload
 "./../SATS/staexp2_pytrcpy.sats"
 #staload
 "./../SATS/statyp2_pytrcpy.sats"
@@ -121,28 +123,38 @@ PY_D2Ca3src
 //
 #extern
 fun
+PY_D2Pvar
+( loc0: PY$loctn
+, dvar: PY$d2var): PY$d2pat = $extnam()
+#extern
+fun
+PY_D2Pcon
+( loc0: PY$loctn
+, dcon: PY$d2con): PY$d2pat = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D2Eint
-( loc0
-: PY$loctn
-, tint: token): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, tint: PY$token): PY$d2exp = $extnam()
 #extern
 fun
 PY_D2Ebtf
-( loc0
-: PY$loctn
-, sbtf: symbl): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, sbtf: PY$symbl): PY$d2exp = $extnam()
 #extern
 fun
 PY_D2Echr
-( loc0
-: PY$loctn
-, tchr: token): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, tchr: PY$token): PY$d2exp = $extnam()
 #extern
 fun
 PY_D2Estr
-( loc0
-: PY$loctn
-, tstr: token): PY$d2exp = $extnam()
+( loc0: PY$loctn
+, tstr: PY$token): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
 //
@@ -236,7 +248,7 @@ PY_D2Clocal0
 fun
 PY_D2Cvaldclst
 ( loc0: PY$loctn
-, tknd: token
+, tknd: PY$token
 , d2vs:
 (
    PY$d2valdclist )): PY$d2ecl = $extnam()
@@ -244,7 +256,7 @@ PY_D2Cvaldclst
 fun
 PY_D2Cvardclst
 ( loc0: PY$loctn
-, tknd: token
+, tknd: PY$token
 , d2vs:
 (
    PY$d2vardclist )): PY$d2ecl = $extnam()
@@ -253,7 +265,7 @@ PY_D2Cvardclst
 fun
 PY_D2Cfundclst
 ( loc0: PY$loctn
-, tknd: token
+, tknd: PY$token
 , t2qs: t2qaglst
 , d2cs: d2cstlst
 , d2fs:
@@ -266,7 +278,7 @@ PY_D2Cfundclst
 fun
 PY_D2Cimplmnt0
 ( loc0: PY$loctn
-, tknd: token
+, tknd: PY$token
 , sqas: s2qaglst
 , tqas: t2qaglst
 , dimp: dimpl
@@ -402,6 +414,27 @@ d2pat_pytrcpy
 (
 case+
 dpat.node() of
+//
+|D2Pvar
+(   d2v1   ) =>
+let
+val d2v1 =
+d2var_pytrcpy(d2v1)
+in//let
+(
+  PY_D2Pvar(loc0, d2v1))
+end//let
+//
+|D2Pcon
+(   d2c1   ) =>
+let
+val d2c1 =
+d2con_pytrcpy(d2c1)
+in//let
+(
+  PY_D2Pcon(loc0, d2c1))
+end//let
+//
 |
 _(*otherwise*) => PY_D2Pa3src(loc0, dpat)
 ) where
@@ -433,20 +466,40 @@ dexp.node() of
 //
 |D2Eint
 (   tint   ) =>
+let
+val tint =
+token_pytrcpy(tint)
+in//let
 (
   PY_D2Eint(loc0, tint))
+end//let
 |D2Ebtf
 (   sbtf   ) =>
+let
+val sbtf =
+symbl_pytrcpy(sbtf)
+in//let
 (
   PY_D2Ebtf(loc0, sbtf))
+end
 |D2Echr
 (   tchr   ) =>
+let
+val tchr =
+token_pytrcpy(tchr)
+in//let
 (
   PY_D2Echr(loc0, tchr))
+end//let
 |D2Estr
 (   tstr   ) =>
+let
+val tstr =
+token_pytrcpy(tstr)
+in//let
 (
   PY_D2Estr(loc0, tstr))
+end//let
 //
 (* ****** ****** *)
 //
@@ -636,6 +689,9 @@ PY_D2Cvaldclst
 (loc0, tknd, d2vs))
 where
 {
+val tknd =
+(
+  token_pytrcpy(tknd))
 val d2vs =
 (
   d2valdclist_pytrcpy(d2vs))
@@ -648,6 +704,9 @@ PY_D2Cvardclst
 (loc0, tknd, d2vs))
 where
 {
+val tknd =
+(
+  token_pytrcpy(tknd))
 val d2vs =
 (
   d2vardclist_pytrcpy(d2vs))
@@ -665,6 +724,9 @@ PY_D2Cfundclst
 ,tqas, d2cs, d2fs))
 where
 {
+val tknd =
+(
+  token_pytrcpy(tknd))
 val d2fs =
 (
   d2fundclist_pytrcpy(d2fs))
@@ -688,6 +750,10 @@ PY_D2Cimplmnt0
 ,tias, f2as, sres, d2e1))
 where
 {
+//
+val tknd =
+(
+  token_pytrcpy(tknd))
 //
 val sres = s2res_pytrcpy(sres)
 val d2e1 = d2exp_pytrcpy(d2e1)
@@ -755,6 +821,8 @@ PY_TEQD2EXPnone((*void*))
 TEQD2EXPsome
 (teq0, dexp) =>
 let
+val teq0 =
+token_pytrcpy(teq0)
 val dexp =
 d2exp_pytrcpy(dexp)
 in//let
@@ -769,7 +837,7 @@ PY_TEQD2EXPnone
 fun
 PY_TEQD2EXPsome
 (
-teq0: token,
+teq0: PY$token,
 dexp: PY$d2exp): PY$teqd2exp = $extnam()
 }(*where*)//end-of-[teqd2exp_pytrcpy(tdxp)]
 //
@@ -786,12 +854,14 @@ WTHS2EXPnone
 PY_WTHS2EXPnone((*void*))
 |
 WTHS2EXPsome
-(teq0, sexp) =>
+(twth, sexp) =>
 let
+val twth =
+token_pytrcpy(twth)
 val sexp =
 s2exp_pytrcpy(sexp)
 in//let
-  PY_WTHS2EXPsome(teq0, sexp) end
+  PY_WTHS2EXPsome(twth, sexp) end
 ) where
 {
 #extern
@@ -802,7 +872,7 @@ PY_WTHS2EXPnone
 fun
 PY_WTHS2EXPsome
 (
-teq0: token,
+teq0: PY$token,
 sexp: PY$s2exp): PY$wths2exp = $extnam()
 }(*where*)//end-of-[wths2exp_pytrcpy(wsxp)]
 //

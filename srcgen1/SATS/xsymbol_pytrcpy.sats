@@ -56,7 +56,7 @@ xassets/ATS3/SATS/xsymbol.sats"
 (* ****** ****** *)
 //
 fun
-symbl_pytrcpy(stmp: symbl): PY$symbl
+symbl_pytrcpy(xsym: symbl): PY$symbl
 //
 (* ****** ****** *)
 (* ****** ****** *)
