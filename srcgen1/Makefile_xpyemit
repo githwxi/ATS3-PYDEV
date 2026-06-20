@@ -38,6 +38,7 @@ dynexp3_pytrcpy.sats \
 SRCDATS := \
 ats3_pydev.dats \
 pytrcpy_debug00.dats \
+xstamp0_pytrcpy.dats \
 xsymbol_pytrcpy.dats \
 filpath_pytrcpy.dats \
 locinfo_pytrcpy.dats \
