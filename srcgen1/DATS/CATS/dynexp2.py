@@ -298,71 +298,62 @@ class D2Estr(D2E000):
 #
 @dataclass
 class D2Ei00(D2E000):
-    """
-    HX: for macdef ints
-    """
     arg1: sint
     ctag = "D2Ei00"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Eb00(D2E000):
-    """
-    HX: for macdef bools
-    """
     arg1: bool
     ctag = "D2Eb00"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Ec00(D2E000):
-    """
-    HX: for macdef chars
-    """
     arg1: char
     ctag = "D2Ec00"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Ef00(D2E000):
-    """
-    HX: for macdef floats
-    """
     arg1: dflt
     ctag = "D2Ef00"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Es00(D2E000):
-    """
-    HX: for static strings
-    """
     arg1: strn
     ctag = "D2Es00"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 #
 ########################################################################
 #
 @dataclass
 class D2Econ(D2E000):
-    """
-    HX: for data constructors
-    """
     arg1: d2con
     ctag = "D2Econ"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Ecst(D2E000):
-    """
-    HX: for dynamic constants
-    HX: (values and functions)
-    """
     arg1: d2cst
     ctag = "D2Ecst"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Evar(D2E000):
-    """
-    HX: for dynamic variables
-    """
     arg1: d2var
     ctag = "D2Evar"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 #
 ########################################################################
@@ -371,6 +362,8 @@ class D2Evar(D2E000):
 class D2Edap0(D2E000):
     arg1: d2exp
     ctag = "D2Edap0"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
     pass
 @dataclass
 class D2Edapp(D2E000):
@@ -378,6 +371,8 @@ class D2Edapp(D2E000):
     arg2: sint
     arg3: d2exp
     ctag = "D2Edapp"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
     pass
 #
 ########################################################################
@@ -387,6 +382,8 @@ class D2Elet0(D2E000):
     arg1: d2eclist
     arg2: d2exp
     ctag = "D2Elet0"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
     pass
 #
 @dataclass
@@ -394,6 +391,8 @@ class D2Eseqn(D2E000):
     arg1: d2explst
     arg2: d2exp
     ctag = "D2Eseqn"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
     pass
 #
 @dataclass
@@ -401,6 +400,8 @@ class D2Ewhere(D2E000):
     arg1: d2exp
     arg2: d2eclist
     ctag = "D2Ewhere"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
     pass
 #
 @dataclass
@@ -408,12 +409,16 @@ class D2Et2pck(D2E000):
     arg1: d2exp
     arg2: s2typ
     ctag = "D2Et2pck"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
     pass
 @dataclass
 class D2Et2ped(D2E000):
     arg1: d2exp
     arg2: s2typ
     ctag = "D2Et2ped"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
     pass
 #
 ########################################################################
