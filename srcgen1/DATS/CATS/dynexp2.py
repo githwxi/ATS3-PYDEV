@@ -704,6 +704,10 @@ class d2parsed(ABC):
     t1penv: pyobj
     t2penv: pyobj
     parsed: d2eclistopt
+    def __str__(self)->strn:
+        return f"D2PARSED({self.stadyn};{self.nerror};{self.source};{self.parsed})"
+    def __repr__(self)->strn:
+        return f"D2PARSED({self.stadyn!r};{self.nerror!r};{self.source!r};{self.parsed!r})"
     pass
 #
 def \
