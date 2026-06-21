@@ -57,6 +57,8 @@ xassets/ATS3/SATS/locinfo.sats"
 #staload "./../../\
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
+xassets/ATS3/SATS/dynexp1.sats"
+#staload "./../../\
 xassets/ATS3/SATS/staexp2.sats"
 #staload "./../../\
 xassets/ATS3/SATS/statyp2.sats"
@@ -133,6 +135,27 @@ fun
 PY_D2Pcon
 ( loc0: PY$loctn
 , dcon: PY$d2con): PY$d2pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Pdap0
+( loc0: PY$loctn
+, d2p1: PY$d2pat   ): PY$d2pat = $extnam()
+#extern
+fun
+PY_D2Pdap1
+( loc0: PY$loctn
+, d2p1: PY$d2pat   ): PY$d2pat = $extnam()
+//
+#extern
+fun
+PY_D2Pdapp
+( loc0: PY$loctn
+, d2f0: PY$d2pat
+, npf1: sint
+, d2ps: PY$d2patlst): PY$d2pat = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -411,6 +434,41 @@ stmp: PY$stamp): PY$d2var = $extnam()
 (* ****** ****** *)
 //
 #implfun
+d2ptm_pytrcpy
+(   dptm   ) =
+(
+case+ dptm of
+|D2PTMnone
+(   dqid   ) =>
+(
+PY_D2PTMnone(dqid))
+|D2PTMsome
+(pval, ditm) =>
+(
+PY_D2PTMsome(pval, ditm))
+where
+{
+val ditm = d2itm_pytrcpy(ditm) }
+) where
+{
+//
+#extern
+fun
+PY_D2PTMnone
+(dqid: d1qid): PY$d2ptm = $extnam()
+#extern
+fun
+PY_D2PTMsome
+(
+pval: sint,
+ditm: PY$d2itm): PY$d2ptm = $extnam()
+//
+}(*where*)//end-of-[d2ptm_pytrcpy(dptm)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2res_pytrcpy
 (   sres   ) =
 (
@@ -472,8 +530,43 @@ in//let
   PY_D2Pcon(loc0, d2c1))
 end//let
 //
+|D2Pdap0
+(   d2p1   ) =>
+let
+val d2p1 =
+d2pat_pytrcpy(d2p1)
+in//let
+  PY_D2Pdap0(loc0, d2p1)
+end//let
+|D2Pdap1
+(   d2p1   ) =>
+let
+val d2p1 =
+d2pat_pytrcpy(d2p1)
+in//let
+  PY_D2Pdap1(loc0, d2p1)
+end//let
+//
+|D2Pdapp
+(d2f0
+,npf1, d2ps) =>
+(
+PY_D2Pdapp
+(loc0, d2f0, npf1, d2ps))
+where
+{
+val d2f0 =
+  d2pat_pytrcpy(d2f0)
+val d2ps =
+(
+  d2patlst_pytrcpy(d2ps)) }
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => PY_D2Pa3src(loc0, dpat)
+//
+(* ****** ****** *)
 ) where
 {
 //

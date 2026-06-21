@@ -27,6 +27,8 @@ printf \
 printf \
 "from DATS.CATS.lexing0 import *\n" >> $(LIB2XATSOPT).py && \
 printf \
+"from DATS.CATS.dynexp1 import *\n" >> $(LIB2XATSOPT).py && \
+printf \
 "from DATS.CATS.staexp2 import *\n" >> $(LIB2XATSOPT).py && \
 printf \
 "from DATS.CATS.statyp2 import *\n" >> $(LIB2XATSOPT).py && \

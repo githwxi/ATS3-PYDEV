@@ -88,6 +88,38 @@ def PY_d2var\
 ########################################################################
 ########################################################################
 #
+type d2itm = pyobj
+#
+@dataclass
+class D2PTM000(ABC):
+    pass
+@dataclass
+class \
+D2PTMnone(D2PTM000):
+    arg1: pyobj
+    pass
+@dataclass
+class \
+D2PTMsome(D2PTM000):
+    arg1: sint
+    arg1: d2itm
+    pass
+type d2ptm = D2PTM000
+#
+########################################################################
+#
+def \
+PY_D2PTMnone\
+(dqid: pyobj)->D2PTMnone:
+    return D2PTMnone(dqid)
+def \
+PY_D2PTMsome\
+(pval: sint, ditm: d2itm)->D2PTMsome:
+    return D2PTMsome(pval, ditm)
+#
+########################################################################
+########################################################################
+#
 @dataclass
 class S2RES000(ABC):
     pass

@@ -609,19 +609,19 @@ d2itm =
 //
 and // datatype
 d2ptm =
-|
-D2PTMnone of (d1qid)
-|
-D2PTMsome of
+|D2PTMnone of (d1qid)
+|D2PTMsome of
 (sint(*pval*), d2itm(*...*))
 //
 where
 {
+//
 #typedef d2itmlst = list(d2itm)
 #typedef d2itmopt = optn(d2itm)
 #typedef d2ptmlst = list(d2ptm)
 #typedef d2ptmopt = optn(d2ptm)
-} (*where*) //end-of-(  d2ptm  )
+//
+}(*where*) // end-of-(  d2ptm  )
 //
 (* ****** ****** *)
 fun
@@ -976,25 +976,29 @@ D2Elet0 of ( d2eclist, d2exp )
 //
 |
 D2Eift0 of
-(d2exp(*cond*)
-,d2expopt(*then*),d2expopt(*else*))
+(
+d2exp(*cond*),
+d2expopt(*then*),d2expopt(*else*))
 //
 |
-D2Ecas0 of
-( token(*+/0/-*), d2exp, d2clslst )
+D2Ecas0 of (
+  token(*+/0/-*), d2exp, d2clslst)
 //
 (* ****** ****** *)
 //
 |
-D2Eseqn of
-( d2explst(*init*), d2exp(*last*) )
+D2Eseqn of (
+  d2explst(*init*), d2exp(*last*))
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Etup0 of (sint(*npf*), d2explst)
 (*
 |D2Ercd0 of (sint(*npf*), l2d2elst)
 *)
+//
+(* ****** ****** *)
 //
 |
 D2Etup1 of // HX: tuple
@@ -1003,6 +1007,7 @@ D2Etup1 of // HX: tuple
 D2Ercd2 of // HX: record
 (token(*knd*),sint(*npf*),l2d2elst)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |

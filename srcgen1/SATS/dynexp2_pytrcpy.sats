@@ -69,6 +69,7 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#abstbox PY$d2itm // p0tr
 #abstbox PY$d2ptm // p0tr
 //
 (* ****** ****** *)
@@ -105,6 +106,7 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#typedef d2itm = $D2E.d2itm
 #typedef d2ptm = $D2E.d2ptm
 //
 (* ****** ****** *)
@@ -123,6 +125,7 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef d2varlst = list(d2var)
 #typedef d2varopt = optn(d2var)
 //
+#typedef d2itmlst = list(d2itm)
 #typedef d2ptmlst = list(d2ptm)
 //
 #typedef d2patlst = list(d2pat)
@@ -191,6 +194,8 @@ d2var_pytrcpy(dvar: d2var): PY$d2var
 (* ****** ****** *)
 //
 fun
+d2itm_pytrcpy(ditm: d2itm): PY$d2itm
+fun
 d2ptm_pytrcpy(dptm: d2ptm): PY$d2ptm
 //
 (* ****** ****** *)
@@ -234,6 +239,8 @@ PY$d2varopt = PY$optn(PY$d2var)
 //
 (* ****** ****** *)
 //
+#typedef
+PY$d2itmlst = PY$list(PY$d2itm)
 #typedef
 PY$d2ptmlst = PY$list(PY$d2ptm)
 //
@@ -282,6 +289,8 @@ d2varopt_pytrcpy(dopt: d2varopt): PY$d2varopt
 //
 (* ****** ****** *)
 //
+fun
+d2itmlst_pytrcpy(d2is: d2itmlst): PY$d2itmlst
 fun
 d2ptmlst_pytrcpy(dpis: d2ptmlst): PY$d2ptmlst
 //

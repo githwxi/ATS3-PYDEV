@@ -119,9 +119,11 @@ d1pat_pytrcpy
 (
 case+
 dpat.node() of
-|_(*otherwise*) => PY_D1Pa3src(loc0, dpat)
-)
-where
+//
+|
+_(*otherwise*) => PY_D1Pa3src(loc0, dpat)
+//
+) where
 {
 //
 val loc0 =
@@ -145,9 +147,11 @@ d1exp_pytrcpy
 (
 case+
 dexp.node() of
-|_(*otherwise*) => PY_D1Ea3src(loc0, dexp)
-)
-where
+//
+|
+_(*otherwise*) => PY_D1Ea3src(loc0, dexp)
+//
+) where
 {
 //
 val loc0 =
@@ -171,9 +175,11 @@ d1ecl_pytrcpy
 (
 case+
 d1cl.node() of
-|_(*otherwise*) => PY_D1Ca3src(loc0, d1cl)
-)
-where
+//
+|
+_(*otherwise*) => PY_D1Ca3src(loc0, d1cl)
+//
+) where
 {
 //
 val loc0 =

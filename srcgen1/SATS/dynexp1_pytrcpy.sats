@@ -54,6 +54,9 @@ Sun Jun 14 12:12:04 PM EDT 2026
 LOC = "./../../\
 xassets/ATS3/SATS/locinfo.sats"
 #staload
+S1E = "./../../\
+xassets/ATS3/SATS/staexp1.sats"
+#staload
 D1E = "./../../\
 xassets/ATS3/SATS/dynexp1.sats"
 //
@@ -66,6 +69,9 @@ xassets/ATS3/SATS/dynexp1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#typedef d1pid = $D1E.d1pid
+#typedef d1qid = $S1E.d1qid
 //
 #typedef d1pat = $D1E.d1pat
 #typedef d1exp = $D1E.d1exp
