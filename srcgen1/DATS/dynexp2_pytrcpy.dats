@@ -200,6 +200,7 @@ PY_D2Elet0
 , d2e1: PY$d2exp   ): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
@@ -209,6 +210,15 @@ PY_D2Eift0
 , dthn: PY$d2expopt
 , dels: PY$d2expopt): PY$d2exp = $extnam()
 //
+#extern
+fun
+PY_D2Ecas0
+( loc0: PY$loctn
+, tknd: PY$token
+, d2e1: PY$d2exp
+, dcls: PY$d2clslst): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -589,6 +599,7 @@ val dcls =
   d2eclist_pytrcpy(dcls)) }
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 |D2Eift0
 (d2e1
@@ -609,6 +620,28 @@ val dels =
 (
   d2expopt_pytrcpy(dels)) }
 //
+|D2Ecas0
+(tknd
+,d2e1, dcls) =>
+(
+PY_D2Ecas0
+(loc0
+,tknd, d2e1, dcls))
+where
+{
+//
+val tknd =
+(
+  token_pytrcpy(tknd))
+//
+val d2e1 =
+(
+  d2exp_pytrcpy(d2e1))
+val dcls =
+(
+  d2clslst_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Eseqn
@@ -936,6 +969,20 @@ d2expopt_pytrcpy
 (   dopt   ) =
 (
 optn_map$f1un_PY$optn(dopt, d2exp_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+d2gualst_pytrcpy
+(   d2gs   ) =
+(
+list_map$f1un_PY$list(d2gs, d2gua_pytrcpy))
+//
+#implfun
+d2clslst_pytrcpy
+(   dcls   ) =
+(
+list_map$f1un_PY$list(dcls, d2cls_pytrcpy))
 //
 (* ****** ****** *)
 //

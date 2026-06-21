@@ -172,6 +172,86 @@ class D2Ca3src(D2C000):
         return f"{self.ctag}(d2ecl)"
     pass
 ########################################################################
+#
+@dataclass
+class D2CLS000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class D2GUA000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class D2GPT000(ABC):
+    lctn: loctn
+    pass
+type d2cls = D2CLS000
+type d2gua = D2GUA000
+type d2gpt = D2GPT000
+type d2clslst = fnlist[d2cls]
+type d2gualst = fnlist[d2gua]
+#
+@dataclass
+class D2CLSgpt(D2CLS000):
+    arg1: d2gpt
+    ctag = "D2CLSgpt"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2CLScls(D2CLS000):
+    arg1: d2gpt
+    arg2: d2exp
+    ctag = "D2CLScls"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2GPTpat(D2GPT000):
+    arg1: d2pat
+    ctag = "D2GPTpat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2GPTgua(D2GPT000):
+    arg1: d2pat
+    arg2: d2gualst
+    ctag = "D2GPTgua"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2GUAexp(D2GUA000):
+    arg1: d2exp
+    ctag = "D2GUAexp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2GUAmat(D2GUA000):
+    arg1: d2exp
+    arg2: d2pat
+    ctag = "D2GUAmat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
 @dataclass
 class F2ARG000(ABC):
     lctn: loctn

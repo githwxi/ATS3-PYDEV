@@ -74,6 +74,9 @@ xassets/ATS3/SATS/dynexp2.sats"
 #abstbox PY$s2eff // p0tr
 #abstbox PY$d2pat // p0tr
 #abstbox PY$d2exp // p0tr
+#abstbox PY$d2gua // p0tr
+#abstbox PY$d2gpt // p0tr
+#abstbox PY$d2cls // p0tr
 #abstbox PY$f2arg // p0tr
 #abstbox PY$d2ecl // p0tr
 //
@@ -104,6 +107,9 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
+#typedef d2gua = $D2E.d2gua
+#typedef d2gpt = $D2E.d2gpt
+#typedef d2cls = $D2E.d2cls
 #typedef f2arg = $D2E.f2arg
 #typedef d2ecl = $D2E.d2ecl
 //
@@ -115,7 +121,10 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef d2explst = list(d2exp)
 #typedef d2expopt = optn(d2exp)
 //
+#typedef d2gualst = list(d2gua)
+#typedef d2clslst = list(d2cls)
 #typedef f2arglst = list(f2arg)
+//
 #typedef d2eclist = list(d2ecl)
 //
 (* ****** ****** *)
@@ -186,6 +195,15 @@ d2exp_pytrcpy(dexp: d2exp): PY$d2exp
 (* ****** ****** *)
 //
 fun
+d2gua_pytrcpy(dgua: d2gua): PY$d2gua
+fun
+d2gpt_pytrcpy(dgpt: d2gpt): PY$d2gpt
+fun
+d2cls_pytrcpy(dcls: d2cls): PY$d2cls
+//
+(* ****** ****** *)
+//
+fun
 f2arg_pytrcpy(farg: f2arg): PY$f2arg
 //
 (* ****** ****** *)
@@ -210,6 +228,11 @@ PY$d2patlst = PY$list(PY$d2pat)
 PY$d2explst = PY$list(PY$d2exp)
 #typedef
 PY$d2expopt = PY$optn(PY$d2exp)
+//
+#typedef
+PY$d2gualst = PY$list(PY$d2gua)
+#typedef
+PY$d2clslst = PY$list(PY$d2cls)
 //
 #typedef
 PY$f2arglst = PY$list(PY$f2arg)
@@ -250,6 +273,13 @@ fun
 d2explst_pytrcpy(d2es: d2explst): PY$d2explst
 fun
 d2expopt_pytrcpy(dopt: d2expopt): PY$d2expopt
+//
+(* ****** ****** *)
+//
+fun
+d2gualst_pytrcpy(d2gs: d2gualst): PY$d2gualst
+fun
+d2clslst_pytrcpy(dcls: d2clslst): PY$d2clslst
 //
 (* ****** ****** *)
 //
