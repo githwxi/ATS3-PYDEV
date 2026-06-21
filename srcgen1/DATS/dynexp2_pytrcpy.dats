@@ -728,6 +728,173 @@ printsln("d2exp_pytrcpy: loc0 = ", PY_repr(loc0))
 (* ****** ****** *)
 //
 #implfun
+d2gpt_pytrcpy
+(   dgpt   ) =
+(
+case+
+dgpt.node() of
+//
+|D2GPTpat
+(   dpat   ) =>
+(
+PY_D2GPTpat
+(loc0, dpat)) where
+{
+val dpat =
+(
+  d2pat_pytrcpy(dpat)) }
+//
+|D2GPTgua
+(dpat, d2gs) =>
+(
+PY_D2GPTgua
+(loc0, dpat, d2gs))
+where
+{
+val
+dpat =
+(
+  d2pat_pytrcpy(dpat))
+val
+d2gs =
+(
+  d2gualst_pytrcpy(d2gs)) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dgpt.lctn((*0*)))
+//
+#extern
+fun
+PY_D2GPTpat
+( lctn: PY$loctn
+, dpat: PY$d2pat): PY$d2gpt = $extnam()
+#extern
+fun
+PY_D2GPTgua(
+lctn: PY$loctn,
+dpat: PY$d2pat,
+d2gs: PY$d2gualst): PY$d2gpt = $extnam()
+//
+val (  ) =
+printsln("d2gpt_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d2gpt_pytrcpy(dgpt)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2gua_pytrcpy
+(   dgua   ) =
+(
+case+
+dgua.node() of
+//
+|D2GUAexp
+(   dexp   ) =>
+(
+PY_D2GUAexp
+(loc0, dexp)) where
+{
+val dexp =
+(
+  d2exp_pytrcpy(dexp)) }
+//
+|D2GUAmat
+(dexp, dpat) =>
+(
+PY_D2GUAmat
+(loc0, dexp, dpat))
+where
+{
+val dexp =
+(
+  d2exp_pytrcpy(dexp))
+val dpat =
+(
+  d2pat_pytrcpy(dpat)) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dgua.lctn((*0*)))
+//
+#extern
+fun
+PY_D2GUAexp
+( lctn: PY$loctn
+, dexp: PY$d2exp): PY$d2gua = $extnam()
+#extern
+fun
+PY_D2GUAmat
+( lctn: PY$loctn
+, dexp: PY$d2exp
+, dpat: PY$d2pat): PY$d2gua = $extnam()
+//
+val (  ) =
+printsln("d2gua_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d2gua_pytrcpy(dgua)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2cls_pytrcpy
+(   dcls   ) =
+(
+case+
+dcls.node() of
+|D2CLSgpt
+(   dgpt   ) =>
+(
+PY_D2CLSgpt
+(loc0, dgpt)) where
+{
+val
+dgpt = d2gpt_pytrcpy(dgpt)
+}
+|D2CLScls
+(dgpt, dexp) =>
+(
+PY_D2CLScls
+(loc0, dgpt, dexp))
+where
+{
+val
+dgpt = d2gpt_pytrcpy(dgpt)
+val
+dexp = d2exp_pytrcpy(dexp) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dcls.lctn((*0*)))
+//
+#extern
+fun
+PY_D2CLSgpt
+( lctn: PY$loctn
+, dgpt: PY$d2gpt): PY$d2cls = $extnam()
+#extern
+fun
+PY_D2CLScls
+( lctn: PY$loctn
+, dgpt: PY$d2gpt
+, dexp: PY$d2exp): PY$d2cls = $extnam()
+//
+val (  ) =
+printsln("d2cls_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d2cls_pytrcpy(dcls)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 f2arg_pytrcpy
 (   farg   ) =
 (
@@ -772,6 +939,9 @@ s2es = s2explst_pytrcpy(s2es) }
 where
 {
 //
+val loc0 =
+loctn_pytrcpy(farg.lctn((*0*)))
+//
 #extern
 fun
 PY_F2ARGdapp
@@ -792,9 +962,6 @@ PY_F2ARGmets
 (
 lctn: PY$loctn,
 s2es: PY$s2explst): PY$f2arg = $extnam()
-//
-val loc0 =
-loctn_pytrcpy(farg.lctn((*0*)))
 //
 val (  ) =
 (
