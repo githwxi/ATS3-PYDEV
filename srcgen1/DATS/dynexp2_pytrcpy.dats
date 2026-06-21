@@ -395,6 +395,44 @@ d2ecl_fprint(d2cl, g_print$out<>())
 (* ****** ****** *)
 //
 #implfun
+d2cst_pytrcpy
+(   dcst   ) =
+let
+//
+val lctn =
+loctn_pytrcpy
+(
+d2cst_get_lctn(dcst))
+//
+val name =
+symbl_pytrcpy
+(
+d2cst_get_name(dcst))
+//
+val stmp =
+stamp_pytrcpy
+(
+d2cst_get_stmp(dcst))
+//
+in//let
+(
+  PY_d2cst(lctn, name, stmp))
+end where
+{
+//
+#extern
+fun
+PY_d2cst
+(
+lctn: PY$loctn,
+name: PY$symbl,
+stmp: PY$stamp): PY$d2cst = $extnam()
+//
+}(*where*)//end-of-[d2cst_pytrcpy(dcst)]
+//
+(* ****** ****** *)
+//
+#implfun
 d2var_pytrcpy
 (   dvar   ) =
 let
@@ -431,6 +469,77 @@ stmp: PY$stamp): PY$d2var = $extnam()
 }(*where*)//end-of-[d2var_pytrcpy(dvar)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2itm_pytrcpy
+(   ditm   ) =
+(
+case+ ditm of
+|D2ITMvar
+(   dvar   ) =>
+(
+PY_D2ITMvar(dvar))
+where
+{
+val dvar =
+  d2var_pytrcpy(dvar) }
+|D2ITMcon
+(   d2cs   ) =>
+(
+PY_D2ITMcon(d2cs))
+where
+{
+val d2cs =
+  d2conlst_pytrcpy(d2cs) }
+|D2ITMcst
+(   d2cs   ) =>
+(
+PY_D2ITMcst(d2cs))
+where
+{
+val d2cs =
+  d2cstlst_pytrcpy(d2cs) }
+|D2ITMsym
+(sym0, dpis) =>
+(
+PY_D2ITMsym(sym0, dpis)
+) where
+{
+val sym0 =
+  symbl_pytrcpy(sym0)
+val dpis =
+  d2ptmlst_pytrcpy(dpis) }
+) where
+{
+//
+#extern
+fun
+PY_D2ITMvar
+( dvar
+: PY$d2var): PY$d2itm = $extnam()
+//
+#extern
+fun
+PY_D2ITMcon
+( dcon
+: PY$d2conlst): PY$d2itm = $extnam()
+#extern
+fun
+PY_D2ITMcst
+( dcst
+: PY$d2cstlst): PY$d2itm = $extnam()
+//
+#extern
+fun
+PY_D2ITMsym
+( sym0
+: PY$symbl,
+  dpis
+: PY$d2ptmlst): PY$d2itm = $extnam()
+//
+}(*where*)//end-of-[d2itm_pytrcpy(ditm)]
+//
 (* ****** ****** *)
 //
 #implfun
@@ -1236,6 +1345,20 @@ printsln("d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
 }(*where*)//end-of-[d2ecl_pytrcpy(d2cl)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d2conlst_pytrcpy
+(   d2cs   ) =
+(
+list_map$f1un_PY$list(d2cs, d2con_pytrcpy))
+//
+#implfun
+d2cstlst_pytrcpy
+(   d2cs   ) =
+(
+list_map$f1un_PY$list(d2cs, d2cst_pytrcpy))
+//
 (* ****** ****** *)
 //
 #implfun

@@ -88,11 +88,38 @@ def PY_d2var\
 ########################################################################
 ########################################################################
 #
-type d2itm = pyobj
-#
+@dataclass
+class D2ITM000(ABC):
+    pass
 @dataclass
 class D2PTM000(ABC):
     pass
+type d2itm = D2ITM000
+type d2ptm = D2PTM000
+type d2ptmlst = fnlist[d2ptm]
+#
+@dataclass
+class \
+D2ITMvar(D2ITM000):
+    arg1: d2var
+    pass
+@dataclass
+class \
+D2ITMcon(D2ITM000):
+    arg1: d2conlst
+    pass
+@dataclass
+class \
+D2ITMcst(D2ITM000):
+    arg1: d2cstlst
+    pass
+@dataclass
+class \
+D2ITMsym(D2ITM000):
+    arg1: symbl
+    arg2: d2ptmlst
+    pass
+#
 @dataclass
 class \
 D2PTMnone(D2PTM000):
@@ -102,11 +129,27 @@ D2PTMnone(D2PTM000):
 class \
 D2PTMsome(D2PTM000):
     arg1: sint
-    arg1: d2itm
+    arg2: d2itm
     pass
-type d2ptm = D2PTM000
 #
 ########################################################################
+#
+def \
+PY_D2ITMvar\
+(dvar: d2var)->D2ITMvar:
+    return D2ITMvar(dvar)
+def \
+PY_D2ITMcon\
+(d2cs: d2conlst)->D2ITMcon:
+    return D2ITMcon(d2cs)
+def \
+PY_D2ITMcst\
+(d2cs: d2cstlst)->D2ITMcst:
+    return D2ITMcst(d2cs)
+def \
+PY_D2ITMsym\
+(sym0: symbl, dpis: d2ptmlst)->D2ITMsym:
+    return D2ITMsym(sym0, dpis)
 #
 def \
 PY_D2PTMnone\

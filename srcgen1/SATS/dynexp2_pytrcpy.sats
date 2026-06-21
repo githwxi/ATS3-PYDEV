@@ -233,6 +233,13 @@ d2ecl_pytrcpy(d2cl: d2ecl): PY$d2ecl
 (* ****** ****** *)
 //
 #typedef
+PY$d2conlst = PY$list(PY$d2con)
+#typedef
+PY$d2cstlst = PY$list(PY$d2cst)
+//
+(* ****** ****** *)
+//
+#typedef
 PY$d2varlst = PY$list(PY$d2var)
 #typedef
 PY$d2varopt = PY$optn(PY$d2var)
@@ -280,6 +287,13 @@ PY$d2fundclist = PY$list(PY$d2fundcl)
 PY$d2eclistopt = PY$optn(PY$d2eclist)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d2conlst_pytrcpy(d2cs: d2conlst): PY$d2conlst
+fun
+d2cstlst_pytrcpy(d2cs: d2cstlst): PY$d2cstlst
+//
 (* ****** ****** *)
 //
 fun
