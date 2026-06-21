@@ -122,6 +122,9 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef f2arg = $D2E.f2arg
 #typedef d2ecl = $D2E.d2ecl
 //
+#typedef d2conlst = list(d2con)
+#typedef d2cstlst = list(d2cst)
+//
 #typedef d2varlst = list(d2var)
 #typedef d2varopt = optn(d2var)
 //

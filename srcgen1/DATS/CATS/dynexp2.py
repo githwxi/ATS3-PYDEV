@@ -21,6 +21,7 @@ from DATS.CATS.a3pydev import *
 from DATS.CATS.xstamp0 import *
 from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
+from DATS.CATS.dynexp1 import *
 from DATS.CATS.lexing0 import *
 from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
@@ -597,6 +598,20 @@ class D2Evar(D2E000):
 ########################################################################
 #
 @dataclass
+class D2Esym0(D2E000):
+    arg1: d2exp
+    arg2: d1exp
+    arg3: d2ptmlst
+    ctag = "D2Esym0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D2Edap0(D2E000):
     arg1: d2exp
     ctag = "D2Edap0"
@@ -792,6 +807,14 @@ def PY_D2Ecst\
 def PY_D2Evar\
 (lctn: loctn, arg1: d2var)->D2Evar:
     return D2Evar(lctn, arg1)
+#
+########################################################################
+#
+def PY_D2Esym0\
+(loc0: loctn, \
+ arg1: d2exp, \
+ arg2: d1exp, arg3: d2ptmlst)->D2Esym0:
+    return D2Esym0(loc0, arg1, arg2, arg3)
 #
 ########################################################################
 #
