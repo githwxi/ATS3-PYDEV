@@ -76,12 +76,15 @@ xassets/ATS3/SATS/dynexp2.sats"
 //
 #abstbox PY$s2res // p0tr
 #abstbox PY$s2eff // p0tr
+//
 #abstbox PY$d2pat // p0tr
 #abstbox PY$d2exp // p0tr
+//
 #abstbox PY$d2gua // p0tr
 #abstbox PY$d2gpt // p0tr
 #abstbox PY$d2cls // p0tr
 #abstbox PY$f2arg // p0tr
+//
 #abstbox PY$d2ecl // p0tr
 //
 (* ****** ****** *)
@@ -114,13 +117,19 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef s2res = $D2E.s2res
 #typedef s2eff = $D2E.s2eff
 //
+(* ****** ****** *)
+//
 #typedef d2pat = $D2E.d2pat
 #typedef d2exp = $D2E.d2exp
+//
 #typedef d2gua = $D2E.d2gua
 #typedef d2gpt = $D2E.d2gpt
 #typedef d2cls = $D2E.d2cls
 #typedef f2arg = $D2E.f2arg
+//
 #typedef d2ecl = $D2E.d2ecl
+//
+(* ****** ****** *)
 //
 #typedef d2conlst = list(d2con)
 #typedef d2cstlst = list(d2cst)
@@ -128,11 +137,14 @@ xassets/ATS3/SATS/dynexp2.sats"
 #typedef d2varlst = list(d2var)
 #typedef d2varopt = optn(d2var)
 //
+(* ****** ****** *)
+//
 #typedef d2itmlst = list(d2itm)
 #typedef d2ptmlst = list(d2ptm)
 //
-#typedef d2patlst = list(d2pat)
+(* ****** ****** *)
 //
+#typedef d2patlst = list(d2pat)
 #typedef d2explst = list(d2exp)
 #typedef d2expopt = optn(d2exp)
 //

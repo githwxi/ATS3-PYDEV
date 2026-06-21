@@ -603,6 +603,7 @@ class D2Esym0(D2E000):
     arg2: d1exp
     arg3: d2ptmlst
     ctag = "D2Esym0"
+    # HX-2026-06-21: [self.arg3] is skipped!
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
