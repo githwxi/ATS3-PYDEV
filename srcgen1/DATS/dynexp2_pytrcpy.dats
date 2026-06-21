@@ -76,6 +76,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 #staload
 "./../SATS/lexing0_pytrcpy.sats"
 #staload
+"./../SATS/dynexp1_pytrcpy.sats"
+#staload
 "./../SATS/staexp2_pytrcpy.sats"
 #staload
 "./../SATS/statyp2_pytrcpy.sats"
@@ -506,8 +508,9 @@ val tint =
 token_pytrcpy(tint)
 in//let
 (
-  PY_D2Eint(loc0, tint))
-end//let
+PY_D2Eint(loc0, tint))
+end//let//endof(D2Eint)
+//
 |D2Ebtf
 (   sbtf   ) =>
 let
@@ -515,8 +518,9 @@ val sbtf =
 symbl_pytrcpy(sbtf)
 in//let
 (
-  PY_D2Ebtf(loc0, sbtf))
-end
+PY_D2Ebtf(loc0, sbtf))
+end//let//endof(D2Ebtf)
+//
 |D2Echr
 (   tchr   ) =>
 let
@@ -524,8 +528,9 @@ val tchr =
 token_pytrcpy(tchr)
 in//let
 (
-  PY_D2Echr(loc0, tchr))
-end//let
+PY_D2Echr(loc0, tchr))
+end//let//endof(D2Echr)
+//
 |D2Estr
 (   tstr   ) =>
 let
@@ -533,10 +538,30 @@ val tstr =
 token_pytrcpy(tstr)
 in//let
 (
-  PY_D2Estr(loc0, tstr))
-end//let
+PY_D2Estr(loc0, tstr))
+end//let//endof(D2Estr)
 //
 (* ****** ****** *)
+//
+|D2Econ
+(   d2c1   ) =>
+let
+val d2c1 =
+d2con_pytrcpy(d2c1)
+in//let
+(
+PY_D2Econ(loc0, d2c1))
+end//let//endof(D2Econ)
+//
+|D2Ecst
+(   d2c1   ) =>
+let
+val d2c1 =
+d2cst_pytrcpy(d2c1)
+in//let
+(
+PY_D2Ecst(loc0, d2c1))
+end//let//endof(D2Ecst)
 //
 |D2Evar
 (   d2v1   ) =>
@@ -545,26 +570,33 @@ val d2v1 =
 d2var_pytrcpy(d2v1)
 in//let
 (
-  PY_D2Evar(loc0, d2v1))
-end//let
-|D2Econ
-(   d2c1   ) =>
+PY_D2Evar(loc0, d2v1))
+end//let//endof(D2Evar)
+//
+(* ****** ****** *)
+//
+|D2Esym0
+(drxp
+,dsym, dpis) =>
 let
-val d2c1 =
-d2con_pytrcpy(d2c1)
+//
+val d2e1 =
+d2exp_pytrcpy
+(
+d2rxp_get_dexp(drxp))
+//
+val dsym =
+(
+  d1exp_pytrcpy(dsym))
+//
+val dpis =
+(
+d2ptmlst_pytrcpy(dpis))
 in//let
 (
-  PY_D2Econ(loc0, d2c1))
-end//let
-|D2Ecst
-(   d2c1   ) =>
-let
-val d2c1 =
-d2cst_pytrcpy(d2c1)
-in//let
-(
-  PY_D2Ecst(loc0, d2c1))
-end//let
+PY_D2Esym0
+(loc0, d2e1, dsym, dpis))
+end(*let*)//endof(D2Esym0)
 //
 (* ****** ****** *)
 //
@@ -1124,6 +1156,14 @@ d2varopt_pytrcpy
 (   dopt   ) =
 (
 optn_map$f1un_PY$optn(dopt, d2var_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+d2ptmlst_pytrcpy
+(   dpis   ) =
+(
+list_map$f1un_PY$list(dpis, d2ptm_pytrcpy))
 //
 (* ****** ****** *)
 //
