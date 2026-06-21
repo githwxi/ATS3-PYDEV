@@ -178,6 +178,16 @@ PY_D2Ecst
 //
 #extern
 fun
+PY_D2Esym0
+( loc0: PY$loctn
+, drxp: PY$d2exp
+, dsym: PY$d1exp
+, dpis: PY$d2ptmlst): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D2Edap0
 ( loc0: PY$loctn
 , d2e1: PY$d2exp   ): PY$d2exp = $extnam()

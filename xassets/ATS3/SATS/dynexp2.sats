@@ -965,7 +965,7 @@ d2exp_node =
 |
 D2Eproj of
 ( token
-, d2rxp, label, d2exp(*tup*) )
+, d2rxp, label, d2exp(*tup*))
 //
 (* ****** ****** *)
 //
@@ -1213,6 +1213,7 @@ d2rxp_set_dexp
 (drxp: d2rxp, d2e0: d2exp): void
 #symload dexp with d2rxp_get_dexp
 #symload dexp with d2rxp_set_dexp
+//
 (* ****** ****** *)
 //
 fun
