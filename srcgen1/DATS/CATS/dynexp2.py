@@ -60,7 +60,7 @@ class d2var_tbox(ABC):
     pass
 #
 type d2con = d2con_tbox
-type d2cst = d2con_tbox
+type d2cst = d2cst_tbox
 type d2var = d2var_tbox
 #
 type d2conlst = fnlist[d2con]
@@ -555,6 +555,8 @@ class D2Elet0(D2E000):
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
+########################################################################
+#
 @dataclass
 class D2Eift0(D2E000):
     arg1: d2exp
@@ -568,6 +570,20 @@ class D2Eift0(D2E000):
     pass
 #
 @dataclass
+class D2Ecas0(D2E000):
+    arg1: token
+    arg2: d2exp
+    arg3: d2clslst
+    ctag = "D2Ecas0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D2Eseqn(D2E000):
     arg1: d2explst
     arg2: d2exp
@@ -577,6 +593,8 @@ class D2Eseqn(D2E000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
+########################################################################
 #
 @dataclass
 class D2Ewhere(D2E000):
@@ -717,8 +735,14 @@ def PY_D2Elet0\
 ########################################################################
 def PY_D2Eift0\
 (loc0: loctn, \
- arg1: d2exp, arg2: d2expopt, arg3: d2expopt)->D2Eift0:
+ arg1: d2exp, \
+ arg2: d2expopt, arg3: d2expopt)->D2Eift0:
     return D2Eift0(loc0, arg1, arg2, arg3)
+########################################################################
+def PY_D2Ecas0\
+(loc0: loctn, \
+ arg1: token, arg2: d2exp, arg3: d2clslst)->D2Ecas0:
+    return D2Ecas0(loc0, arg1, arg2, arg3)
 ########################################################################
 def PY_D2Eseqn\
 (loc0: loctn, arg1: d2explst, arg2: d2exp)->D2Eseqn:
@@ -776,6 +800,35 @@ def PY_D2Cimplmnt0\
 ########################################################################
 #
 def \
+PY_D2GUAexp\
+(loc0: loctn, arg1: d2exp)->D2GUAexp:
+    return D2GUAexp(loc0, arg1)
+def \
+PY_D2GUAmat\
+(loc0: loctn, arg1: d2exp, arg2: d2pat)->D2GUAmat:
+    return D2GUAmat(loc0, arg1, arg2)
+#
+def \
+PY_D2CLSgpt\
+(loc0: loctn, arg1: d2gpt)->D2CLSgpt:
+    return D2CLSgpt(loc0, arg1)
+def \
+PY_D2CLScls\
+(loc0: loctn, arg1: d2gpt, arg2: d2exp)->D2CLScls:
+    return D2CLScls(loc0, arg1, arg2)
+#
+def \
+PY_D2GPTpat\
+(loc0: loctn, arg1: d2pat)->D2GPTpat:
+    return D2GPTpat(loc0, arg1)
+def \
+PY_D2GPTgua\
+(loc0: loctn, arg1: d2pat, arg2: d2gualst)->D2GPTgua:
+    return D2GPTgua(loc0, arg1, arg2)
+#
+########################################################################
+#
+def \
 PY_F2ARGdapp\
 (lctn: loctn, \
  arg1: sint, arg2: d2patlst)->F2ARGdapp:
@@ -818,23 +871,22 @@ def \
 PY_d2valdcl_make_args\
 (lctn: loctn, \
  dpat: d2pat, \
- tdxp: teqd2exp, wsxp: pyobj)->d2valdcl:
+ tdxp: teqd2exp, wsxp: wths2exp)->d2valdcl:
     return d2valdcl_tbox(lctn, dpat, tdxp, wsxp)
 #
 def \
 PY_d2vardcl_make_args\
 (lctn: loctn, \
- dpid: pyobj, \
- vpid: pyobj, \
+ dpid: d2var, \
+ vpid: d2varopt, \
  sres: s2expopt, tdxp: teqd2exp)->d2vardcl:
     return d2vardcl_tbox(lctn, dpid, vpid, sres, tdxp)
 #
 def \
 PY_d2fundcl_make_args\
 (lctn: loctn, \
- dpid: pyobj, \
- farg: pyobj,
- sres: s2res,
+ dpid: d2var, \
+ farg: f2arglst, sres: s2res, \
  tdxp: teqd2exp, wsxp: wths2exp)->d2fundcl:
     return d2fundcl_tbox(lctn, dpid, farg, sres, tdxp, wsxp)
 #

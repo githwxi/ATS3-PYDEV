@@ -728,64 +728,6 @@ printsln("d2exp_pytrcpy: loc0 = ", PY_repr(loc0))
 (* ****** ****** *)
 //
 #implfun
-d2gpt_pytrcpy
-(   dgpt   ) =
-(
-case+
-dgpt.node() of
-//
-|D2GPTpat
-(   dpat   ) =>
-(
-PY_D2GPTpat
-(loc0, dpat)) where
-{
-val dpat =
-(
-  d2pat_pytrcpy(dpat)) }
-//
-|D2GPTgua
-(dpat, d2gs) =>
-(
-PY_D2GPTgua
-(loc0, dpat, d2gs))
-where
-{
-val
-dpat =
-(
-  d2pat_pytrcpy(dpat))
-val
-d2gs =
-(
-  d2gualst_pytrcpy(d2gs)) }
-)
-where
-{
-//
-val loc0 =
-loctn_pytrcpy(dgpt.lctn((*0*)))
-//
-#extern
-fun
-PY_D2GPTpat
-( lctn: PY$loctn
-, dpat: PY$d2pat): PY$d2gpt = $extnam()
-#extern
-fun
-PY_D2GPTgua(
-lctn: PY$loctn,
-dpat: PY$d2pat,
-d2gs: PY$d2gualst): PY$d2gpt = $extnam()
-//
-val (  ) =
-printsln("d2gpt_pytrcpy: loc0 = ", PY_repr(loc0))
-//
-}(*where*)//end-of-[d2gpt_pytrcpy(dgpt)]
-//
-(* ****** ****** *)
-//
-#implfun
 d2gua_pytrcpy
 (   dgua   ) =
 (
@@ -890,6 +832,64 @@ val (  ) =
 printsln("d2cls_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d2cls_pytrcpy(dcls)]
+//
+(* ****** ****** *)
+//
+#implfun
+d2gpt_pytrcpy
+(   dgpt   ) =
+(
+case+
+dgpt.node() of
+//
+|D2GPTpat
+(   dpat   ) =>
+(
+PY_D2GPTpat
+(loc0, dpat)) where
+{
+val dpat =
+(
+  d2pat_pytrcpy(dpat)) }
+//
+|D2GPTgua
+(dpat, d2gs) =>
+(
+PY_D2GPTgua
+(loc0, dpat, d2gs))
+where
+{
+val
+dpat =
+(
+  d2pat_pytrcpy(dpat))
+val
+d2gs =
+(
+  d2gualst_pytrcpy(d2gs)) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dgpt.lctn((*0*)))
+//
+#extern
+fun
+PY_D2GPTpat
+( lctn: PY$loctn
+, dpat: PY$d2pat): PY$d2gpt = $extnam()
+#extern
+fun
+PY_D2GPTgua(
+lctn: PY$loctn,
+dpat: PY$d2pat,
+d2gs: PY$d2gualst): PY$d2gpt = $extnam()
+//
+val (  ) =
+printsln("d2gpt_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d2gpt_pytrcpy(dgpt)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
