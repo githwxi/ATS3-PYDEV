@@ -113,6 +113,31 @@ PY_D1Ca3src
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+d1exp_pytrcpy
+(   dexp   ) =
+(
+case+
+dexp.node() of
+|_(*otherwise*) => PY_D1Ea3src(loc0, dexp)
+)
+{
+//
+val loc0 =
+loctn_pytrcpy(dexp.lctn((*0*)))
+//
+val (  ) =
+(
+  printsln("d1exp_pytrcpy: dexp = ", dexp))
+//
+val (  ) =
+printsln("d1exp_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d1exp_pytrcpy(dexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3-PYDEV/srcgen1/DATS/dynexp1_pytrcpy.dats] *)
 (***********************************************************************)
