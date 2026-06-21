@@ -114,6 +114,32 @@ PY_D1Ca3src
 (* ****** ****** *)
 //
 #implfun
+d1pat_pytrcpy
+(   dpat   ) =
+(
+case+
+dpat.node() of
+|_(*otherwise*) => PY_D1Pa3src(loc0, dpat)
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dpat.lctn((*0*)))
+//
+val (  ) =
+(
+  printsln("d1pat_pytrcpy: dpat = ", dpat))
+//
+val (  ) =
+printsln("d1pat_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d1pat_pytrcpy(dpat)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d1exp_pytrcpy
 (   dexp   ) =
 (
@@ -121,6 +147,7 @@ case+
 dexp.node() of
 |_(*otherwise*) => PY_D1Ea3src(loc0, dexp)
 )
+where
 {
 //
 val loc0 =
@@ -134,6 +161,32 @@ val (  ) =
 printsln("d1exp_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d1exp_pytrcpy(dexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d1ecl_pytrcpy
+(   d1cl   ) =
+(
+case+
+d1cl.node() of
+|_(*otherwise*) => PY_D1Ca3src(loc0, d1cl)
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(d1cl.lctn((*0*)))
+//
+val (  ) =
+(
+  printsln("d1ecl_pytrcpy: d1cl = ", d1cl))
+//
+val (  ) =
+printsln("d1ecl_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d1ecl_pytrcpy(d1cl)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
