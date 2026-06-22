@@ -179,6 +179,42 @@ class D3Evar(D3E000):
     pass
 #
 ########################################################################
+#
+@dataclass
+class D3Edap0(D3E000):
+    arg1: d3exp
+    ctag = "D3Edap0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3Edapp(D3E000):
+    arg1: d3exp
+    arg2: sint
+    arg3: d3exp
+    ctag = "D3Edapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Elet0(D3E000):
+    arg1: d3eclist
+    arg2: d3exp
+    ctag = "D3Elet0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
 ########################################################################
 #
 @dataclass
@@ -332,6 +368,20 @@ def PY_D3Evar\
 (lctn: loctn, arg1: d2var)->D3Evar:
     return D3Evar(lctn, arg1)
 #
+########################################################################
+#
+def PY_D3Edap0\
+(loc0: loctn, arg1: d3exp)->D3Edap0:
+    return D3Edap0(loc0, arg1)
+def PY_D3Edapp\
+(loc0: loctn, \
+ arg1: d3exp, arg2: sint, arg3: d3exp)->D3Edapp:
+    return D3Edapp(loc0, arg1, arg2, arg3)
+#
+########################################################################
+def PY_D3Elet0\
+(loc0: loctn, arg1: d3eclist, arg2: d3exp)->D3Elet0:
+    return D3Elet0(loc0, arg1, arg2)
 ########################################################################
 ########################################################################
 #

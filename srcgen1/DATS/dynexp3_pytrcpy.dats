@@ -173,6 +173,31 @@ PY_D3Evar
 , dvar: PY$d2var): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_D3Edap0
+( loc0: PY$loctn
+, d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Edapp
+( loc0: PY$loctn
+, d3f0: PY$d3exp
+, npf1: sint
+, d3es: PY$d3explst): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Elet0
+( loc0: PY$loctn
+, dcls: PY$d3eclist
+, d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -378,9 +403,54 @@ PY_D3Evar(loc0, d2v1))
 end//let//endof(D3Evar)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Edap0
+(   d3e1   ) =>
+let
+val d3e1 =
+d3exp_pytrcpy(d3e1)
+in//let
+  PY_D3Edap0(loc0, d3e1)
+end//let
+//
+|D3Edapp
+(d3f0
+,npf1, d3es) =>
+(
+PY_D3Edapp
+(loc0, d3f0, npf1, d3es))
+where
+{
+val d3f0 =
+  d3exp_pytrcpy(d3f0)
+val d3es =
+(
+  d3explst_pytrcpy(d3es)) }
+//
+(* ****** ****** *)
+//
+|D3Elet0
+(dcls, d3e1) =>
+let
+val d3e1 =
+(
+  d3exp_pytrcpy(d3e1))
+in//let
+PY_D3Elet0
+(loc0, dcls, d3e1(*scp*))
+end where
+{
+val dcls =
+(
+  d3eclist_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |_(*otherwise*) => PY_D3Ea3src(loc0, dexp)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 ) where
