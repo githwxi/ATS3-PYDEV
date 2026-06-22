@@ -185,11 +185,6 @@ PY_D2Estr
 //
 #extern
 fun
-PY_D2Evar
-( loc0: PY$loctn
-, dvar: PY$d2var): PY$d2exp = $extnam()
-#extern
-fun
 PY_D2Econ
 ( loc0: PY$loctn
 , dcon: PY$d2con): PY$d2exp = $extnam()
@@ -198,6 +193,11 @@ fun
 PY_D2Ecst
 ( loc0: PY$loctn
 , dcst: PY$d2cst): PY$d2exp = $extnam()
+#extern
+fun
+PY_D2Evar
+( loc0: PY$loctn
+, dvar: PY$d2var): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
 //

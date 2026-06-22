@@ -155,6 +155,24 @@ PY_D3Estr
 , tstr: PY$token): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_D3Econ
+( loc0: PY$loctn
+, dcon: PY$d2con): PY$d3exp = $extnam()
+#extern
+fun
+PY_D3Ecst
+( loc0: PY$loctn
+, dcst: PY$d2cst): PY$d3exp = $extnam()
+#extern
+fun
+PY_D3Evar
+( loc0: PY$loctn
+, dvar: PY$d2var): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -326,6 +344,38 @@ in//let
 (
 PY_D3Estr(loc0, tstr))
 end//let//endof(D3Estr)
+//
+(* ****** ****** *)
+//
+|D3Econ
+(   d2c1   ) =>
+let
+val d2c1 =
+d2con_pytrcpy(d2c1)
+in//let
+(
+PY_D3Econ(loc0, d2c1))
+end//let//endof(D3Econ)
+//
+|D3Ecst
+(   d2c1   ) =>
+let
+val d2c1 =
+d2cst_pytrcpy(d2c1)
+in//let
+(
+PY_D3Ecst(loc0, d2c1))
+end//let//endof(D3Ecst)
+//
+|D3Evar
+(   d2v1   ) =>
+let
+val d2v1 =
+d2var_pytrcpy(d2v1)
+in//let
+(
+PY_D3Evar(loc0, d2v1))
+end//let//endof(D3Evar)
 //
 (* ****** ****** *)
 //

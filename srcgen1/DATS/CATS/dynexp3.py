@@ -321,6 +321,18 @@ def PY_D3Estr\
     return D3Estr(lctn, arg1)
 #
 ########################################################################
+#
+def PY_D3Econ\
+(lctn: loctn, arg1: d2con)->D3Econ:
+    return D3Econ(lctn, arg1)
+def PY_D3Ecst\
+(lctn: loctn, arg1: d2cst)->D3Ecst:
+    return D3Ecst(lctn, arg1)
+def PY_D3Evar\
+(lctn: loctn, arg1: d2var)->D3Evar:
+    return D3Evar(lctn, arg1)
+#
+########################################################################
 ########################################################################
 #
 def \
