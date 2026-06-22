@@ -121,6 +121,20 @@ PY_D3Ca3src
 //
 #extern
 fun
+PY_D3Pvar
+( loc0: PY$loctn
+, dvar: PY$d2var): PY$d3pat = $extnam()
+#extern
+fun
+PY_D3Pcon
+( loc0: PY$loctn
+, dcon: PY$d2con): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Eint
 ( loc0: PY$loctn
 , tint: PY$token): PY$d3exp = $extnam()
@@ -218,6 +232,28 @@ d3pat_pytrcpy
 (
 case+
 dpat.node() of
+//
+(* ****** ****** *)
+//
+|D3Pvar
+(   d2v1   ) =>
+let
+val d2v1 =
+d2var_pytrcpy(d2v1)
+in//let
+(
+  PY_D3Pvar(loc0, d2v1))
+end//let
+//
+|D3Pcon
+(   d2c1   ) =>
+let
+val d2c1 =
+d2con_pytrcpy(d2c1)
+in//let
+(
+  PY_D3Pcon(loc0, d2c1))
+end//let
 //
 (* ****** ****** *)
 //

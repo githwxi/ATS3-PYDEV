@@ -620,6 +620,8 @@ d2pat_pytrcpy
 case+
 dpat.node() of
 //
+(* ****** ****** *)
+//
 |D2Pvar
 (   d2v1   ) =>
 let
@@ -639,6 +641,8 @@ in//let
 (
   PY_D2Pcon(loc0, d2c1))
 end//let
+//
+(* ****** ****** *)
 //
 |D2Pdap0
 (   d2p1   ) =>
