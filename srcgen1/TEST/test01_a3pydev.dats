@@ -7,9 +7,22 @@ Fri Jun 19 09:40:50 AM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#include
+"prelude\
+/HATS/prelude_dats.hats"
+//
+#include
+"prelude\
+/HATS/prelude_JS_dats.hats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val N1 = 5
 val N2 = (N1+N1)
 val N3 = (N1*N2)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //

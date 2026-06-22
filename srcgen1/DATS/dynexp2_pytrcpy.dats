@@ -303,30 +303,27 @@ PY_D2Clocal0
 #extern
 fun
 PY_D2Cvaldclst
-( loc0: PY$loctn
-, tknd: PY$token
-, d2vs:
 (
-   PY$d2valdclist )): PY$d2ecl = $extnam()
+loc0: PY$loctn,
+tknd: PY$token,
+d2vs: PY$d2valdclist): PY$d2ecl = $extnam()
 #extern
 fun
 PY_D2Cvardclst
-( loc0: PY$loctn
-, tknd: PY$token
-, d2vs:
 (
-   PY$d2vardclist )): PY$d2ecl = $extnam()
+loc0: PY$loctn,
+tknd: PY$token,
+d2vs: PY$d2vardclist): PY$d2ecl = $extnam()
 //
 #extern
 fun
 PY_D2Cfundclst
-( loc0: PY$loctn
-, tknd: PY$token
-, t2qs: t2qaglst
-, d2cs: d2cstlst
-, d2fs:
 (
-   PY$d2fundclist )): PY$d2ecl = $extnam()
+loc0: PY$loctn,
+tknd: PY$token,
+t2qs: t2qaglst,
+d2cs: PY$d2cstlst,
+d2fs: PY$d2fundclist): PY$d2ecl = $extnam()
 //
 (* ****** ****** *)
 //
@@ -348,31 +345,34 @@ PY_D2Cimplmnt0
 #extern
 fun
 PY_d2valdcl_make_args
-( lctn: PY$loctn
-, dpat: PY$d2pat
-, tdxp: PY$teqd2exp
-, wsxp: PY$wths2exp): PY$d2valdcl = $extnam()
+(
+lctn: PY$loctn,
+dpat: PY$d2pat,
+tdxp: PY$teqd2exp,
+wsxp: PY$wths2exp): PY$d2valdcl = $extnam()
 //
 #extern
 fun
 PY_d2vardcl_make_args
-( lctn: PY$loctn
-, dpid: PY$d2var
-, vpid: PY$d2varopt
-, sres: PY$s2expopt
-, tdxp: PY$teqd2exp): PY$d2vardcl = $extnam()
+(
+lctn: PY$loctn,
+dpid: PY$d2var,
+vpid: PY$d2varopt,
+sres: PY$s2expopt,
+tdxp: PY$teqd2exp): PY$d2vardcl = $extnam()
 //
 (* ****** ****** *)
 //
 #extern
 fun
 PY_d2fundcl_make_args
-( lctn: PY$loctn
-, dpid: PY$d2var
-, farg: PY$f2arglst
-, sres: PY$s2res
-, tdxp: PY$teqd2exp
-, wsxp: PY$wths2exp): PY$d2fundcl = $extnam()
+(
+lctn: PY$loctn,
+dpid: PY$d2var,
+farg: PY$f2arglst,
+sres: PY$s2res,
+tdxp: PY$teqd2exp,
+wsxp: PY$wths2exp): PY$d2fundcl = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1294,6 +1294,9 @@ where
 val tknd =
 (
   token_pytrcpy(tknd))
+val d2cs =
+(
+  d2cstlst_pytrcpy(d2cs))
 val d2fs =
 (
   d2fundclist_pytrcpy(d2fs))

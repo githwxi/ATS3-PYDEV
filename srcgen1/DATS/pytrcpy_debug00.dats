@@ -906,6 +906,26 @@ end//(*let*)//end-of-[d3exp_fprint(d3e0,out0)]
 (* ****** ****** *)
 //
 #implfun
+f3arg_fprint
+(farg, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+farg.node() of
+//
+|F3ARGdapp _ => prints("F3ARGdapp(...)")
+|F3ARGsapp _ => prints("F3ARGsapp(...)")
+|F3ARGmets _ => prints("F3ARGmets(...)")
+//
+end(*let*)//end-of-[f3arg_fprint(farg,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3ecl_fprint
 (dcl0, out0) =
 let

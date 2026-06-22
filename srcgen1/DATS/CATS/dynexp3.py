@@ -55,6 +55,26 @@ type d3eclist = fnlist[d3ecl]
 type d3eclopt = fnoptn[d3ecl]
 type d3eclistopt = fnoptn[d3eclist]
 ########################################################################
+#
+@dataclass
+class D3CLS000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class D3GUA000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class D3GPT000(ABC):
+    lctn: loctn
+    pass
+type d3cls = D3CLS000
+type d3gua = D3GUA000
+type d3gpt = D3GPT000
+type d3clslst = fnlist[d3cls]
+type d3gualst = fnlist[d3gua]
+#
+########################################################################
 @dataclass
 class D3Pa3src(D3P000):
     arg1: pyobj
@@ -218,6 +238,111 @@ class D3Elet0(D3E000):
 ########################################################################
 #
 @dataclass
+class D3CLSgpt(D3CLS000):
+    arg1: d3gpt
+    ctag = "D3CLSgpt"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3CLScls(D3CLS000):
+    arg1: d3gpt
+    arg2: d3exp
+    ctag = "D3CLScls"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D3GPTpat(D3GPT000):
+    arg1: d3pat
+    ctag = "D3GPTpat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3GPTgua(D3GPT000):
+    arg1: d3pat
+    arg2: d3gualst
+    ctag = "D3GPTgua"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D3GUAexp(D3GUA000):
+    arg1: d3exp
+    ctag = "D3GUAexp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3GUAmat(D3GUA000):
+    arg1: d3exp
+    arg2: d3pat
+    ctag = "D3GUAmat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+########################################################################
+#
+@dataclass
+class F3ARG000(ABC):
+    lctn: loctn
+    pass
+#
+@dataclass
+class F3ARGmets(F3ARG000):
+    arg1: s2explst
+    ctag = "F3ARGmets"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class F3ARGsapp(F3ARG000):
+    arg1: s2varlst
+    arg2: s2explst
+    ctag = "F3ARGsapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class F3ARGdapp(F3ARG000):
+    arg1: sint
+    arg2: d3patlst
+    ctag = "F3ARGdapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+type f3arg = F3ARG000
+type f3arglst = fnlist[f3arg]
+#
+########################################################################
+########################################################################
+#
+@dataclass
 class TEQD3EXP000(ABC):
     pass
 @dataclass
@@ -316,9 +441,9 @@ class D3Cfundclst(D3C000):
     arg4: d3fundclist
     ctag = "D3Cfundclst"
     def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg4})"
+        return f"{self.ctag}({self.arg1};{self.arg3};{self.arg4})"
     def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg4!r})"
+        return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg4!r})"
 #
 ########################################################################
 ########################################################################
@@ -386,6 +511,26 @@ def PY_D3Elet0\
 ########################################################################
 #
 def \
+PY_F3ARGdapp\
+(lctn: loctn, \
+ arg1: sint, arg2: d2patlst)->F3ARGdapp:
+    return F3ARGdapp(lctn, arg1, arg2)
+#
+def \
+PY_F3ARGmets\
+(lctn: loctn, arg1: s2explst)->F3ARGmets:
+    return F3ARGmets(lctn, arg1)
+#
+def \
+PY_F3ARGsapp\
+(lctn: loctn, \
+ arg1: s2varlst, arg2: s2explst)->F3ARGsapp:
+    return F3ARGsapp(lctn, arg1, arg2)
+#
+########################################################################
+########################################################################
+#
+def \
 PY_TEQD3EXPnone()->teqd3exp:
     return TEQD3EXPnone()
 def \
@@ -393,6 +538,7 @@ PY_TEQD3EXPsome\
 (arg1: token, arg2: d3exp)->teqd3exp:
     return TEQD3EXPsome(arg1, arg2)
 #
+########################################################################
 ########################################################################
 #
 def \
@@ -414,7 +560,7 @@ def \
 PY_d3fundcl_make_args\
 (lctn: loctn, \
  dpid: d2var, \
- farg: f2arglst, sres: s2res, \
+ farg: f3arglst, sres: s2res, \
  tdxp: teqd3exp, wsxp: wths2exp)->d3fundcl:
     return d3fundcl_tbox(lctn, dpid, farg, sres, tdxp, wsxp)
 #

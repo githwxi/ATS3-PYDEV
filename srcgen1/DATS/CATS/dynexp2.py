@@ -106,7 +106,34 @@ class D2C000(ABC):
 type d2ecl = D2C000
 type d2eclist = fnlist[d2ecl]
 type d2eclopt = fnoptn[d2ecl]
-type d2eclistopt = fnoptn[d2eclist]
+########################################################################
+@dataclass
+class D2ITM000(ABC):
+    pass
+@dataclass
+class D2PTM000(ABC):
+    pass
+type d2itm = D2ITM000
+type d2ptm = D2PTM000
+type d2ptmlst = fnlist[d2ptm]
+########################################################################
+@dataclass
+class D2CLS000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class D2GUA000(ABC):
+    lctn: loctn
+    pass
+@dataclass
+class D2GPT000(ABC):
+    lctn: loctn
+    pass
+type d2cls = D2CLS000
+type d2gua = D2GUA000
+type d2gpt = D2GPT000
+type d2clslst = fnlist[d2cls]
+type d2gualst = fnlist[d2gua]
 ########################################################################
 @dataclass
 class D2Pa3src(D2P000):
@@ -133,36 +160,6 @@ class D2Ca3src(D2C000):
     pass
 ########################################################################
 ########################################################################
-@dataclass
-class D2Pcon(D2P000):
-    arg1: d2con
-    ctag = "D2Pcon"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
-    pass
-@dataclass
-class D2Pvar(D2P000):
-    arg1: d2var
-    ctag = "D2Pvar"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
-    pass
-########################################################################
-########################################################################
-#
-@dataclass
-class D2ITM000(ABC):
-    pass
-@dataclass
-class D2PTM000(ABC):
-    pass
-type d2itm = D2ITM000
-type d2ptm = D2PTM000
-type d2ptmlst = fnlist[d2ptm]
 #
 @dataclass
 class \
@@ -202,124 +199,23 @@ D2PTMsome(D2PTM000):
 ########################################################################
 #
 @dataclass
-class D2CLS000(ABC):
-    lctn: loctn
-    pass
-@dataclass
-class D2GUA000(ABC):
-    lctn: loctn
-    pass
-@dataclass
-class D2GPT000(ABC):
-    lctn: loctn
-    pass
-type d2cls = D2CLS000
-type d2gua = D2GUA000
-type d2gpt = D2GPT000
-type d2clslst = fnlist[d2cls]
-type d2gualst = fnlist[d2gua]
-#
-@dataclass
-class D2CLSgpt(D2CLS000):
-    arg1: d2gpt
-    ctag = "D2CLSgpt"
+class D2Pcon(D2P000):
+    arg1: d2con
+    ctag = "D2Pcon"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
-class D2CLScls(D2CLS000):
-    arg1: d2gpt
-    arg2: d2exp
-    ctag = "D2CLScls"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
-    pass
-#
-@dataclass
-class D2GPTpat(D2GPT000):
-    arg1: d2pat
-    ctag = "D2GPTpat"
+class D2Pvar(D2P000):
+    arg1: d2var
+    ctag = "D2Pvar"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
-@dataclass
-class D2GPTgua(D2GPT000):
-    arg1: d2pat
-    arg2: d2gualst
-    ctag = "D2GPTgua"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
-    pass
-#
-@dataclass
-class D2GUAexp(D2GUA000):
-    arg1: d2exp
-    ctag = "D2GUAexp"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
-    pass
-@dataclass
-class D2GUAmat(D2GUA000):
-    arg1: d2exp
-    arg2: d2pat
-    ctag = "D2GUAmat"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
-    pass
-#
-########################################################################
-########################################################################
-#
-@dataclass
-class F2ARG000(ABC):
-    lctn: loctn
-    pass
-#
-@dataclass
-class F2ARGmets(F2ARG000):
-    arg1: s2explst
-    ctag = "F2ARGmets"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
-    pass
-#
-@dataclass
-class F2ARGsapp(F2ARG000):
-    arg1: s2varlst
-    arg2: s2explst
-    ctag = "F2ARGsapp"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
-    pass
-#
-@dataclass
-class F2ARGdapp(F2ARG000):
-    arg1: sint
-    arg2: d2patlst
-    ctag = "F2ARGdapp"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
-    pass
-type f2arg = F2ARG000
-type f2arglst = fnlist[f2arg]
 #
 ########################################################################
 ########################################################################
@@ -567,8 +463,117 @@ class D2Et2ped(D2E000):
 ########################################################################
 #
 @dataclass
+class D2CLSgpt(D2CLS000):
+    arg1: d2gpt
+    ctag = "D2CLSgpt"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2CLScls(D2CLS000):
+    arg1: d2gpt
+    arg2: d2exp
+    ctag = "D2CLScls"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2GPTpat(D2GPT000):
+    arg1: d2pat
+    ctag = "D2GPTpat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2GPTgua(D2GPT000):
+    arg1: d2pat
+    arg2: d2gualst
+    ctag = "D2GPTgua"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2GUAexp(D2GUA000):
+    arg1: d2exp
+    ctag = "D2GUAexp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2GUAmat(D2GUA000):
+    arg1: d2exp
+    arg2: d2pat
+    ctag = "D2GUAmat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+########################################################################
+#
+@dataclass
+class F2ARG000(ABC):
+    lctn: loctn
+    pass
+#
+@dataclass
+class F2ARGmets(F2ARG000):
+    arg1: s2explst
+    ctag = "F2ARGmets"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class F2ARGsapp(F2ARG000):
+    arg1: s2varlst
+    arg2: s2explst
+    ctag = "F2ARGsapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class F2ARGdapp(F2ARG000):
+    arg1: sint
+    arg2: d2patlst
+    ctag = "F2ARGdapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+type f2arg = F2ARG000
+type f2arglst = fnlist[f2arg]
+#
+########################################################################
+########################################################################
+#
+type s2eff = pyobj
+#
+@dataclass
 class S2RES000(ABC):
     pass
+type s2res = S2RES000
+#
 @dataclass
 class \
 S2RESnone(S2RES000):
@@ -576,10 +581,10 @@ S2RESnone(S2RES000):
 @dataclass
 class \
 S2RESsome(S2RES000):
-    arg1: pyobj
+    arg1: s2eff
     arg2: s2exp
     pass
-type s2res = S2RES000
+#
 ########################################################################
 #
 @dataclass
@@ -698,9 +703,9 @@ class D2Cfundclst(D2C000):
     arg4: d2fundclist
     ctag = "D2Cfundclst"
     def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg4})"
+        return f"{self.ctag}({self.arg1};{self.arg3};{self.arg4})"
     def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg4!r})"
+        return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg4!r})"
 #
 ########################################################################
 @dataclass
@@ -918,6 +923,16 @@ PY_F2ARGsapp\
 ########################################################################
 #
 def \
+PY_S2RESnone()->S2RESnone:
+    return S2RESnone()
+def \
+PY_S2RESsome\
+(arg1: s2eff, arg2: s2exp)->S2RESsome:
+    return S2RESsome(arg1, arg2)
+#
+########################################################################
+#
+def \
 PY_TEQD2EXPnone()->teqd2exp:
     return TEQD2EXPnone()
 def \
@@ -995,6 +1010,8 @@ def PY_D2Cimplmnt0\
     D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 ########################################################################
 ########################################################################
+#
+type d2eclistopt = fnoptn[d2eclist]
 #
 @dataclass
 class d2parsed(ABC):
