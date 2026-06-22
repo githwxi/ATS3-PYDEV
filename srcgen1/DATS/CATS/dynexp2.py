@@ -73,122 +73,6 @@ type d2cstopt = fnoptn[d2cst]
 type d2varopt = fnoptn[d2var]
 #
 ########################################################################
-#
-def PY_d2con\
-(lctn: loctn, name: symbl, stmp: stamp)->d2con:
-    return d2con_tbox(lctn, name, stmp)
-#
-def PY_d2cst\
-(lctn: loctn, name: symbl, stmp: stamp)->d2cst:
-    return d2cst_tbox(lctn, name, stmp)
-#
-def PY_d2var\
-(lctn: loctn, name: symbl, stmp: stamp)->d2var:
-    return d2var_tbox(lctn, name, stmp)
-#
-########################################################################
-########################################################################
-#
-@dataclass
-class D2ITM000(ABC):
-    pass
-@dataclass
-class D2PTM000(ABC):
-    pass
-type d2itm = D2ITM000
-type d2ptm = D2PTM000
-type d2ptmlst = fnlist[d2ptm]
-#
-@dataclass
-class \
-D2ITMvar(D2ITM000):
-    arg1: d2var
-    pass
-@dataclass
-class \
-D2ITMcon(D2ITM000):
-    arg1: d2conlst
-    pass
-@dataclass
-class \
-D2ITMcst(D2ITM000):
-    arg1: d2cstlst
-    pass
-@dataclass
-class \
-D2ITMsym(D2ITM000):
-    arg1: symbl
-    arg2: d2ptmlst
-    pass
-#
-@dataclass
-class \
-D2PTMnone(D2PTM000):
-    arg1: pyobj
-    pass
-@dataclass
-class \
-D2PTMsome(D2PTM000):
-    arg1: sint
-    arg2: d2itm
-    pass
-#
-########################################################################
-#
-def \
-PY_D2ITMvar\
-(dvar: d2var)->D2ITMvar:
-    return D2ITMvar(dvar)
-def \
-PY_D2ITMcon\
-(d2cs: d2conlst)->D2ITMcon:
-    return D2ITMcon(d2cs)
-def \
-PY_D2ITMcst\
-(d2cs: d2cstlst)->D2ITMcst:
-    return D2ITMcst(d2cs)
-def \
-PY_D2ITMsym\
-(sym0: symbl, dpis: d2ptmlst)->D2ITMsym:
-    return D2ITMsym(sym0, dpis)
-#
-def \
-PY_D2PTMnone\
-(dqid: pyobj)->D2PTMnone:
-    return D2PTMnone(dqid)
-def \
-PY_D2PTMsome\
-(pval: sint, ditm: d2itm)->D2PTMsome:
-    return D2PTMsome(pval, ditm)
-#
-########################################################################
-########################################################################
-#
-@dataclass
-class S2RES000(ABC):
-    pass
-@dataclass
-class \
-S2RESnone(S2RES000):
-    pass
-@dataclass
-class \
-S2RESsome(S2RES000):
-    arg1: pyobj
-    arg2: s2exp
-    pass
-type s2res = S2RES000
-########################################################################
-#
-def \
-PY_S2RESnone()->S2RESnone:
-    return S2RESnone()
-def \
-PY_S2RESsome\
-(arg1: pyobj, arg2: s2exp)->S2RESsome:
-    return S2RESsome(arg1, arg2)
-#
-########################################################################
 ########################################################################
 @dataclass
 class D2P000(ABC):
@@ -247,6 +131,74 @@ class D2Ca3src(D2C000):
     def __repr__(self)->strn:
         return f"{self.ctag}(d2ecl)"
     pass
+########################################################################
+########################################################################
+@dataclass
+class D2Pcon(D2P000):
+    arg1: d2con
+    ctag = "D2Pcon"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pvar(D2P000):
+    arg1: d2var
+    ctag = "D2Pvar"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+########################################################################
+########################################################################
+#
+@dataclass
+class D2ITM000(ABC):
+    pass
+@dataclass
+class D2PTM000(ABC):
+    pass
+type d2itm = D2ITM000
+type d2ptm = D2PTM000
+type d2ptmlst = fnlist[d2ptm]
+#
+@dataclass
+class \
+D2ITMvar(D2ITM000):
+    arg1: d2var
+    pass
+@dataclass
+class \
+D2ITMcon(D2ITM000):
+    arg1: d2conlst
+    pass
+@dataclass
+class \
+D2ITMcst(D2ITM000):
+    arg1: d2cstlst
+    pass
+@dataclass
+class \
+D2ITMsym(D2ITM000):
+    arg1: symbl
+    arg2: d2ptmlst
+    pass
+#
+@dataclass
+class \
+D2PTMnone(D2PTM000):
+    arg1: pyobj
+    pass
+@dataclass
+class \
+D2PTMsome(D2PTM000):
+    arg1: sint
+    arg2: d2itm
+    pass
+#
+########################################################################
 ########################################################################
 #
 @dataclass
@@ -328,10 +280,13 @@ class D2GUAmat(D2GUA000):
     pass
 #
 ########################################################################
+########################################################################
+#
 @dataclass
 class F2ARG000(ABC):
     lctn: loctn
     pass
+#
 @dataclass
 class F2ARGmets(F2ARG000):
     arg1: s2explst
@@ -341,6 +296,7 @@ class F2ARGmets(F2ARG000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
+#
 @dataclass
 class F2ARGsapp(F2ARG000):
     arg1: s2varlst
@@ -351,6 +307,7 @@ class F2ARGsapp(F2ARG000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
 @dataclass
 class F2ARGdapp(F2ARG000):
     arg1: sint
@@ -363,120 +320,7 @@ class F2ARGdapp(F2ARG000):
     pass
 type f2arg = F2ARG000
 type f2arglst = fnlist[f2arg]
-########################################################################
 #
-@dataclass
-class TEQD2EXP000(ABC):
-    pass
-@dataclass
-class \
-TEQD2EXPnone(TEQD2EXP000):
-    pass
-@dataclass
-class \
-TEQD2EXPsome(TEQD2EXP000):
-    arg1: token
-    arg2: d2exp
-    pass
-type teqd2exp = TEQD2EXP000
-#
-########################################################################
-#
-@dataclass
-class WTHS2EXP000(ABC):
-    pass
-@dataclass
-class \
-WTHS2EXPnone(WTHS2EXP000):
-    pass
-@dataclass
-class \
-WTHS2EXPsome(WTHS2EXP000):
-    arg1: token
-    arg2: s2exp
-    pass
-type wths2exp = WTHS2EXP000
-#
-########################################################################
-#
-@dataclass
-class d2valdcl_tbox(ABC):
-    lctn: loctn
-    dpat: d2pat
-    tdxp: teqd2exp
-    wsxp: wths2exp
-    def __str__(self)->strn:
-        return f"D2VALDCL({self.dpat};{self.tdxp};{self.wsxp})"
-    def __repr__(self)->strn:
-        return f"D2VALDCL({self.dpat!r};{self.tdxp!r};{self.wsxp!r})"
-    pass
-@dataclass
-class d2vardcl_tbox(ABC):
-    lctn: loctn
-    dpid: d2var
-    vpid: d2varopt
-    sres: s2expopt
-    tdxp: teqd2exp
-    def __str__(self)->strn:
-        return f"D2VARDCL({self.dpid};{self.vpid};{self.sres};{self.tdxp})"
-    def __repr__(self)->strn:
-        return f"D2VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.tdxp!r})"
-    pass
-@dataclass
-class d2fundcl_tbox(ABC):
-    lctn: loctn
-    dpid: d2var
-    farg: pyobj
-    sres: s2res
-    tdxp: teqd2exp
-    wsxp: wths2exp
-    def __str__(self)->strn:
-        return f"D2FUNDCL({self.dpid};{self.farg};{self.sres};{self.tdxp};{self.wsxp})"
-    def __repr__(self)->strn:
-        return f"D2FUNDCL({self.dpid!r};{self.farg!r};{self.sres!r};{self.tdxp!r};{self.wsxp!r})"
-    pass
-#
-type d2valdcl = d2valdcl_tbox
-type d2vardcl = d2vardcl_tbox
-type d2fundcl = d2fundcl_tbox
-#
-type d2valdclist = fnlist[d2valdcl]
-type d2vardclist = fnlist[d2vardcl]
-type d2fundclist = fnlist[d2fundcl]
-#
-########################################################################
-########################################################################
-def PY_D2Pa3src\
-(lctn: loctn, arg1: pyobj)->D2Pa3src:
-    return D2Pa3src(lctn, arg1)
-########################################################################
-def PY_D2Ea3src\
-(lctn: loctn, arg1: pyobj)->D2Ea3src:
-    return D2Ea3src(lctn, arg1)
-########################################################################
-def PY_D2Ca3src\
-(lctn: loctn, arg1: pyobj)->D2Ca3src:
-    return D2Ca3src(lctn, arg1)
-########################################################################
-########################################################################
-@dataclass
-class D2Pcon(D2P000):
-    arg1: d2con
-    ctag = "D2Pcon"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
-    pass
-@dataclass
-class D2Pvar(D2P000):
-    arg1: d2var
-    ctag = "D2Pvar"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
-    pass
 ########################################################################
 ########################################################################
 #
@@ -720,6 +564,105 @@ class D2Et2ped(D2E000):
     pass
 #
 ########################################################################
+########################################################################
+#
+@dataclass
+class S2RES000(ABC):
+    pass
+@dataclass
+class \
+S2RESnone(S2RES000):
+    pass
+@dataclass
+class \
+S2RESsome(S2RES000):
+    arg1: pyobj
+    arg2: s2exp
+    pass
+type s2res = S2RES000
+########################################################################
+#
+@dataclass
+class TEQD2EXP000(ABC):
+    pass
+@dataclass
+class \
+TEQD2EXPnone(TEQD2EXP000):
+    pass
+@dataclass
+class \
+TEQD2EXPsome(TEQD2EXP000):
+    arg1: token
+    arg2: d2exp
+    pass
+type teqd2exp = TEQD2EXP000
+#
+########################################################################
+#
+@dataclass
+class WTHS2EXP000(ABC):
+    pass
+@dataclass
+class \
+WTHS2EXPnone(WTHS2EXP000):
+    pass
+@dataclass
+class \
+WTHS2EXPsome(WTHS2EXP000):
+    arg1: token
+    arg2: s2exp
+    pass
+type wths2exp = WTHS2EXP000
+#
+########################################################################
+#
+@dataclass
+class d2valdcl_tbox(ABC):
+    lctn: loctn
+    dpat: d2pat
+    tdxp: teqd2exp
+    wsxp: wths2exp
+    def __str__(self)->strn:
+        return f"D2VALDCL({self.dpat};{self.tdxp};{self.wsxp})"
+    def __repr__(self)->strn:
+        return f"D2VALDCL({self.dpat!r};{self.tdxp!r};{self.wsxp!r})"
+    pass
+@dataclass
+class d2vardcl_tbox(ABC):
+    lctn: loctn
+    dpid: d2var
+    vpid: d2varopt
+    sres: s2expopt
+    tdxp: teqd2exp
+    def __str__(self)->strn:
+        return f"D2VARDCL({self.dpid};{self.vpid};{self.sres};{self.tdxp})"
+    def __repr__(self)->strn:
+        return f"D2VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.tdxp!r})"
+    pass
+@dataclass
+class d2fundcl_tbox(ABC):
+    lctn: loctn
+    dpid: d2var
+    farg: pyobj
+    sres: s2res
+    tdxp: teqd2exp
+    wsxp: wths2exp
+    def __str__(self)->strn:
+        return f"D2FUNDCL({self.dpid};{self.farg};{self.sres};{self.tdxp};{self.wsxp})"
+    def __repr__(self)->strn:
+        return f"D2FUNDCL({self.dpid!r};{self.farg!r};{self.sres!r};{self.tdxp!r};{self.wsxp!r})"
+    pass
+#
+type d2valdcl = d2valdcl_tbox
+type d2vardcl = d2vardcl_tbox
+type d2fundcl = d2fundcl_tbox
+#
+type d2valdclist = fnlist[d2valdcl]
+type d2vardclist = fnlist[d2vardcl]
+type d2fundclist = fnlist[d2fundcl]
+#
+########################################################################
+########################################################################
 @dataclass
 class D2Clocal0(D2C000):
     arg1: d2eclist
@@ -774,6 +717,34 @@ class D2Cimplmnt0(D2C000):
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg8})"
     pass
+########################################################################
+########################################################################
+def PY_D2Pa3src\
+(lctn: loctn, arg1: pyobj)->D2Pa3src:
+    return D2Pa3src(lctn, arg1)
+########################################################################
+def PY_D2Ea3src\
+(lctn: loctn, arg1: pyobj)->D2Ea3src:
+    return D2Ea3src(lctn, arg1)
+########################################################################
+def PY_D2Ca3src\
+(lctn: loctn, arg1: pyobj)->D2Ca3src:
+    return D2Ca3src(lctn, arg1)
+########################################################################
+########################################################################
+#
+def PY_d2con\
+(lctn: loctn, name: symbl, stmp: stamp)->d2con:
+    return d2con_tbox(lctn, name, stmp)
+#
+def PY_d2cst\
+(lctn: loctn, name: symbl, stmp: stamp)->d2cst:
+    return d2cst_tbox(lctn, name, stmp)
+#
+def PY_d2var\
+(lctn: loctn, name: symbl, stmp: stamp)->d2var:
+    return d2var_tbox(lctn, name, stmp)
+#
 ########################################################################
 ########################################################################
 #
@@ -867,34 +838,33 @@ def PY_D2Et2ped\
     return D2Et2ped(loc0, arg1, arg2)
 ########################################################################
 ########################################################################
-def PY_D2Clocal0\
-(loc0: loctn, \
- arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
-    return D2Clocal0(loc0, arg1, arg2)
-########################################################################
 #
-def PY_D2Cvaldclst\
-(loc0: loctn, \
- arg1: token, arg2: d2valdclist)->D2Cvaldclst:
-    return D2Cvaldclst(loc0, arg1, arg2)
-def PY_D2Cvardclst\
-(loc0: loctn, \
- arg1: token, arg2: d2vardclist)->D2Cvardclst:
-    return D2Cvardclst(loc0, arg1, arg2)
+def \
+PY_D2ITMvar\
+(dvar: d2var)->D2ITMvar:
+    return D2ITMvar(dvar)
+def \
+PY_D2ITMcon\
+(d2cs: d2conlst)->D2ITMcon:
+    return D2ITMcon(d2cs)
+def \
+PY_D2ITMcst\
+(d2cs: d2cstlst)->D2ITMcst:
+    return D2ITMcst(d2cs)
+def \
+PY_D2ITMsym\
+(sym0: symbl, dpis: d2ptmlst)->D2ITMsym:
+    return D2ITMsym(sym0, dpis)
 #
-def PY_D2Cfundclst\
-(loc0: loctn, \
- arg1: token, arg2: pyobj, \
- arg3: d2cstlst, arg4: d2fundclist)->D2Cfundclst: 
-    return D2Cfundclst(loc0, arg1, arg2, arg3, arg4) 
+def \
+PY_D2PTMnone\
+(dqid: pyobj)->D2PTMnone:
+    return D2PTMnone(dqid)
+def \
+PY_D2PTMsome\
+(pval: sint, ditm: d2itm)->D2PTMsome:
+    return D2PTMsome(pval, ditm)
 #
-########################################################################
-def PY_D2Cimplmnt0\
-(loc0: loctn, \
- arg1: token, arg2: pyobj, arg3: pyobj, arg4: pyobj, \
- arg5: pyobj, arg6: pyobj, arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
-    return \
-    D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 ########################################################################
 ########################################################################
 #
@@ -945,6 +915,7 @@ PY_F2ARGsapp\
     return F2ARGsapp(lctn, arg1, arg2)
 #
 ########################################################################
+########################################################################
 #
 def \
 PY_TEQD2EXPnone()->teqd2exp:
@@ -964,6 +935,7 @@ PY_WTHS2EXPsome\
 (arg1: token, arg2: s2exp)->wths2exp:
     return WTHS2EXPsome(arg1, arg2)
 #
+########################################################################
 ########################################################################
 #
 def \
@@ -989,6 +961,39 @@ PY_d2fundcl_make_args\
  tdxp: teqd2exp, wsxp: wths2exp)->d2fundcl:
     return d2fundcl_tbox(lctn, dpid, farg, sres, tdxp, wsxp)
 #
+########################################################################
+########################################################################
+#
+def PY_D2Clocal0\
+(loc0: loctn, \
+ arg1: d2eclist, arg2: d2eclist)->D2Clocal0:
+    return D2Clocal0(loc0, arg1, arg2)
+#
+########################################################################
+#
+def PY_D2Cvaldclst\
+(loc0: loctn, \
+ arg1: token, arg2: d2valdclist)->D2Cvaldclst:
+    return D2Cvaldclst(loc0, arg1, arg2)
+def PY_D2Cvardclst\
+(loc0: loctn, \
+ arg1: token, arg2: d2vardclist)->D2Cvardclst:
+    return D2Cvardclst(loc0, arg1, arg2)
+#
+def PY_D2Cfundclst\
+(loc0: loctn, \
+ arg1: token, arg2: pyobj, \
+ arg3: d2cstlst, arg4: d2fundclist)->D2Cfundclst: 
+    return D2Cfundclst(loc0, arg1, arg2, arg3, arg4) 
+#
+########################################################################
+def PY_D2Cimplmnt0\
+(loc0: loctn, \
+ arg1: token, arg2: pyobj, arg3: pyobj, arg4: pyobj, \
+ arg5: pyobj, arg6: pyobj, arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
+    return \
+    D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+########################################################################
 ########################################################################
 #
 @dataclass

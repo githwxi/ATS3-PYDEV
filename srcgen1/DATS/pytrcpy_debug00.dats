@@ -642,6 +642,270 @@ end//(*let*)//end-of-[d2ecl_fprint(d2cl,out0)]
 (* ****** ****** *)
 //
 #implfun
+d3pat_fprint
+(d3p0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+d3p0.node() of
+//
+(* ****** ****** *)
+//
+|D3Pany _ => prints("D3Pany(...)")
+|D3Pvar _ => prints("D3Pvar(...)")
+//
+(* ****** ****** *)
+//
+|D3Pint _ => prints("D3Pint(...)")
+|D3Pbtf _ => prints("D3Pbtf(...)")
+|D3Pchr _ => prints("D3Pchr(...)")
+|D3Pflt _ => prints("D3Pflt(...)")
+|D3Pstr _ => prints("D3Pstr(...)")
+//
+(* ****** ****** *)
+//
+|D3Pcon _ => prints("D3Pcon(...)")
+//
+(* ****** ****** *)
+//
+|D3Pbang _ => prints("D3Pbang(...)")
+|D3Pflat _ => prints("D3Pflat(...)")
+|D3Pfree _ => prints("D3Pfree(...)")
+//
+(* ****** ****** *)
+//
+|D3Psapp _ => prints("D3Psapp(...)")
+|D3Psapq _ => prints("D3Psapq(...)")
+//
+(* ****** ****** *)
+//
+|D3Ptapq _ => prints("D3Ptapq(...)")
+//
+(* ****** ****** *)
+//
+|D3Pdap1 _ => prints("D3Pdap1(...)")
+|D3Pdapp _ => prints("D3Pdapp(...)")
+//
+(* ****** ****** *)
+//
+|D3Prfpt _ => prints("D3Prfpt(...)")
+//
+(* ****** ****** *)
+//
+|D3Ptup0 _ => prints("D3Ptup0(...)")
+|D3Ptup1 _ => prints("D3Ptup1(...)")
+|D3Prcd2 _ => prints("D3Prcd2(...)")
+//
+(* ****** ****** *)
+//
+|D3Pargtp _ => prints("D3Pargtp(...)")
+|D3Pannot _ => prints("D3Pannot(...)")
+//
+(* ****** ****** *)
+//
+|D3Pt2pck _ => prints("D3Pt2pck(...)")
+//
+(* ****** ****** *)
+//
+|
+D3Pnone0((*nil*)) => prints("D3Pnone0(...)")
+|
+D3Pnone1(  d2p  ) => prints("D3Pnone1(...)")
+|
+D3Pnone2(  d3p  ) => prints("D3Pnone2(...)")
+//
+(* ****** ****** *)
+//
+|D3Perrck(lvl,d3p) => prints("D3Perrck(...)")
+//
+(* ****** ****** *)
+//
+end//(*let*)//end-of-[d3pat_fprint(d3p0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3exp_fprint
+(d3e0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+d3e0.node() of
+//
+(* ****** ****** *)
+//
+|D3Eint _ => prints("D3Eint(...)")
+|D3Ebtf _ => prints("D3Ebtf(...)")
+|D3Echr _ => prints("D3Echr(...)")
+|D3Eflt _ => prints("D3Eflt(...)")
+|D3Estr _ => prints("D3Estr(...)")
+//
+(* ****** ****** *)
+//
+|D3Ei00 _ => prints("D3Ei00(...)")
+|D3Eb00 _ => prints("D3Eb00(...)")
+|D3Ec00 _ => prints("D3Ec00(...)")
+|D3Ef00 _ => prints("D3Ef00(...)")
+|D3Es00 _ => prints("D3Es00(...)")
+//
+(* ****** ****** *)
+//
+|D3Etop _ => prints("D3Etop(...)")
+//
+(* ****** ****** *)
+//
+|D3Evar _ => prints("D3Evar(...)")
+//
+(* ****** ****** *)
+//
+|D3Econ _ => prints("D3Econ(...)")
+|D3Ecst _ => prints("D3Ecst(...)")
+//
+(* ****** ****** *)
+//
+|D3Etimp _ => prints("D3Etimp(...)")
+|D3Etimq _ => prints("D3Etimq(...)")
+//
+(* ****** ****** *)
+//
+|D3Esapp _ => prints("D3Esapp(...)")
+|D3Esapq _ => prints("D3Esapq(...)")
+//
+(* ****** ****** *)
+//
+|D3Etapp _ => prints("D3Etapp(...)")
+|D3Etapq _ => prints("D3Etapq(...)")
+//
+(* ****** ****** *)
+//
+|D3Edap0 _ => prints("D3Edap0(...)")
+|D3Edapp _ => prints("D3Edapp(...)")
+//
+(* ****** ****** *)
+//
+|D3Epcon _ => prints("D3Epcon(...)")
+|D3Eproj _ => prints("D3Eproj(...)")
+//
+(* ****** ****** *)
+//
+|D3Elet0 _ => prints("D3Elet0(...)")
+//
+(* ****** ****** *)
+//
+|D3Eift0 _ => prints("D3Eift0(...)")
+|D3Ecas0 _ => prints("D3Ecas0(...)")
+//
+(* ****** ****** *)
+//
+|D3Eseqn _ => prints("D3Eseqn(...)")
+//
+(* ****** ****** *)
+//
+|D3Etup0 _ => prints("D3Etup0(...)")
+|D3Etup1 _ => prints("D3Etup1(...)")
+|D3Ercd2 _ => prints("D3Ercd2(...)")
+//
+(* ****** ****** *)
+//
+|D3Elam0 _ => prints("D3Elam0(...)")
+|D3Efix0 _ => prints("D3Efix0(...)")
+//
+(* ****** ****** *)
+//
+|D3Etry0 _ => prints("D3Etry0(...)")
+//
+(* ****** ****** *)
+//
+|D3Eaddr _ => prints("D3Eaddr(...)")
+|D3Eview _ => prints("D3Eview(...)")
+|D3Elval _ => prints("D3Elval(...)")
+//
+|D3Eflat _ => prints("D3Eflat(...)")
+//
+(* ****** ****** *)
+//
+|D3Eeval _ => prints("D3Eeval(...)")
+//
+(* ****** ****** *)
+//
+|D3Efold _ => prints("D3Efold(...)")
+|D3Efree _ => prints("D3Efree(...)")
+//
+(* ****** ****** *)
+//
+|D3Edp2tr _ => prints("D3Edp2tr(...)")
+//
+|D3Edl0az _ => prints("D3Edl0az(...)")
+|D3Edl1az _ => prints("D3Edl1az(...)")
+|D3Edelaz _ => prints("D3Edelaz(...)")
+//
+(* ****** ****** *)
+//
+|D3Ewhere _ => prints("D3Ewhere(...)")
+//
+(* ****** ****** *)
+//
+|D3Eassgn _ => prints("D3Eassgn(...)")
+|D3Exazgn _ => prints("D3Exazgn(...)")
+|D3Exchng _ => prints("D3Exchng(...)")
+//
+(* ****** ****** *)
+//
+|D3Eraise _ => prints("D3Eraise(...)")
+//
+(* ****** ****** *)
+//
+|D3El0azy _ => prints("D3El0azy(...)")
+|D3El1azy _ => prints("D3El1azy(...)")
+|D3Eelazy _ => prints("D3Eelazy(...)")
+//
+(* ****** ****** *)
+//
+|D3Eannot _ => prints("D3Eannot(...)")
+//
+(* ****** ****** *)
+//
+|D3Elabck _ => prints("D3Elabck(...)")
+|D3Et2pck _ => prints("D3Et2pck(...)")
+|D3Et2ped _ => prints("D3Et2ped(...)")
+//
+(* ****** ****** *)
+//
+|D3Eexists _ => prints("D3Eexists(...)")
+//
+(* ****** ****** *)
+//
+|D3Eextnam _ => prints("D3Eextnam(...)")
+|D3Esynext _ => prints("D3Esynext(...)")
+//
+(* ****** ****** *)
+//
+|
+D3Enone0((*nil*)) => prints("D3Enone0(...)")
+|
+D3Enone1(  d2e  ) => prints("D3Enone1(...)")
+|
+D3Enone2(  d3e  ) => prints("D3Enone2(...)")
+//
+(* ****** ****** *)
+//
+|D3Eerrck(lvl,d3e) => prints("D3Eerrck(...)")
+//
+(* ****** ****** *)
+//
+end//(*let*)//end-of-[d3exp_fprint(d3e0,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3ecl_fprint
 (dcl0, out0) =
 let

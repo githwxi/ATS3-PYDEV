@@ -78,6 +78,8 @@ xassets/ATS3/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 //
+#abstbox PY$teqd3exp // p0tr
+//
 #abstbox PY$d3valdcl // p0tr
 #abstbox PY$d3vardcl // p0tr
 #abstbox PY$d3fundcl // p0tr
@@ -252,6 +254,10 @@ fun
 d3eclist_pytrcpy(dcls: d3eclist): PY$d3eclist
 //
 (* ****** ****** *)
+//
+fun
+teqd3exp_pytrcpy(tdxp: teqd3exp): PY$teqd3exp
+//
 (* ****** ****** *)
 //
 fun

@@ -76,6 +76,8 @@ xassets/ATS3/SATS/dynexp3.sats"
 #staload
 "./../SATS/statyp2_pytrcpy.sats"
 #staload
+"./../SATS/dynexp2_pytrcpy.sats"
+#staload
 "./../SATS/dynexp3_pytrcpy.sats"
 //
 (* ****** ****** *)
@@ -141,6 +143,57 @@ PY_D3Estr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun
+PY_D3Clocal0
+( loc0: PY$loctn
+, head: PY$d3eclist
+, body: PY$d3eclist): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Cvaldclst
+( loc0: PY$loctn
+, tknd: PY$token
+, d3vs:
+(
+   PY$d3valdclist )): PY$d3ecl = $extnam()
+#extern
+fun
+PY_D3Cvardclst
+( loc0: PY$loctn
+, tknd: PY$token
+, d3vs:
+(
+   PY$d3vardclist )): PY$d3ecl = $extnam()
+//
+#extern
+fun
+PY_D3Cfundclst
+( loc0: PY$loctn
+, tknd: PY$token
+, t2qs: t2qaglst
+, d2cs: d2cstlst
+, d3fs:
+(
+   PY$d3fundclist )): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_d3valdcl_make_args
+( lctn: PY$loctn
+, dpat: PY$d3pat
+, tdxp: PY$teqd3exp
+, wsxp: PY$wths2exp): PY$d3valdcl = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 g_print<d3pat>(dpat) =
 d3pat_fprint(dpat, g_print$out<>())
@@ -165,8 +218,13 @@ d3pat_pytrcpy
 (
 case+
 dpat.node() of
-|
-_(*otherwise*) => PY_D3Pa3src(loc0, dpat)
+//
+(* ****** ****** *)
+//
+|_(*otherwise*) => PY_D3Pa3src(loc0, dpat)
+//
+(* ****** ****** *)
+//
 ) where
 {
 //
@@ -235,8 +293,7 @@ end//let//endof(D3Estr)
 //
 (* ****** ****** *)
 //
-|
-_(*otherwise*) => PY_D3Ea3src(loc0, dexp)
+|_(*otherwise*) => PY_D3Ea3src(loc0, dexp)
 //
 (* ****** ****** *)
 //
@@ -263,8 +320,48 @@ d3ecl_pytrcpy
 (
 case+
 d3cl.node() of
-|
-_(*otherwise*) => PY_D3Ca3src(loc0, d3cl)
+//
+(* ****** ****** *)
+//
+|D3Clocal0
+(head, body) =>
+(
+PY_D3Clocal0
+(loc0, head, body))
+where
+{
+val head =
+(
+  d3eclist_pytrcpy(head))
+val body =
+(
+  d3eclist_pytrcpy(body)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Cvaldclst
+(tknd, d3vs) =>
+(
+PY_D3Cvaldclst
+(loc0, tknd, d3vs))
+where
+{
+val tknd =
+(
+  token_pytrcpy(tknd))
+val d3vs =
+(
+  d3valdclist_pytrcpy(d3vs))
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|_(*otherwise*) => PY_D3Ca3src(loc0, d3cl)
+//
+(* ****** ****** *)
+//
 ) where
 {
 //
@@ -324,6 +421,76 @@ d3eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d3ecl_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+teqd3exp_pytrcpy
+(   tdxp   ) =
+(
+case+ tdxp of
+|
+TEQD3EXPnone
+( (*void*) ) =>
+PY_TEQD3EXPnone((*void*))
+|
+TEQD3EXPsome
+(teq0, dexp) =>
+let
+val teq0 =
+token_pytrcpy(teq0)
+val dexp =
+d3exp_pytrcpy(dexp)
+in//let
+  PY_TEQD3EXPsome(teq0, dexp) end
+) where
+{
+#extern
+fun
+PY_TEQD3EXPnone
+(   (*nil*)   ): PY$teqd3exp = $extnam()
+#extern
+fun
+PY_TEQD3EXPsome
+(
+teq0: PY$token,
+dexp: PY$d3exp): PY$teqd3exp = $extnam()
+}(*where*)//end-of-[teqd3exp_pytrcpy(tdxp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdcl_pytrcpy
+(   dval   ) =
+let
+//
+val loc0 =
+loctn_pytrcpy
+(
+d3valdcl_get_lctn(dval))
+//
+val dpat =
+d3pat_pytrcpy
+(
+d3valdcl_get_dpat(dval))
+//
+val tdxp =
+teqd3exp_pytrcpy
+(
+d3valdcl_get_tdxp(dval))
+//
+val wsxp =
+wths2exp_pytrcpy
+(
+d3valdcl_get_wsxp(dval))
+//
+in//let
+(
+PY_d3valdcl_make_args(
+  loc0, dpat, tdxp(*dopt*), wsxp(*wtyp*)))
+end(*let*)//end-of-[d3valdcl_pytrcpy(dval)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

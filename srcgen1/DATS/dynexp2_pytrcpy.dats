@@ -289,6 +289,7 @@ PY_D2Et2ped
 , t2p2: PY$s2typ   ): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
@@ -1224,6 +1225,8 @@ d2ecl_pytrcpy
 (
 case+
 d2cl.node() of
+//
+(* ****** ****** *)
 //
 |D2Clocal0
 (head, body) =>
