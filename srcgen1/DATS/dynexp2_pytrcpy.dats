@@ -1683,8 +1683,8 @@ d2eclistopt_pytrcpy(parsed))
 in//let
 //
 PY_d2parsed
-( stadyn, nerror,
-  source, t1penv, t2penv, parsed)
+( stadyn, nerror
+, source, t1penv, t2penv, parsed)
 //
 end where
 {

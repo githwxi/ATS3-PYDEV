@@ -45,6 +45,12 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 //
 #staload
+"./../SATS/ats3_pydev.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload
 LOC = "./../../\
 xassets/ATS3/SATS/locinfo.sats"
 #staload
@@ -67,6 +73,8 @@ xassets/ATS3/SATS/dynexp3.sats"
 #abstbox PY$d3gpt // p0tr
 #abstbox PY$d3cls // p0tr
 #abstbox PY$f3arg // p0tr
+//
+#abstbox PY$d3ecl // p0tr
 //
 (* ****** ****** *)
 //
@@ -93,7 +101,7 @@ xassets/ATS3/SATS/dynexp3.sats"
 #typedef d3gua = $D3E.d3gua
 #typedef d3gpt = $D3E.d3gpt
 #typedef d3cls = $D3E.d3cls
-#typedef f3arg = $D3E.f2arg
+#typedef f3arg = $D3E.f3arg
 //
 #typedef d3ecl = $D3E.d3ecl
 //
