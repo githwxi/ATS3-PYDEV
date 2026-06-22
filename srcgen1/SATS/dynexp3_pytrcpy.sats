@@ -177,6 +177,9 @@ d3gpt_pytrcpy(dgpt: d3gpt): PY$d3gpt
 fun
 d3cls_pytrcpy(dcls: d3cls): PY$d3cls
 //
+fun
+f3arg_pytrcpy(farg: f3arg): PY$f3arg
+//
 (* ****** ****** *)
 //
 fun
@@ -217,6 +220,36 @@ PY$d3fundclist = PY$list(PY$d3fundcl)
 //
 #typedef
 PY$d3eclistopt = PY$optn(PY$d3eclist)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+d3patlst_pytrcpy(d3ps: d3patlst): PY$d3patlst
+//
+(* ****** ****** *)
+//
+fun
+d3explst_pytrcpy(d3es: d3explst): PY$d3explst
+fun
+d3expopt_pytrcpy(dopt: d3expopt): PY$d3expopt
+//
+(* ****** ****** *)
+//
+fun
+d3gualst_pytrcpy(d3gs: d3gualst): PY$d3gualst
+fun
+d3clslst_pytrcpy(dcls: d3clslst): PY$d3clslst
+//
+(* ****** ****** *)
+//
+fun
+f3arglst_pytrcpy(f3as: f3arglst): PY$f3arglst
+//
+(* ****** ****** *)
+//
+fun
+d3eclist_pytrcpy(dcls: d3eclist): PY$d3eclist
 //
 (* ****** ****** *)
 (* ****** ****** *)

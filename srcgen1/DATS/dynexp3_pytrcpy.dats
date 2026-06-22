@@ -49,16 +49,22 @@ Sun Jun 14 02:25:56 PM EDT 2026
 (* ****** ****** *)
 //
 #staload "./../../\
+xassets/ATS3/SATS/xstamp0.sats"
+#staload "./../../\
 xassets/ATS3/SATS/xsymbol.sats"
 #staload "./../../\
 xassets/ATS3/SATS/locinfo.sats"
 #staload "./../../\
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
+xassets/ATS3/SATS/statyp2.sats"
+#staload "./../../\
 xassets/ATS3/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 //
+#staload
+"./../SATS/ats3_pydev.sats"
 #staload
 "./../SATS/xstamp0_pytrcpy.sats"
 #staload
@@ -67,6 +73,8 @@ xassets/ATS3/SATS/dynexp3.sats"
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
 "./../SATS/lexing0_pytrcpy.sats"
+#staload
+"./../SATS/statyp2_pytrcpy.sats"
 #staload
 "./../SATS/dynexp3_pytrcpy.sats"
 //
@@ -164,8 +172,56 @@ d3exp_pytrcpy
 (
 case+
 dexp.node() of
+//
+(* ****** ****** *)
+//
+|D3Eint
+(   tint   ) =>
+let
+val tint =
+token_pytrcpy(tint)
+in//let
+(
+PY_D3Eint(loc0, tint))
+end//let//endof(D3Eint)
+//
+|D3Ebtf
+(   sbtf   ) =>
+let
+val sbtf =
+symbl_pytrcpy(sbtf)
+in//let
+(
+PY_D3Ebtf(loc0, sbtf))
+end//let//endof(D3Ebtf)
+//
+|D3Echr
+(   tchr   ) =>
+let
+val tchr =
+token_pytrcpy(tchr)
+in//let
+(
+PY_D3Echr(loc0, tchr))
+end//let//endof(D3Echr)
+//
+|D3Estr
+(   tstr   ) =>
+let
+val tstr =
+token_pytrcpy(tstr)
+in//let
+(
+PY_D3Estr(loc0, tstr))
+end//let//endof(D3Estr)
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => PY_D3Ea3src(loc0, dexp)
+//
+(* ****** ****** *)
+//
 ) where
 {
 //
@@ -205,6 +261,60 @@ val (  ) =
 printsln("d3ecl_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d3ecl_pytrcpy(d3cl)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3explst_pytrcpy
+(   d3es   ) =
+(
+list_map$f1un_PY$list(d3es, d3exp_pytrcpy))
+//
+#implfun
+d3expopt_pytrcpy
+(   dopt   ) =
+(
+optn_map$f1un_PY$optn(dopt, d3exp_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+d3gualst_pytrcpy
+(   d3gs   ) =
+(
+list_map$f1un_PY$list(d3gs, d3gua_pytrcpy))
+//
+#implfun
+d3clslst_pytrcpy
+(   dcls   ) =
+(
+list_map$f1un_PY$list(dcls, d3cls_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+f3arglst_pytrcpy
+(   f3as   ) =
+(
+list_map$f1un_PY$list(f3as, f3arg_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+d3eclist_pytrcpy
+(   dcls   ) =
+(
+list_map$f1un_PY$list(dcls, d3ecl_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3eclistopt_pytrcpy
+(   dopt   ) =
+(
+optn_map$f1un_PY$optn(dopt, d3eclist_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)

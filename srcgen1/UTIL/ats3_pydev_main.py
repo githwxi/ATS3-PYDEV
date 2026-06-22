@@ -25,11 +25,15 @@ if __name__ == "__main__":
         for xarg in argv: work(xarg)
     if len(argv) >= 3:
         fpth = sys.argv[2]
-        d2parsed = \
-        PYDEV_xatsopt_args_fildats_d2parsed(farg, fpth)
-        PY_d2parsed = PYDEV_d2parsed_pytrcpy(d2parsed)
-        print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
-#        
+#       d2parsed = \
+#       PYDEV_xatsopt_args_fildats_d2parsed(farg, fpth)
+#       PY_d2parsed = PYDEV_d2parsed_pytrcpy(d2parsed)
+#       print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
+        d3parsed = \
+        PYDEV_xatsopt_args_fildats_d3parsed(farg, fpth)
+        PY_d3parsed = PYDEV_d3parsed_pytrcpy(d3parsed)
+        print("ats3_pydev: PY_d3parsed =", PY_d3parsed)        
+#
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/UTIL/ats3_pydev_main.py]

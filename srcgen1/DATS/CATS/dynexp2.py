@@ -21,8 +21,8 @@ from DATS.CATS.a3pydev import *
 from DATS.CATS.xstamp0 import *
 from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
-from DATS.CATS.dynexp1 import *
 from DATS.CATS.lexing0 import *
+from DATS.CATS.dynexp1 import *
 from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
 ########################################################################
