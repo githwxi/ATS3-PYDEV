@@ -141,6 +141,24 @@ PY_D3Estr
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+g_print<d3pat>(dpat) =
+d3pat_fprint(dpat, g_print$out<>())
+#impltmp
+g_print<d3exp>(dexp) =
+d3exp_fprint(dexp, g_print$out<>())
+//
+#impltmp
+g_print<f3arg>(farg) =
+f3arg_fprint(farg, g_print$out<>())
+//
+#impltmp
+g_print<d3ecl>(d3cl) =
+d3ecl_fprint(d3cl, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 d3pat_pytrcpy
 (   dpat   ) =
@@ -306,6 +324,27 @@ d3eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d3ecl_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3valdclist_pytrcpy
+(   d3vs   ) =
+(
+list_map$f1un_PY$list(d3vs, d3valdcl_pytrcpy))
+//
+#implfun
+d3vardclist_pytrcpy
+(   d3vs   ) =
+(
+list_map$f1un_PY$list(d3vs, d3vardcl_pytrcpy))
+//
+#implfun
+d3fundclist_pytrcpy
+(   d3fs   ) =
+(
+list_map$f1un_PY$list(d3fs, d3fundcl_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)

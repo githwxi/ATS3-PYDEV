@@ -60,6 +60,8 @@ xassets/ATS3/SATS/staexp2.sats"
 xassets/ATS3/SATS/statyp2.sats"
 #staload "./../../\
 xassets/ATS3/SATS/dynexp2.sats"
+#staload "./../../\
+xassets/ATS3/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 //
@@ -73,6 +75,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 "./../SATS/statyp2_pytrcpy.sats"
 #staload
 "./../SATS/dynexp2_pytrcpy.sats"
+#staload
+"./../SATS/dynexp3_pytrcpy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -540,9 +544,9 @@ in//let
 case+
 farg.node() of
 //
-|F2ARGdapp _ => prints("|F2ARGdapp(...)")
-|F2ARGsapp _ => prints("|F2ARGsapp(...)")
-|F2ARGmets _ => prints("|F2ARGmets(...)")
+|F2ARGdapp _ => prints("F2ARGdapp(...)")
+|F2ARGsapp _ => prints("F2ARGsapp(...)")
+|F2ARGmets _ => prints("F2ARGmets(...)")
 //
 end(*let*)//end-of-[f2arg_fprint(farg,out0)]
 //
@@ -633,6 +637,85 @@ D2Cerrck(lvl,dcl) => prints("D2Cerrck(...)")
 (* ****** ****** *)
 //
 end//(*let*)//end-of-[d2ecl_fprint(d2cl,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3ecl_fprint
+(dcl0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+dcl0.node() of
+//
+(* ****** ****** *)
+//
+|D3Cd2ecl _ => prints("D3Cd2ecl(...)")
+//
+(* ****** ****** *)
+//
+|D3Cstatic _ => prints("D3Cstatic(...)")
+|D3Cextern _ => prints("D3Cextern(...)")
+//
+(* ****** ****** *)
+//
+|D3Ctmpsub _ => prints("D3Ctmpsub(...)")
+//
+(* ****** ****** *)
+//
+|D3Cdclst0 _ => prints("D3Cdclst0(...)")
+|D3Clocal0 _ => prints("D3Clocal0(...)")
+//
+(* ****** ****** *)
+//
+|D3Cabsopen _ => prints("D3Cabsopen(...)")
+|D3Cabsimpl _ => prints("D3Cabsimpl(...)")
+//
+(* ****** ****** *)
+//
+|D3Cinclude _ => prints("D3Cinclude(...)")
+|D3Cstaload _ => prints("D3Cstaload(...)")
+//
+(* ****** ****** *)
+//
+|D3Cdyninit _ => prints("D3Cdyninit(...)")
+|D3Cextcode _ => prints("D3Cextcode(...)")
+//
+(* ****** ****** *)
+//
+|D3Cvaldclst _ => prints("D3Cvaldclst(...)")
+|D3Cvardclst _ => prints("D3Cvardclst(...)")
+//
+|D3Cfundclst _ => prints("D3Cfundclst(...)")
+//
+(* ****** ****** *)
+//
+|D3Cimplmnt0 _ => prints("D3Cimplmnt0(...)")
+//
+|D3Ctmplocal _ => prints("D3Ctmplocal(...)")
+//
+|D3Cimpltmpr _ => prints("D3Cimpltmpr(...)")
+//
+(* ****** ****** *)
+//
+|
+D3Cnone0((*nil*)) => prints("D3Cnone0(...)")
+|
+D3Cnone1(  dcl  ) => prints("D3Cnone1(...)")
+|
+D3Cnone2(  dcl  ) => prints("D3Cnone2(...)")
+//
+(* ****** ****** *)
+//
+|D3Cerrck(lvl,dcl) => prints("D3Cerrck(...)")
+//
+(* ****** ****** *)
+//
+end//(*let*)//end-of-[d3ecl_fprint(dcl0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
