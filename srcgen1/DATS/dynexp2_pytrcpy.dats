@@ -57,6 +57,8 @@ xassets/ATS3/SATS/locinfo.sats"
 #staload "./../../\
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
+xassets/ATS3/SATS/staexp1.sats"
+#staload "./../../\
 xassets/ATS3/SATS/dynexp1.sats"
 #staload "./../../\
 xassets/ATS3/SATS/staexp2.sats"
@@ -77,6 +79,8 @@ xassets/ATS3/SATS/dynexp2.sats"
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
 "./../SATS/lexing0_pytrcpy.sats"
+#staload
+"./../SATS/staexp1_pytrcpy.sats"
 #staload
 "./../SATS/dynexp1_pytrcpy.sats"
 #staload
@@ -156,6 +160,16 @@ PY_D2Pdapp
 , d2f0: PY$d2pat
 , npf1: sint
 , d2ps: PY$d2patlst): PY$d2pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Pannot
+( loc0: PY$loctn
+, d2p1: PY$d2pat
+, s1e2: PY$s1exp
+, s2e2: PY$s2exp   ): PY$d2pat = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -677,6 +691,22 @@ val d2ps =
 //
 (* ****** ****** *)
 //
+|D2Pannot
+(d2p1
+,s1e2, s2e2) =>
+(
+PY_D2Pannot
+(loc0, d2p1, s1e2, s2e2))
+where
+{
+val
+d2p1 = d2pat_pytrcpy(d2p1)
+val
+s1e2 = s1exp_pytrcpy(s1e2)
+val
+s2e2 = s2exp_pytrcpy(s2e2) }
+//
+(* ****** ****** *)
 |
 _(*otherwise*) => PY_D2Pa3src(loc0, dpat)
 //

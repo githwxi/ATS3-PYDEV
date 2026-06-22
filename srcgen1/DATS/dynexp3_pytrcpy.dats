@@ -57,6 +57,10 @@ xassets/ATS3/SATS/locinfo.sats"
 #staload "./../../\
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
+xassets/ATS3/SATS/staexp1.sats"
+#staload "./../../\
+xassets/ATS3/SATS/dynexp1.sats"
+#staload "./../../\
 xassets/ATS3/SATS/staexp2.sats"
 #staload "./../../\
 xassets/ATS3/SATS/statyp2.sats"
@@ -75,6 +79,10 @@ xassets/ATS3/SATS/dynexp3.sats"
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
 "./../SATS/lexing0_pytrcpy.sats"
+#staload
+"./../SATS/staexp1_pytrcpy.sats"
+#staload
+"./../SATS/dynexp1_pytrcpy.sats"
 #staload
 "./../SATS/staexp2_pytrcpy.sats"
 #staload
@@ -133,6 +141,32 @@ fun
 PY_D3Pcon
 ( loc0: PY$loctn
 , dcon: PY$d2con): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Pdap1
+( loc0: PY$loctn
+, d3p1: PY$d3pat   ): PY$d3pat = $extnam()
+//
+#extern
+fun
+PY_D3Pdapp
+( loc0: PY$loctn
+, d3f0: PY$d3pat
+, npf1: sint
+, d3ps: PY$d3patlst): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Pannot
+( loc0: PY$loctn
+, d3p1: PY$d3pat
+, s1e2: PY$s1exp
+, s2e2: PY$s2exp   ): PY$d3pat = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -322,6 +356,52 @@ in//let
 (
   PY_D3Pcon(loc0, d2c1))
 end//let
+//
+(* ****** ****** *)
+//
+(*
+|D3Pdap0
+(   d3p1   ) => ...
+*)
+|D3Pdap1
+(   d3p1   ) =>
+let
+val d3p1 =
+d3pat_pytrcpy(d3p1)
+in//let
+  PY_D3Pdap1(loc0, d3p1)
+end//let
+//
+|D3Pdapp
+(d3f0
+,npf1, d3ps) =>
+(
+PY_D3Pdapp
+(loc0, d3f0, npf1, d3ps))
+where
+{
+val d3f0 =
+  d3pat_pytrcpy(d3f0)
+val d3ps =
+(
+  d3patlst_pytrcpy(d3ps)) }
+//
+(* ****** ****** *)
+//
+|D3Pannot
+(d3p1
+,s1e2, s2e2) =>
+(
+PY_D3Pannot
+(loc0, d3p1, s1e2, s2e2))
+where
+{
+val
+d3p1 = d3pat_pytrcpy(d3p1)
+val
+s1e2 = s1exp_pytrcpy(s1e2)
+val
+s2e2 = s2exp_pytrcpy(s2e2) }
 //
 (* ****** ****** *)
 //

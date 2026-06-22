@@ -26,19 +26,6 @@ class S2T000(ABC):
 type sort2 = S2T000
 ########################################################################
 @dataclass
-class s2var_tbox(ABC):
-    sort: sort2
-    name: symbl
-    stmp: stamp
-    def __str__(self)->strn:
-        return f"S2VAR({self.name};{self.stmp})"
-    def __repr__(self)->strn:
-        return f"S2VAR({self.name!r};{self.stmp!r})"
-    pass
-type s2var = s2var_tbox
-type s2varlst = fnlist[s2var]
-########################################################################
-@dataclass
 class S2E000(ABC):
     sort: sort2
     pass
@@ -61,6 +48,20 @@ class S2Ea3src(S2E000):
     def __repr__(self)->strn:
         return f"{self.ctag}(s2exp)"
     pass
+########################################################################
+@dataclass
+class s2var_tbox(ABC):
+    sort: sort2
+    name: symbl
+    stmp: stamp
+    def __str__(self)->strn:
+        return f"S2VAR({self.name};{self.stmp})"
+    def __repr__(self)->strn:
+        return f"S2VAR({self.name!r};{self.stmp!r})"
+    pass
+type s2var = s2var_tbox
+type s2varlst = fnlist[s2var]
+########################################################################
 ########################################################################
 def \
 PY_S2Ta3src(arg1: pyobj)->S2Ta3src:

@@ -17,6 +17,8 @@ from DATS.CATS.xstamp0 import *
 from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
 from DATS.CATS.lexing0 import *
+from DATS.CATS.staexp1 import *
+from DATS.CATS.dynexp1 import *
 from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
 from DATS.CATS.dynexp2 import *
@@ -100,6 +102,7 @@ class D3Ca3src(D3C000):
     pass
 ########################################################################
 ########################################################################
+#
 @dataclass
 class D3Pcon(D3P000):
     arg1: d2con
@@ -118,6 +121,19 @@ class D3Pvar(D3P000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
+#
+@dataclass
+class D3Pannot(D3P000):
+    arg1: d3pat
+    arg2: s1exp
+    arg3: s2exp
+    ctag = "D3Pannot"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg3!r})"
+    pass
+#
 ########################################################################
 ########################################################################
 #
@@ -467,6 +483,11 @@ def PY_D3Pcon\
 def PY_D3Pvar\
 (lctn: loctn, arg1: d2var)->D3Pvar:
     return D3Pvar(lctn, arg1)
+#
+def PY_D3Pannot\
+(lctn: loctn, \
+ arg1: d3pat, arg2: s1exp, arg3: s2exp)->D3Pannot:
+    return D3Pannot(lctn, arg1, arg2, arg3)
 #
 ########################################################################
 ########################################################################

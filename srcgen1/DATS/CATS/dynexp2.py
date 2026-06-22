@@ -22,6 +22,7 @@ from DATS.CATS.xstamp0 import *
 from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
 from DATS.CATS.lexing0 import *
+from DATS.CATS.staexp1 import *
 from DATS.CATS.dynexp1 import *
 from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
@@ -215,6 +216,48 @@ class D2Pvar(D2P000):
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Pdap0(D2P000):
+    arg1: d2pat
+    ctag = "D2Pdap0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pdap1(D2P000):
+    arg1: d2pat
+    ctag = "D2Pdap1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pdapp(D2P000):
+    arg1: d2pat
+    arg2: sint
+    arg3: d2pat
+    ctag = "D2Pdapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+@dataclass
+class D2Pannot(D2P000):
+    arg1: d2pat
+    arg2: s1exp
+    arg3: s2exp
+    ctag = "D2Pannot"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg3!r})"
     pass
 #
 ########################################################################
@@ -759,6 +802,25 @@ def PY_D2Pcon\
 def PY_D2Pvar\
 (lctn: loctn, arg1: d2var)->D2Pvar:
     return D2Pvar(lctn, arg1)
+########################################################################
+#
+def PY_D2Pdap0\
+(loc0: loctn, arg1: d2pat)->D2Pdap0:
+    return D2Pdap0(loc0, arg1)
+def PY_D2Pdap1\
+(loc0: loctn, arg1: d2pat)->D2Pdap1:
+    return D2Pdap1(loc0, arg1)
+def PY_D2Pdapp\
+(loc0: loctn, \
+ arg1: d2pat, arg2: sint, arg3: d2pat)->D2Pdapp:
+    return D2Pdapp(loc0, arg1, arg2, arg3)
+#
+########################################################################
+#
+def PY_D2Pannot\
+(lctn: loctn, \
+ arg1: d2pat, arg2: s1exp, arg3: s2exp)->D2Pannot:
+    return D2Pannot(lctn, arg1, arg2, arg3)
 #
 ########################################################################
 ########################################################################

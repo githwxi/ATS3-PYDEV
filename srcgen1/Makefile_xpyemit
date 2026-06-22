@@ -29,6 +29,7 @@ xsymbol_pytrcpy.sats \
 filpath_pytrcpy.sats \
 locinfo_pytrcpy.sats \
 lexing0_pytrcpy.sats \
+staexp1_pytrcpy.sats \
 dynexp1_pytrcpy.sats \
 staexp2_pytrcpy.sats \
 statyp2_pytrcpy.sats \
@@ -45,6 +46,7 @@ xsymbol_pytrcpy.dats \
 filpath_pytrcpy.dats \
 locinfo_pytrcpy.dats \
 lexing0_pytrcpy.dats \
+staexp1_pytrcpy.dats \
 dynexp1_pytrcpy.dats \
 staexp2_pytrcpy.dats \
 statyp2_pytrcpy.dats \

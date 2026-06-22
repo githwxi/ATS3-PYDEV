@@ -55,6 +55,10 @@ xassets/ATS3/SATS/locinfo.sats"
 #staload "./../../\
 xassets/ATS3/SATS/lexing0.sats"
 #staload "./../../\
+xassets/ATS3/SATS/staexp1.sats"
+#staload "./../../\
+xassets/ATS3/SATS/dynexp1.sats"
+#staload "./../../\
 xassets/ATS3/SATS/staexp2.sats"
 #staload "./../../\
 xassets/ATS3/SATS/statyp2.sats"
@@ -70,6 +74,10 @@ xassets/ATS3/SATS/dynexp3.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
+"./../SATS/staexp1_pytrcpy.sats"
+#staload
+"./../SATS/dynexp1_pytrcpy.sats"
+#staload
 "./../SATS/staexp2_pytrcpy.sats"
 #staload
 "./../SATS/statyp2_pytrcpy.sats"
@@ -77,6 +85,67 @@ xassets/ATS3/SATS/dynexp3.sats"
 "./../SATS/dynexp2_pytrcpy.sats"
 #staload
 "./../SATS/dynexp3_pytrcpy.sats"
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s1exp_fprint
+(s1e0, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+
+s1e0.node() of
+//
+|S1Eid0 _ => prints("S1Eid0(...)")
+//
+|S1Eint _ => prints("S1Eint(...)")
+|S1Echr _ => prints("S1Echr(...)")
+|S1Eflt _ => prints("S1Eflt(...)")
+|S1Estr _ => prints("S1Estr(...)")
+//
+|S1Eb0sh _ => prints("S1Eb0sh(...)")
+|S1Eb1sh _ => prints("S1Eb1sh(...)")
+//
+|S1Earrw _ => prints("S1Earrw(...)")
+//
+|S1Ea0pp _ => prints("S1Ea0pp(...)")
+|S1Ea1pp _ => prints("S1Ea1pp(...)")
+|S1Ea2pp _ => prints("S1Ea2pp(...)")
+|S1El1st _ => prints("S1El1st(...)")
+|S1El2st _ => prints("S1El2st(...)")
+//
+|S1Et1up _ => prints("S1Et1up(...)")
+|S1Et2up _ => prints("S1Et2up(...)")
+//
+|S1Er1cd _ => prints("S1Er1cd(...)")
+|S1Er2cd _ => prints("S1Er2cd(...)")
+//
+|S1Elams _ => prints("S1Elams(...)")
+//
+|S1Euni0 _ => prints("S1Euni0(...)")
+|S1Eexi0 _ => prints("S1Eexi0(...)")
+//
+|S1Eannot _ => prints("S1Eannot(...)")
+|S1Equal0 _ => prints("S1Equal0(...)")
+//
+(* ****** ****** *)
+//
+|
+S1Enone0((*nil*)) => prints("S1Enone0(...)")
+|
+S1Enone1(  s0e  ) => prints("S1Enone1(...)")
+//
+(* ****** ****** *)
+//
+|S1Eerrck(lvl,s1e) => prints("S1Enone1(...)")
+//
+(* ****** ****** *)
+//
+end//(*let*)//end-of-[s1exp_fprint(s1e0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -120,11 +189,11 @@ case+ s2t0 of
 //
 (* ****** ****** *)
 //
-|S2Terrck _ => prints("S2Terrck(...)")
+|S2Terrck(lvl,s2t) => prints("S2Terrck(...)")
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[sort2_fprint(s2t0,out0)]
+end//(*let*)//end-of-[sort2_fprint(s2t0,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -190,11 +259,14 @@ styp.node() of
 //
 |T2Pnone0 _ => prints("T2Pnone0(...)")
 |T2Ps2exp _ => prints("T2Ps2exp(...)")
-|T2Perrck _ => prints("T2Perrck(...)")
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[s2typ_fprint(styp,out0)]
+|T2Perrck(lvl,t2p) => prints("T2Perrck(...)")
+//
+(* ****** ****** *)
+//
+end//(*let*)//end-of-[s2typ_fprint(styp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -287,11 +359,11 @@ sexp.node() of
 //
 (* ****** ****** *)
 //
-|S2Eerrck _ => prints("S2Eerrck(...)")
+|S2Eerrck(lvl,s2e) => prints("S2Eerrck(...)")
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[s2exp_fprint(sexp,out0)]
+end//(*let*)//end-of-[s2exp_fprint(sexp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -354,15 +426,20 @@ dpat.node() of
 |D2Pt2pck _ => prints("D2Pt2pck(...)")
 |D2Pt2pkc _ => prints("D2Pt2pkc(...)")
 //
-|D2Pnone0 _ => prints("D2Pnone0(...)")
-|D2Pnone1 _ => prints("D2Pnone1(...)")
-|D2Pnone2 _ => prints("D2Pnone2(...)")
+(* ****** ****** *)
+//
+|
+D2Pnone0((*nil*)) => prints("D2Pnone0(...)")
+|
+D2Pnone1(  d1p  ) => prints("D2Pnone1(...)")
+|
+D2Pnone2(  d2p  ) => prints("D2Pnone2(...)")
 //
 (* ****** ****** *)
 //
-|D2Perrck _ => prints("D2Perrck(...)")
+|D2Perrck(lvl,d2p) => prints("D2Perrck(...)")
 //
-end(*let*)//end-of-[d2pat_fprint(dpat,out0)]
+end//(*let*)//end-of-[d2pat_fprint(dpat,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -518,17 +595,20 @@ D2Esynext _ => prints("D2Esynext(...)")
 //
 (* ****** ****** *)
 //
-|D2Enone0 _ => prints("D2Enone0(...)")
-|D2Enone1 _ => prints("D2Enone1(...)")
-|D2Enone2 _ => prints("D2Enone2(...)")
+|
+D2Enone0((*nil*)) => prints("D2Enone0(...)")
+|
+D2Enone1(  d1e  ) => prints("D2Enone1(...)")
+|
+D2Enone2(  d2e  ) => prints("D2Enone2(...)")
 //
 (* ****** ****** *)
 //
-| D2Eerrck  _  => prints("D2Eerrck(...)")
+|D2Eerrck(lvl,d2e) => prints("D2Eerrck(...)")
 //
 (* ****** ****** *)
 //
-end(*let*)//end-of-[d2exp_fprint(dexp,out0)]
+end//(*let*)//end-of-[d2exp_fprint(dexp,out0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -631,8 +711,7 @@ D2Celse1(  dcs  ) => prints("D2Celse1(...)")
 //
 (* ****** ****** *)
 //
-|
-D2Cerrck(lvl,dcl) => prints("D2Cerrck(...)")
+|D2Cerrck(lvl,dcl) => prints("D2Cerrck(...)")
 //
 (* ****** ****** *)
 //
