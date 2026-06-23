@@ -473,6 +473,38 @@ class D2Eseqn(D2E000):
 ########################################################################
 #
 @dataclass
+class D2Eaddr(D2E000):
+    arg1: d2exp
+    ctag = "D2Eaddr"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Eview(D2E000):
+    arg1: d2exp
+    ctag = "D2Eview"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Elval(D2E000):
+    arg1: d2exp
+    ctag = "D2Elval"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D2Ewhere(D2E000):
     arg1: d2exp
     arg2: d2eclist
@@ -888,6 +920,18 @@ def PY_D2Ecas0\
 def PY_D2Eseqn\
 (loc0: loctn, arg1: d2explst, arg2: d2exp)->D2Eseqn:
     return D2Eseqn(loc0, arg1, arg2)
+########################################################################
+#
+def \
+PY_D2Eaddr(loc0: loctn, arg1: d2exp)->D2Eaddr:
+    return D2Eaddr(loc0, arg1)
+def \
+PY_D2Eview(loc0: loctn, arg1: d2exp)->D2Eview:
+    return D2Eview(loc0, arg1)
+def \
+PY_D2Elval(loc0: loctn, arg1: d2exp)->D2Elval:
+    return D2Elval(loc0, arg1)
+#
 ########################################################################
 def PY_D2Ewhere\
 (loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:

@@ -306,6 +306,48 @@ class D3Eseqn(D3E000):
 ########################################################################
 #
 @dataclass
+class D3Eaddr(D3E000):
+    arg1: d3exp
+    ctag = "D3Eaddr"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Eview(D3E000):
+    arg1: d3exp
+    ctag = "D3Eview"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Elval(D3E000):
+    arg1: d3exp
+    ctag = "D3Elval"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Eflat(D3E000):
+    arg1: d3exp
+    ctag = "D3Eflat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Ewhere(D3E000):
     arg1: d3exp
     arg2: d3eclist
@@ -632,6 +674,21 @@ def PY_D3Ecas0\
 def PY_D3Eseqn\
 (loc0: loctn, arg1: d3explst, arg2: d3exp)->D3Eseqn:
     return D3Eseqn(loc0, arg1, arg2)
+########################################################################
+#
+def \
+PY_D3Eaddr(loc0: loctn, arg1: d3exp)->D3Eaddr:
+    return D3Eaddr(loc0, arg1)
+def \
+PY_D3Eview(loc0: loctn, arg1: d3exp)->D3Eview:
+    return D3Eview(loc0, arg1)
+def \
+PY_D3Elval(loc0: loctn, arg1: d3exp)->D3Elval:
+    return D3Elval(loc0, arg1)
+def \
+PY_D3Eflat(loc0: loctn, arg1: d3exp)->D3Eflat:
+    return D3Eflat(loc0, arg1)
+#
 ########################################################################
 def PY_D3Ewhere\
 (loc0: loctn, arg1: d3exp, arg2: d3eclist)->D3Ewhere:

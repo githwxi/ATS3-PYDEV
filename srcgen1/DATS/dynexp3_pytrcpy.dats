@@ -275,6 +275,32 @@ PY_D3Eseqn
 //
 #extern
 fun
+PY_D3Eaddr
+( loc0: PY$loctn
+, d3e1: PY$d3exp): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Eview
+( loc0: PY$loctn
+, d3e1: PY$d3exp): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Elval
+( loc0: PY$loctn
+, d3e1: PY$d3exp): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Eflat
+( loc0: PY$loctn
+, d3e1: PY$d3exp): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Ewhere
 ( loc0: PY$loctn
 , d3e1: PY$d3exp
@@ -675,6 +701,46 @@ d3explst_pytrcpy(d3es)
 val
 d3e1 = d3exp_pytrcpy(d3e1) }
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Eaddr
+(   d3e1   ) =>
+(
+PY_D3Eaddr(loc0, d3e1)
+) where
+{
+val
+d3e1 = d3exp_pytrcpy(d3e1) }
+//
+|D3Eview
+(   d3e1   ) =>
+(
+PY_D3Eview(loc0, d3e1)
+) where
+{
+val
+d3e1 = d3exp_pytrcpy(d3e1) }
+//
+|D3Elval
+(   d3e1   ) =>
+(
+PY_D3Elval(loc0, d3e1)
+) where
+{
+val
+d3e1 = d3exp_pytrcpy(d3e1) }
+//
+|D3Eflat
+(   d3e1   ) =>
+(
+PY_D3Eflat(loc0, d3e1)
+) where
+{
+val
+d3e1 = d3exp_pytrcpy(d3e1) }
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D3Ewhere

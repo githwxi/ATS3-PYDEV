@@ -287,6 +287,28 @@ PY_D2Eseqn
 , d2e1: PY$d2exp   ): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Eaddr
+( loc0: PY$loctn
+, d2e1: PY$d2exp): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Eview
+( loc0: PY$loctn
+, d2e1: PY$d2exp): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Elval
+( loc0: PY$loctn
+, d2e1: PY$d2exp): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
@@ -951,6 +973,37 @@ d2es =
 val
 d2e1 = d2exp_pytrcpy(d2e1) }
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D2Eaddr
+(   d2e1   ) =>
+(
+PY_D2Eaddr(loc0, d2e1)
+) where
+{
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
+//
+|D2Eview
+(   d2e1   ) =>
+(
+PY_D2Eview(loc0, d2e1)
+) where
+{
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
+//
+|D2Elval
+(   d2e1   ) =>
+(
+PY_D2Elval(loc0, d2e1)
+) where
+{
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 |D2Ewhere
