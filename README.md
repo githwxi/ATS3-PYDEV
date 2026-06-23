@@ -4,9 +4,11 @@ For developing ATS3 in Python
 
 ## Project Description
 
-The main delivery of the project consists of some functions
-for exporting various internal syntax trees generated during the
-compilation of ATS3 programs.
+The main delivery of the project consists of some functions for
+exporting to Python various internal syntax trees generated during
+the compilation of ATS3 programs. With these functions, one can make
+direct use of Python for the purpose of constructing programs to
+process code written in ATS3.
 
 Also, the structure of this project can serve as a concrete example
 for one interested in developing tools for ATS3 or based on it.
@@ -26,6 +28,7 @@ The directory `./xassets` holds various files needed for this project.
   extensions).
 
 ## What is `./srcgen1` for?
+  Building software often needs trials.
   This is the directory for the first trial (a.k.a., the first generation).
   Inside, there are subdirectories named `SATS`, `DATS`, and `HATS`. Also, there is
   `DATS/CATS` for storing non-ATS code (e.g., Python code).

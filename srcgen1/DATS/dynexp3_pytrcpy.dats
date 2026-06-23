@@ -145,9 +145,14 @@ PY_D3Ca3src
 //
 #extern
 fun
+PY_D3Pany
+( loc0: PY$loctn): PY$d3pat = $extnam()
+#extern
+fun
 PY_D3Pvar
 ( loc0: PY$loctn
 , dvar: PY$d2var): PY$d3pat = $extnam()
+//
 #extern
 fun
 PY_D3Pcon
@@ -499,6 +504,11 @@ case+
 dpat.node() of
 //
 (* ****** ****** *)
+//
+|D3Pany
+( (*void*) ) =>
+(
+  PY_D3Pany(loc0))
 //
 |D3Pvar
 (   d2v1   ) =>

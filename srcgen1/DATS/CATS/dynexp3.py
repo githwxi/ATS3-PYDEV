@@ -104,18 +104,27 @@ class D3Ca3src(D3C000):
 ########################################################################
 #
 @dataclass
-class D3Pcon(D3P000):
-    arg1: d2con
-    ctag = "D3Pcon"
+class D3Pany(D3P000):
+    ctag = "D3Pany"
     def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1})"
+        return f"{self.ctag}()"
     def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r})"
+        return f"{self.ctag}()"
     pass
 @dataclass
 class D3Pvar(D3P000):
     arg1: d2var
     ctag = "D3Pvar"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Pcon(D3P000):
+    arg1: d2con
+    ctag = "D3Pcon"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
@@ -711,12 +720,15 @@ def PY_D3Ca3src\
 ########################################################################
 ########################################################################
 #
-def PY_D3Pcon\
-(lctn: loctn, arg1: d2con)->D3Pcon:
-    return D3Pcon(lctn, arg1)
-def PY_D3Pvar\
-(lctn: loctn, arg1: d2var)->D3Pvar:
+def PY_D3Pany(lctn: loctn)->D3Pany:
+    return D3Pany(lctn)
+def PY_D3Pvar(lctn: loctn, arg1: d2var)->D3Pvar:
     return D3Pvar(lctn, arg1)
+#
+def PY_D3Pcon(lctn: loctn, arg1: d2con)->D3Pcon:
+    return D3Pcon(lctn, arg1)
+#
+########################################################################
 #
 def PY_D3Pannot\
 (lctn: loctn, \
