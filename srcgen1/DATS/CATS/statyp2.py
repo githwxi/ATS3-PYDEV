@@ -24,6 +24,8 @@ class T2P000(ABC):
     sort: sort2
     pass
 type s2typ = T2P000
+type s2typlst = fnlist[s2typ]
+type s2typopt = fnoptn[s2typ]
 ########################################################################
 @dataclass
 class T2Pa3src(T2P000):

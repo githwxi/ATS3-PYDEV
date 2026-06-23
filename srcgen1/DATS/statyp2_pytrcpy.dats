@@ -132,6 +132,23 @@ printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#implfun
+s2typlst_pytrcpy
+(   t2ps   ) =
+(
+list_map$f1un_PY$list(t2ps, s2typ_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+s2typopt_pytrcpy
+(   topt   ) =
+(
+optn_map$f1un_PY$optn(topt, s2typ_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3-PYDEV/srcgen1/DATS/statyp2_pytrcpy.dats] *)
 (***********************************************************************)

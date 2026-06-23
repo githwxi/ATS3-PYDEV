@@ -74,6 +74,9 @@ ATS3/srcgen2/SATS/staexp2.sats"
 ATS3/srcgen2/SATS/statyp2.sats"
 #staload "\
 ./../../xassets/\
+ATS3/srcgen2/SATS/dynexp2.sats"
+#staload "\
+./../../xassets/\
 ATS3/srcgen2/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
@@ -218,6 +221,30 @@ fun
 PY_D3Evar
 ( loc0: PY$loctn
 , dvar: PY$d2var): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Esapp
+( loc0: PY$loctn
+, d3f0: PY$d3exp
+, s2es: PY$s2explst): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Etapp
+( loc0: PY$loctn
+, d3f0: PY$d3exp
+, s2es: PY$s2explst): PY$d3exp = $extnam()
+#extern
+fun
+PY_D3Etapq
+( loc0: PY$loctn
+, d3f0: PY$d3exp
+, s2es: PY$t2jaglst): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
 //
@@ -594,6 +621,51 @@ in//let
 (
 PY_D3Evar(loc0, d2v1))
 end//let//endof(D3Evar)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Esapp
+(d3f0, s2es) =>
+(
+PY_D3Esapp
+(loc0, d3f0, s2es))
+where
+{
+val d3f0 =
+  d3exp_pytrcpy(d3f0)
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Etapp
+(d3f0, s2es) =>
+(
+PY_D3Etapp
+(loc0, d3f0, s2es))
+where
+{
+val d3f0 =
+  d3exp_pytrcpy(d3f0)
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
+//
+|D3Etapq
+(d3f0, tjas) =>
+(
+PY_D3Etapq
+(loc0, d3f0, tjas))
+where
+{
+val d3f0 =
+  d3exp_pytrcpy(d3f0)
+val tjas =
+(
+  t2jaglst_pytrcpy(tjas)) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

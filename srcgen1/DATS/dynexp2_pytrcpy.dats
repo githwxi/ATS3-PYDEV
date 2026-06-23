@@ -236,6 +236,22 @@ PY_D2Esym0
 //
 #extern
 fun
+PY_D2Esapp
+( loc0: PY$loctn
+, d2f0: PY$d2exp
+, s2es: PY$s2explst): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Etapp
+( loc0: PY$loctn
+, d2f0: PY$d2exp
+, s2es: PY$s2explst): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D2Edap0
 ( loc0: PY$loctn
 , d2e1: PY$d2exp   ): PY$d2exp = $extnam()
@@ -385,6 +401,21 @@ PY_D2Cimplmnt0
 , f2as: PY$f2arglst
 , sres: PY$s2res
 , d2e1: PY$d2exp   ): PY$d2ecl = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_t2iag_make_s2es
+( loc0: PY$loctn
+, s2es: PY$s2explst): PY$t2iag = $extnam()
+//
+#extern
+fun
+PY_t2jag_make_t2ps
+( loc0: PY$loctn
+, t2ps: PY$s2typlst): PY$t2jag = $extnam()
 //
 (* ****** ****** *)
 //
@@ -866,6 +897,34 @@ in//let
 PY_D2Esym0
 (loc0, d2e1, dsym, dpis))
 end(*let*)//endof(D2Esym0)
+//
+(* ****** ****** *)
+//
+|D2Esapp
+(d2f0, s2es) =>
+(
+PY_D2Esapp
+(loc0, d2f0, s2es))
+where
+{
+val d2f0 =
+  d2exp_pytrcpy(d2f0)
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
+//
+|D2Etapp
+(d2f0, s2es) =>
+(
+PY_D2Etapp
+(loc0, d2f0, s2es))
+where
+{
+val d2f0 =
+  d2exp_pytrcpy(d2f0)
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
 //
 (* ****** ****** *)
 //
@@ -1455,6 +1514,39 @@ printsln("d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
 (* ****** ****** *)
 //
 #implfun
+t2iag_pytrcpy
+(   t2ia   ) =
+(
+PY_t2iag_make_s2es(loc0, s2es))
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(t2iag_get_lctn(t2ia))
+val s2es =
+s2explst_pytrcpy(t2iag_get_s2es(t2ia))
+}(*where*)//end-of-[t2iag_pytrcpy(t2ia)]
+//
+(* ****** ****** *)
+//
+#implfun
+t2jag_pytrcpy
+(   t2ja   ) =
+(
+PY_t2jag_make_t2ps(loc0, t2ps))
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(t2jag_get_lctn(t2ja))
+val t2ps =
+s2typlst_pytrcpy(t2jag_get_t2ps(t2ja))
+}(*where*)//end-of-[t2jag_pytrcpy(t2ja)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2conlst_pytrcpy
 (   d2cs   ) =
 (
@@ -1539,6 +1631,20 @@ d2eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+t2iaglst_pytrcpy
+(   tias   ) =
+(
+list_map$f1un_PY$list(tias, t2iag_pytrcpy))
+//
+#implfun
+t2jaglst_pytrcpy
+(   tjas   ) =
+(
+list_map$f1un_PY$list(tjas, t2jag_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)

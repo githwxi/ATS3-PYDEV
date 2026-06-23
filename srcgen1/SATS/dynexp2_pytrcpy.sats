@@ -92,6 +92,14 @@ ATS3/srcgen2/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#abstbox PY$s2qag // p0tr
+#abstbox PY$t2qag // p0tr
+//
+#abstbox PY$t2iag // p0tr
+#abstbox PY$t2jag // p0tr
+//
+(* ****** ****** *)
+//
 #abstbox PY$teqd2exp // p0tr
 #abstbox PY$wths2exp // p0tr
 //
@@ -134,6 +142,14 @@ ATS3/srcgen2/SATS/dynexp2.sats"
 //
 (* ****** ****** *)
 //
+#typedef s2qag = $D2E.s2qag
+#typedef t2qag = $D2E.t2qag
+//
+#typedef t2iag = $D2E.t2iag
+#typedef t2jag = $D2E.t2jag
+//
+(* ****** ****** *)
+//
 #typedef d2conlst = list(d2con)
 #typedef d2cstlst = list(d2cst)
 //
@@ -156,6 +172,11 @@ ATS3/srcgen2/SATS/dynexp2.sats"
 #typedef f2arglst = list(f2arg)
 //
 #typedef d2eclist = list(d2ecl)
+//
+(* ****** ****** *)
+//
+#typedef t2iaglst = list(t2iag)
+#typedef t2jaglst = list(t2jag)
 //
 (* ****** ****** *)
 //
@@ -248,6 +269,13 @@ fun
 d2ecl_pytrcpy(d2cl: d2ecl): PY$d2ecl
 //
 (* ****** ****** *)
+//
+fun
+t2iag_pytrcpy(t2ia: t2iag): PY$t2iag
+fun
+t2jag_pytrcpy(t2ja: t2jag): PY$t2jag
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
@@ -289,6 +317,13 @@ PY$f2arglst = PY$list(PY$f2arg)
 //
 #typedef
 PY$d2eclist = PY$list(PY$d2ecl)
+//
+(* ****** ****** *)
+//
+#typedef
+PY$t2iaglst = PY$list(PY$t2iag)
+#typedef
+PY$t2jaglst = PY$list(PY$t2jag)
 //
 (* ****** ****** *)
 //
@@ -354,6 +389,13 @@ f2arglst_pytrcpy(f2as: f2arglst): PY$f2arglst
 //
 fun
 d2eclist_pytrcpy(dcls: d2eclist): PY$d2eclist
+//
+(* ****** ****** *)
+//
+fun
+t2iaglst_pytrcpy(tias: t2iaglst): PY$t2iaglst
+fun
+t2jaglst_pytrcpy(tjas: t2jaglst): PY$t2jaglst
 //
 (* ****** ****** *)
 //

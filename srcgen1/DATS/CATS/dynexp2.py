@@ -75,6 +75,33 @@ type d2varopt = fnoptn[d2var]
 #
 ########################################################################
 ########################################################################
+#
+@dataclass
+class t2iag_tbox(ABC):
+    lctn: loctn
+    s2es: s2explst
+    def __str__(self)->strn:
+        return f"T2IAG({self.s2es})"
+    def __repr__(self)->strn:
+        return f"T2IAG({self.s2es!r})"
+    pass
+type t2iag = t2iag_tbox
+type t2iaglst = fnlist[t2iag]
+#
+@dataclass
+class t2jag_tbox(ABC):
+    lctn: loctn
+    t2ps: s2typlst
+    def __str__(self)->strn:
+        return f"T2JAG({self.t2ps})"
+    def __repr__(self)->strn:
+        return f"T2JAG({self.t2ps!r})"
+    pass
+type t2jag = t2jag_tbox
+type t2jaglst = fnlist[t2jag]
+#
+########################################################################
+########################################################################
 @dataclass
 class D2P000(ABC):
     lctn: loctn
@@ -242,7 +269,7 @@ class D2Pdap1(D2P000):
 class D2Pdapp(D2P000):
     arg1: d2pat
     arg2: sint
-    arg3: d2pat
+    arg3: d2patlst
     ctag = "D2Pdapp"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
@@ -398,6 +425,30 @@ class D2Esym0(D2E000):
 ########################################################################
 #
 @dataclass
+class D2Esapp(D2E000):
+    arg1: d2exp
+    arg2: s2explst
+    ctag = "D2Esapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2Etapp(D2E000):
+    arg1: d2exp
+    arg2: s2explst
+    ctag = "D2Etapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D2Edap0(D2E000):
     arg1: d2exp
     ctag = "D2Edap0"
@@ -410,7 +461,7 @@ class D2Edap0(D2E000):
 class D2Edapp(D2E000):
     arg1: d2exp
     arg2: sint
-    arg3: d2exp
+    arg3: d2explst
     ctag = "D2Edapp"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
@@ -848,7 +899,7 @@ def PY_D2Pdap1\
     return D2Pdap1(loc0, arg1)
 def PY_D2Pdapp\
 (loc0: loctn, \
- arg1: d2pat, arg2: sint, arg3: d2pat)->D2Pdapp:
+ arg1: d2pat, arg2: sint, arg3: d2patlst)->D2Pdapp:
     return D2Pdapp(loc0, arg1, arg2, arg3)
 #
 ########################################################################
@@ -893,12 +944,24 @@ def PY_D2Esym0\
 #
 ########################################################################
 #
+def PY_D2Esapp\
+(loc0: loctn, \
+ arg1: d2exp, arg2: s2explst)->D2Esapp:
+    return D2Esapp(loc0, arg1, arg2)
+#
+def PY_D2Etapp\
+(loc0: loctn, \
+ arg1: d2exp, arg2: s2explst)->D2Etapp:
+    return D2Etapp(loc0, arg1, arg2)
+#
+########################################################################
+#
 def PY_D2Edap0\
 (loc0: loctn, arg1: d2exp)->D2Edap0:
     return D2Edap0(loc0, arg1)
 def PY_D2Edapp\
 (loc0: loctn, \
- arg1: d2exp, arg2: sint, arg3: d2exp)->D2Edapp:
+ arg1: d2exp, arg2: sint, arg3: d2explst)->D2Edapp:
     return D2Edapp(loc0, arg1, arg2, arg3)
 #
 ########################################################################
@@ -1062,6 +1125,19 @@ def \
 PY_WTHS2EXPsome\
 (arg1: token, arg2: s2exp)->wths2exp:
     return WTHS2EXPsome(arg1, arg2)
+#
+########################################################################
+########################################################################
+#
+def \
+PY_t2iag_make_s2es\
+(lctn: loctn, s2es: s2explst)->t2iag:
+    return t2iag_tbox(lctn, s2es)
+#
+def \
+PY_t2jag_make_t2ps\
+(lctn: loctn, t2ps: s2typlst)->t2jag:
+    return t2jag_tbox(lctn, t2ps)
 #
 ########################################################################
 ########################################################################

@@ -102,6 +102,8 @@ s2typ_pytrcpy(styp: s2typ): PY$s2typ
 //
 fun
 s2typlst_pytrcpy(t2ps: s2typlst): PY$s2typlst
+fun
+s2typopt_pytrcpy(topt: s2typopt): PY$s2typopt
 //
 (* ****** ****** *)
 (* ****** ****** *)
