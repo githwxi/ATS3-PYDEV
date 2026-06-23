@@ -1,10 +1,11 @@
+#!/usr/bin/env python3
+########################################################################
 ########################################################################
 #
 # HX-2026-06-07:
 # Sun Jun  7 12:10:48 PM EDT 2026
 #
 ########################################################################
-#!/usr/bin/env python3
 ########################################################################
 import os
 import sys
@@ -19,10 +20,13 @@ from ats3_pydev_lib2xatsopt import *
 #
 if __name__ == "__main__":
     argv = sys.argv
-    print\
-    ("ats3_pydev: argv =", argv)
+    # print\
+    # ("ats3_pydev: argv =", argv)
     def farg(work):
         for xarg in argv: work(xarg)
+    if len(argv) <= 2:
+        print("Usage: python3 " + \
+        "ats3_pydev_main.py __void__ input.dats")
     if len(argv) >= 3:
         fpth = sys.argv[2]
 #       d2parsed = \

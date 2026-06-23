@@ -382,10 +382,66 @@ class D3Eflat(D3E000):
 ########################################################################
 #
 @dataclass
+class D3Eeval(D3E000):
+    arg1: d3exp
+    ctag = "D3Eeval"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Efold(D3E000):
+    arg1: d3exp
+    ctag = "D3Efold"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Efree(D3E000):
+    arg1: d3exp
+    ctag = "D3Efree"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Ewhere(D3E000):
     arg1: d3exp
     arg2: d3eclist
     ctag = "D3Ewhere"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Eassgn(D3E000):
+    arg1: d3exp
+    arg2: d3exp
+    ctag = "D3Eassgn"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D3Exazgn(D3E000):
+    arg1: d3exp
+    arg2: d3exp
+    ctag = "D3Exazgn"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
@@ -748,9 +804,33 @@ PY_D3Eflat(loc0: loctn, arg1: d3exp)->D3Eflat:
     return D3Eflat(loc0, arg1)
 #
 ########################################################################
+#
+def \
+PY_D3Eeval(loc0: loctn, arg1: d3exp)->D3Eeval:
+    return D3Eeval(loc0, arg1)
+def \
+PY_D3Efold(loc0: loctn, arg1: d3exp)->D3Efold:
+    return D3Efold(loc0, arg1)
+def \
+PY_D3Efree(loc0: loctn, arg1: d3exp)->D3Efree:
+    return D3Efree(loc0, arg1)
+#
+########################################################################
+#
 def PY_D3Ewhere\
 (loc0: loctn, arg1: d3exp, arg2: d3eclist)->D3Ewhere:
     return D3Ewhere(loc0, arg1, arg2)
+#
+########################################################################
+#
+def PY_D3Eassgn\
+(loc0: loctn, arg1: d3exp, arg2: d3exp)->D3Eassgn:
+    return D3Eassgn(loc0, arg1, arg2)
+#
+def PY_D3Exazgn\
+(loc0: loctn, arg1: d3exp, arg2: d3exp)->D3Exazgn:
+    return D3Exazgn(loc0, arg1, arg2)
+#
 ########################################################################
 #
 def PY_D3Et2pck\

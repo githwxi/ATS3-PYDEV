@@ -324,6 +324,26 @@ PY_D2Elval
 , d2e1: PY$d2exp): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_D2Eeval
+( loc0: PY$loctn
+, d2e1: PY$d2exp): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Efold
+( loc0: PY$loctn
+, d2e1: PY$d2exp): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Efree
+( loc0: PY$loctn
+, d2e1: PY$d2exp): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -332,6 +352,23 @@ PY_D2Ewhere
 ( loc0: PY$loctn
 , d2e1: PY$d2exp
 , dcls: PY$d2eclist): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Eassgn
+( loc0: PY$loctn
+, d2el: PY$d2exp
+, d2er: PY$d2exp   ): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Exazgn
+( loc0: PY$loctn
+, d2el: PY$d2exp
+, d2er: PY$d2exp   ): PY$d2exp = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1065,6 +1102,40 @@ d2e1 = d2exp_pytrcpy(d2e1) }
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D2Eeval
+(   d2e1   ) =>
+(
+PY_D2Eeval(loc0, d2e1)
+) where
+{
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
+//
+(* ****** ****** *)
+//
+|D2Efold
+(   d2e1   ) =>
+(
+PY_D2Efold(loc0, d2e1)
+) where
+{
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
+//
+(* ****** ****** *)
+//
+|D2Efree
+(   d2e1   ) =>
+(
+PY_D2Efree(loc0, d2e1)
+) where
+{
+val
+d2e1 = d2exp_pytrcpy(d2e1) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |D2Ewhere
 (d2e1, dcls) =>
 let
@@ -1079,6 +1150,33 @@ end where
 val dcls =
 (
   d2eclist_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D2Eassgn
+(d2el, d2er) =>
+(
+PY_D2Eassgn(
+  loc0, d2el, d2er))
+where
+{
+val
+d2el = d2exp_pytrcpy(d2el)
+val
+d2er = d2exp_pytrcpy(d2er) }
+//
+|D2Exazgn
+(d2el, d2er) =>
+(
+PY_D2Exazgn(
+  loc0, d2el, d2er))
+where
+{
+val
+d2el = d2exp_pytrcpy(d2el)
+val
+d2er = d2exp_pytrcpy(d2er) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

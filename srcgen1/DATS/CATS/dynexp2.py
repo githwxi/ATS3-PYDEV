@@ -556,10 +556,66 @@ class D2Elval(D2E000):
 ########################################################################
 #
 @dataclass
+class D2Eeval(D2E000):
+    arg1: d2exp
+    ctag = "D2Eeval"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Efold(D2E000):
+    arg1: d2exp
+    ctag = "D2Efold"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Efree(D2E000):
+    arg1: d2exp
+    ctag = "D2Efree"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D2Ewhere(D2E000):
     arg1: d2exp
     arg2: d2eclist
     ctag = "D2Ewhere"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D2Eassgn(D2E000):
+    arg1: d2exp
+    arg2: d2exp
+    ctag = "D2Eassgn"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2Exazgn(D2E000):
+    arg1: d2exp
+    arg2: d2exp
+    ctag = "D2Exazgn"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
@@ -996,9 +1052,31 @@ PY_D2Elval(loc0: loctn, arg1: d2exp)->D2Elval:
     return D2Elval(loc0, arg1)
 #
 ########################################################################
+#
+def \
+PY_D2Eeval(loc0: loctn, arg1: d2exp)->D2Eeval:
+    return D2Eeval(loc0, arg1)
+def \
+PY_D2Efold(loc0: loctn, arg1: d2exp)->D2Efold:
+    return D2Efold(loc0, arg1)
+def \
+PY_D2Efree(loc0: loctn, arg1: d2exp)->D2Efree:
+    return D2Efree(loc0, arg1)
+#
+########################################################################
 def PY_D2Ewhere\
 (loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:
     return D2Ewhere(loc0, arg1, arg2)
+########################################################################
+#
+def PY_D2Eassgn\
+(loc0: loctn, arg1: d2exp, arg2: d2exp)->D2Eassgn:
+    return D2Eassgn(loc0, arg1, arg2)
+#
+def PY_D2Exazgn\
+(loc0: loctn, arg1: d2exp, arg2: d2exp)->D2Exazgn:
+    return D2Exazgn(loc0, arg1, arg2)
+#
 ########################################################################
 #
 def PY_D2Et2pck\
