@@ -376,6 +376,16 @@ PY_D3Exazgn
 //
 #extern
 fun
+PY_D3Eraise
+( loc0: PY$loctn
+, tknd: PY$token
+, d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Et2pck
 ( loc0: PY$loctn
 , d3e1: PY$d3exp
@@ -928,6 +938,21 @@ val
 d3el = d3exp_pytrcpy(d3el)
 val
 d3er = d3exp_pytrcpy(d3er) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Eraise
+(tknd, d3e1) =>
+(
+PY_D3Eraise
+(loc0, tknd, d3e1))
+where
+{
+val
+tknd = token_pytrcpy(tknd)
+val
+d3e1 = d3exp_pytrcpy(d3e1) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

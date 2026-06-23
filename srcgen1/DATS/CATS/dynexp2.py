@@ -625,6 +625,19 @@ class D2Exazgn(D2E000):
 ########################################################################
 #
 @dataclass
+class D2Eraise(D2E000):
+    arg1: token
+    arg2: d2exp
+    ctag = "D2Eraise"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D2Et2pck(D2E000):
     arg1: d2exp
     arg2: s2typ
@@ -1076,6 +1089,12 @@ def PY_D2Eassgn\
 def PY_D2Exazgn\
 (loc0: loctn, arg1: d2exp, arg2: d2exp)->D2Exazgn:
     return D2Exazgn(loc0, arg1, arg2)
+#
+########################################################################
+#
+def PY_D2Eraise\
+(loc0: loctn, arg1: token, arg2: d2exp)->D2Eraise:
+    return D2Eraise(loc0, arg1, arg2)
 #
 ########################################################################
 #
