@@ -36,108 +36,111 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 (*
 HX-2026-06-14:
-Sun Jun 14 12:12:04 PM EDT 2026
+Sun Jun 14 02:25:56 PM EDT 2026
 *)
 //
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+#include
+"./../HATS/mytmplib00.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xsymbol.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/locinfo.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/lexing0.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/staexp1.sats"
+//
 (* ****** ****** *)
 //
 #staload
 "./../SATS/ats3_pydev.sats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #staload
-LOC = "\
-./../../xassets/\
-ATS3/srcgen2/SATS/locinfo.sats"
+"./../SATS/locinfo_pytrcpy.sats"
 #staload
-S2E = "\
-./../../xassets/\
-ATS3/srcgen2/SATS/staexp2.sats"
+"./../SATS/staexp1_pytrcpy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstbox PY$sort2 // p0tr
-#abstbox PY$s2var // p0tr
-#abstbox PY$s2exp // p0tr
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#typedef sort2 = $S2E.sort2
-#typedef s2var = $S2E.s2var
-#typedef s2exp = $S2E.s2exp
-//
-(* ****** ****** *)
-//
-#typedef s2varlst = list(s2var)
-#typedef s2varopt = optn(s2var)
-//
-#typedef s2explst = list(s2exp)
-#typedef s2expopt = optn(s2exp)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#typedef
-PY$s2varlst = PY$list(PY$s2var)
-#typedef
-PY$s2varopt = PY$optn(PY$s2var)
-//
-#typedef
-PY$s2explst = PY$list(PY$s2exp)
-#typedef
-PY$s2expopt = PY$optn(PY$s2exp)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
+#extern
 fun
-sort2_fprint
-(s2t0: sort2, out0: FILR): void
-fun
-s2exp_fprint
-(sexp: s2exp, out0: FILR): void
+PY_repr
+{a:type}(x:a): strn = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
-sort2_pytrcpy(s2t0: sort2): PY$sort2
-//
-(* ****** ****** *)
-//
-fun
-s2var_pytrcpy(svar: s2var): PY$s2var
-//
-(* ****** ****** *)
-//
-fun
-s2exp_pytrcpy(sexp: s2exp): PY$s2exp
+PY_S1Ea3src
+( loc0
+: PY$loctn
+, sexp: s1exp): PY$s1exp = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-s2varlst_pytrcpy(s2es: s2varlst): PY$s2varlst
-fun
-s2varopt_pytrcpy(sopt: s2varopt): PY$s2varopt
+#impltmp
+g_print<s1exp>(sexp) =
+s1exp_fprint(sexp, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s1exp_pytrcpy
+(   sexp   ) =
+(
+case+
+sexp.node() of
+|
+_(*otherwise*) => PY_S1Ea3src(loc0, sexp)
+) where
+{
+//
+val loc0 =
+loctn_pytrcpy(sexp.lctn((*0*)))
+//
+val (  ) =
+(
+  printsln("s1exp_pytrcpy: sexp = ", sexp))
+//
+val (  ) =
+printsln("s1exp_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[s1exp_pytrcpy(sexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s1explst_pytrcpy
+(   s1es   ) =
+(
+list_map$f1un_PY$list(s1es, s1exp_pytrcpy))
 //
 (* ****** ****** *)
 //
-fun
-s2explst_pytrcpy(s2es: s2explst): PY$s2explst
-fun
-s2expopt_pytrcpy(sopt: s2expopt): PY$s2expopt
+#implfun
+s1expopt_pytrcpy
+(   sopt   ) =
+(
+optn_map$f1un_PY$optn(sopt, s1exp_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-PYDEV/srcgen1/SATS/staexp2_pytrcpy.sats] *)
+(* end of [ATS3-PYDEV/srcgen1/DATS/staexp1_pytrcpy.dats] *)
 (***********************************************************************)

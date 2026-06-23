@@ -44,13 +44,20 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/xstamp0.sats"
+#staload
+STM = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xstamp0.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox PY$stamp // p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef stamp = $STM.stamp
 //
 (* ****** ****** *)
 (* ****** ****** *)

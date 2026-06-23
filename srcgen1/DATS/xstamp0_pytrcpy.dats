@@ -44,8 +44,9 @@ Sun Jun 14 02:25:56 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/xstamp0.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xstamp0.sats"
 //
 (* ****** ****** *)
 //

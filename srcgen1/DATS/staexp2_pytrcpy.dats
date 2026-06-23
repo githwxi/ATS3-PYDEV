@@ -48,14 +48,18 @@ Sun Jun 14 02:25:56 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/xsymbol.sats"
-#staload "./../../\
-xassets/ATS3/SATS/locinfo.sats"
-#staload "./../../\
-xassets/ATS3/SATS/lexing0.sats"
-#staload "./../../\
-xassets/ATS3/SATS/staexp2.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xsymbol.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/locinfo.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/lexing0.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/staexp2.sats"
 //
 (* ****** ****** *)
 //

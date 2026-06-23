@@ -51,14 +51,17 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 //
 #staload
-LOC = "./../../\
-xassets/ATS3/SATS/locinfo.sats"
+LOC = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/locinfo.sats"
 #staload
-S1E = "./../../\
-xassets/ATS3/SATS/staexp1.sats"
+S1E = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/staexp1.sats"
 #staload
-D1E = "./../../\
-xassets/ATS3/SATS/dynexp1.sats"
+D1E = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/dynexp1.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

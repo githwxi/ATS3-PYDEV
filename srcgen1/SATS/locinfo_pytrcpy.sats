@@ -44,8 +44,10 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/locinfo.sats"
+#staload
+LOC = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/locinfo.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,6 +56,13 @@ xassets/ATS3/SATS/locinfo.sats"
 //
 #abstbox PY$postn // p0tr
 #abstbox PY$loctn // p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef lcsrc = $LOC.lcsrc
+#typedef postn = $LOC.postn
+#typedef loctn = $LOC.loctn
 //
 (* ****** ****** *)
 (* ****** ****** *)

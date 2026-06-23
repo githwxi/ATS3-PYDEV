@@ -118,6 +118,7 @@ type d2itm = D2ITM000
 type d2ptm = D2PTM000
 type d2ptmlst = fnlist[d2ptm]
 ########################################################################
+#
 @dataclass
 class D2CLS000(ABC):
     lctn: loctn
@@ -135,6 +136,7 @@ type d2gua = D2GUA000
 type d2gpt = D2GPT000
 type d2clslst = fnlist[d2cls]
 type d2gualst = fnlist[d2gua]
+#
 ########################################################################
 @dataclass
 class D2Pa3src(D2P000):
@@ -480,6 +482,8 @@ class D2Ewhere(D2E000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
+########################################################################
 #
 @dataclass
 class D2Et2pck(D2E000):
@@ -889,6 +893,7 @@ def PY_D2Ewhere\
 (loc0: loctn, arg1: d2exp, arg2: d2eclist)->D2Ewhere:
     return D2Ewhere(loc0, arg1, arg2)
 ########################################################################
+#
 def PY_D2Et2pck\
 (loc0: loctn, arg1: d2exp, arg2: s2typ)->D2Et2pck:
     # print\
@@ -903,6 +908,7 @@ def PY_D2Et2ped\
     # print\
     # ("PY_D2Et2ped: arg2 = ", arg2)
     return D2Et2ped(loc0, arg1, arg2)
+#
 ########################################################################
 ########################################################################
 #
@@ -962,6 +968,7 @@ PY_D2GPTgua\
 (loc0: loctn, arg1: d2pat, arg2: d2gualst)->D2GPTgua:
     return D2GPTgua(loc0, arg1, arg2)
 #
+########################################################################
 ########################################################################
 #
 def \

@@ -251,6 +251,95 @@ class D3Elet0(D3E000):
     pass
 #
 ########################################################################
+#
+@dataclass
+class D3Eift0(D3E000):
+    arg1: d3exp
+    arg2: d3expopt
+    arg3: d3expopt
+    ctag = "D3Eift0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Eift0(D3E000):
+    arg1: d3exp
+    arg2: d3expopt
+    arg3: d3expopt
+    ctag = "D3Eift0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+@dataclass
+class D3Ecas0(D3E000):
+    arg1: token
+    arg2: d3exp
+    arg3: d3clslst
+    ctag = "D3Ecas0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Eseqn(D3E000):
+    arg1: d3explst
+    arg2: d3exp
+    ctag = "D3Eseqn"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Ewhere(D3E000):
+    arg1: d3exp
+    arg2: d3eclist
+    ctag = "D3Ewhere"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Et2pck(D3E000):
+    arg1: d3exp
+    arg2: s2typ
+    ctag = "D3Et2pck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+@dataclass
+class D3Et2ped(D3E000):
+    arg1: d3exp
+    arg2: s2typ
+    ctag = "D3Et2ped"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
 ########################################################################
 #
 @dataclass
@@ -529,12 +618,78 @@ def PY_D3Elet0\
 (loc0: loctn, arg1: d3eclist, arg2: d3exp)->D3Elet0:
     return D3Elet0(loc0, arg1, arg2)
 ########################################################################
+def PY_D3Eift0\
+(loc0: loctn, \
+ arg1: d3exp, \
+ arg2: d3expopt, arg3: d3expopt)->D3Eift0:
+    return D3Eift0(loc0, arg1, arg2, arg3)
+########################################################################
+def PY_D3Ecas0\
+(loc0: loctn, \
+ arg1: token, arg2: d3exp, arg3: d3clslst)->D3Ecas0:
+    return D3Ecas0(loc0, arg1, arg2, arg3)
+########################################################################
+def PY_D3Eseqn\
+(loc0: loctn, arg1: d3explst, arg2: d3exp)->D3Eseqn:
+    return D3Eseqn(loc0, arg1, arg2)
+########################################################################
+def PY_D3Ewhere\
+(loc0: loctn, arg1: d3exp, arg2: d3eclist)->D3Ewhere:
+    return D3Ewhere(loc0, arg1, arg2)
+########################################################################
+#
+def PY_D3Et2pck\
+(loc0: loctn, arg1: d3exp, arg2: s2typ)->D3Et2pck:
+    # print\
+    # ("PY_D3Et2pck: arg1 = ", arg1)
+    # print\
+    # ("PY_D3Et2pck: arg2 = ", arg2)
+    return D3Et2pck(loc0, arg1, arg2)
+def PY_D3Et2ped\
+(loc0: loctn, arg1: d3exp, arg2: s2typ)->D3Et2ped:
+    # print\
+    # ("PY_D3Et2ped: arg1 = ", arg1)
+    # print\
+    # ("PY_D3Et2ped: arg2 = ", arg2)
+    return D3Et2ped(loc0, arg1, arg2)
+#
+########################################################################
+########################################################################
+#
+def \
+PY_D3GUAexp\
+(loc0: loctn, arg1: d3exp)->D3GUAexp:
+    return D3GUAexp(loc0, arg1)
+def \
+PY_D3GUAmat\
+(loc0: loctn, arg1: d3exp, arg2: d3pat)->D3GUAmat:
+    return D3GUAmat(loc0, arg1, arg2)
+#
+def \
+PY_D3CLSgpt\
+(loc0: loctn, arg1: d3gpt)->D3CLSgpt:
+    return D3CLSgpt(loc0, arg1)
+def \
+PY_D3CLScls\
+(loc0: loctn, arg1: d3gpt, arg2: d3exp)->D3CLScls:
+    return D3CLScls(loc0, arg1, arg2)
+#
+def \
+PY_D3GPTpat\
+(loc0: loctn, arg1: d3pat)->D3GPTpat:
+    return D3GPTpat(loc0, arg1)
+def \
+PY_D3GPTgua\
+(loc0: loctn, arg1: d3pat, arg2: d3gualst)->D3GPTgua:
+    return D3GPTgua(loc0, arg1, arg2)
+#
+########################################################################
 ########################################################################
 #
 def \
 PY_F3ARGdapp\
 (lctn: loctn, \
- arg1: sint, arg2: d2patlst)->F3ARGdapp:
+ arg1: sint, arg2: d3patlst)->F3ARGdapp:
     return F3ARGdapp(lctn, arg1, arg2)
 #
 def \

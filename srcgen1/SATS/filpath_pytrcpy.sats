@@ -44,8 +44,14 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/filpath.sats"
+#staload
+FIL = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/filpath.sats"
+//
+(* ****** ****** *)
+//
+#typedef fpath = $FIL.fpath
 //
 (* ****** ****** *)
 (* ****** ****** *)

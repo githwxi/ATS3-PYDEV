@@ -48,24 +48,33 @@ Sun Jun 14 02:25:56 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/xstamp0.sats"
-#staload "./../../\
-xassets/ATS3/SATS/xsymbol.sats"
-#staload "./../../\
-xassets/ATS3/SATS/locinfo.sats"
-#staload "./../../\
-xassets/ATS3/SATS/lexing0.sats"
-#staload "./../../\
-xassets/ATS3/SATS/staexp1.sats"
-#staload "./../../\
-xassets/ATS3/SATS/dynexp1.sats"
-#staload "./../../\
-xassets/ATS3/SATS/staexp2.sats"
-#staload "./../../\
-xassets/ATS3/SATS/statyp2.sats"
-#staload "./../../\
-xassets/ATS3/SATS/dynexp3.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xstamp0.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xsymbol.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/locinfo.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/lexing0.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/staexp1.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/dynexp1.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/staexp2.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/statyp2.sats"
+#staload "\
+./../../xassets/\
+ATS3/srcgen2/SATS/dynexp3.sats"
 //
 (* ****** ****** *)
 //
@@ -234,6 +243,59 @@ PY_D3Elet0
 ( loc0: PY$loctn
 , dcls: PY$d3eclist
 , d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Eift0
+( loc0: PY$loctn
+, d3e1: PY$d3exp
+, dthn: PY$d3expopt
+, dels: PY$d3expopt): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Ecas0
+( loc0: PY$loctn
+, tknd: PY$token
+, d3e1: PY$d3exp
+, dcls: PY$d3clslst): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Eseqn
+( loc0: PY$loctn
+, d3es: PY$d3explst
+, d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Ewhere
+( loc0: PY$loctn
+, d3e1: PY$d3exp
+, dcls: PY$d3eclist): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Et2pck
+( loc0: PY$loctn
+, d3e1: PY$d3exp
+, t2p2: PY$s2typ   ): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Et2ped
+( loc0: PY$loctn
+, d3e1: PY$d3exp
+, t2p2: PY$s2typ   ): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -553,6 +615,113 @@ val dcls =
 (* ****** ****** *)
 (* ****** ****** *)
 //
+|D3Eift0
+(d3e1
+,dthn, dels) =>
+let
+val d3e1 =
+(
+  d3exp_pytrcpy(d3e1))
+in//let
+PY_D3Eift0(
+  loc0, d3e1, dthn, dels)
+end where
+{
+val dthn =
+(
+  d3expopt_pytrcpy(dthn))
+val dels =
+(
+  d3expopt_pytrcpy(dels)) }
+//
+(* ****** ****** *)
+//
+|D3Ecas0
+(tknd
+,d3e1, dcls) =>
+(
+PY_D3Ecas0
+(loc0
+,tknd, d3e1, dcls))
+where
+{
+//
+val tknd =
+(
+  token_pytrcpy(tknd))
+//
+val d3e1 =
+(
+  d3exp_pytrcpy(d3e1))
+val dcls =
+(
+  d3clslst_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Eseqn
+(d3es, d3e1) =>
+(
+PY_D3Eseqn
+(loc0, d3es, d3e1))
+where
+{
+//
+val
+d3es =
+d3explst_pytrcpy(d3es)
+//
+val
+d3e1 = d3exp_pytrcpy(d3e1) }
+//
+(* ****** ****** *)
+//
+|D3Ewhere
+(d3e1, dcls) =>
+let
+val d3e1 =
+(
+  d3exp_pytrcpy(d3e1))
+in//let
+PY_D3Ewhere
+(loc0, d3e1(*scp*), dcls)
+end where
+{
+val dcls =
+(
+  d3eclist_pytrcpy(dcls)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Et2pck
+(d3e1, t2p2) =>
+(
+PY_D3Et2pck
+(loc0, d3e1, t2p2(*ann*))
+) where
+{
+val d3e1 = d3exp_pytrcpy(d3e1)
+val t2p2 = s2typ_pytrcpy(t2p2)
+}
+//
+(* ****** ****** *)
+//
+|D3Et2ped
+(d3e1, t2p2) =>
+(
+PY_D3Et2ped
+(loc0, d3e1, t2p2(*ann*))
+) where
+{
+val d3e1 = d3exp_pytrcpy(d3e1)
+val t2p2 = s2typ_pytrcpy(t2p2)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |_(*otherwise*) => PY_D3Ea3src(loc0, dexp)
 //
 (* ****** ****** *)
@@ -572,6 +741,173 @@ val (  ) =
 printsln("d3exp_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 }(*where*)//end-of-[d3exp_pytrcpy(dexp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3gua_pytrcpy
+(   dgua   ) =
+(
+case+
+dgua.node() of
+//
+|D3GUAexp
+(   dexp   ) =>
+(
+PY_D3GUAexp
+(loc0, dexp)) where
+{
+val dexp =
+(
+  d3exp_pytrcpy(dexp)) }
+//
+|D3GUAmat
+(dexp, dpat) =>
+(
+PY_D3GUAmat
+(loc0, dexp, dpat))
+where
+{
+val dexp =
+(
+  d3exp_pytrcpy(dexp))
+val dpat =
+(
+  d3pat_pytrcpy(dpat)) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dgua.lctn((*0*)))
+//
+#extern
+fun
+PY_D3GUAexp
+( lctn: PY$loctn
+, dexp: PY$d3exp): PY$d3gua = $extnam()
+#extern
+fun
+PY_D3GUAmat
+( lctn: PY$loctn
+, dexp: PY$d3exp
+, dpat: PY$d3pat): PY$d3gua = $extnam()
+//
+val (  ) =
+printsln("d3gua_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d3gua_pytrcpy(dgua)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3cls_pytrcpy
+(   dcls   ) =
+(
+case+
+dcls.node() of
+|D3CLSgpt
+(   dgpt   ) =>
+(
+PY_D3CLSgpt
+(loc0, dgpt)) where
+{
+val
+dgpt = d3gpt_pytrcpy(dgpt)
+}
+|D3CLScls
+(dgpt, dexp) =>
+(
+PY_D3CLScls
+(loc0, dgpt, dexp))
+where
+{
+val
+dgpt = d3gpt_pytrcpy(dgpt)
+val
+dexp = d3exp_pytrcpy(dexp) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dcls.lctn((*0*)))
+//
+#extern
+fun
+PY_D3CLSgpt
+( lctn: PY$loctn
+, dgpt: PY$d3gpt): PY$d3cls = $extnam()
+#extern
+fun
+PY_D3CLScls
+( lctn: PY$loctn
+, dgpt: PY$d3gpt
+, dexp: PY$d3exp): PY$d3cls = $extnam()
+//
+val (  ) =
+printsln("d3cls_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d3cls_pytrcpy(dcls)]
+//
+(* ****** ****** *)
+//
+#implfun
+d3gpt_pytrcpy
+(   dgpt   ) =
+(
+case+
+dgpt.node() of
+//
+|D3GPTpat
+(   dpat   ) =>
+(
+PY_D3GPTpat
+(loc0, dpat)) where
+{
+val dpat =
+(
+  d3pat_pytrcpy(dpat)) }
+//
+|D3GPTgua
+(dpat, d3gs) =>
+(
+PY_D3GPTgua
+(loc0, dpat, d3gs))
+where
+{
+val
+dpat =
+(
+  d3pat_pytrcpy(dpat))
+val
+d3gs =
+(
+  d3gualst_pytrcpy(d3gs)) }
+)
+where
+{
+//
+val loc0 =
+loctn_pytrcpy(dgpt.lctn((*0*)))
+//
+#extern
+fun
+PY_D3GPTpat
+( lctn: PY$loctn
+, dpat: PY$d3pat): PY$d3gpt = $extnam()
+#extern
+fun
+PY_D3GPTgua(
+lctn: PY$loctn,
+dpat: PY$d3pat,
+d3gs: PY$d3gualst): PY$d3gpt = $extnam()
+//
+val (  ) =
+printsln("d3gpt_pytrcpy: loc0 = ", PY_repr(loc0))
+//
+}(*where*)//end-of-[d3gpt_pytrcpy(dgpt)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

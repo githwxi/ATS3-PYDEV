@@ -44,13 +44,20 @@ Sun Jun 14 12:12:04 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload "./../../\
-xassets/ATS3/SATS/xsymbol.sats"
+#staload
+SYM = "\
+./../../xassets/\
+ATS3/srcgen2/SATS/xsymbol.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #abstbox PY$symbl // p0tr
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef symbl = $SYM.symbl
 //
 (* ****** ****** *)
 (* ****** ****** *)
