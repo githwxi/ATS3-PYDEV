@@ -45,10 +45,10 @@ Sun Jun 14 02:25:56 PM EDT 2026
 (* ****** ****** *)
 //
 #staload "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/xsymbol.sats"
 #staload "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/filpath.sats"
 //
 (* ****** ****** *)

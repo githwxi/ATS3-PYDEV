@@ -52,19 +52,19 @@ Sun Jun 14 12:12:04 PM EDT 2026
 //
 #staload
 LOC = "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/locinfo.sats"
 #staload
 D1E = "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/dynexp1.sats"
 #staload
 D2E = "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/dynexp2.sats"
 #staload
 D3E = "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/dynexp3.sats"
 //
 (* ****** ****** *)

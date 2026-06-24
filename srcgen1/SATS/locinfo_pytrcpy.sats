@@ -46,7 +46,7 @@ Sun Jun 14 12:12:04 PM EDT 2026
 //
 #staload
 LOC = "\
-./../../xassets/\
+./../../externs/\
 ATS3/srcgen2/SATS/locinfo.sats"
 //
 (* ****** ****** *)
