@@ -80,6 +80,8 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 //
 #abstbox PY$d3ecl // p0tr
 //
+#abstbox PY$timpl // p0tr
+//
 (* ****** ****** *)
 //
 #abstbox PY$teqd3exp // p0tr
@@ -111,6 +113,8 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 //
 #typedef d3ecl = $D3E.d3ecl
 //
+#typedef timpl = $D3E.timpl
+//
 (* ****** ****** *)
 //
 #typedef d3patlst = list(d3pat)
@@ -123,6 +127,8 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 #typedef f3arglst = list(f3arg)
 //
 #typedef d3eclist = list(d3ecl)
+//
+#typedef timplist = list(timpl)
 //
 (* ****** ****** *)
 //
@@ -166,6 +172,10 @@ fun
 d3ecl_fprint
 (d3cl: d3ecl, out0: FILR): void
 //
+fun
+timpl_fprint
+(timp: timpl, out0: FILR): void
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -194,6 +204,11 @@ fun
 d3ecl_pytrcpy(d3cl: d3ecl): PY$d3ecl
 //
 (* ****** ****** *)
+//
+fun
+timpl_pytrcpy(timp: timpl): PY$timpl
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef
@@ -214,6 +229,9 @@ PY$f3arglst = PY$list(PY$f3arg)
 //
 #typedef
 PY$d3eclist = PY$list(PY$d3ecl)
+//
+#typedef
+PY$timplist = PY$list(PY$timpl)
 //
 (* ****** ****** *)
 //
@@ -258,6 +276,11 @@ f3arglst_pytrcpy(f3as: f3arglst): PY$f3arglst
 //
 fun
 d3eclist_pytrcpy(dcls: d3eclist): PY$d3eclist
+//
+(* ****** ****** *)
+//
+fun
+timplist_pytrcpy(tmps: timplist): PY$timplist
 //
 (* ****** ****** *)
 //

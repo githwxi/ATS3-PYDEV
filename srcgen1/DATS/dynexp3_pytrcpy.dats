@@ -254,6 +254,23 @@ PY_D3Evar
 //
 #extern
 fun
+PY_D3Etimp
+( loc0: PY$loctn
+, dcst: PY$d3exp
+, timp: PY$timpl   ): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Etimq
+( loc0: PY$loctn
+, dcst: PY$d3exp
+, timp: PY$timpl
+, tmps: PY$timplist): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Esapp
 ( loc0: PY$loctn
 , d3f0: PY$d3exp
@@ -746,6 +763,39 @@ in//let
 (
 PY_D3Evar(loc0, d2v1))
 end//let//endof(D3Evar)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Etimp
+(dcst, timp) =>
+(
+PY_D3Etimp
+(loc0, dcst, timp))
+where
+{
+val dcst =
+  d3exp_pytrcpy(dcst)
+val timp =
+(
+  timpl_pytrcpy(timp)) }
+//
+|D3Etimq
+(dcst
+,timp, tmps) =>
+(
+PY_D3Etimq
+(loc0
+,dcst, timp, tmps))
+where
+{
+val dcst =
+  d3exp_pytrcpy(dcst)
+val timp =
+  timpl_pytrcpy(timp)
+val tmps =
+(
+  timplist_pytrcpy(tmps)) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1485,6 +1535,14 @@ d3eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d3ecl_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+timplist_pytrcpy
+(   tmps   ) =
+(
+list_map$f1un_PY$list(tmps, timpl_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)
