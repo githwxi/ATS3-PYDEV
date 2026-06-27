@@ -145,6 +145,29 @@ PY_D3Ca3src
 //
 #extern
 fun
+PY_D3Pint
+( loc0: PY$loctn
+, tint: PY$token): PY$d3pat = $extnam()
+#extern
+fun
+PY_D3Pbtf
+( loc0: PY$loctn
+, sbtf: PY$symbl): PY$d3pat = $extnam()
+#extern
+fun
+PY_D3Pchr
+( loc0: PY$loctn
+, tchr: PY$token): PY$d3pat = $extnam()
+#extern
+fun
+PY_D3Pstr
+( loc0: PY$loctn
+, tstr: PY$token): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Pany
 ( loc0: PY$loctn): PY$d3pat = $extnam()
 #extern
@@ -505,6 +528,48 @@ dpat.node() of
 //
 (* ****** ****** *)
 //
+|D3Pint
+(   tint   ) =>
+let
+val tint =
+token_pytrcpy(tint)
+in//let
+(
+PY_D3Pint(loc0, tint))
+end//let//endof(D3Pint)
+//
+|D3Pbtf
+(   sbtf   ) =>
+let
+val sbtf =
+symbl_pytrcpy(sbtf)
+in//let
+(
+PY_D3Pbtf(loc0, sbtf))
+end//let//endof(D3Pbtf)
+//
+|D3Pchr
+(   tchr   ) =>
+let
+val tchr =
+token_pytrcpy(tchr)
+in//let
+(
+PY_D3Pchr(loc0, tchr))
+end//let//endof(D3Pchr)
+//
+|D3Pstr
+(   tstr   ) =>
+let
+val tstr =
+token_pytrcpy(tstr)
+in//let
+(
+PY_D3Pstr(loc0, tstr))
+end//let//endof(D3Pstr)
+//
+(* ****** ****** *)
+//
 |D3Pany
 ( (*void*) ) =>
 (
@@ -519,6 +584,8 @@ in//let
 (
   PY_D3Pvar(loc0, d2v1))
 end//let
+//
+(* ****** ****** *)
 //
 |D3Pcon
 (   d2c1   ) =>

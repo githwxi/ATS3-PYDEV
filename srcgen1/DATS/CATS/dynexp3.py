@@ -104,6 +104,54 @@ class D3Ca3src(D3C000):
 ########################################################################
 #
 @dataclass
+class D3Pint(D3P000):
+    arg1: token
+    ctag = "D3Pint"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3Pbtf(D3P000):
+    arg1: symbl
+    ctag = "D3Pbtf"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3Pchr(D3P000):
+    arg1: token
+    ctag = "D3Pchr"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3Pflt(D3P000):
+    arg1: token
+    ctag = "D3Pflt"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3Pstr(D3P000):
+    arg1: token
+    ctag = "D3Pstr"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Pany(D3P000):
     ctag = "D3Pany"
     def __str__(self)->strn:
@@ -720,6 +768,21 @@ def PY_D3Ca3src\
 ########################################################################
 ########################################################################
 #
+def PY_D3Pint\
+(lctn: loctn, arg1: token)->D3Pint:
+    return D3Pint(lctn, arg1)
+def PY_D3Pbtf\
+(lctn: loctn, arg1: symbl)->D3Pbtf:
+    return D3Pbtf(lctn, arg1)
+def PY_D3Pchr\
+(lctn: loctn, arg1: token)->D3Pchr:
+    return D3Pchr(lctn, arg1)
+def PY_D3Pstr\
+(lctn: loctn, arg1: token)->D3Pstr:
+    return D3Pstr(lctn, arg1)
+#
+########################################################################
+#
 def PY_D3Pany(lctn: loctn)->D3Pany:
     return D3Pany(lctn)
 def PY_D3Pvar(lctn: loctn, arg1: d2var)->D3Pvar:
@@ -744,6 +807,9 @@ def PY_D3Eint\
 def PY_D3Ebtf\
 (lctn: loctn, arg1: symbl)->D3Ebtf:
     return D3Ebtf(lctn, arg1)
+def PY_D3Echr\
+(lctn: loctn, arg1: token)->D3Echr:
+    return D3Echr(lctn, arg1)
 def PY_D3Estr\
 (lctn: loctn, arg1: token)->D3Estr:
     return D3Estr(lctn, arg1)

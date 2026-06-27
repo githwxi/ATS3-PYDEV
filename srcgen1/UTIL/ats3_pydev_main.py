@@ -14,11 +14,15 @@ import sys
 sys.setrecursionlimit(66000)
 ########################################################################
 ########################################################################
+#
 from \
 ats3_pydev_lib2xatsopt \
 import \
 PYDEV_d3parsed_pytrcpy, \
-PYDEV_xatsopt_args_fildats_d3parsed
+PYDEV_xatsopt_args_fildats_d2parsed, \
+PYDEV_xatsopt_args_fildats_d3parsed, \
+PYDEV_xatsopt_args_fildats_d3parsdx
+#
 ########################################################################
 ########################################################################
 #
@@ -33,12 +37,19 @@ if __name__ == "__main__":
         "ats3_pydev_main.py __void__ input.dats")
     if len(argv) >= 3:
         fpth = sys.argv[2]
+#
 #       d2parsed = \
 #       PYDEV_xatsopt_args_fildats_d2parsed(farg, fpth)
 #       PY_d2parsed = PYDEV_d2parsed_pytrcpy(d2parsed)
 #       print("ats3_pydev: PY_d2parsed =", PY_d2parsed)
+#
+#       d3parsed = \
+#       PYDEV_xatsopt_args_fildats_d3parsed(farg, fpth)
+#       PY_d3parsed = PYDEV_d3parsed_pytrcpy(d3parsed)
+#       print("ats3_pydev: PY_d3parsed =", PY_d3parsed)
+#
         d3parsed = \
-        PYDEV_xatsopt_args_fildats_d3parsed(farg, fpth)
+        PYDEV_xatsopt_args_fildats_d3parsdx(farg, fpth)
         PY_d3parsed = PYDEV_d3parsed_pytrcpy(d3parsed)
         print("ats3_pydev: PY_d3parsed =", PY_d3parsed)        
 #
