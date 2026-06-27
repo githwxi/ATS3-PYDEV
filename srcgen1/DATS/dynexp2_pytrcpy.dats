@@ -1758,6 +1758,20 @@ list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
 (* ****** ****** *)
 //
 #implfun
+s2qaglst_pytrcpy
+(   sqas   ) =
+(
+list_map$f1un_PY$list(sqas, s2qag_pytrcpy))
+//
+#implfun
+t2qaglst_pytrcpy
+(   tqas   ) =
+(
+list_map$f1un_PY$list(tqas, t2qag_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
 t2iaglst_pytrcpy
 (   tias   ) =
 (

@@ -481,6 +481,23 @@ d2cs: PY$d2cstlst,
 d3fs: PY$d3fundclist): PY$d3ecl = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_D3Cimplmnt0
+(
+loc0: PY$loctn,
+tknd: PY$token,
+stmp: PY$stamp,
+sqas: PY$s2qaglst,
+tqas: PY$t2qaglst,
+dimp: PY$dimpl,
+tias: PY$t2iaglst,
+f3as: PY$f3arglst,
+sres: PY$s2res(*tp*),
+dexp: PY$d3exp(*bd*)): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -1527,6 +1544,53 @@ val d3fs =
 (
   d3fundclist_pytrcpy(d3fs))
 }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Cimplmnt0
+(tknd
+,stmp
+,sqas, tqas
+,dimp
+,tias, f3as
+,sres, dexp) =>
+(
+PY_D3Cimplmnt0
+(loc0
+,tknd, stmp
+,sqas, tqas
+,dimp, tias
+,f3as, sres, dexp))
+where
+{
+//
+val tknd =
+  token_pytrcpy(tknd)
+val stmp =
+  stamp_pytrcpy(stmp)
+//
+val sqas =
+(
+s2qaglst_pytrcpy(sqas))
+val tqas =
+(
+t2qaglst_pytrcpy(tqas))
+//
+val dimp =
+(
+  dimpl_pytrcpy( dimp ))
+//
+val tias =
+(
+  t2iaglst_pytrcpy(tias))
+//
+val f3as =
+(
+  f3arglst_pytrcpy(f3as))
+//
+val sres = s2res_pytrcpy(sres)
+val dexp = d3exp_pytrcpy(dexp) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
