@@ -136,7 +136,7 @@ printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
 s2vtp_pytrcpy
 (   svtp   ) =
 (
-PY_s2vtp_make
+PY_s2vtp_make_args
 ( s2v1, t2p2 ))
 where
 {
@@ -148,7 +148,7 @@ val t2p2 = s2typ_pytrcpy(t2p2)
 //
 #extern
 fun
-PY_s2vtp_make
+PY_s2vtp_make_args
 ( s2v1: PY$s2var
 , t2p2: PY$s2typ): PY$s2vtp = $extnam()
 //

@@ -139,7 +139,7 @@ val (  ) =
 s2var_pytrcpy
 (   svar   ) =
 (
-PY_s2var_make
+PY_s2var_make_args
 ( name
 , s2t0, stmp)) where
 {
@@ -153,7 +153,7 @@ stmp = stamp_pytrcpy(svar.stmp())
 //
 #extern
 fun
-PY_s2var_make
+PY_s2var_make_args
 (
 name: PY$symbl,
 s2t0: PY$sort2,

@@ -51,13 +51,13 @@ class S2Ea3src(S2E000):
 ########################################################################
 @dataclass
 class s2var_tbox(ABC):
-    sort: sort2
     name: symbl
+    sort: sort2
     stmp: stamp
     def __str__(self)->strn:
-        return f"S2VAR({self.name};{self.stmp})"
+        return f"S2VAR({self.name};{self.sort};{self.stmp})"
     def __repr__(self)->strn:
-        return f"S2VAR({self.name!r};{self.stmp!r})"
+        return f"S2VAR({self.name!r};{self.sort!r};{self.stmp!r})"
     pass
 type s2var = s2var_tbox
 type s2varlst = fnlist[s2var]
@@ -69,6 +69,10 @@ PY_S2Ta3src(arg1: pyobj)->S2Ta3src:
 def PY_S2Ea3src\
 (s2t0: sort2, arg1: pyobj)->S2Ea3src:
     return S2Ea3src(s2t0, arg1)
+########################################################################
+def PY_s2var_make_args\
+(name: symbl, sort: sort2, stmp: stamp)->s2var_tbox:
+    return s2var_tbox(name, sort, stmp)
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/DATS/CATS/staexp2.py]

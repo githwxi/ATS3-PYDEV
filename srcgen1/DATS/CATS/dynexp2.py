@@ -77,6 +77,32 @@ type d2varopt = fnoptn[d2var]
 ########################################################################
 #
 @dataclass
+class s2qag_tbox(ABC):
+    lctn: loctn
+    s2vs: s2varlst
+    def __str__(self)->strn:
+        return f"S2QAG({self.t2ps})"
+    def __repr__(self)->strn:
+        return f"S2QAG({self.t2ps!r})"
+    pass
+type s2qag = s2qag_tbox
+type s2qaglst = fnlist[s2qag]
+#
+@dataclass
+class t2qag_tbox(ABC):
+    lctn: loctn
+    s2vs: s2varlst
+    def __str__(self)->strn:
+        return f"T2QAG({self.t2ps})"
+    def __repr__(self)->strn:
+        return f"T2QAG({self.t2ps!r})"
+    pass
+type t2qag = t2qag_tbox
+type t2qaglst = fnlist[t2qag]
+#
+########################################################################
+#
+@dataclass
 class t2iag_tbox(ABC):
     lctn: loctn
     s2es: s2explst
@@ -1224,6 +1250,18 @@ PY_WTHS2EXPsome\
     return WTHS2EXPsome(arg1, arg2)
 #
 ########################################################################
+########################################################################
+#
+def \
+PY_s2qag_make_s2vs\
+(lctn: loctn, s2vs: s2typlst)->s2qag:
+    return s2qag_tbox(lctn, s2vs)
+#
+def \
+PY_t2qag_make_s2vs\
+(lctn: loctn, s2vs: s2typlst)->t2qag:
+    return t2qag_tbox(lctn, s2vs)
+#
 ########################################################################
 #
 def \

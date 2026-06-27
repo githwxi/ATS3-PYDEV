@@ -454,20 +454,6 @@ PY_D2Cimplmnt0
 //
 #extern
 fun
-PY_t2iag_make_s2es
-( loc0: PY$loctn
-, s2es: PY$s2explst): PY$t2iag = $extnam()
-//
-#extern
-fun
-PY_t2jag_make_t2ps
-( loc0: PY$loctn
-, t2ps: PY$s2typlst): PY$t2jag = $extnam()
-//
-(* ****** ****** *)
-//
-#extern
-fun
 PY_d2valdcl_make_args
 (
 lctn: PY$loctn,
@@ -600,8 +586,8 @@ stmp: PY$stamp): PY$d2var = $extnam()
 s2qag_pytrcpy
 (   sqa0   ) =
 (
-PY_s2qag_make
-( loc0, s2vs )
+PY_s2qag_make_s2vs
+  ( loc0, s2vs )
 ) where
 {
 //
@@ -615,7 +601,7 @@ val s2vs = s2varlst_pytrcpy(s2vs)
 //
 #extern
 fun
-PY_s2qag_make
+PY_s2qag_make_s2vs
 ( loc0
 : PY$loctn
 , s2vs
@@ -629,8 +615,8 @@ PY_s2qag_make
 t2qag_pytrcpy
 (   tqa0   ) =
 (
-PY_t2qag_make
-( loc0, s2vs )
+PY_t2qag_make_s2vs
+  ( loc0, s2vs )
 ) where
 {
 //
@@ -644,7 +630,7 @@ val s2vs = s2varlst_pytrcpy(s2vs)
 //
 #extern
 fun
-PY_t2qag_make
+PY_t2qag_make_s2vs
 ( loc0
 : PY$loctn
 , s2vs
@@ -1698,33 +1684,57 @@ printsln("d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
 //
 #implfun
 t2iag_pytrcpy
-(   t2ia   ) =
+(   tia0   ) =
 (
-PY_t2iag_make_s2es(loc0, s2es))
-where
+PY_t2iag_make_s2es
+  ( loc0, s2es )
+) where
 {
 //
 val loc0 =
-loctn_pytrcpy(t2iag_get_lctn(t2ia))
-val s2es =
-s2explst_pytrcpy(t2iag_get_s2es(t2ia))
-}(*where*)//end-of-[t2iag_pytrcpy(t2ia)]
+loctn_pytrcpy
+(t2iag_get_lctn(tia0))
+//
+val s2es = t2iag_get_s2es(tia0)
+val s2es = s2explst_pytrcpy(s2es)
+//
+#extern
+fun
+PY_t2iag_make_s2es
+( loc0
+: PY$loctn
+, s2es:
+  PY$s2explst) : PY$t2iag = $extnam()
+//
+}(*where*)//end-of-[t2iag_pytrcpy(tia0)]
 //
 (* ****** ****** *)
 //
 #implfun
 t2jag_pytrcpy
-(   t2ja   ) =
+(   tja0   ) =
 (
-PY_t2jag_make_t2ps(loc0, t2ps))
-where
+PY_t2jag_make_t2ps
+  ( loc0, t2ps )
+) where
 {
 //
 val loc0 =
-loctn_pytrcpy(t2jag_get_lctn(t2ja))
-val t2ps =
-s2typlst_pytrcpy(t2jag_get_t2ps(t2ja))
-}(*where*)//end-of-[t2jag_pytrcpy(t2ja)]
+loctn_pytrcpy
+(t2jag_get_lctn(tja0))
+//
+val t2ps = t2jag_get_t2ps(tja0)
+val t2ps = s2typlst_pytrcpy(t2ps)
+//
+#extern
+fun
+PY_t2jag_make_t2ps
+( loc0
+: PY$loctn
+, t2ps
+: PY$s2typlst) : PY$t2jag = $extnam()
+//
+}(*where*)//end-of-[t2jag_pytrcpy(tja0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1754,6 +1764,20 @@ d2varopt_pytrcpy
 (   dopt   ) =
 (
 optn_map$f1un_PY$optn(dopt, d2var_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+s2qaglst_pytrcpy
+(   sqas   ) =
+(
+list_map$f1un_PY$list(sqas, s2qag_pytrcpy))
+//
+#implfun
+t2qaglst_pytrcpy
+(   tqas   ) =
+(
+list_map$f1un_PY$list(tqas, t2qag_pytrcpy))
 //
 (* ****** ****** *)
 //
@@ -1814,20 +1838,6 @@ d2eclist_pytrcpy
 (   dcls   ) =
 (
 list_map$f1un_PY$list(dcls, d2ecl_pytrcpy))
-//
-(* ****** ****** *)
-//
-#implfun
-s2qaglst_pytrcpy
-(   sqas   ) =
-(
-list_map$f1un_PY$list(sqas, s2qag_pytrcpy))
-//
-#implfun
-t2qaglst_pytrcpy
-(   tqas   ) =
-(
-list_map$f1un_PY$list(tqas, t2qag_pytrcpy))
 //
 (* ****** ****** *)
 //
