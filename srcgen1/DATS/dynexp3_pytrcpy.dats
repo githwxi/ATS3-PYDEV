@@ -1382,6 +1382,74 @@ printsln("f3arg_pytrcpy: loc0 = ", PY_repr(loc0))
 (* ****** ****** *)
 //
 #implfun
+timpl_pytrcpy
+(   timp   ) =
+(
+case+
+timp.node() of
+|TIMPLall1
+(dcst
+,tjas, dcls) =>
+(
+PY_TIMPLall1
+(stmp
+,dcst, tjas, dcls))
+where
+{
+val dcst =
+  d2cst_pytrcpy(dcst)
+val tjas =
+  t2jaglst_pytrcpy(tjas)
+val dcls =
+  d3eclist_pytrcpy(dcls) }
+|TIMPLallx
+(dcst
+,tjas, dcls) =>
+(
+PY_TIMPLallx
+(stmp
+,dcst, tjas, dcls))
+where
+{
+val dcst =
+  d2cst_pytrcpy(dcst)
+val tjas =
+  t2jaglst_pytrcpy(tjas)
+val dcls =
+  d3eclist_pytrcpy(dcls) }
+) where
+{
+//
+val stmp =
+stamp_pytrcpy(timp.stmp((*0*)))
+//
+#extern
+fun
+PY_TIMPLall1
+( stmp: PY$stamp
+, dcst: PY$d2cst
+, tjas: PY$t2jaglst
+, dcls: PY$d3eclist): PY$timpl = $extnam()
+#extern
+fun
+PY_TIMPLallx
+( stmp: PY$stamp
+, dcst: PY$d2cst
+, tjas: PY$t2jaglst
+, dcls: PY$d3eclist): PY$timpl = $extnam()
+//
+val (  ) =
+(
+  printsln("timpl_pytrcpy: timp = ", timp))
+val (  ) =
+printsln("timpl_pytrcpy: stmp = ", PY_repr(stmp))
+//
+}(*where*)//end-of-[timpl_pytrcpy(timp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d3ecl_pytrcpy
 (   d3cl   ) =
 (
@@ -1507,6 +1575,7 @@ d3expopt_pytrcpy
 optn_map$f1un_PY$optn(dopt, d3exp_pytrcpy))
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 d3gualst_pytrcpy
@@ -1531,18 +1600,19 @@ list_map$f1un_PY$list(f3as, f3arg_pytrcpy))
 (* ****** ****** *)
 //
 #implfun
-d3eclist_pytrcpy
-(   dcls   ) =
-(
-list_map$f1un_PY$list(dcls, d3ecl_pytrcpy))
-//
-(* ****** ****** *)
-//
-#implfun
 timplist_pytrcpy
 (   tmps   ) =
 (
 list_map$f1un_PY$list(tmps, timpl_pytrcpy))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+d3eclist_pytrcpy
+(   dcls   ) =
+(
+list_map$f1un_PY$list(dcls, d3ecl_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)

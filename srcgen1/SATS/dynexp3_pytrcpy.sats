@@ -78,9 +78,9 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 #abstbox PY$d3cls // p0tr
 #abstbox PY$f3arg // p0tr
 //
-#abstbox PY$d3ecl // p0tr
-//
 #abstbox PY$timpl // p0tr
+//
+#abstbox PY$d3ecl // p0tr
 //
 (* ****** ****** *)
 //
@@ -111,9 +111,9 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 #typedef d3cls = $D3E.d3cls
 #typedef f3arg = $D3E.f3arg
 //
-#typedef d3ecl = $D3E.d3ecl
-//
 #typedef timpl = $D3E.timpl
+//
+#typedef d3ecl = $D3E.d3ecl
 //
 (* ****** ****** *)
 //
@@ -126,9 +126,9 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 #typedef d3clslst = list(d3cls)
 #typedef f3arglst = list(f3arg)
 //
-#typedef d3eclist = list(d3ecl)
-//
 #typedef timplist = list(timpl)
+//
+#typedef d3eclist = list(d3ecl)
 //
 (* ****** ****** *)
 //
@@ -162,19 +162,22 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 fun
 d3pat_fprint
 (dpat: d3pat, out0: FILR): void
+//
 fun
 d3exp_fprint
 (dexp: d3exp, out0: FILR): void
+//
 fun
 f3arg_fprint
 (farg: f3arg, out0: FILR): void
-fun
-d3ecl_fprint
-(d3cl: d3ecl, out0: FILR): void
 //
 fun
 timpl_fprint
 (timp: timpl, out0: FILR): void
+//
+fun
+d3ecl_fprint
+(d3cl: d3ecl, out0: FILR): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -201,12 +204,12 @@ f3arg_pytrcpy(farg: f3arg): PY$f3arg
 (* ****** ****** *)
 //
 fun
-d3ecl_pytrcpy(d3cl: d3ecl): PY$d3ecl
+timpl_pytrcpy(timp: timpl): PY$timpl
 //
 (* ****** ****** *)
 //
 fun
-timpl_pytrcpy(timp: timpl): PY$timpl
+d3ecl_pytrcpy(d3cl: d3ecl): PY$d3ecl
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -228,10 +231,10 @@ PY$d3clslst = PY$list(PY$d3cls)
 PY$f3arglst = PY$list(PY$f3arg)
 //
 #typedef
-PY$d3eclist = PY$list(PY$d3ecl)
+PY$timplist = PY$list(PY$timpl)
 //
 #typedef
-PY$timplist = PY$list(PY$timpl)
+PY$d3eclist = PY$list(PY$d3ecl)
 //
 (* ****** ****** *)
 //
@@ -275,12 +278,12 @@ f3arglst_pytrcpy(f3as: f3arglst): PY$f3arglst
 (* ****** ****** *)
 //
 fun
-d3eclist_pytrcpy(dcls: d3eclist): PY$d3eclist
+timplist_pytrcpy(tmps: timplist): PY$timplist
 //
 (* ****** ****** *)
 //
 fun
-timplist_pytrcpy(tmps: timplist): PY$timplist
+d3eclist_pytrcpy(dcls: d3eclist): PY$d3eclist
 //
 (* ****** ****** *)
 //
