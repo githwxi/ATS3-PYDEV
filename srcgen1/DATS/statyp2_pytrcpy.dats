@@ -133,6 +133,40 @@ printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
 (* ****** ****** *)
 //
 #implfun
+s2vtp_pytrcpy
+(   svtp   ) =
+(
+PY_s2vtp_make
+( s2v1, t2p2 ))
+where
+{
+//
+val (s2v1, t2p2) = svtp
+//
+val s2v1 = s2var_pytrcpy(s2v1)
+val t2p2 = s2typ_pytrcpy(t2p2)
+//
+#extern
+fun
+PY_s2vtp_make
+( s2v1: PY$s2var
+, t2p2: PY$s2typ): PY$s2vtp = $extnam()
+//
+val (  ) =
+(
+  printsln("s2vtp_pytrcpy: svtp = ", svtp))
+//
+val (  ) =
+printsln("s2vtp_pytrcpy: s2v1 = ", PY_repr(s2v1))
+val (  ) =
+printsln("s2vtp_pytrcpy: t2p21 = ", PY_repr(t2p2))
+//
+}(*where*)//end-of-[s2vtp_pytrcpy(svtp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2typlst_pytrcpy
 (   t2ps   ) =
 (
@@ -145,6 +179,14 @@ s2typopt_pytrcpy
 (   topt   ) =
 (
 optn_map$f1un_PY$optn(topt, s2typ_pytrcpy))
+//
+(* ****** ****** *)
+//
+#implfun
+s2vtplst_pytrcpy
+(   svts   ) =
+(
+list_map$f1un_PY$list(svts, s2vtp_pytrcpy))
 //
 (* ****** ****** *)
 (* ****** ****** *)

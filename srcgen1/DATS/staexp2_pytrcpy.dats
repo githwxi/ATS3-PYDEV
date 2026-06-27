@@ -50,6 +50,9 @@ Sun Jun 14 02:25:56 PM EDT 2026
 //
 #staload "\
 ./../../externs/\
+ATS3/srcgen2/SATS/xstamp0.sats"
+#staload "\
+./../../externs/\
 ATS3/srcgen2/SATS/xsymbol.sats"
 #staload "\
 ./../../externs/\
@@ -65,6 +68,10 @@ ATS3/srcgen2/SATS/staexp2.sats"
 //
 #staload
 "./../SATS/ats3_pydev.sats"
+#staload
+"./../SATS/xstamp0_pytrcpy.sats"
+#staload
+"./../SATS/xsymbol_pytrcpy.sats"
 #staload
 "./../SATS/locinfo_pytrcpy.sats"
 #staload
@@ -129,6 +136,35 @@ val (  ) =
 (* ****** ****** *)
 //
 #implfun
+s2var_pytrcpy
+(   svar   ) =
+(
+PY_s2var_make
+( name
+, s2t0, stmp)) where
+{
+//
+val
+name = symbl_pytrcpy(svar.name())
+val
+s2t0 = sort2_pytrcpy(svar.sort())
+val
+stmp = stamp_pytrcpy(svar.stmp())
+//
+#extern
+fun
+PY_s2var_make
+(
+name: PY$symbl,
+s2t0: PY$sort2,
+stmp: PY$stamp): PY$s2var = $extnam()
+//
+}(*where*)//end-of-[s2var_pytrcpy(svar)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s2exp_pytrcpy
 (   sexp   ) =
 (
@@ -152,6 +188,14 @@ printsln("s2exp_pytrcpy: s2t0 = ", PY_repr(s2t0))
 }(*where*)//end-of-[s2exp_pytrcpy(sexp)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2varlst_pytrcpy
+(   s2vs   ) =
+(
+list_map$f1un_PY$list(s2vs, s2var_pytrcpy))
+//
 (* ****** ****** *)
 //
 #implfun

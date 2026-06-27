@@ -448,6 +448,36 @@ PY_D3Et2ped
 //
 #extern
 fun
+PY_D3Cstatic
+( loc0: PY$loctn
+, tknd: PY$token
+, dcls: PY$d3ecl   ): PY$d3ecl = $extnam()
+#extern
+fun
+PY_D3Cextern
+( loc0: PY$loctn
+, tknd: PY$token
+, dcls: PY$d3ecl   ): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Ctmpsub
+( loc0: PY$loctn
+, svts: PY$s2vtplst
+, dcls: PY$d3ecl   ): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Cdclst0
+( loc0: PY$loctn
+, dcls: PY$d3eclist): PY$d3ecl = $extnam()
+//
+#extern
+fun
 PY_D3Clocal0
 ( loc0: PY$loctn
 , head: PY$d3eclist
@@ -1474,6 +1504,61 @@ case+
 d3cl.node() of
 //
 (* ****** ****** *)
+//
+|D3Cstatic
+(tknd, dcl1) =>
+let
+val tknd =
+token_pytrcpy(tknd)
+val dcl1 =
+d3ecl_pytrcpy(dcl1)
+in//let
+(
+PY_D3Cstatic(
+  loc0, tknd, dcl1)) end
+//
+|D3Cextern
+(tknd, dcl1) =>
+let
+val tknd =
+token_pytrcpy(tknd)
+val dcl1 =
+d3ecl_pytrcpy(dcl1)
+in//let
+(
+PY_D3Cextern(
+  loc0, tknd, dcl1)) end
+//
+(* ****** ****** *)
+//
+|D3Ctmpsub
+(svts, dcl1) =>
+let
+val dcl1 =
+d3ecl_pytrcpy(dcl1)
+in//let
+(
+PY_D3Ctmpsub(
+  loc0, svts, dcl1))
+end where
+{
+val svts =
+(
+  s2vtplst_pytrcpy(svts)) }
+//
+(* ****** ****** *)
+//
+|D3Cdclst0
+(   dcls   ) =>
+(
+PY_D3Cdclst0
+(loc0, dcls))
+where
+{
+val dcls =
+(
+  d3eclist_pytrcpy(dcls)) }
+//
 //
 |D3Clocal0
 (head, body) =>

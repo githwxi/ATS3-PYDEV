@@ -778,12 +778,28 @@ type d3fundclist = fnlist[d3fundcl]
 #
 ########################################################################
 ########################################################################
+#
+@dataclass
+class D3Cdclst0(D3C000):
+    arg1: d3eclist
+    ctag = "D3Cdclst0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
 @dataclass
 class D3Clocal0(D3C000):
     arg1: d3eclist
     arg2: d3eclist
     ctag = "D3Clocal0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
 ########################################################################
 #
 @dataclass
@@ -1126,6 +1142,10 @@ PY_d3fundcl_make_args\
 #
 ########################################################################
 ########################################################################
+#
+def PY_D3Cdclst0\
+(loc0: loctn, arg1: d3eclist)->D3Cdclst0:
+    return D3Cdclst0(loc0, arg1)
 #
 def PY_D3Clocal0\
 (loc0: loctn, \

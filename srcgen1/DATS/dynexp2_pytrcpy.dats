@@ -597,6 +597,65 @@ stmp: PY$stamp): PY$d2var = $extnam()
 (* ****** ****** *)
 //
 #implfun
+s2qag_pytrcpy
+(   sqa0   ) =
+(
+PY_s2qag_make
+( loc0, s2vs )
+) where
+{
+//
+val loc0 =
+loctn_pytrcpy
+(
+s2qag_get_lctn(sqa0))
+//
+val s2vs = s2qag_get_s2vs(sqa0)
+val s2vs = s2varlst_pytrcpy(s2vs)
+//
+#extern
+fun
+PY_s2qag_make
+( loc0
+: PY$loctn
+, s2vs
+: PY$s2varlst) : PY$s2qag = $extnam()
+//
+}(*where*)//end-of-[s2qag_pytrcpy(sqa0)]
+//
+(* ****** ****** *)
+//
+#implfun
+t2qag_pytrcpy
+(   tqa0   ) =
+(
+PY_t2qag_make
+( loc0, s2vs )
+) where
+{
+//
+val loc0 =
+loctn_pytrcpy
+(
+t2qag_get_lctn(tqa0))
+//
+val s2vs = t2qag_get_s2vs(tqa0)
+val s2vs = s2varlst_pytrcpy(s2vs)
+//
+#extern
+fun
+PY_t2qag_make
+( loc0
+: PY$loctn
+, s2vs
+: PY$s2varlst) : PY$t2qag = $extnam()
+//
+}(*where*)//end-of-[t2qag_pytrcpy(tqa0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2itm_pytrcpy
 (   ditm   ) =
 (
@@ -790,7 +849,8 @@ end//let
 ,npf1, d2ps) =>
 (
 PY_D2Pdapp
-(loc0, d2f0, npf1, d2ps))
+( loc0
+, d2f0, npf1, d2ps))
 where
 {
 val d2f0 =

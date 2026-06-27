@@ -67,14 +67,22 @@ ATS3/srcgen2/SATS/statyp2.sats"
 (* ****** ****** *)
 //
 #abstbox PY$s2typ // p0tr
+#abstbox PY$s2vtp // p0tr
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #typedef s2typ = $T2P.s2typ
+#typedef s2vtp = $T2P.s2vtp
+//
+(* ****** ****** *)
 //
 #typedef s2typlst = list(s2typ)
 #typedef s2typopt = optn(s2typ)
+//
+(* ****** ****** *)
+//
+#typedef s2vtplst = list(s2vtp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -83,6 +91,11 @@ ATS3/srcgen2/SATS/statyp2.sats"
 PY$s2typlst = PY$list(PY$s2typ)
 #typedef
 PY$s2typopt = PY$optn(PY$s2typ)
+//
+(* ****** ****** *)
+//
+#typedef
+PY$s2vtplst = PY$list(PY$s2vtp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -97,6 +110,9 @@ s2typ_fprint
 fun
 s2typ_pytrcpy(styp: s2typ): PY$s2typ
 //
+fun
+s2vtp_pytrcpy(svtp: s2vtp): PY$s2vtp
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -104,6 +120,11 @@ fun
 s2typlst_pytrcpy(t2ps: s2typlst): PY$s2typlst
 fun
 s2typopt_pytrcpy(topt: s2typopt): PY$s2typopt
+//
+(* ****** ****** *)
+//
+fun
+s2vtplst_pytrcpy(svts: s2vtplst): PY$s2vtplst
 //
 (* ****** ****** *)
 (* ****** ****** *)
