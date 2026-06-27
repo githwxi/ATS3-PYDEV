@@ -1740,6 +1740,75 @@ PY_t2jag_make_t2ps
 (* ****** ****** *)
 //
 #implfun
+dimpl_pytrcpy
+(   dimp   ) =
+(
+case+
+dimp.node() of
+//
+|DIMPLnon1
+(   dqid   ) =>
+(
+PY_DIMPLnon1
+(loc0, dqid))
+//
+|DIMPLone1
+(   dcst   ) =>
+(
+PY_DIMPLone1
+(loc0, dcst)) where
+{
+val dcst =
+(
+  d2cst_pytrcpy(dcst)) }
+|DIMPLone2
+(dcst, svts) =>
+(
+PY_DIMPLone2
+(loc0, dcst, svts)) where
+{
+val dcst =
+(
+  d2cst_pytrcpy(dcst))
+val svts =
+(
+  s2vtplst_pytrcpy(svts)) }
+) where
+{
+//
+val loc0 =
+loctn_pytrcpy
+(
+dimpl_get_lctn(dimp))
+//
+#extern
+fun
+PY_DIMPLnon1
+( loc0
+: PY$loctn
+, dqid: d1qid): PY$dimpl = $extnam()
+//
+#extern
+fun
+PY_DIMPLone1
+(
+loc0: PY$loctn,
+dcst: PY$d2cst): PY$dimpl = $extnam()
+//
+#extern
+fun
+PY_DIMPLone2
+(
+loc0: PY$loctn,
+dcst: PY$d2cst,
+svts: PY$s2vtplst): PY$dimpl = $extnam()
+//
+}(*where*)//end-of-[dimpl_pytrcpy(dimp)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 d2conlst_pytrcpy
 (   d2cs   ) =
 (

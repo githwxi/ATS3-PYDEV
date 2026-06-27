@@ -81,9 +81,9 @@ class s2qag_tbox(ABC):
     lctn: loctn
     s2vs: s2varlst
     def __str__(self)->strn:
-        return f"S2QAG({self.t2ps})"
+        return f"S2QAG({self.s2vs})"
     def __repr__(self)->strn:
-        return f"S2QAG({self.t2ps!r})"
+        return f"S2QAG({self.s2vs!r})"
     pass
 type s2qag = s2qag_tbox
 type s2qaglst = fnlist[s2qag]
@@ -93,9 +93,9 @@ class t2qag_tbox(ABC):
     lctn: loctn
     s2vs: s2varlst
     def __str__(self)->strn:
-        return f"T2QAG({self.t2ps})"
+        return f"T2QAG({self.s2vs})"
     def __repr__(self)->strn:
-        return f"T2QAG({self.t2ps!r})"
+        return f"T2QAG({self.s2vs!r})"
     pass
 type t2qag = t2qag_tbox
 type t2qaglst = fnlist[t2qag]
@@ -221,34 +221,64 @@ class D2Ca3src(D2C000):
 class \
 D2ITMvar(D2ITM000):
     arg1: d2var
+    ctag = "D2ITMvar"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"    
     pass
 @dataclass
 class \
 D2ITMcon(D2ITM000):
     arg1: d2conlst
+    ctag = "D2ITMcon"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"    
     pass
 @dataclass
 class \
 D2ITMcst(D2ITM000):
     arg1: d2cstlst
+    ctag = "D2ITMcst"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"    
     pass
 @dataclass
 class \
 D2ITMsym(D2ITM000):
     arg1: symbl
     arg2: d2ptmlst
+    ctag = "D2ITMsym"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 @dataclass
 class \
 D2PTMnone(D2PTM000):
     arg1: pyobj
+    ctag = "D2PTMnone"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 @dataclass
 class \
 D2PTMsome(D2PTM000):
     arg1: sint
     arg2: d2itm
+    ctag = "D2PTMsome"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 ########################################################################
@@ -802,12 +832,20 @@ type s2res = S2RES000
 @dataclass
 class \
 S2RESnone(S2RES000):
+    ctag = "S2RESnone"
+    def __str__(self)->strn: return f"{self.ctag}()"
+    def __repr__(self)->strn: return f"{self.ctag}()"
     pass
 @dataclass
 class \
 S2RESsome(S2RES000):
     arg1: s2eff
     arg2: s2exp
+    ctag = "S2RESsome"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 ########################################################################
@@ -815,17 +853,26 @@ S2RESsome(S2RES000):
 @dataclass
 class TEQD2EXP000(ABC):
     pass
+type teqd2exp = TEQD2EXP000
+#
 @dataclass
 class \
 TEQD2EXPnone(TEQD2EXP000):
+    ctag = "TEQD2EXPnone"
+    def __str__(self)->strn: return f"{self.ctag}()"
+    def __repr__(self)->strn: return f"{self.ctag}()"
     pass
 @dataclass
 class \
 TEQD2EXPsome(TEQD2EXP000):
     arg1: token
     arg2: d2exp
+    ctag = "TEQD2EXPsome"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
-type teqd2exp = TEQD2EXP000
 #
 ########################################################################
 #
@@ -1254,12 +1301,12 @@ PY_WTHS2EXPsome\
 #
 def \
 PY_s2qag_make_s2vs\
-(lctn: loctn, s2vs: s2typlst)->s2qag:
+(lctn: loctn, s2vs: s2varlst)->s2qag:
     return s2qag_tbox(lctn, s2vs)
 #
 def \
 PY_t2qag_make_s2vs\
-(lctn: loctn, s2vs: s2typlst)->t2qag:
+(lctn: loctn, s2vs: s2varlst)->t2qag:
     return t2qag_tbox(lctn, s2vs)
 #
 ########################################################################
