@@ -506,7 +506,7 @@ PY_D3Cfundclst
 (
 loc0: PY$loctn,
 tknd: PY$token,
-t2qs: t2qaglst,
+tqas: PY$t2qaglst,
 d2cs: PY$d2cstlst,
 d3fs: PY$d3fundclist): PY$d3ecl = $extnam()
 //
@@ -1622,6 +1622,9 @@ where
 val tknd =
 (
   token_pytrcpy(tknd))
+val tqas =
+(
+  t2qaglst_pytrcpy(tqas))
 val d2cs =
 (
   d2cstlst_pytrcpy(d2cs))

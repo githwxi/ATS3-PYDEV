@@ -140,6 +140,8 @@ class s2vtp_type(ABC):
         return f"S2VTP({self.svar!r},{self.styp!r})"
     pass
 type s2vtp = s2vtp_type
+type s2vts = fnlist[s2vtp]
+type s2vtplst = fnlist[s2vtp]
 ########################################################################
 ########################################################################
 def PY_T2Pa3src\

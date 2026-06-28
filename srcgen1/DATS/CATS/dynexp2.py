@@ -822,6 +822,44 @@ type f2arglst = fnlist[f2arg]
 ########################################################################
 ########################################################################
 #
+@dataclass
+class DIMPL000(ABC):
+    lctn: loctn
+    pass
+type dimpl = DIMPL000
+#
+@dataclass
+class DIMPLnon1(DIMPL000):
+    arg1: pyobj
+    ctag = "DIMPLnon1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class DIMPLone1(DIMPL000):
+    arg1: d2cst
+    ctag = "DIMPLone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class DIMPLone2(DIMPL000):
+    arg1: d2cst
+    arg2: s2vtplst
+    ctag = "DIMPLone2"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+########################################################################
+#
 type s2eff = pyobj
 #
 @dataclass
@@ -879,9 +917,14 @@ TEQD2EXPsome(TEQD2EXP000):
 @dataclass
 class WTHS2EXP000(ABC):
     pass
+type wths2exp = WTHS2EXP000
+#
 @dataclass
 class \
 WTHS2EXPnone(WTHS2EXP000):
+    ctag = "WTHS2EXPnone"
+    def __str__(self)->strn: return f"{self.ctag}()"
+    def __repr__(self)->strn: return f"{self.ctag}()"
     pass
 @dataclass
 class \
@@ -889,8 +932,13 @@ WTHS2EXPsome(WTHS2EXP000):
     arg1: token
     arg2: s2exp
     pass
-type wths2exp = WTHS2EXP000
+    ctag = "WTHS2EXPsome"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
 #
+########################################################################
 ########################################################################
 #
 @dataclass
@@ -945,7 +993,35 @@ class D2Clocal0(D2C000):
     arg1: d2eclist
     arg2: d2eclist
     ctag = "D2Clocal0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+########################################################################
+#
+@dataclass
+class D2Cstatic(D2C000):
+    arg1: token
+    arg2: d2ecl
+    ctag = "D2Cstatic"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D2Cextern(D2C000):
+    arg1: token
+    arg2: d2ecl
+    ctag = "D2Cextern"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
 ########################################################################
 #
 @dataclass
@@ -1269,6 +1345,21 @@ PY_F2ARGsapp\
 ########################################################################
 #
 def \
+PY_DIMPLnon1\
+(lctn: loctn, arg1: pyobj)->DIMPLnon1:
+    return DIMPLnon1(lctn, arg1)
+def \
+PY_DIMPLone1\
+(lctn: loctn, arg1: d2cst)->DIMPLone1:
+    return DIMPLone1(lctn, arg1)
+def \
+PY_DIMPLone2\
+(lctn: loctn, arg1: d2cst, arg2: s2vtplst)->DIMPLone2:
+    return DIMPLone2(lctn, arg1, arg2)
+#
+########################################################################
+#
+def \
 PY_S2RESnone()->S2RESnone:
     return S2RESnone()
 def \
@@ -1348,6 +1439,18 @@ PY_d2fundcl_make_args\
     return d2fundcl_tbox(lctn, dpid, farg, sres, tdxp, wsxp)
 #
 ########################################################################
+########################################################################
+#
+def PY_D2Cstatic\
+(loc0: loctn, \
+ arg1: token, arg2: d2ecl)->D2Cstatic:
+    return D2Cstatic(loc0, arg1, arg2)
+#
+def PY_D2Cextern\
+(loc0: loctn, \
+ arg1: token, arg2: d2ecl)->D2Cextern:
+    return D2Cextern(loc0, arg1, arg2)
+#
 ########################################################################
 #
 def PY_D2Clocal0\

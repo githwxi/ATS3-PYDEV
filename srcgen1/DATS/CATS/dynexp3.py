@@ -780,6 +780,43 @@ type d3fundclist = fnlist[d3fundcl]
 ########################################################################
 #
 @dataclass
+class D3Cstatic(D3C000):
+    arg1: token
+    arg2: d3ecl
+    ctag = "D3Cstatic"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class D3Cextern(D3C000):
+    arg1: token
+    arg2: d3ecl
+    ctag = "D3Cextern"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Ctmpsub(D3C000):
+    arg1: s2vts
+    arg2: d3ecl
+    ctag = "D3Ctmpsub"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Cdclst0(D3C000):
     arg1: d3eclist
     ctag = "D3Cdclst0"
@@ -832,6 +869,30 @@ class D3Cfundclst(D3C000):
         return f"{self.ctag}({self.arg1};{self.arg3};{self.arg4})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg4!r})"
+#
+########################################################################
+#
+@dataclass
+class D3Cimplmnt0(D3C000):
+    arg1: token
+    arg2: stamp
+    arg3: s2qaglst
+    arg4: t2qaglst
+    arg5: dimpl
+    arg6: t2iaglst
+    arg7: f3arglst
+    arg8: s2res
+    arg9: d3exp
+    ctag = "D3Cimplmnt0"
+    def __str__(self)->strn:
+        return f"{self.ctag}("+\
+          f"{self.arg1};{self.arg2};{self.arg3};{self.arg4};"+\
+          f"{self.arg5};{self.arg6};{self.arg7};{self.arg8};{self.arg9})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}("+\
+          f"{self.arg1!r};{self.arg2!r};{self.arg3!r};{self.arg4!r};"+\
+          f"{self.arg5!r};{self.arg6!r};{self.arg7!r};{self.arg8!r};{self.arg9!r})"
+    pass
 #
 ########################################################################
 ########################################################################
@@ -1143,6 +1204,25 @@ PY_d3fundcl_make_args\
 ########################################################################
 ########################################################################
 #
+def PY_D3Cstatic\
+(loc0: loctn, \
+ arg1: token, arg2: d3ecl)->D3Cstatic:
+    return D3Cstatic(loc0, arg1, arg2)
+#
+def PY_D3Cextern\
+(loc0: loctn, \
+ arg1: token, arg2: d3ecl)->D3Cextern:
+    return D3Cextern(loc0, arg1, arg2)
+#
+########################################################################
+#
+def PY_D3Ctmpsub\
+(loc0: loctn, \
+ arg1: s2vts, arg2: d3ecl)->D3Ctmpsub:
+    return D3Ctmpsub(loc0, arg1, arg2)
+#
+########################################################################
+#
 def PY_D3Cdclst0\
 (loc0: loctn, arg1: d3eclist)->D3Cdclst0:
     return D3Cdclst0(loc0, arg1)
@@ -1165,9 +1245,20 @@ def PY_D3Cvardclst\
 #
 def PY_D3Cfundclst\
 (loc0: loctn, \
- arg1: token, arg2: pyobj, \
+ arg1: token, arg2: t2qaglst, \
  arg3: d2cstlst, arg4: d3fundclist)->D3Cfundclst: 
     return D3Cfundclst(loc0, arg1, arg2, arg3, arg4) 
+#
+########################################################################
+#
+def PY_D3Cimplmnt0\
+(loc0: loctn, \
+ arg1: token, arg2: stamp, \
+ arg3: s2qaglst, arg4: t2qaglst, \
+ arg5: dimpl, arg6: t2iaglst, \
+ arg7: f3arglst, arg8: s2res, arg9: d3exp)->D3Cimplmnt0:
+    return D3Cimplmnt0\
+      (loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 #
 ########################################################################
 ########################################################################
