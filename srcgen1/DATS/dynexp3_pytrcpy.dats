@@ -202,6 +202,13 @@ PY_D3Pdapp
 //
 #extern
 fun
+PY_D3Pargtp
+( loc0: PY$loctn
+, d3p1: PY$d3pat
+, s2e2: PY$s2typ   ): PY$d3pat = $extnam()
+//
+#extern
+fun
 PY_D3Pannot
 ( loc0: PY$loctn
 , d3p1: PY$d3pat
@@ -442,6 +449,15 @@ PY_D3Et2ped
 ( loc0: PY$loctn
 , d3e1: PY$d3exp
 , t2p2: PY$s2typ   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Eextnam
+( loc0: PY$loctn
+, tknd: PY$token
+, gnam: PY$g1nam   ): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -691,6 +707,18 @@ val d3ps =
   d3patlst_pytrcpy(d3ps)) }
 //
 (* ****** ****** *)
+//
+|D3Pargtp
+(d3p1, t2p2) =>
+(
+PY_D3Pargtp
+(loc0, d3p1, t2p2))
+where
+{
+val
+d3p1 = d3pat_pytrcpy(d3p1)
+val
+t2p2 = s2typ_pytrcpy(t2p2) }
 //
 |D3Pannot
 (d3p1
@@ -1135,7 +1163,8 @@ d3e1 = d3exp_pytrcpy(d3e1) }
 (d3e1, t2p2) =>
 (
 PY_D3Et2pck
-(loc0, d3e1, t2p2(*ann*))
+(loc0
+,d3e1, t2p2(*ann*))
 ) where
 {
 val d3e1 = d3exp_pytrcpy(d3e1)
@@ -1148,11 +1177,25 @@ val t2p2 = s2typ_pytrcpy(t2p2)
 (d3e1, t2p2) =>
 (
 PY_D3Et2ped
-(loc0, d3e1, t2p2(*ann*))
+(loc0
+,d3e1, t2p2(*ann*))
 ) where
 {
 val d3e1 = d3exp_pytrcpy(d3e1)
 val t2p2 = s2typ_pytrcpy(t2p2)
+}
+//
+(* ****** ****** *)
+|
+D3Eextnam
+(tknd, gnam) =>
+(
+PY_D3Eextnam
+(loc0, tknd, gnam))
+where
+{
+val tknd = token_pytrcpy(tknd)
+val gnam = g1nam_pytrcpy(gnam)
 }
 //
 (* ****** ****** *)

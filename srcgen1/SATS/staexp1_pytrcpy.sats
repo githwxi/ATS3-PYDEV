@@ -62,20 +62,29 @@ ATS3/srcgen2/SATS/staexp1.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#abstbox PY$g1nam // p0tr
+//
 #abstbox PY$s1exp // p0tr
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#typedef g1nam = $S1E.g1nam
+//
 #typedef s1exp = $S1E.s1exp
 //
 (* ****** ****** *)
+//
+#typedef g1namlst = list(g1nam)
 //
 #typedef s1explst = list(s1exp)
 #typedef s1expopt = optn(s1exp)
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
+#typedef
+PY$g1namlst = PY$list(PY$g1nam)
 //
 #typedef
 PY$s1explst = PY$list(PY$s1exp)
@@ -86,6 +95,10 @@ PY$s1expopt = PY$optn(PY$s1exp)
 (* ****** ****** *)
 //
 fun
+g1nam_fprint
+(gnam: g1nam, out0: FILR): void
+//
+fun
 s1exp_fprint
 (sexp: s1exp, out0: FILR): void
 //
@@ -93,9 +106,19 @@ s1exp_fprint
 (* ****** ****** *)
 //
 fun
+g1nam_pytrcpy(gnam: g1nam): PY$g1nam
+//
+(* ****** ****** *)
+//
+fun
 s1exp_pytrcpy(sexp: s1exp): PY$s1exp
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+g1namlst_pytrcpy(g1ns: g1namlst): PY$g1namlst
+//
 (* ****** ****** *)
 //
 fun

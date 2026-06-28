@@ -21,10 +21,26 @@ from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
 ########################################################################
 @dataclass
+class G1N000(ABC):
+    pass
+type g1nam = G1N000
+type g1namlst = fnlist[g1nam]
+########################################################################
+@dataclass
 class S1E000(ABC):
     lctn: loctn
     pass
 type s1exp = S1E000
+type s1explst = fnlist[s1exp]
+########################################################################
+########################################################################
+@dataclass
+class G1Na3src(G1N000):
+    arg1: pyobj
+    ctag = "G1Na3src"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(g1nam)"
+    pass
 ########################################################################
 @dataclass
 class S1Ea3src(S1E000):
@@ -34,6 +50,11 @@ class S1Ea3src(S1E000):
         return f"{self.ctag}(s1exp)"
     pass
 ########################################################################
+########################################################################
+def \
+PY_G1Na3src\
+(arg1: pyobj)->G1Na3src:
+    return G1Na3src(arg1)
 ########################################################################
 def PY_S1Ea3src\
 (loc0: loctn, arg1: pyobj)->S1Ea3src:

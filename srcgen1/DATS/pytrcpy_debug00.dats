@@ -99,6 +99,37 @@ ATS3/srcgen2/SATS/dynexp3.sats"
 (* ****** ****** *)
 //
 #implfun
+g1nam_fprint
+(gnam, out0) =
+let
+#impltmp
+g_print$out<>() = out0
+in//let
+//
+case+ gnam of
+//
+|G1Nnil() => prints("G1Nnil(...)")
+|G1Nid0(sym) => prints("G1Nid0(...)")
+//
+|G1Nint(int) => prints("G1Nint(...)")
+|G1Nflt(flt) => prints("G1Nflt(...)")
+|G1Nstr(str) => prints("G1Nstr(...)")
+//
+|G1Nlist(g1ns) => prints("G1Nlist(...)")
+//
+(*
+|
+G1Nnone0((*nil*)) => prints("G1Nnone0(...)")
+*)
+|
+G1Nnone1(  gnm  ) => prints("G1Nnone1(...)")
+//
+end//(*let*)//end-of-[g1nam_fprint(gnam,out0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
 s1exp_fprint
 (s1e0, out0) =
 let

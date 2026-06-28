@@ -83,6 +83,14 @@ PY_repr
 //
 #extern
 fun
+PY_G1Na3src
+(gnam: g1nam): PY$g1nam = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 PY_S1Ea3src
 ( loc0
 : PY$loctn
@@ -92,8 +100,31 @@ PY_S1Ea3src
 (* ****** ****** *)
 //
 #impltmp
+g_print<g1nam>(gnam) =
+g1nam_fprint(gnam, g_print$out<>())
+//
+#impltmp
 g_print<s1exp>(sexp) =
 s1exp_fprint(sexp, g_print$out<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+g1nam_pytrcpy
+(   gnam   ) =
+(
+case+ gnam of
+|
+_(*otherwise*) => PY_G1Na3src(gnam)
+) where
+{
+//
+val (  ) =
+(
+printsln("g1nam_pytrcpy: gnam = ", gnam))
+//
+}(*where*)//end-of-[g1nam_pytrcpy(gnam)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -122,6 +153,14 @@ printsln("s1exp_pytrcpy: loc0 = ", PY_repr(loc0))
 }(*where*)//end-of-[s1exp_pytrcpy(sexp)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+g1namlst_pytrcpy
+(   g1ns   ) =
+(
+list_map$f1un_PY$list(g1ns, g1nam_pytrcpy))
+//
 (* ****** ****** *)
 //
 #implfun

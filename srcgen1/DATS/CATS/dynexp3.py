@@ -203,6 +203,19 @@ class D3Pcon(D3P000):
         return f"{self.ctag}({self.arg1!r})"
     pass
 #
+########################################################################
+#
+@dataclass
+class D3Pargtp(D3P000):
+    arg1: d3pat
+    arg2: s2typ
+    ctag = "D3Pargtp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
 @dataclass
 class D3Pannot(D3P000):
     arg1: d3pat
@@ -212,7 +225,7 @@ class D3Pannot(D3P000):
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
     def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg3!r})"
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
     pass
 #
 ########################################################################
@@ -593,6 +606,19 @@ class D3Et2ped(D3E000):
 ########################################################################
 #
 @dataclass
+class D3Eextnam(D3E000):
+    arg1: token
+    arg2: g1nam
+    ctag = "D3Eextnam"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class F3ARGmets(F3ARG000):
     arg1: s2explst
     ctag = "F3ARGmets"
@@ -935,6 +961,11 @@ def PY_D3Pcon(lctn: loctn, arg1: d2con)->D3Pcon:
 #
 ########################################################################
 #
+def PY_D3Pargtp\
+(lctn: loctn, \
+ arg1: d3pat, arg2: s2typ)->D3Pargtp:
+    return D3Pargtp(lctn, arg1, arg2)
+#
 def PY_D3Pannot\
 (lctn: loctn, \
  arg1: d3pat, arg2: s1exp, arg3: s2exp)->D3Pannot:
@@ -1098,6 +1129,12 @@ def PY_D3Et2ped\
     # print\
     # ("PY_D3Et2ped: arg2 = ", arg2)
     return D3Et2ped(loc0, arg1, arg2)
+#
+########################################################################
+#
+def PY_D3Eextnam\
+(loc0: loctn, arg1: token, arg2: g1nam)->D3Eextnam:
+    return D3Eextnam(loc0, arg1, arg2)
 #
 ########################################################################
 ########################################################################
