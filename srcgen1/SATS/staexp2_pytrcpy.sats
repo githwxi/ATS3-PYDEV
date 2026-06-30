@@ -63,6 +63,7 @@ ATS3/srcgen2/SATS/staexp2.sats"
 (* ****** ****** *)
 //
 #abstbox PY$sort2 // p0tr
+#abstbox PY$s2cst // p0tr
 #abstbox PY$s2var // p0tr
 #abstbox PY$s2exp // p0tr
 //
@@ -70,6 +71,7 @@ ATS3/srcgen2/SATS/staexp2.sats"
 (* ****** ****** *)
 //
 #typedef sort2 = $S2E.sort2
+#typedef s2cst = $S2E.s2cst
 #typedef s2var = $S2E.s2var
 #typedef s2exp = $S2E.s2exp
 //
@@ -111,6 +113,9 @@ fun
 sort2_pytrcpy(s2t0: sort2): PY$sort2
 //
 (* ****** ****** *)
+//
+fun
+s2cst_pytrcpy(scst: s2cst): PY$s2cst
 //
 fun
 s2var_pytrcpy(svar: s2var): PY$s2var

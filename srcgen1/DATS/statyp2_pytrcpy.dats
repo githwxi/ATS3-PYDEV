@@ -96,6 +96,20 @@ PY_T2Pa3src
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun
+PY_T2Pcst
+( s2t0: PY$sort2
+, scst: PY$s2cst): PY$s2typ = $extnam()
+#extern
+fun
+PY_T2Pvar
+( s2t0: PY$sort2
+, svar: PY$s2var): PY$s2typ = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 g_print<sort2>(s2t0) =
 sort2_fprint(s2t0, g_print$out<>())
@@ -112,8 +126,33 @@ s2typ_pytrcpy
 (
 case+
 styp.node() of
+//
+(* ****** ****** *)
+//
+|T2Pcst
+(   s2c1   ) =>
+(
+PY_T2Pcst(s2t0, s2c1))
+where
+{
+val s2c1 = s2cst_pytrcpy(s2c1) }
+|T2Pvar
+(   s2v1   ) =>
+(
+PY_T2Pvar(s2t0, s2v1))
+where
+{
+val s2v1 = s2var_pytrcpy(s2v1) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => PY_T2Pa3src(s2t0, styp)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 ) where
 {
 //
