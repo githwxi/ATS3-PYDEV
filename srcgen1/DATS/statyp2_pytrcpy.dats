@@ -99,13 +99,50 @@ PY_T2Pa3src
 #extern
 fun
 PY_T2Pcst
-( s2t0: PY$sort2
-, scst: PY$s2cst): PY$s2typ = $extnam()
+(
+s2t0: PY$sort2,
+scst: PY$s2cst): PY$s2typ = $extnam()
+//
 #extern
 fun
 PY_T2Pvar
-( s2t0: PY$sort2
-, svar: PY$s2var): PY$s2typ = $extnam()
+(
+s2t0: PY$sort2,
+svar: PY$s2var): PY$s2typ = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_T2Plft
+(
+s2t0: PY$sort2,
+t2p1: PY$s2typ): PY$s2typ = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_T2Ptop0
+(
+s2t0: PY$sort2,
+t2p1: PY$s2typ): PY$s2typ = $extnam()
+#extern
+fun
+PY_T2Ptop1
+(
+s2t0: PY$sort2,
+t2p1: PY$s2typ): PY$s2typ = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_T2Papps
+(
+s2t0: PY$sort2,
+t2f0: PY$s2typ,
+t2ps: PY$s2typlst): PY$s2typ = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -132,17 +169,77 @@ styp.node() of
 |T2Pcst
 (   s2c1   ) =>
 (
-PY_T2Pcst(s2t0, s2c1))
+PY_T2Pcst
+(s2t0, s2c1))
 where
 {
-val s2c1 = s2cst_pytrcpy(s2c1) }
+val s2c1 =
+(
+  s2cst_pytrcpy(s2c1)) }
+//
 |T2Pvar
 (   s2v1   ) =>
 (
-PY_T2Pvar(s2t0, s2v1))
+PY_T2Pvar
+(s2t0, s2v1))
 where
 {
-val s2v1 = s2var_pytrcpy(s2v1) }
+val s2v1 =
+(
+  s2var_pytrcpy(s2v1)) }
+//
+(* ****** ****** *)
+//
+|T2Plft
+(   t2p1   ) =>
+(
+PY_T2Plft
+(s2t0, t2p1))
+where
+{
+val t2p1 =
+(
+  s2typ_pytrcpy(t2p1)) }
+//
+(* ****** ****** *)
+//
+|T2Ptop0
+(   t2p1   ) =>
+(
+PY_T2Ptop0
+(s2t0, t2p1))
+where
+{
+val t2p1 =
+(
+  s2typ_pytrcpy(t2p1)) }
+//
+|T2Ptop1
+(   t2p1   ) =>
+(
+PY_T2Ptop1
+(s2t0, t2p1))
+where
+{
+val t2p1 =
+(
+  s2typ_pytrcpy(t2p1)) }
+//
+(* ****** ****** *)
+//
+|T2Papps
+(t2f0, t2ps) =>
+(
+PY_T2Papps
+(s2t0, t2f0, t2ps))
+where
+{
+val t2f0 =
+(
+  s2typ_pytrcpy(t2f0))
+val t2ps =
+(
+  s2typlst_pytrcpy(t2ps)) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

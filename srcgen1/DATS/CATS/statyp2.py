@@ -23,6 +23,7 @@ from DATS.CATS.staexp2 import *
 @dataclass
 class T2P000(ABC):
     sort: sort2
+    ctag = "T2P000"
     pass
 type s2typ = T2P000
 type s2typlst = fnlist[s2typ]
@@ -33,40 +34,57 @@ type s2typopt = fnoptn[s2typ]
 class T2Pa3src(T2P000):
     arg1: pyobj
     ctag = "T2Pa3src"
+    def __str__(self)->strn:
+        return f"{self.ctag}(s2typ)"
     def __repr__(self)->strn:
         return f"{self.ctag}(s2typ)"
     pass
 ########################################################################
 @dataclass
 class T2Pcst(T2P000):
-    """
-    HX: for a type-consant
-    """
+    arg1: s2cst
+    ctag = "T2Pcst"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r)"
     pass
 @dataclass
 class T2Pvar(T2P000):
-    """
-    HX: for a type-variable
-    """
+    arg1: s2var
+    ctag = "T2Pvar"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r)"
     pass
 @dataclass
 class T2Plft(T2P000):
-    """
-    HX: type for a left-value
-    """
+    arg1: s2typ
+    ctag = "T2Plft"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r)"
     pass
 ########################################################################
 @dataclass
 class T2Ptop0(T2P000):
-    """
-    HX: type for uninitization
-    """
+    arg1: s2typ
+    ctag = "T2Ptop0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r)"
     pass
 @dataclass
 class T2Ptop1(T2P000):
-    """
-    HX: type for delinearization
-    """
+    arg1: s2typ
+    ctag = "T2Ptop1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r)"
     pass
 ########################################################################
 @dataclass
@@ -78,10 +96,23 @@ class T2Patx2(T2P000):
 ########################################################################
 @dataclass
 class T2Plam1(T2P000):
+    arg1: s2varlst
+    arg2: s2typ#bd
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r;{self.arg2!r})"
     pass
 @dataclass
 class T2Papps(T2P000):
+    arg1: s2typ
+    arg2: s2typlst
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1}!r;{self.arg2!r})"
     pass
+########################################################################
 @dataclass
 class T2Pf2cl(T2P000):
     pass
@@ -91,27 +122,15 @@ class T2Pfun1(T2P000):
 ########################################################################
 @dataclass
 class T2Ptext(T2P000):
-    """
-    HX: externally defined
-    """
     pass
 @dataclass
 class T2Puni0(T2P000):
-    """
-    HX: universally quantified
-    """
     pass
 @dataclass
 class T2Pexi0(T2P000):
-    """
-    HX: existentially quantified
-    """
     pass
 @dataclass
 class T2Ptrcd(T2P000):
-    """
-    HX: type for labeled records
-    """
     pass
 ########################################################################
 @dataclass
@@ -152,6 +171,39 @@ def PY_T2Pa3src\
 def PY_s2vtp_make_args\
 (s2v1: s2var, t2p2: s2typ)->s2vtp_type:
     return s2vtp_type(s2v1, t2p2)
+########################################################################
+########################################################################
+#
+def \
+PY_T2Pcst(sort: sort2, arg1: s2cst)->T2Pcst:
+    return T2Pcst(sort, arg1)
+def \
+PY_T2Pvar(sort: sort2, arg1: s2var)->T2Pvar:
+    return T2Pvar(sort, arg1)
+#
+def \
+PY_T2Plft(sort: sort2, arg1: s2typ)->T2Plft:
+    return T2Plft(sort, arg1)
+#
+########################################################################
+#
+def \
+PY_T2Ptop0(sort: sort2, arg1: s2typ)->T2Ptop0:
+    return T2Ptop0(sort, arg1)
+def \
+PY_T2Ptop1(sort: sort2, arg1: s2typ)->T2Ptop1:
+    return T2Ptop1(sort, arg1)
+#
+########################################################################
+#
+def PY_T2Plam1\
+(sort: sort2, arg1: s2varlst, arg2: s2typ)->T2Plam1:
+    return T2Plam1(sort, arg1, arg2)
+#
+def PY_T2Papps\
+(sort: sort2, arg1: s2typ, arg2: s2typlst)->T2Papps:
+    return T2Papps(sort, arg1, arg2)
+#
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/DATS/CATS/statyp2.py]

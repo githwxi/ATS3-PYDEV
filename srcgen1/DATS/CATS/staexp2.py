@@ -61,6 +61,22 @@ class s2var_tbox(ABC):
     pass
 type s2var = s2var_tbox
 type s2varlst = fnlist[s2var]
+type s2varopt = fnoptn[s2var]
+########################################################################
+@dataclass
+class s2cst_tbox(ABC):
+    lctn: loctn
+    name: symbl
+    sort: sort2
+    stmp: stamp
+    def __str__(self)->strn:
+        return f"S2CST({self.name};{self.sort};{self.stmp})"
+    def __repr__(self)->strn:
+        return f"S2CST({self.name!r};{self.sort!r};{self.stmp!r})"
+    pass
+type s2cst = s2cst_tbox
+type s2cstlst = fnlist[s2cst]
+type s2cstopt = fnoptn[s2cst]
 ########################################################################
 ########################################################################
 def \
@@ -70,9 +86,15 @@ def PY_S2Ea3src\
 (s2t0: sort2, arg1: pyobj)->S2Ea3src:
     return S2Ea3src(s2t0, arg1)
 ########################################################################
+########################################################################
 def PY_s2var_make_args\
 (name: symbl, sort: sort2, stmp: stamp)->s2var_tbox:
     return s2var_tbox(name, sort, stmp)
+########################################################################
+def PY_s2cst_make_args\
+(lctn: loctn, \
+ name: symbl, sort: sort2, stmp: stamp)->s2cst_tbox:
+    return s2cst_tbox(lctn, name, sort, stmp)
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/DATS/CATS/staexp2.py]

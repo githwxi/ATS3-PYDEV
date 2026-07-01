@@ -29,6 +29,8 @@ class D3P000(ABC):
     ctag = "D3P000"
     def __str__(self)->strn:
         return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type d3pat = D3P000
 type d3patlst = fnlist[d3pat]
@@ -39,6 +41,8 @@ class D3E000(ABC):
     lctn: loctn
     ctag = "D3E000"
     def __str__(self)->strn:
+        return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
         return f"{self.ctag}(...)"
     pass
 type d3exp = D3E000
@@ -51,6 +55,8 @@ class D3C000(ABC):
     ctag = "D3C000"
     def __str__(self)->strn:
         return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type d3ecl = D3C000
 type d3eclist = fnlist[d3ecl]
@@ -62,6 +68,10 @@ type d3eclistopt = fnoptn[d3eclist]
 class F3ARG000(ABC):
     lctn: loctn
     ctag = "F3ARG000"
+    def __str__(self)->strn:
+        return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type f3arg = F3ARG000
 type f3arglst = fnlist[f3arg]
@@ -105,6 +115,8 @@ type timplist = fnlist[timpl]
 class D3Pa3src(D3P000):
     arg1: pyobj
     ctag = "D3Pa3src"
+    def __str__(self)->strn:
+        return f"{self.ctag}(d3pat)"
     def __repr__(self)->strn:
         return f"{self.ctag}(d3pat)"
     pass
@@ -113,6 +125,8 @@ class D3Pa3src(D3P000):
 class D3Ea3src(D3E000):
     arg1: pyobj
     ctag = "D3Ea3src"
+    def __str__(self)->strn:
+        return f"{self.ctag}(d3exp)"
     def __repr__(self)->strn:
         return f"{self.ctag}(d3exp)"
     pass
@@ -121,6 +135,8 @@ class D3Ea3src(D3E000):
 class D3Ca3src(D3C000):
     arg1: pyobj
     ctag = "D3Ca3src"
+    def __str__(self)->strn:
+        return f"{self.ctag}(d3ecl)"
     def __repr__(self)->strn:
         return f"{self.ctag}(d3ecl)"
     pass
@@ -784,7 +800,7 @@ class d3vardcl_tbox(ABC):
 class d3fundcl_tbox(ABC):
     lctn: loctn
     dpid: d2var
-    farg: pyobj
+    farg: f3arg
     sres: s2res
     tdxp: teqd3exp
     wsxp: wths2exp

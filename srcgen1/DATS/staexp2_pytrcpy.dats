@@ -65,6 +65,14 @@ ATS3/srcgen2/SATS/lexing0.sats"
 ATS3/srcgen2/SATS/staexp2.sats"
 //
 (* ****** ****** *)
+#symload name with s2cst_get_name
+#symload sort with s2cst_get_sort
+#symload stmp with s2cst_get_stmp
+(* ****** ****** *)
+#symload name with s2var_get_name
+#symload sort with s2var_get_sort
+#symload stmp with s2var_get_stmp
+(* ****** ****** *)
 //
 #staload
 "./../SATS/ats3_pydev.sats"
@@ -133,6 +141,40 @@ val (  ) =
 }(*where*)//end-of-[sort2_pytrcpy(s2t0)]
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+#implfun
+s2cst_pytrcpy
+(   scst   ) =
+(
+PY_s2cst_make_args
+(loc0, name
+,sort, stmp)) where
+{
+//
+val
+loc0 =
+loctn_pytrcpy
+(s2cst_get_lctn(scst))
+//
+val
+name = symbl_pytrcpy(scst.name())
+val
+sort = sort2_pytrcpy(scst.sort())
+val
+stmp = stamp_pytrcpy(scst.stmp())
+//
+#extern
+fun
+PY_s2cst_make_args
+(
+loc0: PY$loctn,
+name: PY$symbl,
+s2t0: PY$sort2,
+stmp: PY$stamp): PY$s2cst = $extnam()
+//
+}(*where*)//end-of-[s2cst_pytrcpy(scst)]
+//
 (* ****** ****** *)
 //
 #implfun
