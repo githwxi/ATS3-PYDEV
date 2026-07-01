@@ -1,7 +1,8 @@
 # ATS3-PYDEV/externs
 
 This directory contains external assets needed for the ATS3-PYDEV
-project.
+project. Note that some assets are zipped files and they need to be
+unzipped first before being used.
 
 ## ATS3-PYDEV/externs/ATS3
 
