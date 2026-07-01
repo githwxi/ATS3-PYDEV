@@ -55,6 +55,26 @@ class fnlist_cons[T](fnlist[T]):
     arg2: fnlist[T]
     pass
 ########################################################################
+########################################################################
+#
+ENV = TypeVar("ENV")
+#
+def \
+fnlist_foritm_e1nv\
+(xs: fnlist[X], e0: ENV, \
+ work: Callable[[X, ENV], None])->None:
+    x1 = None
+    while True:
+        if isinstance(xs, fnlist_cons):
+            x1 = xs.arg1
+            xs = xs.arg2
+            work(x1, e0)
+        else:
+            return None
+    # endof(while(True))
+#
+########################################################################
+########################################################################
 #
 def \
 PY_list_nil() -> fnlist[T]:

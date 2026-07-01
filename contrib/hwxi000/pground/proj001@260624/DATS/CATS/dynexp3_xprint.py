@@ -16,64 +16,160 @@ from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
 ########################################################################
+########################################################################
 from DATS.CATS.a3pydev import *
+from DATS.CATS.statyp2 import *
 from DATS.CATS.dynexp2 import *
 from DATS.CATS.dynexp3 import *
 ########################################################################
-########################################################################
-class xprnv:
-    nind: sint = 0
-    def indpr(self)->None:
-        i0 = 0
-        n0 = self.nind
-        while(i0 < n0):
-            i0 = i0 + 1
-            print(' ', end='')
-    def incby(self, dlta: sint)->None:
-        self.nind += dlta
-    def decby(self, dlta: sint)->None:
-        self.nind -= dlta
-    pass
-########################################################################
-########################################################################
-#
-ENV = TypeVar("ENV")
-#
-def fnlist_foritm_e1nv\
-(xs: fnlist[X], e0: ENV, \
- work: Callable[[X, ENV], None])->None:
-    x1 = None
-    while True:
-        if isinstance(xs, fnlist_cons):
-            x1 = xs.arg1
-            xs = xs.arg2
-            work(x1, e0)
-        else:
-            break
-    return None
-#
+from DATS.CATS.a3pydev_xprint import *
+from DATS.CATS.statyp2_xprint import *
 ########################################################################
 ########################################################################
 #
 def d3exp_xprenv\
 (dexp: d3exp, xenv: xprnv)->None:
-    xenv.indpr()
-    if isinstance(dexp, D3Eint):
+    xenv.indpr( )
+    if False:
+        pass
+#
+    elif isinstance(dexp, D3Eint):
         print(f"D3Eint({dexp.arg1})")
     elif isinstance(dexp, D3Ebtf):
+        print(f"D3Ebtf({dexp.arg1})")
+    elif isinstance(dexp, D3Echr):
         print(f"D3Ebtf({dexp.arg1})")
     elif isinstance(dexp, D3Eflt):
         print(f"D3Eflt({dexp.arg1})")
     elif isinstance(dexp, D3Estr):
         print(f"D3Estr({dexp.arg1})")
+#
+    elif isinstance(dexp, D3Etop):
+        print(f"D3Etop({dexp.arg1})")
+#
+    elif isinstance(dexp, D3Evar):
+        print(f"D3Evar({dexp.arg1})")
+    elif isinstance(dexp, D3Econ):
+        print(f"D3Econ({dexp.arg1})")
+    elif isinstance(dexp, D3Ecst):
+        print(f"D3Ecst({dexp.arg1})")
+#
     elif isinstance(dexp, D3Edapp):
         print("D3Edapp:")
+        xenv.indpr( )
+        print("D3Edapp.fun1:")
         xenv.incby(2)
         d3exp_xprenv(dexp.arg1, xenv)
-        print("D3Edapp:args:")
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Edapp.args:")
         xenv.incby(2)
         d3explst_xprenv(dexp.arg3, xenv)
         xenv.decby(2)
+    elif isinstance(dexp, D3Elet0):
+        print("D3Elet0:")
+        xenv.indpr( )
+        print("D3Elet0.dcls:")
+        xenv.incby(2)
+        d3eclist_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Elet0.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg2, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Eift0):
+        print("D3Eift0:")
+        xenv.indpr( )
+        print("D3Eift0.test:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Eift0.then:")
+        xenv.incby(2)
+        d3expopt_xprenv(dexp.arg2, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Eift0.else:")
+        xenv.incby(2)
+        d3expopt_xprenv(dexp.arg3, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Eseqn):
+        print("D3Eseqn:")
+        xenv.indpr( )
+        print("D3Eseqn.init:")
+        xenv.incby(2)
+        d3explst_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Eseqn.last:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg2, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Eflat):
+        print("D3Eflat:")
+        xenv.indpr( )
+        print("D3Eflat.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Eeval):
+        print("D3Eeval:")
+        xenv.indpr( )
+        print("D3Eeval.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Efold):
+        print("D3Efold:")
+        xenv.indpr( )
+        print("D3Efold.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Efree):
+        print("D3Efree:")
+        xenv.indpr( )
+        print("D3Efree.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Ewhere):
+        print("D3Ewhere:")
+        xenv.indpr( )
+        print("D3Ewhere.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Ewhere.dcls:")
+        xenv.incby(2)
+        d3eclist_xprenv(dexp.arg2, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Eassgn):
+        print("D3Eassgn:")
+        xenv.indpr( )
+        print("D3Eassgn.lval:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Eassgn.rval:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg2, xenv)
+        xenv.decby(2)
+    elif isinstance(dexp, D3Et2ped):
+        print("D3Et2ped:")
+        xenv.indpr( )
+        print("D3Et2ped.dexp:")
+        xenv.incby(2)
+        d3exp_xprenv(dexp.arg1, xenv)
+        xenv.decby(2)
+        xenv.indpr( )
+        print("D3Et2ped.styp:")
+        xenv.incby(2)
+        s2typ_xprenv(dexp.arg2, xenv)
         xenv.decby(2)
     else:
         print(f"d3exp_xprenv: dexp = {dexp}")
@@ -91,13 +187,23 @@ def d3explst_xprenv\
             break
     return None # end-of-[d3explst_xprenv(d3es,xenv)]
 #
+def d3expopt_xprenv\
+(dopt: d3expopt, xenv: xprnv)->None:
+    if isinstance(dopt, fnoptn_nil):
+        return None
+    if isinstance(dopt, fnoptn_cons):
+        return d3exp_xprenv(dopt.arg1, xenv)
+    return None # end-of-[d3expopt_xprenv(dopt,xenv)]
+#
 ########################################################################
 ########################################################################
 #
 def d3ecl_xprenv\
 (d3cl: d3ecl, xenv: xprnv)->None:
-    xenv.indpr()
-    if isinstance(d3cl, D3Cstatic):
+    xenv.indpr( )
+    if False:
+        pass
+    elif isinstance(d3cl, D3Cstatic):
         print("D3Cstatic:")
         xenv.incby(2)
         d3ecl_xprenv(d3cl, xenv)
@@ -130,9 +236,11 @@ def d3eclist_xprenv\
 #
 def d3eclistopt_xprenv\
 (dopt: d3eclistopt, xenv: xprnv)->None:
-    if isinstance(dopt, fnoptn_nil):
+    if False:
+        pass
+    elif isinstance(dopt, fnoptn_nil):
         return None
-    if isinstance(dopt, fnoptn_cons):
+    elif isinstance(dopt, fnoptn_cons):
         return d3eclist_xprenv(dopt.arg1, xenv)
 #
 ########################################################################
@@ -140,14 +248,27 @@ def d3eclistopt_xprenv\
 #
 def d3fundcl_xprenv\
 (dfun: d3fundcl, xenv: xprnv)->None:
-    xenv.indpr()
-    print(f"D3FUNDCL.dpid: {dfun.dpid}")
-    xenv.indpr()
-    print(f"D3FUNDCL.farg: {dfun.farg}")
-    xenv.indpr()
-    print(f"D3FUNDCL.tdxp: {dfun.tdxp}")
-    xenv.indpr()
-    print(f"d3fundcl_xprenv: dfun = {dfun}")
+    xenv.indpr( )
+    print(\
+    f"D3FUNDCL.dpid: {dfun.dpid}")
+    xenv.indpr( )
+    print(\
+    f"D3FUNDCL.farg: {dfun.farg}")
+    xenv.indpr( )
+    tdxp = dfun.tdxp
+    match tdxp:
+        case _ if \
+        isinstance(tdxp, TEQD3EXPnone):
+            print(f"D3FUNDCL.tdxp: TEQD3EXPnone")
+        case _ if \
+        isinstance(tdxp, TEQD3EXPsome):
+            print(f"D3FUNDCL.tdxp: TEQD3EXPsome")
+            xenv.incby(2)
+            d3exp_xprenv(tdxp.arg2, xenv)
+            xenv.decby(2)
+#
+#   xenv.indpr( )
+#   print(f"d3fundcl_xprenv: dfun = {dfun}")
 #
 def d3fundclist_xprenv\
 (d3fs: d3fundclist, xenv: xprnv)->None:
