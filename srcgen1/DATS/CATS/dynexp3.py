@@ -222,6 +222,20 @@ class D3Pcon(D3P000):
 ########################################################################
 #
 @dataclass
+class D3Pdapp(D3P000):
+    arg1: d3pat
+    arg2: sint
+    arg3: d3patlst
+    ctag = "D3Pdapp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Pargtp(D3P000):
     arg1: d3pat
     arg2: s2typ
@@ -615,7 +629,7 @@ class D3Eannot(D3E000):
     arg1: d3exp
     arg2: s1exp
     arg3: s2exp
-    ctag = "D3Pannot"
+    ctag = "D3Eannot"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
     def __repr__(self)->strn:
