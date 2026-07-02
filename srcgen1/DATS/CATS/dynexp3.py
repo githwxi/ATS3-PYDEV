@@ -802,11 +802,11 @@ class d3vardcl_tbox(ABC):
     dpid: d2var
     vpid: d2varopt
     sres: s2expopt
-    tdxp: teqd3exp
+    dini: teqd3exp
     def __str__(self)->strn:
-        return f"D3VARDCL({self.dpid};{self.vpid};{self.sres};{self.tdxp})"
+        return f"D3VARDCL({self.dpid};{self.vpid};{self.sres};{self.dini})"
     def __repr__(self)->strn:
-        return f"D3VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.tdxp!r})"
+        return f"D3VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.dini!r})"
     pass
 @dataclass
 class d3fundcl_tbox(ABC):

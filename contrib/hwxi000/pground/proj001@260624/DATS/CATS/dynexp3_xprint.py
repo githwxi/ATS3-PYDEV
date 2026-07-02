@@ -36,6 +36,11 @@ def d3pat_xprenv\
     else:
         print(f"d3pat_xprenv: dpat = {dpat}")
 #
+def d3patlst_xprenv\
+(d3ps: d3patlst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(d3ps, xenv, d3pat_xprenv)
+    return None # end-of-[d3patlst_xprenv(d3ps,xenv)]
+#
 ########################################################################
 #
 def d3exp_xprenv\
@@ -228,6 +233,43 @@ def d3expopt_xprenv\
 #
 ########################################################################
 #
+def f3arg_xprenv\
+(farg: f3arg, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr()
+    if False:
+        pass
+    elif isinstance(farg, F3ARGdapp):
+        print("F3ARGdapp:")
+        xenv.indpr()
+        print(\
+        f"F3ARGdapp.arg1: {farg.arg1}")
+        xenv.indpr()
+        print("F3ARGdapp.arg2:")
+        d3pts_nind_xprenv(farg.arg2, dlta, xenv)
+    elif isinstance(farg, F3ARGsapp):
+        print("F3ARGsapp:")
+        xenv.indpr()
+        print("F3ARGsapp.arg1:")
+        # s2vrs_nind_xprenv(farg.arg1, dlta, xenv)
+        xenv.indpr()
+        print("F3ARGsapp.arg2:")
+        # s2xps_nind_xprenv(farg.arg2, dlta, xenv)
+    elif isinstance(farg, F3ARGmets):
+        print("F3ARGmets:")
+        xenv.indpr()
+        print("F3ARGmets.arg1:")
+        # s2xps_nind_xprenv(farg.arg1, dlta, xenv)
+    else:
+        return None # end-of-[f3arg_xprenv(farg,...)
+#
+def f3arglst_xprenv\
+(f3as: f3arglst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(f3as, xenv, f3arg_xprenv)
+    return None # end-of-[f3arglst_xprenv(f3as,xenv)]
+#
+########################################################################
+#
 def d3gua_xprenv\
 (dgua: d3gua, xenv: xprnv)->None:
     dlta = 2
@@ -324,6 +366,12 @@ def d3gpt_nind_xprenv\
     d3gpt_xprenv(dgpt, xenv); xenv.decby(dlta)
     return None # d3gpt_nind_xprenv(...)
 #
+def d3pts_nind_xprenv\
+(d3ps: d3patlst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3patlst_xprenv(d3ps, xenv); xenv.decby(dlta)
+    return None # d3pts_nind_xprenv(...)
+#
 def d3xps_nind_xprenv\
 (d3es: d3explst, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
@@ -347,6 +395,12 @@ def c3laz_nind_xprenv\
     c3laslst_xprenv(claz, xenv); xenv.decby(dlta)
     return None # c3laz_nind_xprenv(...)
 #
+def f3ags_nind_xprenv\
+(f3as: f3arglst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    f3arglst_xprenv(f3as, xenv); xenv.decby(dlta)
+    return None # f3ags_nind_xprenv(...)
+#
 ########################################################################
 ########################################################################
 #
@@ -361,8 +415,16 @@ def d3ecl_xprenv\
         d3ecl_nind_xprenv(d3cl, dlta, xenv)
     elif isinstance(d3cl, D3Cextern):
         print("D3Cextern:")
+        d3ecl_nind_xprenv(d3cl, dlta, xenv)
+    elif isinstance(d3cl, D3Cvaldclst):
+        print("D3Cvaldclst:")
         xenv.incby(2)
-        d3ecl_xprenv(d3cl, xenv)
+        d3valdclist_xprenv(d3cl.arg2, xenv)
+        xenv.decby(2)
+    elif isinstance(d3cl, D3Cvardclst):
+        print("D3Cvardclst:")
+        xenv.incby(2)
+        d3vardclist_xprenv(d3cl.arg2, xenv)
         xenv.decby(2)
     elif isinstance(d3cl, D3Cfundclst):
         print("D3Cfundclst:")
@@ -410,16 +472,72 @@ def d3cls_nind_xprenv\
 ########################################################################
 ########################################################################
 #
+def d3valdcl_xprenv\
+(dval: d3valdcl, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr()
+    print("D3VALDCL:")
+    xenv.indpr()
+    print("D3VALDCL.dpat:")
+    d3pat_nind_xprenv(dval.dpat, dlta, xenv)
+    tdxp = dval.tdxp
+    match tdxp:
+        case _ if \
+        isinstance(tdxp, TEQD3EXPnone):
+            xenv.indpr()
+            print("D3VALDCL.tdxp: TEQD3EXPnone")
+        case _ if \
+        isinstance(tdxp, TEQD3EXPsome):
+            xenv.indpr()
+            print("D3VALDCL.tdxp: TEQD3EXPsome")
+            d3exp_nind_xprenv(tdxp.arg2, dlta, xenv)
+    return None # end-of-[d3valdcl_xprenv(dval, ...)]
+#
+def d3valdclist_xprenv\
+(d3vs: d3valdclist, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(d3vs, xenv, d3valdcl_xprenv)
+#
+########################################################################
+#
+def d3vardcl_xprenv\
+(dvar: d3vardcl, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr()
+    print("D3VARDCL:")
+    xenv.indpr()
+    print("D3VARDCL.dpid:")
+    xenv.indpr()
+    print("D3VARDCL.dini:")
+    dini = dvar.dini
+    match dini:
+        case _ if \
+        isinstance(dini, TEQD3EXPnone):
+            xenv.indpr()
+            print("D3FUNDCL.dini: TEQD3EXPnone")
+        case _ if \
+        isinstance(dini, TEQD3EXPsome):
+            xenv.indpr()
+            print("D3FUNDCL.dini: TEQD3EXPsome")
+            d3exp_nind_xprenv(dini.arg2, dlta, xenv)
+    return None # end-of-[d3vardcl_xprenv(dvar, ...)]
+#
+def d3vardclist_xprenv\
+(d3vs: d3vardclist, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(d3vs, xenv, d3vardcl_xprenv)
+#
+########################################################################
+#
 def d3fundcl_xprenv\
 (dfun: d3fundcl, xenv: xprnv)->None:
     dlta = 2
     xenv.indpr()
+    print("D3FUNDCL:")
+    xenv.indpr()
     print(\
     f"D3FUNDCL.dpid: {dfun.dpid}")
     xenv.indpr()
-    print(\
-    f"D3FUNDCL.farg: {dfun.farg}")
-    xenv.indpr()
+    print("D3FUNDCL.farg:")
+    f3ags_nind_xprenv(dfun.farg, dlta, xenv)
     tdxp = dfun.tdxp
     match tdxp:
         case _ if \
@@ -427,8 +545,10 @@ def d3fundcl_xprenv\
             print("D3FUNDCL.tdxp: TEQD3EXPnone")
         case _ if \
         isinstance(tdxp, TEQD3EXPsome):
+            xenv.indpr()
             print("D3FUNDCL.tdxp: TEQD3EXPsome")
             d3exp_nind_xprenv(tdxp.arg2, dlta, xenv)
+    return None # end-of-[d3fundcl_xprenv(dfun, ...)]
 #
 #   xenv.indpr()
 #   print(f"d3fundcl_xprenv: dfun = {dfun}")
