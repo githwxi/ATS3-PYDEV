@@ -253,6 +253,14 @@ def d3exp_xprenv\
         print("D3Eannot.arg3:")
         s2exp_nind_xprenv(dexp.arg3, dlta, xenv)
 #
+    elif isinstance(dexp, D3Et2pck):
+        print("D3Et2pck:")
+        xenv.indpr()
+        print("D3Et2pck.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr()
+        print("D3Et2pck.arg2:")
+        s2typ_nind_xprenv(dexp.arg2, dlta, xenv)
     elif isinstance(dexp, D3Et2ped):
         print("D3Et2ped:")
         xenv.indpr()
