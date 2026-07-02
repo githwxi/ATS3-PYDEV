@@ -296,6 +296,18 @@ class D3Estr(D3E000):
 ########################################################################
 #
 @dataclass
+class D3Etop(D3E000):
+    arg1: symbl
+    ctag = "D3Etop"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Econ(D3E000):
     arg1: d2con
     ctag = "D3Econ"
@@ -800,7 +812,7 @@ class d3vardcl_tbox(ABC):
 class d3fundcl_tbox(ABC):
     lctn: loctn
     dpid: d2var
-    farg: f3arg
+    farg: f3arglst
     sres: s2res
     tdxp: teqd3exp
     wsxp: wths2exp

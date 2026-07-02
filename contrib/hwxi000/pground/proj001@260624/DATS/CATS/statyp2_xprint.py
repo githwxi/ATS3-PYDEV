@@ -28,6 +28,12 @@ def s2typ_xprenv\
     xenv.indpr()
     print(f"T2P000({styp})")
 #
+def s2typ_nind_xprenv\
+(styp: s2typ, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2typ_xprenv(styp, xenv)
+    xenv.decby(dlta)
+#
 ########################################################################
 ########################################################################
 # end of

@@ -29,6 +29,7 @@ from DATS.CATS.statyp2_xprint import *
 #
 def d3exp_xprenv\
 (dexp: d3exp, xenv: xprnv)->None:
+    dlta = 2
     xenv.indpr( )
     if False:
         pass
@@ -58,119 +59,89 @@ def d3exp_xprenv\
         print("D3Edapp:")
         xenv.indpr( )
         print("D3Edapp.fun1:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Edapp.args:")
-        xenv.incby(2)
-        d3explst_xprenv(dexp.arg3, xenv)
-        xenv.decby(2)
+        d3xps_nind_xprenv(dexp.arg3, dlta, xenv)
+#
     elif isinstance(dexp, D3Elet0):
         print("D3Elet0:")
         xenv.indpr( )
         print("D3Elet0.dcls:")
-        xenv.incby(2)
-        d3eclist_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3cls_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Elet0.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg2, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     elif isinstance(dexp, D3Eift0):
         print("D3Eift0:")
         xenv.indpr( )
         print("D3Eift0.test:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Eift0.then:")
-        xenv.incby(2)
-        d3expopt_xprenv(dexp.arg2, xenv)
-        xenv.decby(2)
+        d3xpt_nind_xprenv(dexp.arg2, dlta, xenv)
         xenv.indpr( )
         print("D3Eift0.else:")
-        xenv.incby(2)
-        d3expopt_xprenv(dexp.arg3, xenv)
-        xenv.decby(2)
+        d3xpt_nind_xprenv(dexp.arg3, dlta, xenv)
+#
     elif isinstance(dexp, D3Eseqn):
         print("D3Eseqn:")
         xenv.indpr( )
         print("D3Eseqn.init:")
-        xenv.incby(2)
-        d3explst_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3xps_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Eseqn.last:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg2, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     elif isinstance(dexp, D3Eflat):
         print("D3Eflat:")
         xenv.indpr( )
         print("D3Eflat.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
     elif isinstance(dexp, D3Eeval):
         print("D3Eeval:")
         xenv.indpr( )
         print("D3Eeval.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
     elif isinstance(dexp, D3Efold):
         print("D3Efold:")
         xenv.indpr( )
         print("D3Efold.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
     elif isinstance(dexp, D3Efree):
         print("D3Efree:")
         xenv.indpr( )
         print("D3Efree.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+#
     elif isinstance(dexp, D3Ewhere):
         print("D3Ewhere:")
         xenv.indpr( )
         print("D3Ewhere.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Ewhere.dcls:")
-        xenv.incby(2)
-        d3eclist_xprenv(dexp.arg2, xenv)
-        xenv.decby(2)
+        d3cls_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     elif isinstance(dexp, D3Eassgn):
         print("D3Eassgn:")
         xenv.indpr( )
         print("D3Eassgn.lval:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Eassgn.rval:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg2, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     elif isinstance(dexp, D3Et2ped):
         print("D3Et2ped:")
         xenv.indpr( )
         print("D3Et2ped.dexp:")
-        xenv.incby(2)
-        d3exp_xprenv(dexp.arg1, xenv)
-        xenv.decby(2)
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
         print("D3Et2ped.styp:")
-        xenv.incby(2)
-        s2typ_xprenv(dexp.arg2, xenv)
-        xenv.decby(2)
+        s2typ_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     else:
         print(f"d3exp_xprenv: dexp = {dexp}")
 #    
@@ -196,18 +167,35 @@ def d3expopt_xprenv\
     return None # end-of-[d3expopt_xprenv(dopt,xenv)]
 #
 ########################################################################
+#
+def d3exp_nind_xprenv\
+(dexp: d3exp, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3exp_xprenv(dexp, xenv)
+    xenv.decby(dlta)
+def d3xps_nind_xprenv\
+(d3es: d3explst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3explst_xprenv(d3es, xenv)
+    xenv.decby(dlta)
+def d3xpt_nind_xprenv\
+(dopt: d3expopt, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3expopt_xprenv(dopt, xenv)
+    xenv.decby(dlta)
+#
+########################################################################
 ########################################################################
 #
 def d3ecl_xprenv\
 (d3cl: d3ecl, xenv: xprnv)->None:
+    dlta = 2
     xenv.indpr( )
     if False:
         pass
     elif isinstance(d3cl, D3Cstatic):
         print("D3Cstatic:")
-        xenv.incby(2)
-        d3ecl_xprenv(d3cl, xenv)
-        xenv.decby(2)
+        d3ecl_nind_xprenv(d3cl, dlta, xenv)
     elif isinstance(d3cl, D3Cextern):
         print("D3Cextern:")
         xenv.incby(2)
@@ -244,10 +232,24 @@ def d3eclistopt_xprenv\
         return d3eclist_xprenv(dopt.arg1, xenv)
 #
 ########################################################################
+#
+def d3ecl_nind_xprenv\
+(d3cl: d3ecl, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3ecl_xprenv(d3cl, xenv)
+    xenv.decby(dlta)
+def d3cls_nind_xprenv\
+(dcls: d3eclist, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3eclist_xprenv(dcls, xenv)
+    xenv.decby(dlta)
+#
+########################################################################
 ########################################################################
 #
 def d3fundcl_xprenv\
 (dfun: d3fundcl, xenv: xprnv)->None:
+    dlta = 2
     xenv.indpr( )
     print(\
     f"D3FUNDCL.dpid: {dfun.dpid}")
@@ -259,13 +261,11 @@ def d3fundcl_xprenv\
     match tdxp:
         case _ if \
         isinstance(tdxp, TEQD3EXPnone):
-            print(f"D3FUNDCL.tdxp: TEQD3EXPnone")
+            print("D3FUNDCL.tdxp: TEQD3EXPnone")
         case _ if \
         isinstance(tdxp, TEQD3EXPsome):
-            print(f"D3FUNDCL.tdxp: TEQD3EXPsome")
-            xenv.incby(2)
-            d3exp_xprenv(tdxp.arg2, xenv)
-            xenv.decby(2)
+            print("D3FUNDCL.tdxp: TEQD3EXPsome")
+            d3exp_nind_xprenv(tdxp.arg2, dlta, xenv)
 #
 #   xenv.indpr( )
 #   print(f"d3fundcl_xprenv: dfun = {dfun}")
