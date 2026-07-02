@@ -55,22 +55,68 @@ def d3exp_xprenv\
     elif isinstance(dexp, D3Ecst):
         print(f"D3Ecst({dexp.arg1})")
 #
+    elif isinstance(dexp, D3Etimp):
+        print("D3Etimp:")
+        xenv.indpr( )
+        print("D3Etimp.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr( )
+        print("D3Etimp.arg2:")
+        # timpl_nind_xprenv(dexp.arg2, dlta, xenv)
+#
+    elif isinstance(dexp, D3Esapp):
+        print("D3Esapp:")
+        xenv.indpr( )
+        print("D3Esapp.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr( )
+        print("D3Esapp.arg2:")
+        # s2xps_nind_xprenv(dexp.arg2, dlta, xenv)
+    elif isinstance(dexp, D3Esapq):
+        print("D3Esapq:")
+        xenv.indpr( )
+        print("D3Esapq.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr( )
+        print("D3Esapq.arg2:")
+        # s2ags_nind_xprenv(dexp.arg2, dlta, xenv)
+ #
+    elif isinstance(dexp, D3Etapp):
+        print("D3Etapp:")
+        xenv.indpr( )
+        print("D3Etapp.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr( )
+        print("D3Etapp.arg2:")
+        # s2xps_nind_xprenv(dexp.arg2, dlta, xenv)
+    elif isinstance(dexp, D3Etapq):
+        print("D3Etapq:")
+        xenv.indpr( )
+        print("D3Etapq.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr( )
+        print("D3Etapq.arg2:")
+        # t2jgs_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     elif isinstance(dexp, D3Edapp):
         print("D3Edapp:")
         xenv.indpr( )
-        print("D3Edapp.fun1:")
+        print("D3Edapp.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
-        print("D3Edapp.args:")
+        print(\
+        f"D3Edapp.arg2: {dexp.arg2}")
+        xenv.indpr( )
+        print("D3Edapp.arg3:")
         d3xps_nind_xprenv(dexp.arg3, dlta, xenv)
 #
     elif isinstance(dexp, D3Elet0):
         print("D3Elet0:")
         xenv.indpr( )
-        print("D3Elet0.dcls:")
+        print("D3Elet0.arg1:")
         d3cls_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
-        print("D3Elet0.dexp:")
+        print("D3Elet0.arg2:")
         d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     elif isinstance(dexp, D3Eift0):
@@ -84,62 +130,73 @@ def d3exp_xprenv\
         xenv.indpr( )
         print("D3Eift0.else:")
         d3xpt_nind_xprenv(dexp.arg3, dlta, xenv)
+    elif isinstance(dexp, D3Ecas0):
+        print("D3Ecas0:")
+        xenv.indpr( )
+        print(\
+        f"D3Ecas0.arg1: {dexp.arg1}")
+        xenv.indpr( )
+        print("D3Ecas0.arg2:")
+        d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
+        xenv.indpr( )
+        print("D3Ecas0.arg3:")
+        c3laz_nind_xprenv(dexp.arg3, dlta, xenv)
 #
     elif isinstance(dexp, D3Eseqn):
         print("D3Eseqn:")
         xenv.indpr( )
-        print("D3Eseqn.init:")
+        print("D3Eseqn.arg1:")
         d3xps_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
-        print("D3Eseqn.last:")
+        print("D3Eseqn.arg2:")
         d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     elif isinstance(dexp, D3Eflat):
         print("D3Eflat:")
         xenv.indpr( )
-        print("D3Eflat.dexp:")
+        print("D3Eflat.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
     elif isinstance(dexp, D3Eeval):
         print("D3Eeval:")
         xenv.indpr( )
-        print("D3Eeval.dexp:")
+        print("D3Eeval.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
     elif isinstance(dexp, D3Efold):
         print("D3Efold:")
         xenv.indpr( )
-        print("D3Efold.dexp:")
+        print("D3Efold.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
     elif isinstance(dexp, D3Efree):
         print("D3Efree:")
         xenv.indpr( )
-        print("D3Efree.dexp:")
+        print("D3Efree.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
 #
     elif isinstance(dexp, D3Ewhere):
         print("D3Ewhere:")
         xenv.indpr( )
-        print("D3Ewhere.dexp:")
+        print("D3Ewhere.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
-        print("D3Ewhere.dcls:")
+        print("D3Ewhere.arg2:")
         d3cls_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     elif isinstance(dexp, D3Eassgn):
         print("D3Eassgn:")
         xenv.indpr( )
-        print("D3Eassgn.lval:")
+        print("D3Eassgn.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
-        print("D3Eassgn.rval:")
+        print("D3Eassgn.arg2:")
         d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     elif isinstance(dexp, D3Et2ped):
         print("D3Et2ped:")
         xenv.indpr( )
-        print("D3Et2ped.dexp:")
+        print("D3Et2ped.arg1:")
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr( )
-        print("D3Et2ped.styp:")
+        print("D3Et2ped.arg2:")
         s2typ_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     else:
@@ -147,15 +204,7 @@ def d3exp_xprenv\
 #    
 def d3explst_xprenv\
 (d3es: d3explst, xenv: xprnv)->None:
-    x1 = None
-    xs : d3explst = d3es
-    while True:
-        if isinstance(xs, fnlist_cons):
-            x1 = xs.arg1
-            xs = xs.arg2
-            d3exp_xprenv(x1, xenv)
-        else:
-            break
+    fnlist_foritm_e1nv(d3es, xenv, d3exp_xprenv)
     return None # end-of-[d3explst_xprenv(d3es,xenv)]
 #
 def d3expopt_xprenv\
@@ -168,21 +217,76 @@ def d3expopt_xprenv\
 #
 ########################################################################
 #
+def d3gpt_xprenv\
+(dgpt: d3gpt, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr( )
+    if False:
+        pass
+    elif isinstance(dgpt, D3GPTpat):
+        print("D3GPTpat:")
+    elif isinstance(dgpt, D3GPTgua):
+        print("D3GPTgua:")
+    else:
+        print(f"d3gpt_xprenv: dgpt = {dgpt}")
+#
+def c3las_xprenv\
+(clas: d3cls, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr( )
+    if False:
+        pass
+    elif isinstance(clas, D3CLSgpt):
+        print("D3CLSgpt:")
+        xenv.indpr( )
+        print("D3CLSgpt.arg1:")
+        d3gpt_nind_xprenv(clas.arg1, dlta, xenv)
+    elif isinstance(clas, D3CLScls):
+        print("D3CLScls:")
+        xenv.indpr( )
+        print("D3CLScls.arg1:")
+        d3gpt_nind_xprenv(clas.arg1, dlta, xenv)
+        xenv.indpr( )
+        print("D3CLScls.arg2:")
+        d3exp_nind_xprenv(clas.arg2, dlta, xenv)
+    else:
+        print(f"c3las_xprenv: clas = {clas}")
+#
+def c3laslst_xprenv\
+(clas: d3clslst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(clas, xenv, c3las_xprenv)
+    return None # end-of-[d3clalst_xprenv(clas,xenv)]
+#
+########################################################################
+#
 def d3exp_nind_xprenv\
 (dexp: d3exp, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
-    d3exp_xprenv(dexp, xenv)
-    xenv.decby(dlta)
+    d3exp_xprenv(dexp, xenv); xenv.decby(dlta)
+    return None # d3exp_nind_xprenv(...)
+#
+def d3gpt_nind_xprenv\
+(dgpt: d3gpt, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d3gpt_xprenv(dgpt, xenv); xenv.decby(dlta)
+    return None # d3gpt_nind_xprenv(...)
+#
 def d3xps_nind_xprenv\
 (d3es: d3explst, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
-    d3explst_xprenv(d3es, xenv)
-    xenv.decby(dlta)
+    d3explst_xprenv(d3es, xenv); xenv.decby(dlta)
+    return None # d3xps_nind_xprenv(...)
 def d3xpt_nind_xprenv\
 (dopt: d3expopt, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
-    d3expopt_xprenv(dopt, xenv)
-    xenv.decby(dlta)
+    d3expopt_xprenv(dopt, xenv); xenv.decby(dlta)
+    return None # d3xpt_nind_xprenv(...)
+#
+def c3laz_nind_xprenv\
+(claz: d3clslst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    c3laslst_xprenv(claz, xenv); xenv.decby(dlta)
+    return None # c3laz_nind_xprenv(...)
 #
 ########################################################################
 ########################################################################
