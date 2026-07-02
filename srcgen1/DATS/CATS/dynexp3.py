@@ -611,6 +611,20 @@ class D3Eraise(D3E000):
 ########################################################################
 #
 @dataclass
+class D3Eannot(D3E000):
+    arg1: d3exp
+    arg2: s1exp
+    arg3: s2exp
+    ctag = "D3Pannot"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Et2pck(D3E000):
     arg1: d3exp
     arg2: s2typ

@@ -16,23 +16,20 @@ from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
 ########################################################################
-from DATS.CATS.a3pydev import *
-from DATS.CATS.staexp2 import *
-from DATS.CATS.statyp2 import *
 ########################################################################
-from DATS.CATS.a3pydev_xprint import *
-########################################################################
-#
-def s2typ_xprenv\
-(styp: s2typ, xenv: xprnv)->None:
-    xenv.indpr()
-    print(f"T2P000({styp})")
-#
-def s2typ_nind_xprenv\
-(styp: s2typ, dlta: sint, xenv: xprnv)->None:
-    xenv.incby(dlta)
-    s2typ_xprenv(styp, xenv); xenv.decby(dlta)
-#
+class xprnv:
+    nind: sint = 0
+    def indpr(self)->None:
+        i0 = 0
+        n0 = self.nind
+        while(i0 < n0):
+            i0 = i0 + 1
+            print(' ', end='')
+    def incby(self, dlta: sint)->None:
+        self.nind += dlta
+    def decby(self, dlta: sint)->None:
+        self.nind -= dlta
+    pass
 ########################################################################
 ########################################################################
 # end of

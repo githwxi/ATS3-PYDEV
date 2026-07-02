@@ -18,11 +18,13 @@ from dataclasses import dataclass
 ########################################################################
 ########################################################################
 from DATS.CATS.a3pydev import *
+from DATS.CATS.staexp2 import *
 from DATS.CATS.statyp2 import *
 from DATS.CATS.dynexp2 import *
 from DATS.CATS.dynexp3 import *
 ########################################################################
 from DATS.CATS.a3pydev_xprint import *
+from DATS.CATS.staexp2_xprint import *
 from DATS.CATS.statyp2_xprint import *
 ########################################################################
 ########################################################################
@@ -33,6 +35,34 @@ def d3pat_xprenv\
     xenv.indpr()
     if False:
         pass
+    elif isinstance(dpat, D3Pany):
+        print(f"D3Pany()")
+    elif isinstance(dpat, D3Pvar):
+        print(f"D3Pvar({dpat.arg1})")
+#
+    elif isinstance(dpat, D3Pint):
+        print(f"D3Pint({dpat.arg1})")
+    elif isinstance(dpat, D3Pbtf):
+        print(f"D3Pbtf({dpat.arg1})")
+    elif isinstance(dpat, D3Pchr):
+        print(f"D3Pchr({dpat.arg1})")
+    elif isinstance(dpat, D3Pflt):
+        print(f"D3Pflt({dpat.arg1})")
+    elif isinstance(dpat, D3Pstr):
+        print(f"D3Pstr({dpat.arg1})")
+#
+    elif isinstance(dpat, D3Pcon):
+        print(f"D3Pcon({dpat.arg1})")
+#
+    elif isinstance(dpat, D3Pannot):
+        print("D3Pannot:")
+        xenv.indpr()
+        print("D3Pannot.arg1:")
+        d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
+        xenv.indpr()
+        print("D3Pannot.arg3:")
+        s2exp_nind_xprenv(dpat.arg3, dlta, xenv)
+#
     else:
         print(f"d3pat_xprenv: dpat = {dpat}")
 #
@@ -205,6 +235,15 @@ def d3exp_xprenv\
         xenv.indpr()
         print("D3Eassgn.arg2:")
         d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
+#
+    elif isinstance(dexp, D3Eannot):
+        print("D3Eannot:")
+        xenv.indpr()
+        print("D3Eannot.arg1:")
+        d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
+        xenv.indpr()
+        print("D3Eannot.arg3:")
+        s2exp_nind_xprenv(dexp.arg3, dlta, xenv)
 #
     elif isinstance(dexp, D3Et2ped):
         print("D3Et2ped:")
