@@ -89,9 +89,23 @@ PY_repr
 #extern
 fun
 PY_T2Pa3src
-( s2t0
-: PY$sort2
-, styp: s2typ): PY$s2typ = $extnam()
+(
+s2t0:
+PY$sort2,
+styp: s2typ): PY$s2typ = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<sort2>(s2t0) =
+sort2_fprint(s2t0, g_print$out<>())
+#impltmp
+g_print<s2typ>(styp) =
+s2typ_fprint(styp, g_print$out<>())
+#impltmp
+g_print<s2exp>(sexp) =
+s2exp_fprint(sexp, g_print$out<>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -145,14 +159,25 @@ t2f0: PY$s2typ,
 t2ps: PY$s2typlst): PY$s2typ = $extnam()
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-#impltmp
-g_print<sort2>(s2t0) =
-sort2_fprint(s2t0, g_print$out<>())
-#impltmp
-g_print<s2typ>(styp) =
-s2typ_fprint(styp, g_print$out<>())
+#extern
+fun
+PY_T2Pnone0
+(
+s2t0: PY$sort2   ): PY$s2typ = $extnam()
+#extern
+fun
+PY_T2Pnone1
+(
+s2t0: PY$sort2,
+t2p1: PY$s2typ   ): PY$s2typ = $extnam()
+//
+#extern
+fun
+PY_T2Ps2exp
+(
+s2t0: PY$sort2,
+s2e1: PY$s2exp   ): PY$s2typ = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -240,6 +265,32 @@ val t2f0 =
 val t2ps =
 (
   s2typlst_pytrcpy(t2ps)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|T2Pnone0
+( (*void*) ) =>
+(
+  PY_T2Pnone0(s2t0))
+//
+|T2Pnone1
+(   t2p1   ) =>
+(
+PY_T2Pnone1(s2t0, t2p1))
+where
+{
+val
+t2p1 = s2typ_pytrcpy(t2p1) }
+//
+|T2Ps2exp
+(   s2e1   ) =>
+(
+PY_T2Ps2exp(s2t0, s2e1))
+where
+{
+val
+s2e1 = s2exp_pytrcpy(s2e1) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

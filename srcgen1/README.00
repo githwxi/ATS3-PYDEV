@@ -1,0 +1,24 @@
+##################################################################
+HX-2026-07-01:
+How to build ATS3-PYDEV?
+##################################################################
+Step1:
+The following command-line generates the library (libats3pydev.py)
+for ATS3-PYDEV:
+#
+make -f Makefile_xpyemit libats3pydev
+#
+##################################################################
+Step2:
+The following command-line combines lib2xatsopt.py with
+libats3pydev.py to form ats3_pydev_lib2xatsopt.py (which is very
+large):
+#
+(cd UTIL && make -f Makefile all)
+#
+##################################################################
+Step3:
+#
+(cd TEST && make -f Makefile test01)
+#
+##################################################################

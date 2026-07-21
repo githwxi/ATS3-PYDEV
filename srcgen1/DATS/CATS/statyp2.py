@@ -98,6 +98,7 @@ class T2Patx2(T2P000):
 class T2Plam1(T2P000):
     arg1: s2varlst
     arg2: s2typ#bd
+    ctag = "T2Plam1"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
@@ -107,6 +108,7 @@ class T2Plam1(T2P000):
 class T2Papps(T2P000):
     arg1: s2typ
     arg2: s2typlst
+    ctag = "T2Papps"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
@@ -117,6 +119,7 @@ class T2Papps(T2P000):
 @dataclass
 class T2Pf2cl(T2P000):
     arg1: pyobj
+    ctag = "T2Pf2cl"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
@@ -129,6 +132,7 @@ class T2Pfun1(T2P000):
     arg2: sint
     arg3: s2typlst
     arg4: s2typ
+    ctag = "T2Pfun1"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3};{self.arg4})"
     def __repr__(self)->strn:
@@ -152,16 +156,39 @@ class T2Ptrcd(T2P000):
 @dataclass
 class T2Pnone0(T2P000):
     pass
+    ctag = "T2Pnone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
 @dataclass
 class T2Pnone1(T2P000):
+    arg1: s2typ
+    ctag = "T2Pnone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class T2Ps2exp(T2P000):
+    arg1: s2exp
+    ctag = "T2Ps2exp"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 ########################################################################
 @dataclass
 class T2Perrck(T2P000):
-    pass
-########################################################################
-@dataclass
-class T2Pundef(T2P000):
+    arg1: sint
+    arg2: s2typ
+    ctag = "T2Perrck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 ########################################################################
 ########################################################################
@@ -219,6 +246,21 @@ def PY_T2Plam1\
 def PY_T2Papps\
 (sort: sort2, arg1: s2typ, arg2: s2typlst)->T2Papps:
     return T2Papps(sort, arg1, arg2)
+#
+########################################################################
+#
+def PY_T2Pnone0(sort: sort2)->T2Pnone0:
+    return T2Pnone0(sort)
+def PY_T2Pnone1(sort: sort2, arg1: s2typ)->T2Pnone1:
+    return T2Pnone1(sort, arg1)
+def PY_T2Ps2exp(sort: sort2, arg1: s2exp)->T2Ps2exp:
+    return T2Ps2exp(sort, arg1)
+#
+########################################################################
+#
+def PY_T2Perrck(\
+    sort: sort2, arg1: sint, arg2: s2exp)->T2Perrck:
+    return T2Perrcp(sort, arg1, arg2)
 #
 ########################################################################
 ########################################################################
