@@ -17,6 +17,7 @@ from enum import Enum
 from dataclasses import dataclass
 ########################################################################
 ########################################################################
+#
 class xprnv:
     nind: sint = 0
     def indpr(self)->None:
@@ -30,9 +31,10 @@ class xprnv:
     def decby(self, dlta: sint)->None:
         self.nind -= dlta
     pass
+#
 ########################################################################
 ########################################################################
 # end of
-# [ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/DATS/CATS/statyp2_xprint.py]
+# [ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/DATS/CATS/a3pydev_xprint.py]
 ########################################################################
 ########################################################################
