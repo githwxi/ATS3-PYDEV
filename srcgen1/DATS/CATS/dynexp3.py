@@ -1017,6 +1017,13 @@ def PY_D3Pcon(lctn: loctn, arg1: d2con)->D3Pcon:
 #
 ########################################################################
 #
+def PY_D3Pdapp\
+(loc0: loctn, \
+ arg1: d3pat, arg2: sint, arg3: d3patlst)->D3Pdapp:
+    return D3Pdapp(loc0, arg1, arg2, arg3)
+#
+########################################################################
+#
 def PY_D3Pargtp\
 (lctn: loctn, \
  arg1: d3pat, arg2: s2typ)->D3Pargtp:

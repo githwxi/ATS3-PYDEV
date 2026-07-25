@@ -506,6 +506,44 @@ d2ecl_fprint(d2cl, g_print$out<>())
 (* ****** ****** *)
 //
 #implfun
+d2con_pytrcpy
+(   dcon   ) =
+let
+//
+val lctn =
+loctn_pytrcpy
+(
+d2con_get_lctn(dcon))
+//
+val name =
+symbl_pytrcpy
+(
+d2con_get_name(dcon))
+//
+val stmp =
+stamp_pytrcpy
+(
+d2con_get_stmp(dcon))
+//
+in//let
+(
+  PY_d2con(lctn, name, stmp))
+end where
+{
+//
+#extern
+fun
+PY_d2con
+(
+lctn: PY$loctn,
+name: PY$symbl,
+stmp: PY$stamp): PY$d2con = $extnam()
+//
+}(*where*)//end-of-[d2con_pytrcpy(dcon)]
+//
+(* ****** ****** *)
+//
+#implfun
 d2cst_pytrcpy
 (   dcst   ) =
 let
