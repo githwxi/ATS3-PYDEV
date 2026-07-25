@@ -67,8 +67,14 @@ class postn_tbox:
     ntot: sint
     nrow: sint
     ncol: sint
+    def __str__(self)->strn:
+        return f"POSTN(ntot={self.ntot};nrow={self.nrow};ncol={self.ncol})"
+    def __repr__(self)->strn:
+        return f"POSTN(ntot={self.ntot!r};nrow={self.nrow!r};ncol={self.ncol!r})"
     pass
 type postn = postn_tbox
+#
+########################################################################
 #
 @dataclass
 class loctn_tbox:
@@ -83,6 +89,10 @@ class loctn_tbox:
     lsrc: lcsrc
     pbeg: postn
     pend: postn
+    def __str__(self)->strn:
+        return f"LOCTN({self.lsrc};{self.pbeg};{self.pend})"
+    def __repr__(self)->strn:
+        return f"LOCTN({self.lsrc!r};{self.pbeg!r};{self.pend!r})"
     pass
 type loctn = loctn_tbox
 #
