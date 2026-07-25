@@ -239,12 +239,14 @@ PY_T2Ptop1(sort: sort2, arg1: s2typ)->T2Ptop1:
 #
 ########################################################################
 #
-def PY_T2Plam1\
-(sort: sort2, arg1: s2varlst, arg2: s2typ)->T2Plam1:
+def \
+PY_T2Plam1(\
+sort: sort2, arg1: s2varlst, arg2: s2typ)->T2Plam1:
     return T2Plam1(sort, arg1, arg2)
 #
-def PY_T2Papps\
-(sort: sort2, arg1: s2typ, arg2: s2typlst)->T2Papps:
+def \
+PY_T2Papps(\
+sort: sort2, arg1: s2typ, arg2: s2typlst)->T2Papps:
     return T2Papps(sort, arg1, arg2)
 #
 ########################################################################
@@ -258,9 +260,9 @@ def PY_T2Ps2exp(sort: sort2, arg1: s2exp)->T2Ps2exp:
 #
 ########################################################################
 #
-def PY_T2Perrck(\
-    sort: sort2, arg1: sint, arg2: s2exp)->T2Perrck:
-    return T2Perrcp(sort, arg1, arg2)
+def PY_T2Perrck\
+  (sort: sort2, arg1: sint, arg2: s2typ)->T2Perrck:
+    return T2Perrck(sort, arg1, arg2)
 #
 ########################################################################
 ########################################################################

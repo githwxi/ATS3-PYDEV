@@ -21,6 +21,10 @@ class fpath_tbox:
     gvn0: strn
     fnm1: strn
     fnm2: strn
+    def __str__(self)->strn:
+        return f"FPATH({self.fnm2})"
+    def __repr__(self)->strn:
+        return f"FPATH({self.fnm2!r})"
     pass
 type fpath = fpath_tbox
 ########################################################################

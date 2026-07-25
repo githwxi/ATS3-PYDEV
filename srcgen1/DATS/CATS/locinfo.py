@@ -15,18 +15,36 @@ from DATS.CATS.filpath import *
 ########################################################################
 @dataclass
 class LCSRC000(ABC):
+    ctag = "LCSRC000"
     pass
 type lcsrc = LCSRC000
 ########################################################################
 @dataclass
 class LCSRCnone0(LCSRC000):
+    ctag = "LCSRCnone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
     pass
 @dataclass
 class LCSRCsome1(LCSRC000):
+    ctag = "LCSRCsome1"
     arg1: strn
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
 @dataclass
 class LCSRCfpath(LCSRC000):
+    ctag = "LCSRCfpath"
     arg1: fpath
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
 ########################################################################
 #
 def PY_LCSRCnone0()->LCSRCnone0:
