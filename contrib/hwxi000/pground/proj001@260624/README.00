@@ -1,0 +1,10 @@
+##################################################################
+#
+HX-2026-07-25:
+Sat Jul 25 12:29:19 PM EDT 2026
+#
+The xprint-functions are for printing out the level-3 syntax
+of ATS3 programs; the syntax represented as a Python data structure
+is translated from its original represented in ATS3.
+#
+##################################################################
