@@ -1,15 +1,16 @@
 ##################################################################
 #
 HX-2026-07-25:
-Sat Jul 25 12:29:19 PM EDT 2026
+Sat Jul 25 12:45:41 PM EDT 2026
 #
-The xprint-functions are for printing out the level-3 syntax trees
-of ATS3 programs. Note that each input syntax tree (represented as a
-Python data structure) is translated from its original version in ATS3.
+The xtrsyn-functions are for processing the level-3 syntax trees
+of ATS3 programs. Note that each processed syntax tree (represented
+as a Python data structure) is translated from its original version
+in ATS3.
 #
 Basically, a source program in ATS3 (contained in a text file) is
 turned into an internal data structure in Python through a call to
 PYDEV_d3parsed_pytrcpy; this data structure is then processed by some
-xprint-functions to generate text-based (indented) output.
+xtrsyn-functions ...
 #
 ##################################################################
