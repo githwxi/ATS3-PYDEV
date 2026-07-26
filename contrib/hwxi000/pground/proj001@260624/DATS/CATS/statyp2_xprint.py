@@ -71,7 +71,7 @@ def s2typ_xprenv\
         t2yps_nind_xprenv(styp.arg2, dlta, xenv)
 #
     elif isinstance(styp, T2Pnone0):
-        print("T2Pnone0:")
+        print("T2Pnone0()")
     elif isinstance(styp, T2Pnone1):
         print("T2Pnone1:")
         xenv.indpr(); print("T2Pnone1.arg1:")

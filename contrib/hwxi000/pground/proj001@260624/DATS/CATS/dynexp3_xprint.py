@@ -64,6 +64,15 @@ def d3pat_xprenv\
         xenv.indpr(); print("D3Pdapp.arg3:")
         d3pts_nind_xprenv(dpat.arg3, dlta, xenv)
 #
+    elif isinstance(dpat, D3Ptapq):
+        print("D3Ptapq:")
+        xenv.indpr()
+        print("D3Ptapq.arg1:")
+        d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
+        xenv.indpr()
+        print("D3Ptapq.arg2:")
+        # t2jgs_nind_xprenv(dpat.arg2, dlta, xenv)
+#
     elif isinstance(dpat, D3Pannot):
         print("D3Pannot:")
         xenv.indpr()

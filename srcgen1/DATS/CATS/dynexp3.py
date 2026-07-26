@@ -222,6 +222,19 @@ class D3Pcon(D3P000):
 ########################################################################
 #
 @dataclass
+class D3Ptapq(D3P000):
+    arg1: d3pat
+    arg2: t2jaglst
+    ctag = "D3Ptapq"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Pdapp(D3P000):
     arg1: d3pat
     arg2: sint
@@ -1014,6 +1027,13 @@ def PY_D3Pvar(lctn: loctn, arg1: d2var)->D3Pvar:
 #
 def PY_D3Pcon(lctn: loctn, arg1: d2con)->D3Pcon:
     return D3Pcon(lctn, arg1)
+#
+########################################################################
+#
+def PY_D3Ptapq\
+(loc0: loctn, \
+ arg1: d3pat, arg2: t2jaglst)->D3Ptapq:
+    return D3Ptapq(loc0, arg1, arg2)
 #
 ########################################################################
 #

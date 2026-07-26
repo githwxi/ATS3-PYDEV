@@ -186,6 +186,15 @@ PY_D3Pcon
 //
 #extern
 fun
+PY_D3Ptapq
+( loc0: PY$loctn
+, d3f0: PY$d3pat
+, tjas: PY$t2jaglst): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Pdap1
 ( loc0: PY$loctn
 , d3p1: PY$d3pat   ): PY$d3pat = $extnam()
@@ -302,7 +311,7 @@ fun
 PY_D3Etapq
 ( loc0: PY$loctn
 , d3f0: PY$d3exp
-, s2es: PY$t2jaglst): PY$d3exp = $extnam()
+, tjas: PY$t2jaglst): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
 //
@@ -682,6 +691,21 @@ in//let
 (
   PY_D3Pcon(loc0, d2c1))
 end//let
+//
+(* ****** ****** *)
+//
+|D3Ptapq
+(d3f0, tjas) =>
+(
+PY_D3Ptapq
+(loc0, d3f0, tjas))
+where
+{
+val d3f0 =
+  d3pat_pytrcpy(d3f0)
+val tjas =
+(
+  t2jaglst_pytrcpy(tjas)) }
 //
 (* ****** ****** *)
 //
