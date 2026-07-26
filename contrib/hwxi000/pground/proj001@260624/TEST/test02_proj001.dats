@@ -54,6 +54,19 @@ in
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun fibo1: nint -> nint
+//
+#implfun
+fibo1(n) =
+(
+if // if
+(n <= 1)
+then n else fibo1(n-2)+fibo1(n-1))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [
  * ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/TEST/test02_proj001.dats] *)
