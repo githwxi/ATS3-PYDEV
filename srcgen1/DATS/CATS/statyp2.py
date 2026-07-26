@@ -263,10 +263,12 @@ sort: sort2, arg1: s2typ, arg2: s2typlst)->T2Papps:
     return T2Papps(sort, arg1, arg2)
 #
 ########################################################################
+#
 def \
 PY_T2Ptext\
 (sort: sort2, arg1: strn, arg2: s2typlst)->T2Ptext:
     return T2Ptext(sort, arg1, arg2)
+#
 ########################################################################
 #
 def PY_T2Pnone0(sort: sort2)->T2Pnone0:
