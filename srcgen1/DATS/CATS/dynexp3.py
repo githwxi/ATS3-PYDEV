@@ -305,6 +305,19 @@ class D3Pargtp(D3P000):
     pass
 #
 @dataclass
+class D3Pt2pck(D3P000):
+    arg1: d3pat
+    arg2: s2typ
+    ctag = "D3Pt2pck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Pannot(D3P000):
     arg1: d3pat
     arg2: s1exp
@@ -314,19 +327,6 @@ class D3Pannot(D3P000):
         return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
-    pass
-#
-########################################################################
-#
-@dataclass
-class D3Pt2pck(D3P000):
-    arg1: d3pat
-    arg2: s2typ
-    ctag = "D3Pt2pck"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 ########################################################################
@@ -725,20 +725,6 @@ class D3Eraise(D3E000):
 ########################################################################
 #
 @dataclass
-class D3Eannot(D3E000):
-    arg1: d3exp
-    arg2: s1exp
-    arg3: s2exp
-    ctag = "D3Eannot"
-    def __str__(self)->strn:
-        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
-    def __repr__(self)->strn:
-        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
-    pass
-#
-########################################################################
-#
-@dataclass
 class D3Et2pck(D3E000):
     arg1: d3exp
     arg2: s2typ
@@ -757,6 +743,20 @@ class D3Et2ped(D3E000):
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Eannot(D3E000):
+    arg1: d3exp
+    arg2: s1exp
+    arg3: s2exp
+    ctag = "D3Eannot"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
     pass
 #
 ########################################################################
@@ -1159,6 +1159,11 @@ def PY_D3Pargtp\
  arg1: d3pat, arg2: s2typ)->D3Pargtp:
     return D3Pargtp(lctn, arg1, arg2)
 #
+def PY_D3Pt2pck\
+(lctn: loctn, \
+ arg1: d3pat, arg2: s2typ)->D3Pt2pck:
+    return D3Pt2pck(lctn, arg1, arg2)
+#
 def PY_D3Pannot\
 (lctn: loctn, \
  arg1: d3pat, arg2: s1exp, arg3: s2exp)->D3Pannot:
@@ -1323,6 +1328,11 @@ def PY_D3Et2ped\
     # print\
     # ("PY_D3Et2ped: arg2 = ", arg2)
     return D3Et2ped(loc0, arg1, arg2)
+#
+def PY_D3Eannot\
+(lctn: loctn, \
+ arg1: d3exp, arg2: s1exp, arg3: s2exp)->D3Eannot:
+    return D3Eannot(lctn, arg1, arg2, arg3)
 #
 ########################################################################
 #
