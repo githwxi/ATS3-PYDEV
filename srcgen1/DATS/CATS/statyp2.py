@@ -164,14 +164,15 @@ class T2Pexi0(T2P000):
 class T2Ptrcd(T2P000):
     pass
 ########################################################################
+#
 @dataclass
 class T2Pnone0(T2P000):
-    pass
     ctag = "T2Pnone0"
     def __str__(self)->strn:
         return f"{self.ctag}()"
     def __repr__(self)->strn:
         return f"{self.ctag}()"
+    pass
 @dataclass
 class T2Pnone1(T2P000):
     arg1: s2typ
@@ -190,6 +191,7 @@ class T2Ps2exp(T2P000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
+#
 ########################################################################
 @dataclass
 class T2Perrck(T2P000):

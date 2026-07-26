@@ -317,6 +317,48 @@ class D3Pannot(D3P000):
     pass
 #
 ########################################################################
+#
+@dataclass
+class D3Pt2pck(D3P000):
+    arg1: d3pat
+    arg2: s2typ
+    ctag = "D3Pt2pck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Pnone0(D3P000):
+    ctag = "D3Pnone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
+    pass
+@dataclass
+class D3Pnone1(D3P000):
+    arg1: d2pat
+    ctag = "D3Pnone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D3Pnone2(D3P000):
+    arg1: d3pat
+    ctag = "D3Pnone2"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
 ########################################################################
 #
 @dataclass
