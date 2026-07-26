@@ -26,6 +26,7 @@ from DATS.CATS.dynexp3 import *
 from DATS.CATS.a3pydev_xprint import *
 from DATS.CATS.staexp2_xprint import *
 from DATS.CATS.statyp2_xprint import *
+from DATS.CATS.dynexp2_xprint import *
 ########################################################################
 ########################################################################
 #
@@ -526,7 +527,7 @@ def d3ecl_xprenv\
 #       t2qaglst_nind_xprenv(d3cl.arg4, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.dimp:")
-#       dimpl_nind_xprenv(d3cl.arg5, dlta, xenv)
+        dimpl_nind_xprenv(d3cl.arg5, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.tias:")
 #       tiarglst_nind_xprenv(d3cl.arg6, dlta, xenv)
