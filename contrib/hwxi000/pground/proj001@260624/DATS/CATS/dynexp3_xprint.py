@@ -54,15 +54,21 @@ def d3pat_xprenv\
     elif isinstance(dpat, D3Pcon):
         print(f"D3Pcon({dpat.arg1})")
 #
-    elif isinstance(dpat, D3Pdapp):
-        print("D3Pdapp:")
+    elif isinstance(dpat, D3Pbang):
+        print("D3Pbang:")
         xenv.indpr()
-        print("D3Pdapp.arg1:")
+        print("D3Pbang.arg1:")
         d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
+    elif isinstance(dpat, D3Pflat):
+        print("D3Pflat:")
         xenv.indpr()
-        print(f"D3Pdapp.arg2: {dpat.arg2}")
-        xenv.indpr(); print("D3Pdapp.arg3:")
-        d3pts_nind_xprenv(dpat.arg3, dlta, xenv)
+        print("D3Pflat.arg1:")
+        d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
+    elif isinstance(dpat, D3Pfree):
+        print("D3Pfree:")
+        xenv.indpr()
+        print("D3Pfree.arg1:")
+        d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
 #
     elif isinstance(dpat, D3Ptapq):
         print("D3Ptapq:")
@@ -73,13 +79,21 @@ def d3pat_xprenv\
         print("D3Ptapq.arg2:")
         # t2jgs_nind_xprenv(dpat.arg2, dlta, xenv)
 #
-    elif isinstance(dpat, D3Pannot):
-        print("D3Pannot:")
+    elif isinstance(dpat, D3Pdapp):
+        print("D3Pdapp:")
         xenv.indpr()
-        print("D3Pannot.arg1:")
+        print("D3Pdapp.arg1:")
         d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
         xenv.indpr()
-        print("D3Pannot.arg3:")
+        print(f"D3Pdapp.arg2: {dpat.arg2}")
+        xenv.indpr(); print("D3Pdapp.arg3:")
+        d3pts_nind_xprenv(dpat.arg3, dlta, xenv)
+#
+    elif isinstance(dpat, D3Pannot):
+        print("D3Pannot:")
+        xenv.indpr(); print("D3Pannot.arg1:")
+        d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
+        xenv.indpr(); print("D3Pannot.arg3:")
         s2exp_nind_xprenv(dpat.arg3, dlta, xenv)
 #
     else:

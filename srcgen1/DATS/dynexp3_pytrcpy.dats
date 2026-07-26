@@ -186,6 +186,26 @@ PY_D3Pcon
 //
 #extern
 fun
+PY_D3Pbang
+( loc0: PY$loctn
+, d3f0: PY$d3pat): PY$d3pat = $extnam()
+//
+#extern
+fun
+PY_D3Pflat
+( loc0: PY$loctn
+, d3f0: PY$d3pat): PY$d3pat = $extnam()
+//
+#extern
+fun
+PY_D3Pfree
+( loc0: PY$loctn
+, d3f0: PY$d3pat): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Ptapq
 ( loc0: PY$loctn
 , d3f0: PY$d3pat
@@ -693,6 +713,40 @@ in//let
 end//let
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Pbang
+(   d3p1   ) =>
+let
+val d3p1 =
+d3pat_pytrcpy(d3p1)
+in//let
+(
+  PY_D3Pbang(loc0, d3p1))
+end//let
+//
+|D3Pflat
+(   d3p1   ) =>
+let
+val d3p1 =
+d3pat_pytrcpy(d3p1)
+in//let
+(
+  PY_D3Pflat(loc0, d3p1))
+end//let
+//
+|D3Pfree
+(   d3p1   ) =>
+let
+val d3p1 =
+d3pat_pytrcpy(d3p1)
+in//let
+(
+  PY_D3Pfree(loc0, d3p1))
+end//let
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 |D3Ptapq
 (d3f0, tjas) =>
@@ -707,6 +761,7 @@ val tjas =
 (
   t2jaglst_pytrcpy(tjas)) }
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

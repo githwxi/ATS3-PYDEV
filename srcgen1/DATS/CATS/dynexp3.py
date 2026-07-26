@@ -222,6 +222,38 @@ class D3Pcon(D3P000):
 ########################################################################
 #
 @dataclass
+class D3Pbang(D3P000):
+    arg1: d3pat
+    ctag = "D3Pbang"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Pflat(D3P000):
+    arg1: d3pat
+    ctag = "D3Pflat"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Pfree(D3P000):
+    arg1: d3pat
+    ctag = "D3Pfree"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Ptapq(D3P000):
     arg1: d3pat
     arg2: t2jaglst
@@ -1020,13 +1052,30 @@ def PY_D3Pstr\
 #
 ########################################################################
 #
-def PY_D3Pany(lctn: loctn)->D3Pany:
+def \
+PY_D3Pany(lctn: loctn)->D3Pany:
     return D3Pany(lctn)
-def PY_D3Pvar(lctn: loctn, arg1: d2var)->D3Pvar:
+def \
+PY_D3Pvar(lctn: loctn, arg1: d2var)->D3Pvar:
     return D3Pvar(lctn, arg1)
 #
-def PY_D3Pcon(lctn: loctn, arg1: d2con)->D3Pcon:
+def \
+PY_D3Pcon(lctn: loctn, arg1: d2con)->D3Pcon:
     return D3Pcon(lctn, arg1)
+#
+########################################################################
+#
+def \
+PY_D3Pbang(loc0: loctn, arg1: d3pat)->D3Pbang:
+    return D3Pbang(loc0, arg1)
+#
+def \
+PY_D3Pflat(loc0: loctn, arg1: d3pat)->D3Pflat:
+    return D3Pflat(loc0, arg1)
+#
+def \
+PY_D3Pfree(loc0: loctn, arg1: d3pat)->D3Pfree:
+    return D3Pfree(loc0, arg1)
 #
 ########################################################################
 #
@@ -1158,6 +1207,7 @@ PY_D3Eview(loc0: loctn, arg1: d3exp)->D3Eview:
 def \
 PY_D3Elval(loc0: loctn, arg1: d3exp)->D3Elval:
     return D3Elval(loc0, arg1)
+#
 def \
 PY_D3Eflat(loc0: loctn, arg1: d3exp)->D3Eflat:
     return D3Eflat(loc0, arg1)
