@@ -162,6 +162,16 @@ t2ps: PY$s2typlst): PY$s2typ = $extnam()
 //
 #extern
 fun
+PY_T2Ptext
+(
+s2t0: PY$sort2,
+name: strn,
+t2ps: PY$s2typlst): PY$s2typ = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_T2Pnone0
 (
 s2t0: PY$sort2   ): PY$s2typ = $extnam()
@@ -262,6 +272,20 @@ where
 val t2f0 =
 (
   s2typ_pytrcpy(t2f0))
+val t2ps =
+(
+  s2typlst_pytrcpy(t2ps)) }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|T2Ptext
+(name, t2ps) =>
+(
+PY_T2Ptext
+(s2t0, name, t2ps))
+where
+{
 val t2ps =
 (
   s2typlst_pytrcpy(t2ps)) }

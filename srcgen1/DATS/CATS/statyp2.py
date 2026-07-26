@@ -140,15 +140,26 @@ class T2Pfun1(T2P000):
     pass
 #
 ########################################################################
+#
 @dataclass
 class T2Ptext(T2P000):
+    arg1: strn
+    arg2: s2typlst
+    ctag = "T2Ptext"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
+########################################################################
 @dataclass
 class T2Puni0(T2P000):
     pass
 @dataclass
 class T2Pexi0(T2P000):
     pass
+########################################################################
 @dataclass
 class T2Ptrcd(T2P000):
     pass
@@ -249,6 +260,11 @@ PY_T2Papps(\
 sort: sort2, arg1: s2typ, arg2: s2typlst)->T2Papps:
     return T2Papps(sort, arg1, arg2)
 #
+########################################################################
+def \
+PY_T2Ptext\
+(sort: sort2, arg1: strn, arg2: s2typlst)->T2Ptext:
+    return T2Ptext(sort, arg1, arg2)
 ########################################################################
 #
 def PY_T2Pnone0(sort: sort2)->T2Pnone0:

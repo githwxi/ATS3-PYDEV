@@ -127,7 +127,7 @@ def d3exp_xprenv\
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr()
         print("D3Esapp.arg2:")
-        # s2xps_nind_xprenv(dexp.arg2, dlta, xenv)
+        s2xps_nind_xprenv(dexp.arg2, dlta, xenv)
     elif isinstance(dexp, D3Esapq):
         print("D3Esapq:")
         xenv.indpr()
@@ -135,7 +135,7 @@ def d3exp_xprenv\
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr()
         print("D3Esapq.arg2:")
-        # s2ags_nind_xprenv(dexp.arg2, dlta, xenv)
+        t2yps_nind_xprenv(dexp.arg2, dlta, xenv)
  #
     elif isinstance(dexp, D3Etapp):
         print("D3Etapp:")

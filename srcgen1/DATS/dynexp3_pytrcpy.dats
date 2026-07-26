@@ -282,6 +282,12 @@ PY_D3Esapp
 ( loc0: PY$loctn
 , d3f0: PY$d3exp
 , s2es: PY$s2explst): PY$d3exp = $extnam()
+#extern
+fun
+PY_D3Esapq
+( loc0: PY$loctn
+, d3f0: PY$d3exp
+, t2ps: PY$s2typlst): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
 //
@@ -887,6 +893,19 @@ val d3f0 =
 val s2es =
 (
   s2explst_pytrcpy(s2es)) }
+//
+|D3Esapq
+(d3f0, t2ps) =>
+(
+PY_D3Esapq
+(loc0, d3f0, t2ps))
+where
+{
+val d3f0 =
+  d3exp_pytrcpy(d3f0)
+val t2ps =
+(
+  s2typlst_pytrcpy(t2ps)) }
 //
 (* ****** ****** *)
 (* ****** ****** *)

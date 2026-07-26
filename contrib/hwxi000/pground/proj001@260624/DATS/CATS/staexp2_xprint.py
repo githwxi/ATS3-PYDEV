@@ -27,10 +27,21 @@ def s2exp_xprenv\
     xenv.indpr()
     print(f"T2P000({sexp})")
 #
+def s2explst_xprenv\
+(s2es: s2explst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(s2es, xenv, s2exp_xprenv)
+#
+########################################################################
+#
 def s2exp_nind_xprenv\
 (sexp: s2exp, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     s2exp_xprenv(sexp, xenv); xenv.decby(dlta)
+#
+def s2xps_nind_xprenv\
+(s2es: s2explst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2explst_xprenv(s2es, xenv); xenv.decby(dlta)
 #
 ########################################################################
 ########################################################################
