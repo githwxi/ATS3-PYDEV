@@ -38,7 +38,7 @@ def s2exp_nind_xprenv\
     xenv.incby(dlta)
     s2exp_xprenv(sexp, xenv); xenv.decby(dlta)
 #
-def s2xps_nind_xprenv\
+def s2explst_nind_xprenv\
 (s2es: s2explst, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     s2explst_xprenv(s2es, xenv); xenv.decby(dlta)

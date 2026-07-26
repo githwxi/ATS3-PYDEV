@@ -231,6 +231,15 @@ PY_D3Pdapp
 //
 #extern
 fun
+PY_D3Ptup0
+( loc0: PY$loctn
+, npf1: sint
+, d3ps: PY$d3patlst): PY$d3pat = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D3Pargtp
 ( loc0: PY$loctn
 , d3p1: PY$d3pat
@@ -782,11 +791,25 @@ end//let
 ,npf1, d3ps) =>
 (
 PY_D3Pdapp
-(loc0, d3f0, npf1, d3ps))
+(loc0
+,d3f0, npf1, d3ps))
 where
 {
 val d3f0 =
   d3pat_pytrcpy(d3f0)
+val d3ps =
+(
+  d3patlst_pytrcpy(d3ps)) }
+//
+(* ****** ****** *)
+//
+|D3Ptup0
+(npf1, d3ps) =>
+(
+PY_D3Ptup0
+(loc0, npf1, d3ps))
+where
+{
 val d3ps =
 (
   d3patlst_pytrcpy(d3ps)) }

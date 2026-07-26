@@ -281,6 +281,19 @@ class D3Pdapp(D3P000):
 ########################################################################
 #
 @dataclass
+class D3Ptup0(D3P000):
+    arg1: sint
+    arg2: d3patlst
+    ctag = "D3Ptup0"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class D3Pargtp(D3P000):
     arg1: d3pat
     arg2: s2typ
@@ -1090,6 +1103,12 @@ def PY_D3Pdapp\
 (loc0: loctn, \
  arg1: d3pat, arg2: sint, arg3: d3patlst)->D3Pdapp:
     return D3Pdapp(loc0, arg1, arg2, arg3)
+#
+########################################################################
+#
+def PY_D3Ptup0\
+(loc0: loctn, arg1: sint, arg2: d3patlst)->D3Ptup0:
+    return D3Ptup0(loc0, arg1, arg2)
 #
 ########################################################################
 #
