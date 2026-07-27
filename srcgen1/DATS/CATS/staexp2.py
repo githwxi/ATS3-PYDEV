@@ -150,8 +150,8 @@ def PY_s2cst_make_args\
 ########################################################################
 #
 def PY_S2Efun1(s2t0: sort2, \
- arg1: f2clknd, arg2: sint, arg3: s2explst, arg4: s2exp)->S2Ea3src:
-    return S2Ea3src(s2t0, arg1)
+ arg1: f2clknd, arg2: sint, arg3: s2explst, arg4: s2exp)->S2Efun1:
+    return S2Efun1(s2t0, arg1, arg2, arg3, arg4)
 #
 ########################################################################
 ########################################################################

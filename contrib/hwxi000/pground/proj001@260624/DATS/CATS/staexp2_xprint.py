@@ -24,9 +24,20 @@ from DATS.CATS.a3pydev_xprint import *
 #
 def s2exp_xprenv\
 (sexp: s2exp, xenv: xprnv)->None:
+    dlta = 2
     xenv.indpr()
     if False:
         pass
+    elif isinstance(sexp, S2Efun1):
+        print("S2Efun1:")
+        xenv.indpr()
+        print(f"S2Efun1.arg1: {sexp.arg1}")
+        xenv.indpr()
+        print(f"S2Efun1.arg2: {sexp.arg2}")
+        xenv.indpr(); print("S2Efun1.arg3:")
+        s2explst_nind_xprenv(sexp.arg3, dlta, xenv)
+        xenv.indpr(); print("S2Efun1.arg4:")
+        s2exp_nind_xprenv(sexp.arg4, dlta, xenv)
     else:
         print(f"s2exp_xprenv: sexp = {sexp}")
 #

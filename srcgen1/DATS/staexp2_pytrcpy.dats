@@ -264,11 +264,11 @@ _(*otherwise*) => PY_S2Ea3src(s2t0, sexp)
 val s2t0 =
 sort2_pytrcpy(sexp.sort((*0*)))
 //
-(*
+// (*
 val (  ) =
 (
   printsln("s2exp_pytrcpy: sexp = ", sexp))
-*)
+// *)
 //
 (*
 val (  ) =
