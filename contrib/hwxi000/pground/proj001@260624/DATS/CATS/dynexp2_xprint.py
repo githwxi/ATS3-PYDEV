@@ -28,6 +28,31 @@ from DATS.CATS.statyp2_xprint import *
 ########################################################################
 ########################################################################
 #
+def s2res_xprenv\
+(sres: s2res, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr()
+    if False:
+        pass
+    elif isinstance(sres, S2RESnone):
+        print("S2RESnone()")
+    elif isinstance(sres, S2RESsome):
+        print("S2RESsome:")
+        xenv.indpr()
+        print("S2RESsome.seff:")
+        xenv.indpr()
+        print("S2RESsome.sexp:")
+        s2exp_nind_xprenv(sres.arg2, dlta, xenv)
+    return None # end-of-(s2res_xprenv(...))
+#
+def s2res_nind_xprenv\
+(sres: s2res, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2res_xprenv(sres, xenv); xenv.decby(dlta)
+    return None # end(s2res_nind_xprenv(...))
+#
+########################################################################
+#
 def dimpl_xprenv\
 (dimp: dimpl, xenv: xprnv)->None:
     dlta = 2
@@ -35,7 +60,7 @@ def dimpl_xprenv\
     if False:
         pass
     elif isinstance(dimp, DIMPLnon1):
-        print("DIMPLnon1")
+        print("DIMPLnon1:")
         xenv.indpr()
         print(f"DIMPLone1.dqid: {dimp.arg1}")
     elif isinstance(dimp, DIMPLone1):
@@ -46,13 +71,59 @@ def dimpl_xprenv\
         print("DIMPLone2:")
         xenv.indpr()
         print(f"DIMPLone2.dcst: {dimp.arg1}")
-    return None # end(dimpl_xprenv(...))
+    return None # end-of-(dimpl_xprenv(...))
 #
 def dimpl_nind_xprenv\
 (dimp: dimpl, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     dimpl_xprenv(dimp, xenv); xenv.decby(dlta)
     return None # end(dimpl_nind_xprenv(...))
+#
+########################################################################
+########################################################################
+#
+def s2qag_xprenv\
+(sqa0: s2qag, xenv: xprnv)->None:
+    xenv.indpr()
+    print(f"S2QAG({sqa0.s2vs})")
+def s2qaglst_xprenv\
+(sqas: s2qaglst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(sqas, xenv, s2qag_xprenv)
+#
+def s2qaglst_nind_xprenv\
+(sqas: s2qaglst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2qaglst_xprenv(sqas, xenv); xenv.decby(dlta)
+#
+########################################################################
+#
+def t2qag_xprenv\
+(tqa0: t2qag, xenv: xprnv)->None:
+    xenv.indpr()
+    print(f"T2QAG({tqa0.s2vs})")
+def t2qaglst_xprenv\
+(tqas: t2qaglst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(tqas, xenv, t2qag_xprenv)
+#
+def t2qaglst_nind_xprenv\
+(tqas: t2qaglst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    t2qaglst_xprenv(tqas, xenv); xenv.decby(dlta)
+#
+########################################################################
+#
+def t2iag_xprenv\
+(tia0: t2iag, xenv: xprnv)->None:
+    xenv.indpr()
+    print(f"T2IAG({tia0.s2es})")
+def t2iaglst_xprenv\
+(tias: t2iaglst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(tias, xenv, t2iag_xprenv)
+#
+def t2iaglst_nind_xprenv\
+(tias: t2iaglst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    t2iaglst_xprenv(tias, xenv); xenv.decby(dlta)
 #
 ########################################################################
 ########################################################################

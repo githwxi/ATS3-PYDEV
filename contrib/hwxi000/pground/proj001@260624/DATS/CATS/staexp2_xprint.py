@@ -25,7 +25,12 @@ from DATS.CATS.a3pydev_xprint import *
 def s2exp_xprenv\
 (sexp: s2exp, xenv: xprnv)->None:
     xenv.indpr()
-    print(f"T2P000({sexp})")
+    if False:
+        pass
+    else:
+        print(f"s2exp_xprenv: sexp = {sexp}")
+#
+    return None # end-of-[s2exp_xprenv(sexp,xenv)]
 #
 def s2explst_xprenv\
 (s2es: s2explst, xenv: xprnv)->None:

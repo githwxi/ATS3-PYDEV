@@ -22,12 +22,16 @@ from DATS.CATS.locinfo import *
 ########################################################################
 @dataclass
 class S2T000(ABC):
+    ctag = "S2T000"
     pass
 type sort2 = S2T000
+type sort2lst = fnlist[sort2]
+type sort2opt = fnoptn[sort2]
 ########################################################################
 @dataclass
 class S2E000(ABC):
     sort: sort2
+    ctag = "S2E000"
     pass
 type s2exp = S2E000
 type s2explst = fnlist[s2exp]
@@ -37,6 +41,8 @@ type s2expopt = fnoptn[s2exp]
 class S2Ta3src(S2T000):
     arg1: pyobj
     ctag = "S2Ta3src"
+    def __str__(self)->strn:
+        return f"{self.ctag}(sort2)"
     def __repr__(self)->strn:
         return f"{self.ctag}(sort2)"
     pass
@@ -45,6 +51,8 @@ class S2Ta3src(S2T000):
 class S2Ea3src(S2E000):
     arg1: pyobj
     ctag = "S2Ea3src"
+    def __str__(self)->strn:
+        return f"{self.ctag}(s2exp)"
     def __repr__(self)->strn:
         return f"{self.ctag}(s2exp)"
     pass

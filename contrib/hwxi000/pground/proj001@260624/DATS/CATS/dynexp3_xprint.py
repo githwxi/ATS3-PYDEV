@@ -521,22 +521,22 @@ def d3ecl_xprenv\
         f"D3Cimplmnt0@{d3cl.lctn}:")
         xenv.indpr()
         print("D3Cimplmnt0.sqas:")
-#       s2qagalst_nind_xprenv(d3cl.arg3, dlta, xenv)
+        s2qaglst_nind_xprenv(d3cl.arg3, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.tqas:")
-#       t2qaglst_nind_xprenv(d3cl.arg4, dlta, xenv)
+        t2qaglst_nind_xprenv(d3cl.arg4, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.dimp:")
         dimpl_nind_xprenv(d3cl.arg5, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.tias:")
-#       tiarglst_nind_xprenv(d3cl.arg6, dlta, xenv)
+        t2iaglst_nind_xprenv(d3cl.arg6, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.farg:")
         f3arglst_nind_xprenv(d3cl.arg7, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.sres:")
-#       s2res_nind_xprenv(d3cl.arg8, dlta, xenv)
+        s2res_nind_xprenv(d3cl.arg8, dlta, xenv)
         xenv.indpr()
         print("D3Cimplmnt0.dexp:")
         d3exp_nind_xprenv(d3cl.arg9, dlta, xenv)
@@ -645,12 +645,18 @@ def d3fundcl_xprenv\
     xenv.indpr()
     print(\
     f"D3FUNDCL({dfun.lctn}):")
+#
     xenv.indpr()
     print(\
     f"D3FUNDCL.dpid: {dfun.dpid}")
     xenv.indpr()
     print("D3FUNDCL.farg:")
     f3arglst_nind_xprenv(dfun.farg, dlta, xenv)
+#
+    xenv.indpr()
+    print("D3FUNDCL.sres:")
+    s2res_nind_xprenv(dfun.sres, dlta, xenv)
+#
     tdxp = dfun.tdxp
     match tdxp:
         case _ if \
@@ -662,6 +668,7 @@ def d3fundcl_xprenv\
             xenv.indpr()
             print("D3FUNDCL.tdxp: TEQD3EXPsome")
             d3exp_nind_xprenv(tdxp.arg2, dlta, xenv)
+#
     return None # end-of-[d3fundcl_xprenv(dfun, ...)]
 #
 def d3fundclist_xprenv\
