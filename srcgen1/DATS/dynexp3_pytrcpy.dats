@@ -855,12 +855,16 @@ s2e2 = s2exp_pytrcpy(s2e2) }
 val loc0 =
 loctn_pytrcpy(dpat.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d3pat_pytrcpy: dpat = ", dpat))
+*)
 //
+(*
 val (  ) =
 printsln("d3pat_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d3pat_pytrcpy(dpat)]
 //
@@ -1333,12 +1337,16 @@ val gnam = g1nam_pytrcpy(gnam)
 val loc0 =
 loctn_pytrcpy(dexp.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d3exp_pytrcpy: dexp = ", dexp))
+*)
 //
+(*
 val (  ) =
 printsln("d3exp_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d3exp_pytrcpy(dexp)]
 //
@@ -1394,8 +1402,10 @@ PY_D3GUAmat
 , dexp: PY$d3exp
 , dpat: PY$d3pat): PY$d3gua = $extnam()
 //
+(*
 val (  ) =
 printsln("d3gua_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d3gua_pytrcpy(dgua)]
 //
@@ -1446,8 +1456,10 @@ PY_D3CLScls
 , dgpt: PY$d3gpt
 , dexp: PY$d3exp): PY$d3cls = $extnam()
 //
+(*
 val (  ) =
 printsln("d3cls_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d3cls_pytrcpy(dcls)]
 //
@@ -1504,8 +1516,10 @@ lctn: PY$loctn,
 dpat: PY$d3pat,
 d3gs: PY$d3gualst): PY$d3gpt = $extnam()
 //
+(*
 val (  ) =
 printsln("d3gpt_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d3gpt_pytrcpy(dgpt)]
 //
@@ -1581,11 +1595,16 @@ PY_F3ARGmets
 lctn: PY$loctn,
 s2es: PY$s2explst): PY$f3arg = $extnam()
 //
+(*
 val (  ) =
 (
   printsln("f3arg_pytrcpy: farg = ", farg))
+*)
+//
+(*
 val (  ) =
 printsln("f3arg_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[f3arg_pytrcpy(farg)]
 //
@@ -1649,11 +1668,16 @@ PY_TIMPLallx
 , tjas: PY$t2jaglst
 , dcls: PY$d3eclist): PY$timpl = $extnam()
 //
+(*
 val (  ) =
 (
   printsln("timpl_pytrcpy: timp = ", timp))
+*)
+//
+(*
 val (  ) =
 printsln("timpl_pytrcpy: stmp = ", PY_repr(stmp))
+*)
 //
 }(*where*)//end-of-[timpl_pytrcpy(timp)]
 //
@@ -1858,12 +1882,16 @@ val dexp = d3exp_pytrcpy(dexp) }
 val loc0 =
 loctn_pytrcpy(d3cl.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d3ecl_pytrcpy: d3cl = ", d3cl))
+*)
 //
+(*
 val (  ) =
 printsln("d3ecl_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d3ecl_pytrcpy(d3cl)]
 //

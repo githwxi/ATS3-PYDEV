@@ -17,12 +17,17 @@ from dataclasses import dataclass
 ########################################################################
 from DATS.CATS.a3pydev import *
 from DATS.CATS.xstamp0 import *
+from DATS.CATS.xbasics import *
 from DATS.CATS.xsymbol import *
 from DATS.CATS.locinfo import *
 ########################################################################
 @dataclass
 class S2T000(ABC):
     ctag = "S2T000"
+    def __str__(self)->strn:
+        return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type sort2 = S2T000
 type sort2lst = fnlist[sort2]
@@ -32,6 +37,10 @@ type sort2opt = fnoptn[sort2]
 class S2E000(ABC):
     sort: sort2
     ctag = "S2E000"
+    def __str__(self)->strn:
+        return f"{self.ctag}(...)"
+    def __repr__(self)->strn:
+        return f"{self.ctag}(...)"
     pass
 type s2exp = S2E000
 type s2explst = fnlist[s2exp]
@@ -87,12 +96,46 @@ type s2cstlst = fnlist[s2cst]
 type s2cstopt = fnoptn[s2cst]
 ########################################################################
 ########################################################################
+#
+@dataclass
+class S2Evar(S2E000):
+    arg1: s2var
+    ctag = "S2Evar"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class S2Efun1(S2E000):
+    arg1: f2clknd
+    arg2: sint
+    arg3: s2explst
+    arg4: s2exp
+    ctag = "S2Efun1"
+    def __str__(self)->strn:
+        return \
+        f"{self.ctag}\
+        ({self.arg1};{self.arg2};{self.arg3};{self.arg4};)"
+    def __repr__(self)->strn:
+        return \
+        f"{self.ctag}\
+        ({self.arg1!r};{self.arg2!r};{self.arg3!r};{self.arg4!r})"
+    pass
+#
+########################################################################
+########################################################################
+#
 def \
 PY_S2Ta3src(arg1: pyobj)->S2Ta3src:
     return S2Ta3src(arg1)
 def PY_S2Ea3src\
 (s2t0: sort2, arg1: pyobj)->S2Ea3src:
     return S2Ea3src(s2t0, arg1)
+#
 ########################################################################
 ########################################################################
 def PY_s2var_make_args\
@@ -103,6 +146,13 @@ def PY_s2cst_make_args\
 (lctn: loctn, \
  name: symbl, sort: sort2, stmp: stamp)->s2cst_tbox:
     return s2cst_tbox(lctn, name, sort, stmp)
+########################################################################
+########################################################################
+#
+def PY_S2Efun1(s2t0: sort2, \
+ arg1: f2clknd, arg2: sint, arg3: s2explst, arg4: s2exp)->S2Ea3src:
+    return S2Ea3src(s2t0, arg1)
+#
 ########################################################################
 ########################################################################
 # end of [ATS3-PYDEV/srcgen1/DATS/CATS/staexp2.py]

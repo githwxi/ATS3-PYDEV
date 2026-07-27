@@ -50,25 +50,13 @@ Sun Jun 14 02:25:56 PM EDT 2026
 //
 #staload "\
 ./../../externs/\
-ATS3/srcgen2/SATS/xsymbol.sats"
-#staload "\
-./../../externs/\
-ATS3/srcgen2/SATS/locinfo.sats"
-#staload "\
-./../../externs/\
-ATS3/srcgen2/SATS/lexing0.sats"
-#staload "\
-./../../externs/\
-ATS3/srcgen2/SATS/staexp1.sats"
+ATS3/srcgen2/SATS/xbasics.sats"
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #staload
-"./../SATS/ats3_pydev.sats"
-#staload
-"./../SATS/locinfo_pytrcpy.sats"
-#staload
-"./../SATS/staexp1_pytrcpy.sats"
+"./../SATS/xbasics_pytrcpy.sats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -81,108 +69,28 @@ PY_repr
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#extern
-fun
-PY_G1Na3src
-(gnam: g1nam): PY$g1nam = $extnam()
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
-fun
-PY_S1Ea3src
-( loc0
-: PY$loctn
-, sexp: s1exp): PY$s1exp = $extnam()
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-g_print<g1nam>(gnam) =
-g1nam_fprint(gnam, g_print$out<>())
-//
-#impltmp
-g_print<s1exp>(sexp) =
-s1exp_fprint(sexp, g_print$out<>())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 #implfun
-g1nam_pytrcpy
-(   gnam   ) =
+f2clknd_pytrcpy
+(   f2cl   ) =
 (
-case+ gnam of
-|
-_(*otherwise*) => PY_G1Na3src(gnam)
+case+ f2cl of
+|F2CLfun() => PY_F2CLfun()
+|F2CLclo(knd) => PY_F2CLclo(knd)
 ) where
 {
 //
-(*
-val (  ) =
-(
-printsln("g1nam_pytrcpy: gnam = ", gnam))
-*)
+#extern
+fun//fun
+PY_F2CLfun(): PY$f2clknd = $extnam()
+#extern
+fun//fun
+PY_F2CLclo(knd: sint): PY$f2clknd = $extnam()
 //
-}(*where*)//end-of-[g1nam_pytrcpy(gnam)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-s1exp_pytrcpy
-(   sexp   ) =
-(
-case+
-sexp.node() of
-|
-_(*otherwise*) => PY_S1Ea3src(loc0, sexp)
-) where
-{
-//
-val loc0 =
-loctn_pytrcpy(sexp.lctn((*0*)))
-//
-(*
-val (  ) =
-(
-  printsln("s1exp_pytrcpy: sexp = ", sexp))
-val (  ) =
-printsln("s1exp_pytrcpy: loc0 = ", PY_repr(loc0))
-*)
-//
-}(*where*)//end-of-[s1exp_pytrcpy(sexp)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-g1namlst_pytrcpy
-(   g1ns   ) =
-(
-list_map$f1un_PY$list(g1ns, g1nam_pytrcpy))
-//
-(* ****** ****** *)
-//
-#implfun
-s1explst_pytrcpy
-(   s1es   ) =
-(
-list_map$f1un_PY$list(s1es, s1exp_pytrcpy))
-//
-(* ****** ****** *)
-//
-#implfun
-s1expopt_pytrcpy
-(   sopt   ) =
-(
-optn_map$f1un_PY$optn(sopt, s1exp_pytrcpy))
+}(*where*)//end-of-[f2clknd_pytrcpy(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3-PYDEV/srcgen1/DATS/staexp1_pytrcpy.dats] *)
+(* end of [ATS3-PYDEV/srcgen1/DATS/xbasics_pytrcpy.dats] *)
 (***********************************************************************)

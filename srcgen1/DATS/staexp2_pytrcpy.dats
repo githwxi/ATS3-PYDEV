@@ -50,6 +50,9 @@ Sun Jun 14 02:25:56 PM EDT 2026
 //
 #staload "\
 ./../../externs/\
+ATS3/srcgen2/SATS/xbasics.sats"
+#staload "\
+./../../externs/\
 ATS3/srcgen2/SATS/xstamp0.sats"
 #staload "\
 ./../../externs/\
@@ -76,6 +79,8 @@ ATS3/srcgen2/SATS/staexp2.sats"
 //
 #staload
 "./../SATS/ats3_pydev.sats"
+#staload
+"./../SATS/xbasics_pytrcpy.sats"
 #staload
 "./../SATS/xstamp0_pytrcpy.sats"
 #staload
@@ -111,6 +116,18 @@ PY_S2Ea3src
 , sexp: s2exp): PY$s2exp = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_S2Efun1
+(
+s2t0: PY$sort2,
+f2cl: PY$f2clknd,
+npf1: sint,
+s2es: PY$s2explst,
+s2e1: PY$s2exp   ): PY$s2exp = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -133,10 +150,11 @@ _(*otherwise*) => PY_S2Ta3src(s2t0)
 ) where
 {
 //
+(*
 val (  ) =
 (
-  printsln
-  ("sort2_pytrcpy: s2t0 = ", s2t0))
+printsln("sort2_pytrcpy: s2t0 = ", s2t0))
+*)
 //
 }(*where*)//end-of-[sort2_pytrcpy(s2t0)]
 //
@@ -212,20 +230,50 @@ s2exp_pytrcpy
 (
 case+
 sexp.node() of
+//
+|S2Efun1
+(f2cl
+,npf1
+,s2es, s2e1) =>
+let
+//
+val s2e1 =
+(
+  s2exp_pytrcpy(s2e1))
+//
+in//let
+//
+PY_S2Efun1
+(s2t0
+,f2cl, npf1, s2es, s2e1)
+end where
+{
+val f2cl =
+(
+  f2clknd_pytrcpy(f2cl))
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
+//
 |
 _(*otherwise*) => PY_S2Ea3src(s2t0, sexp)
+//
 ) where
 {
 //
 val s2t0 =
 sort2_pytrcpy(sexp.sort((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("s2exp_pytrcpy: sexp = ", sexp))
+*)
 //
+(*
 val (  ) =
 printsln("s2exp_pytrcpy: s2t0 = ", PY_repr(s2t0))
+*)
 //
 }(*where*)//end-of-[s2exp_pytrcpy(sexp)]
 //

@@ -331,12 +331,13 @@ _(*otherwise*) => PY_T2Pa3src(s2t0, styp)
 val s2t0 =
 sort2_pytrcpy(styp.sort((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("s2typ_pytrcpy: styp = ", styp))
-//
 val (  ) =
 printsln("s2typ_pytrcpy: s2t0 = ", PY_repr(s2t0))
+*)
 //
 }(*where*)//end-of-[s2typ_pytrcpy(styp)]
 //
@@ -360,17 +361,19 @@ val t2p2 = s2typ_pytrcpy(t2p2)
 #extern
 fun
 PY_s2vtp_make_args
-( s2v1: PY$s2var
-, t2p2: PY$s2typ): PY$s2vtp = $extnam()
+(
+s2v1: PY$s2var,
+t2p2: PY$s2typ): PY$s2vtp = $extnam()
 //
+(*
 val (  ) =
 (
   printsln("s2vtp_pytrcpy: svtp = ", svtp))
-//
 val (  ) =
 printsln("s2vtp_pytrcpy: s2v1 = ", PY_repr(s2v1))
 val (  ) =
 printsln("s2vtp_pytrcpy: t2p21 = ", PY_repr(t2p2))
+*)
 //
 }(*where*)//end-of-[s2vtp_pytrcpy(svtp)]
 //

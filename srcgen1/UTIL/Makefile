@@ -31,6 +31,8 @@ lib2xatsoptdev:: ; \
 printf \
 "from DATS.CATS.a3pydev import *\n" >> $(LIB2XATSOPTDEV) && \
 printf \
+"from DATS.CATS.xbasics import *\n" >> $(LIB2XATSOPTDEV) && \
+printf \
 "from DATS.CATS.xstamp0 import *\n" >> $(LIB2XATSOPTDEV) && \
 printf \
 "from DATS.CATS.xsymbol import *\n" >> $(LIB2XATSOPTDEV) && \

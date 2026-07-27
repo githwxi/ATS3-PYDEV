@@ -24,6 +24,7 @@ cleanall:: ; rm -f BUILD/PY/*_dats_out?.py
 
 SRCSATS := \
 ats3_pydev.sats \
+xbasics_pytrcpy.sats \
 xstamp0_pytrcpy.sats \
 xsymbol_pytrcpy.sats \
 filpath_pytrcpy.sats \
@@ -41,6 +42,7 @@ dynexp3_pytrcpy.sats \
 SRCDATS := \
 ats3_pydev.dats \
 pytrcpy_debug00.dats \
+xbasics_pytrcpy.dats \
 xstamp0_pytrcpy.dats \
 xsymbol_pytrcpy.dats \
 filpath_pytrcpy.dats \
