@@ -28,6 +28,23 @@ def s2exp_xprenv\
     xenv.indpr()
     if False:
         pass
+    elif isinstance(sexp, S2Ecst):
+        print(f"S2Ecst: {sexp.arg1}")
+    elif isinstance(sexp, S2Evar):
+        print(f"S2Evar: {sexp.arg1}")
+    elif isinstance(sexp, S2Eapps):
+        print("S2Eapps:")
+        xenv.indpr(); print("S2Eapps.arg1:")
+        s2exp_nind_xprenv(sexp.arg1, dlta, xenv)
+        xenv.indpr(); print("S2Eapps.arg2:")
+        s2explst_nind_xprenv(sexp.arg2, dlta, xenv)
+    elif isinstance(sexp, S2Elam1):
+        print("S2Elam1:")
+        xenv.indpr()
+        print\
+        (f"S2Elam1.arg1: {sexp.arg1}")
+        xenv.indpr(); print("S2Elam1.arg2:")
+        s2exp_nind_xprenv(sexp.arg2, dlta, xenv)
     elif isinstance(sexp, S2Efun1):
         print("S2Efun1:")
         xenv.indpr()
@@ -42,6 +59,8 @@ def s2exp_xprenv\
         print(f"s2exp_xprenv: sexp = {sexp}")
 #
     return None # end-of-[s2exp_xprenv(sexp,xenv)]
+#
+########################################################################
 #
 def s2explst_xprenv\
 (s2es: s2explst, xenv: xprnv)->None:

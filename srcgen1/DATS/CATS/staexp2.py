@@ -98,6 +98,16 @@ type s2cstopt = fnoptn[s2cst]
 ########################################################################
 #
 @dataclass
+class S2Ecst(S2E000):
+    arg1: s2cst
+    ctag = "S2Ecst"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
 class S2Evar(S2E000):
     arg1: s2var
     ctag = "S2Evar"
@@ -105,6 +115,30 @@ class S2Evar(S2E000):
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class S2Eapps(S2E000):
+    arg1: s2exp
+    arg2: s2explst
+    ctag = "S2Eapps"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class S2Elam1(S2E000):
+    arg1: s2varlst
+    arg2: s2exp#bd
+    ctag = "S2Elam1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 ########################################################################
@@ -118,12 +152,23 @@ class S2Efun1(S2E000):
     ctag = "S2Efun1"
     def __str__(self)->strn:
         return \
-        f"{self.ctag}\
-        ({self.arg1};{self.arg2};{self.arg3};{self.arg4};)"
+        f"{self.ctag}({self.arg1};{self.arg2};{self.arg3};{self.arg4})"
     def __repr__(self)->strn:
         return \
-        f"{self.ctag}\
-        ({self.arg1!r};{self.arg2!r};{self.arg3!r};{self.arg4!r})"
+        f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r};{self.arg4!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class S2Etext(S2E000):
+    arg1: strn
+    arg2: s2explst
+    ctag = "S2Etext"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
 #
 ########################################################################
@@ -138,15 +183,36 @@ def PY_S2Ea3src\
 #
 ########################################################################
 ########################################################################
+#
 def PY_s2var_make_args\
 (name: symbl, sort: sort2, stmp: stamp)->s2var_tbox:
     return s2var_tbox(name, sort, stmp)
+#
 ########################################################################
+#
 def PY_s2cst_make_args\
 (lctn: loctn, \
  name: symbl, sort: sort2, stmp: stamp)->s2cst_tbox:
     return s2cst_tbox(lctn, name, sort, stmp)
+#
 ########################################################################
+########################################################################
+#
+def PY_S2Ecst(s2t0: sort2, arg1: s2cst)->S2Ecst:
+    return S2Ecst(s2t0, arg1)
+def PY_S2Evar(s2t0: sort2, arg1: s2var)->S2Evar:
+    return S2Evar(s2t0, arg1)
+#
+########################################################################
+#
+def PY_S2Eapps\
+(s2t0: sort2, arg1: s2exp, arg2: s2explst)->S2Eapps:
+    return S2Eapps(s2t0, arg1, arg2)
+#
+def PY_S2Elam1\
+(s2t0: sort2, arg1: s2varlst, arg2: s2exp)->S2Elam1:
+    return S2Elam1(s2t0, arg1, arg2)
+#
 ########################################################################
 #
 def PY_S2Efun1(s2t0: sort2, \

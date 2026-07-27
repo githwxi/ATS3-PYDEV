@@ -94,6 +94,7 @@ class T2Parg1(T2P000):
 class T2Patx2(T2P000):
     pass
 ########################################################################
+#
 @dataclass
 class T2Plam1(T2P000):
     arg1: s2varlst
@@ -104,6 +105,7 @@ class T2Plam1(T2P000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
 @dataclass
 class T2Papps(T2P000):
     arg1: s2typ
@@ -114,6 +116,7 @@ class T2Papps(T2P000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
     pass
+#
 ########################################################################
 #
 @dataclass

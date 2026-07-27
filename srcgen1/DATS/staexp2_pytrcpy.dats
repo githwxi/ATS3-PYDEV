@@ -119,6 +119,40 @@ PY_S2Ea3src
 //
 #extern
 fun
+PY_S2Ecst
+(
+s2t0: PY$sort2,
+scst: PY$s2cst): PY$s2exp = $extnam()
+//
+#extern
+fun
+PY_S2Evar
+(
+s2t0: PY$sort2,
+svar: PY$s2var): PY$s2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_S2Eapps
+(
+s2t0: PY$sort2,
+s2f0: PY$s2exp,
+s2es: PY$s2explst): PY$s2exp = $extnam()
+//
+#extern
+fun
+PY_S2Elam1
+(
+s2t0: PY$sort2,
+s2vs: PY$s2varlst,
+s2e1: PY$s2exp   ): PY$s2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_S2Efun1
 (
 s2t0: PY$sort2,
@@ -126,6 +160,16 @@ f2cl: PY$f2clknd,
 npf1: sint,
 s2es: PY$s2explst,
 s2e1: PY$s2exp   ): PY$s2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_S2Etext
+(
+s2t0: PY$sort2,
+name: strn,
+s2es: PY$s2explst): PY$s2exp = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -143,20 +187,23 @@ s2exp_fprint(sexp, g_print$out<>())
 #implfun
 sort2_pytrcpy
 (   s2t0   ) =
-(
-case+ s2t0 of
-|
-_(*otherwise*) => PY_S2Ta3src(s2t0)
-) where
-{
+let
 //
 (*
 val (  ) =
 (
-printsln("sort2_pytrcpy: s2t0 = ", s2t0))
+printsln
+("sort2_pytrcpy: s2t0 = ", s2t0))
 *)
 //
-}(*where*)//end-of-[sort2_pytrcpy(s2t0)]
+in//let
+//
+case+ s2t0 of
+//
+|
+_(*otherwise*) => PY_S2Ta3src(s2t0)
+//
+end(*let*)//end-of-[sort2_pytrcpy(s2t0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -231,6 +278,62 @@ s2exp_pytrcpy
 case+
 sexp.node() of
 //
+(* ****** ****** *)
+//
+|S2Ecst
+(   s2c1   ) =>
+(
+PY_S2Ecst(s2t0, s2c1)
+) where
+{
+val s2c1 =
+  s2cst_pytrcpy(s2c1) }
+//
+|S2Evar
+(   s2v1   ) =>
+(
+PY_S2Evar(s2t0, s2v1)
+) where
+{
+val s2v1 =
+  s2var_pytrcpy(s2v1) }
+//
+(* ****** ****** *)
+//
+|S2Eapps
+(s2f0, s2es) =>
+(
+PY_S2Eapps
+(s2t0, s2f0, s2es)
+) where
+{
+val s2f0 =
+(
+  s2exp_pytrcpy(s2f0))
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
+//
+|S2Elam1
+(s2vs, s2e1) =>
+let
+//
+val s2e1 =
+(
+  s2exp_pytrcpy(s2e1))
+//
+in//let
+//
+PY_S2Elam1(
+  s2t0,s2vs,s2e1(*body*))
+end where
+{
+val s2vs =
+(
+  s2varlst_pytrcpy(s2vs)) }
+//
+(* ****** ****** *)
+//
 |S2Efun1
 (f2cl
 ,npf1
@@ -255,6 +358,20 @@ val s2es =
 (
   s2explst_pytrcpy(s2es)) }
 //
+(* ****** ****** *)
+//
+|S2Etext
+(name, s2es) =>
+(
+PY_S2Etext
+(s2t0, name, s2es)) where
+{
+val s2es =
+(
+  s2explst_pytrcpy(s2es)) }
+//
+(* ****** ****** *)
+//
 |
 _(*otherwise*) => PY_S2Ea3src(s2t0, sexp)
 //
@@ -264,11 +381,11 @@ _(*otherwise*) => PY_S2Ea3src(s2t0, sexp)
 val s2t0 =
 sort2_pytrcpy(sexp.sort((*0*)))
 //
-// (*
+(*
 val (  ) =
 (
   printsln("s2exp_pytrcpy: sexp = ", sexp))
-// *)
+*)
 //
 (*
 val (  ) =
