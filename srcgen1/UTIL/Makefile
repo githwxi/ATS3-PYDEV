@@ -3,15 +3,20 @@ all::
 ########################################################################
 CAT=cat
 ########################################################################
-XATS2PY=\
-./../../externs/ATS3/srcgen2/xats2py
+SRCGEN2=./../../externs/ATS3/srcgen2
+########################################################################
+XATS2PY=$(SRCGEN2)/xats2py
 RUNTIME=$(XATS2PY)/srcgen1/xshared/runtime
-LIB2XATSOPT=$(XATS2PY)/lib/lib2xatsopt_opt0.py
+LIB2XATSOPT=$(SRCGEN2)/lib/lib2xatsopt_opt0.py
 ########################################################################
 SEP06=\#\#\#\#\#\#
 SEP12=$(SEP06)$(SEP06)
 ########################################################################
-LIB2XATSOPTDEV=ats3_pydev_lib2xatsopt.py
+LIB2XATSOPTDEV=\
+"./ats3_pydev_lib2xatsopt.py"
+########################################################################
+clean:: ; rm -f $(LIB2XATSOPTDEV)
+cleanall:: clean; rm -rf ./__pycache__
 ########################################################################
 # all:: ; \
 # echo "Please do 'make lib2xatsoptdev'"
