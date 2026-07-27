@@ -120,6 +120,30 @@ class S2Evar(S2E000):
 ########################################################################
 #
 @dataclass
+class S2Earg1(S2E000):
+    arg1: sint
+    arg2: s2exp
+    ctag = "S2Earg1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+@dataclass
+class S2Eatx2(S2E000):
+    arg1: s2exp
+    arg2: s2exp
+    ctag = "S2Earg1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
 class S2Eapps(S2E000):
     arg1: s2exp
     arg2: s2explst
@@ -184,13 +208,15 @@ def PY_S2Ea3src\
 ########################################################################
 ########################################################################
 #
-def PY_s2var_make_args\
+def \
+PY_s2var_make_args\
 (name: symbl, sort: sort2, stmp: stamp)->s2var_tbox:
     return s2var_tbox(name, sort, stmp)
 #
 ########################################################################
 #
-def PY_s2cst_make_args\
+def \
+PY_s2cst_make_args\
 (lctn: loctn, \
  name: symbl, sort: sort2, stmp: stamp)->s2cst_tbox:
     return s2cst_tbox(lctn, name, sort, stmp)
@@ -202,6 +228,16 @@ def PY_S2Ecst(s2t0: sort2, arg1: s2cst)->S2Ecst:
     return S2Ecst(s2t0, arg1)
 def PY_S2Evar(s2t0: sort2, arg1: s2var)->S2Evar:
     return S2Evar(s2t0, arg1)
+#
+########################################################################
+#
+def PY_S2Earg1\
+(s2t0: sort2, arg1: sint, arg2: s2exp)->S2Earg1:
+    return S2Earg1(s2t0, arg1, arg2)
+#
+def PY_S2Eatx2\
+(s2t0: sort2, arg1: s2exp, arg2: s2exp)->S2Eatx2:
+    return S2Eatx2(s2t0, arg1, arg2)
 #
 ########################################################################
 #

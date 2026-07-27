@@ -135,6 +135,24 @@ svar: PY$s2var): PY$s2exp = $extnam()
 //
 #extern
 fun
+PY_S2Earg1
+(
+s2t0: PY$sort2,
+knd0: sint,
+s2e1: PY$s2exp): PY$s2exp = $extnam()
+//
+#extern
+fun
+PY_S2Eatx2
+(
+s2t0: PY$sort2,
+s2e1: PY$s2exp,
+s2e2: PY$s2exp): PY$s2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
 PY_S2Eapps
 (
 s2t0: PY$sort2,
@@ -297,6 +315,43 @@ PY_S2Evar(s2t0, s2v1)
 {
 val s2v1 =
   s2var_pytrcpy(s2v1) }
+//
+(* ****** ****** *)
+//
+|S2Earg1
+(knd0, s2e1) =>
+let
+//
+val s2e1 =
+(
+  s2exp_pytrcpy(s2e1))
+in//let
+//
+PY_S2Earg1
+(
+s2t0,
+knd0(*int*), s2e1(*arg*))
+//
+end//let//end(S2Earg1(...))
+//
+|S2Eatx2
+(s2e1, s2e2) =>
+let
+//
+val s2e1 =
+(
+  s2exp_pytrcpy(s2e1))
+val s2e2 =
+(
+  s2exp_pytrcpy(s2e2))
+in//let
+//
+PY_S2Eatx2
+(
+s2t0,
+s2e1(*bef*), s2e2(*aft*))
+//
+end//let//end(S2Eatx2(...))
 //
 (* ****** ****** *)
 //

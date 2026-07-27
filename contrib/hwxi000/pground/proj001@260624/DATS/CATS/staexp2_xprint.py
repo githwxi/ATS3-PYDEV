@@ -32,6 +32,18 @@ def s2exp_xprenv\
         print(f"S2Ecst: {sexp.arg1}")
     elif isinstance(sexp, S2Evar):
         print(f"S2Evar: {sexp.arg1}")
+    elif isinstance(sexp, S2Earg1):
+        print("S2Earg1:")
+        xenv.indpr()
+        print(f"S2Earg1.arg1: {sexp.arg1}")
+        xenv.indpr(); print("S2Earg1.arg2:")
+        s2exp_nind_xprenv(sexp.arg2, dlta, xenv)
+    elif isinstance(sexp, S2Eatx2):
+        print("S2Eatx2:")
+        xenv.indpr(); print("S2Eatx2.arg1:")
+        s2exp_nind_xprenv(sexp.arg1, dlta, xenv)
+        xenv.indpr(); print("S2Eatx2.arg2:")
+        s2exp_nind_xprenv(sexp.arg2, dlta, xenv)
     elif isinstance(sexp, S2Eapps):
         print("S2Eapps:")
         xenv.indpr(); print("S2Eapps.arg1:")
@@ -47,14 +59,20 @@ def s2exp_xprenv\
         s2exp_nind_xprenv(sexp.arg2, dlta, xenv)
     elif isinstance(sexp, S2Efun1):
         print("S2Efun1:")
-        xenv.indpr()
+        xenv.indpr() # f2cl
         print(f"S2Efun1.arg1: {sexp.arg1}")
-        xenv.indpr()
+        xenv.indpr() # npf1
         print(f"S2Efun1.arg2: {sexp.arg2}")
         xenv.indpr(); print("S2Efun1.arg3:")
         s2explst_nind_xprenv(sexp.arg3, dlta, xenv)
         xenv.indpr(); print("S2Efun1.arg4:")
         s2exp_nind_xprenv(sexp.arg4, dlta, xenv)
+    elif isinstance(sexp, S2Etext):
+        print("S2Etext:")
+        xenv.indpr() # name
+        print(f"S2Etext.arg1: {sexp.arg1}")
+        xenv.indpr(); print("S2Efun1.arg2:")
+        s2explst_nind_xprenv(sexp.arg2, dlta, xenv)
     else:
         print(f"s2exp_xprenv: sexp = {sexp}")
 #
