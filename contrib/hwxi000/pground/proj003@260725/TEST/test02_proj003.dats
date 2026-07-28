@@ -2,7 +2,6 @@
 (* ****** ****** *)
 (*
 HX-2026-07-25:
-For testing xprint!
 Sat Jul 25 05:09:51 PM EDT 2026
 *)
 (* ****** ****** *)
@@ -69,5 +68,5 @@ then n else fibo1(n-2)+fibo1(n-1))
 //
 (***********************************************************************)
 (* end of [
- * ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/TEST/test02_proj001.dats] *)
+ * ATS3-PYDEV/contrib/hwxi000/pground/proj003@260725/TEST/test02_proj001.dats] *)
 (***********************************************************************)

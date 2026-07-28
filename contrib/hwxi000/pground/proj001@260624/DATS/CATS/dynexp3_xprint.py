@@ -695,8 +695,7 @@ def d3fundclist_nind_xprenv\
 #
 def \
 PY000_d3parsed_xprint(dpar: d3parsed)->None:
-    xenv = xprnv()
-    return d3eclistopt_xprenv(dpar.parsed, xenv)
+    return d3eclistopt_xprenv(dpar.parsed, xprnv())
 #
 ########################################################################
 ########################################################################
