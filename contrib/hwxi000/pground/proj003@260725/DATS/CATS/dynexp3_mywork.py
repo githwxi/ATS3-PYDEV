@@ -21,12 +21,14 @@ from dataclasses import dataclass
 the_D2VUSED: set[d2var] = set()
 the_D2VDEFD: list[d2var] = [   ]
 ########################################################################
+#
 def \
 the_D2VUSED_add(dvar: d2var)->None:
     the_D2VUSED.add(dvar)
 def \
 the_D2VDEFD_add(dvar: d2var)->None:
     the_D2VDEFD.append(dvar)
+#
 ########################################################################
 ########################################################################
 #
@@ -51,6 +53,17 @@ d3exp_mywork(dexp: d3exp)->None:
     elif isinstance(dexp, D3Ewhere):
         d3exp000_mywork(dexp.arg1)
         d3eclist_mywork(dexp.arg2)
+    elif isinstance(dexp, D3Eassgn):
+        d3exp000_mywork(dexp.arg1)
+        d3exp000_mywork(dexp.arg2)
+    elif isinstance(dexp, D3Exazgn):
+        d3exp000_mywork(dexp.arg1)
+        d3exp000_mywork(dexp.arg2)
+    elif isinstance(dexp, D3Exchng):
+        d3exp000_mywork(dexp.arg1)
+        d3exp000_mywork(dexp.arg2)
+    elif isinstance(dexp, D3Eannot):
+        d3exp000_mywork(dexp.arg1)
     else:
         pass
     return None # end-of-[d3exp_mywork(...)]

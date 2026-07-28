@@ -142,6 +142,67 @@ def t2jaglst_nind_xprenv\
 #
 ########################################################################
 ########################################################################
+#
+def d2exp_xprenv\
+(dexp: d2exp, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr()
+    if False:
+        pass
+    else:
+        print(f"d2exp_xprenv: dexp = {dexp}@{dexp.lctn}")
+    return None # end-of-(d2exp_xprenv(dexp,xenv))
+#
+########################################################################
+#
+def d2exp_nind_xprenv\
+(dexp: d2exp, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d2exp_xprenv(dexp, xenv); xenv.decby(dlta)
+    return None # end-of-(d2exp_nind_xprenv(dexp, dlta, xenv))
+#
+def d2explst_nind_xprenv\
+(d2es: d2explst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d2explst_xprenv(dcls, xenv); xenv.decby(dlta)
+    return None # end-of-(d2explst_nind_xprenv(d2es, dlta, xenv))
+#
+########################################################################
+########################################################################
+#
+def d2ecl_xprenv\
+(d2cl: d2ecl, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr()
+    if False:
+        pass
+    elif isinstance(d2cl, D2Cerrck):
+        print(\
+        f"D2Cerrck@{d2cl.lctn}:")
+        xenv.indpr()
+        print(f"D2Cerrck.arg1: {d2cl.arg1}")
+        xenv.indpr(); print("D2Cerrck.arg2:")
+        d2ecl_nind_xprenv(d2cl.arg2, dlta, xenv)
+    else:
+        print(f"d2ecl_xprenv: d2cl = {d2cl}@{d2cl.lctn}")
+    return None # end-of-(d2ecl_xprenv(d2cl,xenv))
+#
+########################################################################
+#
+def d2ecl_nind_xprenv\
+(d2cl: d2ecl, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d2ecl_xprenv(d2cl, xenv); xenv.decby(dlta)
+    return None # end-of-(d2ecl_nind_xprenv(d2cl,dlta,xenv))
+#
+def d2eclist_nind_xprenv\
+(dcls: d2eclist, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    d2eclist_xprenv(dcls, xenv); xenv.decby(dlta)
+    return None # end-of-(d2eclist_nind_xprenv(dcls,dlta,xenv))
+#
+########################################################################
+########################################################################
 # end of
 # [ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/DATS/CATS/dynexp2_xprint.py]
 ########################################################################

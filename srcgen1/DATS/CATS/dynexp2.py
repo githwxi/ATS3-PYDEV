@@ -715,6 +715,50 @@ class D2Et2ped(D2E000):
     pass
 #
 ########################################################################
+#
+@dataclass
+class D2Enone0(D2E000):
+    ctag = "D2Enone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
+    pass
+#
+@dataclass
+class D2Enone1(D2E000):
+    arg1: d1exp
+    ctag = "D2Enone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Enone2(D2E000):
+    arg1: d2exp
+    ctag = "D2Enone2"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D2Eerrck(D2E000):
+    arg1: sint
+    arg2: d2exp
+    ctag = "D2Eerrck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
 ########################################################################
 #
 @dataclass
@@ -1056,6 +1100,7 @@ class D2Cfundclst(D2C000):
         return f"{self.ctag}({self.arg1!r};{self.arg3!r};{self.arg4!r})"
 #
 ########################################################################
+#
 @dataclass
 class D2Cimplmnt0(D2C000):
     arg1: token
@@ -1070,6 +1115,51 @@ class D2Cimplmnt0(D2C000):
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1};{self.arg8})"
     pass
+#
+########################################################################
+#
+@dataclass
+class D2Cnone0(D2C000):
+    ctag = "D2Cnone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
+    pass
+#
+@dataclass
+class D2Cnone1(D2C000):
+    arg1: d1ecl
+    ctag = "D2Cnone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D2Cnone2(D2C000):
+    arg1: d2ecl
+    ctag = "D2Cnone2"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D2Cerrck(D2C000):
+    arg1: sint
+    arg2: d2ecl
+    ctag = "D2Cerrck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
 ########################################################################
 ########################################################################
 def PY_D2Pa3src\
@@ -1261,6 +1351,20 @@ def PY_D2Et2ped\
     # print\
     # ("PY_D2Et2ped: arg2 = ", arg2)
     return D2Et2ped(loc0, arg1, arg2)
+#
+########################################################################
+#
+def PY_D2Enone0(loc0: loctn)->D2Enone0:
+    return D2Enone0(loc0)
+def PY_D2Enone1(loc0: loctn, arg1: d1exp)->D2Enone1:
+    return D2Enone1(loc0, arg1)
+def PY_D2Enone2(loc0: loctn, arg1: d2exp)->D2Enone2:
+    return D2Enone2(loc0, arg1)
+#
+########################################################################
+#
+def PY_D2Eerrck(loc0: loctn, arg1: sint, arg2: d2exp)->D2Eerrck:
+    return D2Eerrck(loc0, arg1, arg2)
 #
 ########################################################################
 ########################################################################
@@ -1476,12 +1580,28 @@ def PY_D2Cfundclst\
     return D2Cfundclst(loc0, arg1, arg2, arg3, arg4) 
 #
 ########################################################################
+#
 def PY_D2Cimplmnt0\
 (loc0: loctn, \
  arg1: token, arg2: pyobj, arg3: pyobj, arg4: pyobj, \
  arg5: pyobj, arg6: pyobj, arg7: pyobj, arg8: d2exp)->D2Cimplmnt0:
     return \
     D2Cimplmnt0(loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+#
+########################################################################
+#
+def PY_D2Cnone0(loc0: loctn)->D2Cnone0:
+    return D2Cnone0(loc0)
+def PY_D2Cnone1(loc0: loctn, arg1: d1ecl)->D2Cnone1:
+    return D2Cnone1(loc0, arg1)
+def PY_D2Cnone2(loc0: loctn, arg1: d2ecl)->D2Cnone2:
+    return D2Cnone2(loc0, arg1)
+#
+########################################################################
+#
+def PY_D2Cerrck(loc0: loctn, arg1: sint, arg2: d2ecl)->D2Cerrck:
+    return D2Cerrck(loc0, arg1, arg2)
+#
 ########################################################################
 ########################################################################
 #

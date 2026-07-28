@@ -33,6 +33,7 @@ type i0env = I0ENV000
 @datclass
 class I0VALint(I0VAL000):
     arg1: sint
+#
 @datclass
 class I0VALbtf(I0VAL000):
     arg1: bool

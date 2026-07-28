@@ -402,6 +402,35 @@ PY_D2Et2ped
 //
 #extern
 fun
+PY_D2Enone0
+( loc0: PY$loctn   ): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Enone1
+( loc0: PY$loctn
+, d1e1: PY$d1exp   ): PY$d2exp = $extnam()
+//
+#extern
+fun
+PY_D2Enone2
+( loc0: PY$loctn
+, d2e1: PY$d2exp   ): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Eerrck
+( loc0: PY$loctn
+, lvl0: sint
+, d2e1: PY$d2exp   ): PY$d2exp = $extnam()
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#extern
+fun
 PY_D2Clocal0
 ( loc0: PY$loctn
 , head: PY$d2eclist
@@ -448,6 +477,34 @@ PY_D2Cimplmnt0
 , f2as: PY$f2arglst
 , sres: PY$s2res
 , d2e1: PY$d2exp   ): PY$d2ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Cnone0
+( loc0: PY$loctn   ): PY$d2ecl = $extnam()
+//
+#extern
+fun
+PY_D2Cnone1
+( loc0: PY$loctn
+, d1cl: PY$d1ecl   ): PY$d2ecl = $extnam()
+//
+#extern
+fun
+PY_D2Cnone2
+( loc0: PY$loctn
+, d2cl: PY$d2ecl   ): PY$d2ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D2Cerrck
+( loc0: PY$loctn
+, lvl0: sint
+, d2cl: PY$d2ecl   ): PY$d2ecl = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -911,12 +968,13 @@ _(*otherwise*) => PY_D2Pa3src(loc0, dpat)
 val loc0 =
 loctn_pytrcpy(dpat.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d2pat_pytrcpy: dpat = ", dpat))
-//
 val (  ) =
 printsln("d2pat_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d2pat_pytrcpy(dpat)]
 //
@@ -1316,7 +1374,33 @@ val t2p2 = s2typ_pytrcpy(t2p2)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-|_(*otherwise*) => PY_D2Ea3src(loc0, dexp)
+//
+|D2Enone0() => PY_D2Enone0(loc0)
+//
+|D2Enone1
+(   d1e1   ) =>
+(
+PY_D2Enone1
+(loc0, d1exp_pytrcpy(d1e1:d1exp)))
+//
+|D2Enone2
+(   d2e1   ) =>
+(
+PY_D2Enone2
+(loc0, d2exp_pytrcpy(d2e1:d2exp)))
+//
+(* ****** ****** *)
+//
+|D2Eerrck
+(lvl0, d2e1) =>
+(
+PY_D2Eerrck(loc0,
+  lvl0:sint, d2exp_pytrcpy(d2e1:d2exp)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+|
+_(*otherwise*) => PY_D2Ea3src(loc0, dexp)
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -1327,12 +1411,13 @@ where
 val loc0 =
 loctn_pytrcpy(dexp.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d2exp_pytrcpy: dexp = ", dexp))
-//
 val (  ) =
 printsln("d2exp_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d2exp_pytrcpy(dexp)]
 //
@@ -1388,8 +1473,10 @@ PY_D2GUAmat
 , dexp: PY$d2exp
 , dpat: PY$d2pat): PY$d2gua = $extnam()
 //
+(*
 val (  ) =
 printsln("d2gua_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d2gua_pytrcpy(dgua)]
 //
@@ -1440,8 +1527,10 @@ PY_D2CLScls
 , dgpt: PY$d2gpt
 , dexp: PY$d2exp): PY$d2cls = $extnam()
 //
+(*
 val (  ) =
 printsln("d2cls_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d2cls_pytrcpy(dcls)]
 //
@@ -1498,8 +1587,10 @@ lctn: PY$loctn,
 dpat: PY$d2pat,
 d2gs: PY$d2gualst): PY$d2gpt = $extnam()
 //
+(*
 val (  ) =
 printsln("d2gpt_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d2gpt_pytrcpy(dgpt)]
 //
@@ -1575,11 +1666,13 @@ PY_F2ARGmets
 lctn: PY$loctn,
 s2es: PY$s2explst): PY$f2arg = $extnam()
 //
+(*
 val (  ) =
 (
   printsln("f2arg_pytrcpy: farg = ", farg))
 val (  ) =
 printsln("f2arg_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[f2arg_pytrcpy(farg)]
 //
@@ -1697,6 +1790,30 @@ val d2e1 = d2exp_pytrcpy(d2e1)
 }
 //
 (* ****** ****** *)
+//
+|D2Cnone0() => PY_D2Cnone0(loc0)
+//
+|D2Cnone1
+(   d1cl   ) =>
+(
+PY_D2Cnone1
+(loc0, d1ecl_pytrcpy(d1cl:d1ecl)))
+//
+|D2Cnone2
+(   d2cl   ) =>
+(
+PY_D2Cnone2
+(loc0, d2ecl_pytrcpy(d2cl:d2ecl)))
+//
+(* ****** ****** *)
+//
+|D2Cerrck
+(lvl0, d2cl) =>
+(
+PY_D2Cerrck(loc0,
+  lvl0:sint, d2ecl_pytrcpy(d2cl:d2ecl)))
+//
+(* ****** ****** *)
 (* ****** ****** *)
 |_(*otherwise*) => PY_D2Ca3src(loc0, d2cl)
 (* ****** ****** *)
@@ -1708,12 +1825,13 @@ val d2e1 = d2exp_pytrcpy(d2e1)
 val loc0 =
 loctn_pytrcpy(d2cl.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d2ecl_pytrcpy: d2cl = ", d2cl))
-//
 val (  ) =
 printsln("d2ecl_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d2ecl_pytrcpy(d2cl)]
 //

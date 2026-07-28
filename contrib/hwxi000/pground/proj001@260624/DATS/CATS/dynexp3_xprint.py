@@ -288,8 +288,16 @@ def d3exp_xprenv\
         xenv.indpr(); print("D3Et2ped.arg2:")
         s2typ_nind_xprenv(dexp.arg2, dlta, xenv)
 #
+    elif isinstance(dexp, D3Eerrck):
+        print("D3Eerrck:")
+        xenv.indpr()
+        print(f"D3Eerrck.arg1: {dexp.arg1}")
+        xenv.indpr(); print("D3Eerrck.arg2:")
+        d3exp_nind_xprenv(dexp.arg2, dlta, xenv)
+#
     else:
         print(f"d3exp_xprenv: dexp = {dexp}@{dexp.lctn}")
+    return None # end-of-(d3exp_xprenv(dexp, xenv))
 #    
 def d3explst_xprenv\
 (d3es: d3explst, xenv: xprnv)->None:
@@ -471,6 +479,17 @@ def d3ecl_xprenv\
     if False:
         pass
 #
+    elif isinstance(d3cl, D3Cnone0):
+        print("D3Cnone0()")
+    elif isinstance(d3cl, D3Cnone1):
+        print("D3Cnone1:")
+        xenv.indpr(); print("D3Cnone1.arg1:")
+        d2ecl_nind_xprenv(d3cl.arg1, dlta, xenv)
+    elif isinstance(d3cl, D3Cnone2):
+        print("D3Cnone2:")
+        xenv.indpr(); print("D3Cnone2.arg1:")
+        d3ecl_nind_xprenv(d3cl.arg1, dlta, xenv)
+#
     elif isinstance(d3cl, D3Cstatic):
         print(\
         f"D3Cstatic@{d3cl.lctn}:")
@@ -499,6 +518,14 @@ def d3ecl_xprenv\
         xenv.indpr()
         print("D3Clocal0.body:")
         d3eclist_nind_xprenv(d3cl.arg2, dlta, xenv)
+#
+    elif isinstance(d3cl, D3Cerrck):
+        print(\
+        f"D3Cerrck@{d3cl.lctn}:")
+        xenv.indpr()
+        print(f"D3Cerrck.arg1: {d3cl.arg1}")
+        xenv.indpr(); print("D3Cerrck.arg2:")
+        d3ecl_nind_xprenv(d3cl.arg2, dlta, xenv)
 #
     elif isinstance(d3cl, D3Cvaldclst):
         print(\

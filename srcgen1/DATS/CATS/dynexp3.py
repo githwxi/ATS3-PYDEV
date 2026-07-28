@@ -359,6 +359,19 @@ class D3Pnone2(D3P000):
     pass
 #
 ########################################################################
+#
+@dataclass
+class D3Perrck(D3P000):
+    arg1: sint
+    arg2: d3pat
+    ctag = "D3Perrck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
 ########################################################################
 #
 @dataclass
@@ -775,6 +788,51 @@ class D3Eextnam(D3E000):
 ########################################################################
 #
 @dataclass
+class D3Enone0(D3E000):
+    ctag = "D3Enone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
+    pass
+#
+@dataclass
+class D3Enone1(D3E000):
+    arg1: d2exp
+    ctag = "D3Enone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Enone2(D3E000):
+    arg1: d3exp
+    ctag = "D3Enone2"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Eerrck(D3E000):
+    arg1: sint
+    arg2: d3exp
+    ctag = "D3Eerrck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+########################################################################
+#
+@dataclass
 class F3ARGmets(F3ARG000):
     arg1: s2explst
     ctag = "F3ARGmets"
@@ -1077,6 +1135,50 @@ class D3Cimplmnt0(D3C000):
     pass
 #
 ########################################################################
+#
+@dataclass
+class D3Cnone0(D3C000):
+    ctag = "D3Cnone0"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
+    pass
+#
+@dataclass
+class D3Cnone1(D3C000):
+    arg1: d2ecl
+    ctag = "D3Cnone1"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+@dataclass
+class D3Cnone2(D3C000):
+    arg1: d3ecl
+    ctag = "D3Cnone2"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D3Cerrck(D3C000):
+    arg1: sint
+    arg2: d3ecl
+    ctag = "D3Cerrck"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
 ########################################################################
 def PY_D3Pa3src\
 (lctn: loctn, arg1: pyobj)->D3Pa3src:
@@ -1170,6 +1272,19 @@ def PY_D3Pannot\
     return D3Pannot(lctn, arg1, arg2, arg3)
 #
 ########################################################################
+#
+def PY_D3Pnone0(loc0: loctn)->D3Pnone0:
+    return D3Pnone0(loc0)
+def PY_D3Pnone1(loc0: loctn, arg1: d2pat)->D3Pnone1:
+    return D3Pnone1(loc0, arg1)
+def PY_D3Pnone2(loc0: loctn, arg1: d3pat)->D3Pnone2:
+    return D3Pnone2(loc0, arg1)
+#
+########################################################################
+#
+def PY_D3Perrck(loc0: loctn, arg1: sint, arg2: d3pat)->D3Perrck:
+    return D3Perrck(loc0, arg1, arg2)
+#
 ########################################################################
 #
 def PY_D3Eint\
@@ -1341,6 +1456,20 @@ def PY_D3Eextnam\
     return D3Eextnam(loc0, arg1, arg2)
 #
 ########################################################################
+#
+def PY_D3Enone0(loc0: loctn)->D3Enone0:
+    return D3Enone0(loc0)
+def PY_D3Enone1(loc0: loctn, arg1: d2exp)->D3Enone1:
+    return D3Enone1(loc0, arg1)
+def PY_D3Enone2(loc0: loctn, arg1: d3exp)->D3Enone2:
+    return D3Enone2(loc0, arg1)
+#
+########################################################################
+#
+def PY_D3Eerrck(loc0: loctn, arg1: sint, arg2: d3exp)->D3Eerrck:
+    return D3Eerrck(loc0, arg1, arg2)
+#
+########################################################################
 ########################################################################
 #
 def \
@@ -1500,6 +1629,20 @@ def PY_D3Cimplmnt0\
  arg7: f3arglst, arg8: s2res, arg9: d3exp)->D3Cimplmnt0:
     return D3Cimplmnt0\
       (loc0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+#
+########################################################################
+#
+def PY_D3Cnone0(loc0: loctn)->D3Cnone0:
+    return D3Cnone0(loc0)
+def PY_D3Cnone1(loc0: loctn, arg1: d2ecl)->D3Cnone1:
+    return D3Cnone1(loc0, arg1)
+def PY_D3Cnone2(loc0: loctn, arg1: d3ecl)->D3Cnone2:
+    return D3Cnone2(loc0, arg1)
+#
+########################################################################
+#
+def PY_D3Cerrck(loc0: loctn, arg1: sint, arg2: d3ecl)->D3Cerrck:
+    return D3Cerrck(loc0, arg1, arg2)
 #
 ########################################################################
 ########################################################################

@@ -504,6 +504,34 @@ PY_D3Eextnam
 , gnam: PY$g1nam   ): PY$d3exp = $extnam()
 //
 (* ****** ****** *)
+//
+#extern
+fun
+PY_D3Enone0
+( loc0: PY$loctn   ): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Enone1
+( loc0: PY$loctn
+, d2e1: PY$d2exp   ): PY$d3exp = $extnam()
+//
+#extern
+fun
+PY_D3Enone2
+( loc0: PY$loctn
+, d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Eerrck
+( loc0: PY$loctn
+, lvl0: sint
+, d3e1: PY$d3exp   ): PY$d3exp = $extnam()
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
@@ -586,6 +614,34 @@ tias: PY$t2iaglst,
 f3as: PY$f3arglst,
 sres: PY$s2res(*tp*),
 dexp: PY$d3exp(*bd*)): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Cnone0
+( loc0: PY$loctn   ): PY$d3ecl = $extnam()
+//
+#extern
+fun
+PY_D3Cnone1
+( loc0: PY$loctn
+, d2cl: PY$d2ecl   ): PY$d3ecl = $extnam()
+//
+#extern
+fun
+PY_D3Cnone2
+( loc0: PY$loctn
+, d3cl: PY$d3ecl   ): PY$d3ecl = $extnam()
+//
+(* ****** ****** *)
+//
+#extern
+fun
+PY_D3Cerrck
+( loc0: PY$loctn
+, lvl0: sint
+, d3cl: PY$d3ecl   ): PY$d3ecl = $extnam()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1311,6 +1367,7 @@ val t2p2 = s2typ_pytrcpy(t2p2)
 }
 //
 (* ****** ****** *)
+(* ****** ****** *)
 |
 D3Eextnam
 (tknd, gnam) =>
@@ -1322,6 +1379,31 @@ where
 val tknd = token_pytrcpy(tknd)
 val gnam = g1nam_pytrcpy(gnam)
 }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+|D3Enone0() => PY_D3Enone0(loc0)
+//
+|D3Enone1
+(   d2e1   ) =>
+(
+PY_D3Enone1
+(loc0, d2exp_pytrcpy(d2e1:d2exp)))
+//
+|D3Enone2
+(   d3e1   ) =>
+(
+PY_D3Enone2
+(loc0, d3exp_pytrcpy(d3e1:d3exp)))
+//
+(* ****** ****** *)
+//
+|D3Eerrck
+(lvl0, d3e1) =>
+(
+PY_D3Eerrck(loc0,
+  lvl0:sint, d3exp_pytrcpy(d3e1:d3exp)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1867,6 +1949,30 @@ val f3as =
 //
 val sres = s2res_pytrcpy(sres)
 val dexp = d3exp_pytrcpy(dexp) }
+//
+(* ****** ****** *)
+//
+|D3Cnone0() => PY_D3Cnone0(loc0)
+//
+|D3Cnone1
+(   d2cl   ) =>
+(
+PY_D3Cnone1
+(loc0, d2ecl_pytrcpy(d2cl:d2ecl)))
+//
+|D3Cnone2
+(   d3cl   ) =>
+(
+PY_D3Cnone2
+(loc0, d3ecl_pytrcpy(d3cl:d3ecl)))
+//
+(* ****** ****** *)
+//
+|D3Cerrck
+(lvl0, d3cl) =>
+(
+PY_D3Cerrck(loc0,
+  lvl0:sint, d3ecl_pytrcpy(d3cl:d3ecl)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
