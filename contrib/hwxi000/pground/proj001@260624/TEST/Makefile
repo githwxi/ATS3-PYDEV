@@ -20,12 +20,12 @@ $(PYTHONPATH):./../../../../../srcgen1/UTIL
 all:: test01
 test01: ; \
 PYTHONPATH=$(PYTHONPATH) $(PYTHON) \
-./../UTIL/ats3_pydev_main.py ./test01_proj001.dats
+./../UTIL/ats3_xprint_main.py ./test01_proj001.dats
 ########################################################################
 all:: test02
 test02: ; \
 PYTHONPATH=$(PYTHONPATH) $(PYTHON) \
-./../UTIL/ats3_pydev_main.py ./test02_proj001.dats
+./../UTIL/ats3_xprint_main.py ./test02_proj001.dats
 ########################################################################
 ########################################################################
 ############################end-of-(Makefile)###########################

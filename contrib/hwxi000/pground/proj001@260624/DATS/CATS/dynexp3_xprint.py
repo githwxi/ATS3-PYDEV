@@ -18,9 +18,6 @@ from dataclasses import dataclass
 ########################################################################
 ########################################################################
 from DATS.CATS.a3pydev import *
-from DATS.CATS.staexp2 import *
-from DATS.CATS.statyp2 import *
-from DATS.CATS.dynexp2 import *
 from DATS.CATS.dynexp3 import *
 ########################################################################
 from DATS.CATS.a3pydev_xprint import *

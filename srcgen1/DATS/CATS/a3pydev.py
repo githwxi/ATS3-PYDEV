@@ -57,6 +57,22 @@ class fnlist_cons[T](fnlist[T]):
 ########################################################################
 ########################################################################
 #
+def \
+fnlist_foritm\
+(xs: fnlist[X], \
+ work: Callable[[X], None])->None:
+    x1 = None
+    while True:
+        if isinstance(xs, fnlist_cons):
+            x1 = xs.arg1
+            xs = xs.arg2
+            work(x1)
+        else:
+            return None
+    # endof(while(True))
+#
+########################################################################
+#
 ENV = TypeVar("ENV")
 #
 def \
