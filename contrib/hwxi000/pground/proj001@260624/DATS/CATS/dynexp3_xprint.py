@@ -73,7 +73,7 @@ def d3pat_xprenv\
         xenv.indpr(); print("D3Ptapq.arg1:")
         d3pat_nind_xprenv(dpat.arg1, dlta, xenv)
         xenv.indpr(); print("D3Ptapq.arg2:")
-#       t2jaglst_nind_xprenv(dpat.arg2, dlta, xenv)
+        t2jaglst_nind_xprenv(dpat.arg2, dlta, xenv)
 #
     elif isinstance(dpat, D3Pdapp):
         print("D3Pdapp:")
@@ -197,7 +197,7 @@ def d3exp_xprenv\
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr()
         print("D3Etapq.arg2:")
-        # t2jgs_nind_xprenv(dexp.arg2, dlta, xenv)
+        t2jaglst_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     elif isinstance(dexp, D3Edapp):
         print("D3Edapp:")

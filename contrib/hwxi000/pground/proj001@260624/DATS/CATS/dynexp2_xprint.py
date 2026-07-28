@@ -114,8 +114,9 @@ def t2qaglst_nind_xprenv\
 #
 def t2iag_xprenv\
 (tia0: t2iag, xenv: xprnv)->None:
-    xenv.indpr()
-    print(f"T2IAG({tia0.s2es})")
+    dlta = 2
+    xenv.indpr(); print("T2IAG:")
+    s2explst_nind_xprenv(tia0.s2es, dlta, xenv)
 def t2iaglst_xprenv\
 (tias: t2iaglst, xenv: xprnv)->None:
     fnlist_foritm_e1nv(tias, xenv, t2iag_xprenv)
@@ -124,6 +125,22 @@ def t2iaglst_nind_xprenv\
 (tias: t2iaglst, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     t2iaglst_xprenv(tias, xenv); xenv.decby(dlta)
+#
+########################################################################
+#
+def t2jag_xprenv\
+(tja0: t2jag, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr(); print("T2JAG:")
+    s2typlst_nind_xprenv(tja0.t2ps, dlta, xenv)
+def t2jaglst_xprenv\
+(tjas: t2jaglst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(tjas, xenv, t2jag_xprenv)
+#
+def t2jaglst_nind_xprenv\
+(tjas: t2jaglst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    t2jaglst_xprenv(tjas, xenv); xenv.decby(dlta)
 #
 ########################################################################
 ########################################################################
