@@ -34,15 +34,6 @@ class fnoptn_cons[T](fnoptn[T]):
     pass
 ########################################################################
 #
-def \
-PY_optn_nil() -> fnoptn[T]:
-    return fnoptn_nil()
-def \
-PY_optn_cons(x0: T) -> fnoptn[T]:
-    return fnoptn_cons(x0)
-#
-########################################################################
-########################################################################
 @dataclass
 class fnlist[T](ABC):
     pass
@@ -54,40 +45,16 @@ class fnlist_cons[T](fnlist[T]):
     arg1: T
     arg2: fnlist[T]
     pass
+#
 ########################################################################
 ########################################################################
 #
 def \
-fnlist_foritm\
-(xs: fnlist[X], \
- work: Callable[[X], None])->None:
-    x1 = None
-    while True:
-        if isinstance(xs, fnlist_cons):
-            x1 = xs.arg1
-            xs = xs.arg2
-            work(x1)
-        else:
-            return None
-    # endof(while(True))
-#
-########################################################################
-#
-ENV = TypeVar("ENV")
-#
+PY_optn_nil() -> fnoptn[T]:
+    return fnoptn_nil()
 def \
-fnlist_foritm_e1nv\
-(xs: fnlist[X], e0: ENV, \
- work: Callable[[X, ENV], None])->None:
-    x1 = None
-    while True:
-        if isinstance(xs, fnlist_cons):
-            x1 = xs.arg1
-            xs = xs.arg2
-            work(x1, e0)
-        else:
-            return None
-    # endof(while(True))
+PY_optn_cons(x0: T) -> fnoptn[T]:
+    return fnoptn_cons(x0)
 #
 ########################################################################
 ########################################################################
@@ -111,6 +78,65 @@ PY_list_reverse(xs: fnlist[T]) -> fnlist[T]:
             continue
         else:
             return rs
+    # endof(while(True))
+#
+########################################################################
+########################################################################
+#
+def \
+fnoptn_foritm\
+(xs: fnoptn[X], \
+ work: Callable[[X], None])->None:
+    x1 = None
+    if isinstance(xs, fnoptn_cons):
+        work(xs.arg1)
+    return None
+#
+########################################################################
+#
+def \
+fnlist_foritm\
+(xs: fnlist[X], \
+ work: Callable[[X], None])->None:
+    x1 = None
+    while True:
+        if isinstance(xs, fnlist_cons):
+            x1 = xs.arg1
+            xs = xs.arg2
+            work(x1)
+        else:
+            return None
+    # endof(while(True))
+#
+########################################################################
+#
+ENV = TypeVar("ENV")
+#
+########################################################################
+#
+def \
+fnoptn_foritm_e1nv\
+(xs: fnoptn[X], e0: ENV, \
+ work: Callable[[X, ENV], None])->None:
+    x1 = None
+    if isinstance(xs, fnoptn_cons):
+        work(xs.arg1, e0)
+    return None
+#
+########################################################################
+#
+def \
+fnlist_foritm_e1nv\
+(xs: fnlist[X], e0: ENV, \
+ work: Callable[[X, ENV], None])->None:
+    x1 = None
+    while True:
+        if isinstance(xs, fnlist_cons):
+            x1 = xs.arg1
+            xs = xs.arg2
+            work(x1, e0)
+        else:
+            return None
     # endof(while(True))
 #
 ########################################################################
