@@ -19,6 +19,7 @@ from dataclasses import dataclass
 from DATS.CATS.dynexp2 import *
 from DATS.CATS.dynexp3 import *
 ########################################################################
+#
 @dataclass
 class I0VAL000(ABC):
     pass
@@ -27,7 +28,9 @@ type i0val = I0VAL000
 class I0ENV000(ABC):
     pass
 type i0env = I0ENV000
+#
 ########################################################################
+#
 @datclass
 class I0VALint(I0VAL000):
     arg1: sint
@@ -37,7 +40,9 @@ class I0VALbtf(I0VAL000):
 @datclass
 class I0VALstr(I0VAL000):
     arg1: strn
+#
 ########################################################################
+#
 @dataclass
 class I0ENVnil(I0ENV000):
     pass
@@ -47,6 +52,7 @@ class I0ENVcons(I0ENV000):
     arg2: i0val
     arg3: i0env
     pass
+#
 ########################################################################
 # end of
 # [ATS3-PYDEV/contrib/hwxi000/pground/proj002@260725/DATS/CATS/dynexp3_interp.py]
