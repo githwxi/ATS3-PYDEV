@@ -168,7 +168,7 @@ def d3exp_xprenv\
         d3exp_nind_xprenv(dexp.arg1, dlta, xenv)
         xenv.indpr()
         print("D3Etimp.arg2:")
-        # timpl_nind_xprenv(dexp.arg2, dlta, xenv)
+        timpl_nind_xprenv(dexp.arg2, dlta, xenv)
 #
     elif isinstance(dexp, D3Esapp):
         print("D3Esapp:")
@@ -338,8 +338,10 @@ def d3expopt_xprenv\
 #
 def f3arg_xprenv\
 (farg: f3arg, xenv: xprnv)->None:
+#
     dlta = 2
     xenv.indpr()
+#
     if False:
         pass
     elif isinstance(farg, F3ARGdapp):
@@ -360,7 +362,8 @@ def f3arg_xprenv\
         xenv.indpr(); print("F3ARGmets.arg1:")
         s2explst_nind_xprenv(farg.arg1, dlta, xenv)
     else:
-        return None # end-of-[f3arg_xprenv(farg,...)
+        pass # f3arg_xprenv: exhaustive matching
+    return None # end-of-[f3arg_xprenv(farg,xenv)]
 #
 def f3arglst_xprenv\
 (f3as: f3arglst, xenv: xprnv)->None:
@@ -387,7 +390,8 @@ def d3gua_xprenv\
         xenv.indpr(); print("D3GUAmat.arg2:")
         d3pat_nind_xprenv(dgua.arg2, dlta, xenv)
     else:
-        return None # end-of-[d3gua_xprenv(dgua,...)
+        pass # d3gua_xprenv: exhaustive matching
+    return None # end-of-[d3gua_xprenv(dgua,xenv)]
 #
 def d3gpt_xprenv\
 (dgpt: d3gpt, xenv: xprnv)->None:
@@ -406,7 +410,8 @@ def d3gpt_xprenv\
         xenv.indpr(); print("D3GPTgua.arg2:")
         d3gualst_nind_xprenv(dgpt.arg2, dlta, xenv)
     else:
-        return None # end-of-[d3gpt_xprenv(dgpt,...)
+        pass # d3gpt_xprenv: exhaustive matching
+    return None # end-of-[d3gpt_xprenv(dgpt,xenv)]
 #
 def d3cls_xprenv\
 (clas: d3cls, xenv: xprnv)->None:
@@ -425,7 +430,8 @@ def d3cls_xprenv\
         xenv.indpr(); print("D3CLScls.arg2:")
         d3exp_nind_xprenv(clas.arg2, dlta, xenv)
     else:
-        return None # end-of-[d3cls_xprenv(clas,...)
+        pass # d3cls_xprenv: exhaustive matching
+    return None # end-of-[d3cls_xprenv(clas,xenv)
 #
 def d3gualst_xprenv\
 (d3gs: d3gualst, xenv: xprnv)->None:
@@ -491,6 +497,44 @@ def f3arglst_nind_xprenv\
     xenv.incby(dlta)
     f3arglst_xprenv(f3as, xenv); xenv.decby(dlta)
     return None # f3arglst_nind_xprenv(...)
+#
+########################################################################
+########################################################################
+#
+def timpl_xprenv\
+(timp: timpl, xenv: xprnv)->None:
+#
+    dlta = 2
+    xenv.indpr()
+#
+    if False:
+        pass
+    elif isinstance(timp, TIMPLall1):
+        print("TIMPLall1:")
+        xenv.indpr()
+        print\
+        (f"TIMPLall1.arg1: {timp.arg1}")
+        xenv.indpr()
+        print("TIMPLall1.arg2:")
+        t2jaglst_nind_xprenv(timp.arg2, dlta, xenv)
+    elif isinstance(timp, TIMPLallx):
+        print("TIMPLallx:")
+        xenv.indpr()
+        print\
+        (f"TIMPLallx.arg1: {timp.arg1}")
+        xenv.indpr()
+        print("TIMPLallx.arg2:")
+        t2jaglst_nind_xprenv(timp.arg2, dlta, xenv)
+    else:
+        pass # timpl_xprenv: exhaustive matching
+    return None # end-of-[timpl_xprenv(timp,xenv)
+
+#
+def timpl_nind_xprenv\
+(timp: timpl, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    timpl_xprenv(timp, xenv); xenv.decby(dlta)
+    return None # timpl_nind_xprenv(timp,dlta,xenv)
 #
 ########################################################################
 ########################################################################
