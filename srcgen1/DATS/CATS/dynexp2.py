@@ -284,14 +284,70 @@ D2PTMsome(D2PTM000):
 ########################################################################
 ########################################################################
 #
+#
 @dataclass
-class D2Pcon(D2P000):
-    arg1: d2con
-    ctag = "D2Pcon"
+class D2Pint(D2P000):
+    arg1: token
+    ctag = "D2Pint"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pbtf(D2P000):
+    arg1: symbl
+    ctag = "D2Pbtf"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pchr(D2P000):
+    arg1: token
+    ctag = "D2Pchr"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pflt(D2P000):
+    arg1: token
+    ctag = "D2Pflt"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+@dataclass
+class D2Pstr(D2P000):
+    arg1: token
+    ctag = "D2Pstr"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D2Pnil(D2P000):
+    ctag = "D2Pnil"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
+    pass
+@dataclass
+class D2Pany(D2P000):
+    ctag = "D2Pany"
+    def __str__(self)->strn:
+        return f"{self.ctag}()"
+    def __repr__(self)->strn:
+        return f"{self.ctag}()"
     pass
 @dataclass
 class D2Pvar(D2P000):
@@ -302,6 +358,20 @@ class D2Pvar(D2P000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
+#
+########################################################################
+#
+@dataclass
+class D2Pcon(D2P000):
+    arg1: d2con
+    ctag = "D2Pcon"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
+    pass
+#
+########################################################################
 #
 @dataclass
 class D2Pdap0(D2P000):
@@ -430,6 +500,18 @@ class D2Es00(D2E000):
     ctag = "D2Es00"
     def __str__(self)->strn:
         return f"{self.ctag}({self.arg1})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D2Etop(D2E000):
+    arg1: symbl
+    ctag = "D2Etop"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r})"
     pass
 #
 ########################################################################
@@ -712,6 +794,20 @@ class D2Et2ped(D2E000):
         return f"{self.ctag}({self.arg1};{self.arg2})"
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r};{self.arg2!r})"
+    pass
+#
+########################################################################
+#
+@dataclass
+class D2Eannot(D2E000):
+    arg1: d2exp
+    arg2: s1exp
+    arg3: s2exp
+    ctag = "D2Eannot"
+    def __str__(self)->strn:
+        return f"{self.ctag}({self.arg1};{self.arg2};{self.arg3})"
+    def __repr__(self)->strn:
+        return f"{self.ctag}({self.arg1!r};{self.arg2!r};{self.arg3!r})"
     pass
 #
 ########################################################################
@@ -1002,17 +1098,17 @@ class d2vardcl_tbox(ABC):
     dpid: d2var
     vpid: d2varopt
     sres: s2expopt
-    tdxp: teqd2exp
+    dini: teqd2exp
     def __str__(self)->strn:
-        return f"D2VARDCL({self.dpid};{self.vpid};{self.sres};{self.tdxp})"
+        return f"D2VARDCL({self.dpid};{self.vpid};{self.sres};{self.dini})"
     def __repr__(self)->strn:
-        return f"D2VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.tdxp!r})"
+        return f"D2VARDCL({self.dpid!r};{self.vpid!r};{self.sres!r};{self.dini!r})"
     pass
 @dataclass
 class d2fundcl_tbox(ABC):
     lctn: loctn
     dpid: d2var
-    farg: pyobj
+    farg: f2arglst
     sres: s2res
     tdxp: teqd2exp
     wsxp: wths2exp
@@ -1191,12 +1287,36 @@ def PY_d2var\
 ########################################################################
 ########################################################################
 #
-def PY_D2Pcon\
-(lctn: loctn, arg1: d2con)->D2Pcon:
-    return D2Pcon(lctn, arg1)
+def PY_D2Pint\
+(lctn: loctn, arg1: token)->D2Pint:
+    return D2Pint(lctn, arg1)
+def PY_D2Pbtf\
+(lctn: loctn, arg1: symbl)->D2Pbtf:
+    return D2Pbtf(lctn, arg1)
+def PY_D2Pchr\
+(lctn: loctn, arg1: token)->D2Pchr:
+    return D2Pchr(lctn, arg1)
+def PY_D2Pstr\
+(lctn: loctn, arg1: token)->D2Pstr:
+    return D2Pstr(lctn, arg1)
+#
+########################################################################
+#
+def PY_D2Pnil(lctn: loctn)->D2Pnil:
+    return D2Pnil(lctn)
+#
+def PY_D2Pany(lctn: loctn)->D2Pany:
+    return D2Pany(lctn)
+#
 def PY_D2Pvar\
 (lctn: loctn, arg1: d2var)->D2Pvar:
     return D2Pvar(lctn, arg1)
+#
+########################################################################
+#
+def PY_D2Pcon\
+(lctn: loctn, arg1: d2con)->D2Pcon:
+    return D2Pcon(lctn, arg1)
 ########################################################################
 #
 def PY_D2Pdap0\
@@ -1229,6 +1349,12 @@ def PY_D2Ebtf\
 def PY_D2Estr\
 (lctn: loctn, arg1: token)->D2Estr:
     return D2Estr(lctn, arg1)
+#
+########################################################################
+#
+def PY_D2Etop\
+(lctn: loctn, arg1: symbl)->D2Etop:
+    return D2Etop(lctn, arg1)
 #
 ########################################################################
 #
@@ -1351,6 +1477,11 @@ def PY_D2Et2ped\
     # print\
     # ("PY_D2Et2ped: arg2 = ", arg2)
     return D2Et2ped(loc0, arg1, arg2)
+#
+def PY_D2Eannot\
+(lctn: loctn, \
+ arg1: d2exp, arg2: s1exp, arg3: s2exp)->D2Eannot:
+    return D2Eannot(lctn, arg1, arg2, arg3)
 #
 ########################################################################
 #
@@ -1531,8 +1662,8 @@ PY_d2vardcl_make_args\
 (lctn: loctn, \
  dpid: d2var, \
  vpid: d2varopt, \
- sres: s2expopt, tdxp: teqd2exp)->d2vardcl:
-    return d2vardcl_tbox(lctn, dpid, vpid, sres, tdxp)
+ sres: s2expopt, dini: teqd2exp)->d2vardcl:
+    return d2vardcl_tbox(lctn, dpid, vpid, sres, dini)
 #
 def \
 PY_d2fundcl_make_args\

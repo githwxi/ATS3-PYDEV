@@ -64,6 +64,8 @@ d3exp_mywork(dexp: d3exp)->None:
         d3exp000_mywork(dexp.arg2)
     elif isinstance(dexp, D3Eannot):
         d3exp000_mywork(dexp.arg1)
+    elif isinstance(dexp, D3Eerrck):
+        d3exp000_mywork(dexp.arg2)
     else:
         pass
     return None # end-of-[d3exp_mywork(...)]

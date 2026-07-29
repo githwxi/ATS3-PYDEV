@@ -22,6 +22,12 @@ from DATS.CATS.staexp2 import *
 from DATS.CATS.a3pydev_xprint import *
 ########################################################################
 #
+def s2var_xprenv\
+(svar: s2var, xenv: xprnv)->None:
+    xenv.indpr(); print(svar)
+#
+########################################################################
+#
 def s2exp_xprenv\
 (sexp: s2exp, xenv: xprnv)->None:
     dlta = 2
@@ -80,16 +86,32 @@ def s2exp_xprenv\
 #
 ########################################################################
 #
+def s2varlst_xprenv\
+(s2vs: s2varlst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(s2vs, xenv, s2var_xprenv)
+#
 def s2explst_xprenv\
 (s2es: s2explst, xenv: xprnv)->None:
     fnlist_foritm_e1nv(s2es, xenv, s2exp_xprenv)
 #
 ########################################################################
 #
+def s2vxp_nind_xprenv\
+(svar: s2var, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2var_xprenv(svar, xenv); xenv.decby(dlta)
+#
 def s2exp_nind_xprenv\
 (sexp: s2exp, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     s2exp_xprenv(sexp, xenv); xenv.decby(dlta)
+#
+########################################################################
+#
+def s2varlst_nind_xprenv\
+(s2vs: s2varlst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2varlst_xprenv(s2vs, xenv); xenv.decby(dlta)
 #
 def s2explst_nind_xprenv\
 (s2es: s2explst, dlta: sint, xenv: xprnv)->None:

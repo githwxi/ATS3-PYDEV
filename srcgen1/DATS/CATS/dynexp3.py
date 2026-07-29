@@ -199,6 +199,7 @@ class D3Pany(D3P000):
     def __repr__(self)->strn:
         return f"{self.ctag}()"
     pass
+#
 @dataclass
 class D3Pvar(D3P000):
     arg1: d2var
@@ -208,6 +209,8 @@ class D3Pvar(D3P000):
     def __repr__(self)->strn:
         return f"{self.ctag}({self.arg1!r})"
     pass
+#
+########################################################################
 #
 @dataclass
 class D3Pcon(D3P000):
