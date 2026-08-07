@@ -517,6 +517,9 @@ def timpl_xprenv\
         xenv.indpr()
         print("TIMPLall1.arg2:")
         t2jaglst_nind_xprenv(timp.arg2, dlta, xenv)
+        xenv.indpr()
+        print("TIMPLall1.arg3:")
+        d3eclist_nind_xprenv(timp.arg3, dlta, xenv)
     elif isinstance(timp, TIMPLallx):
         print("TIMPLallx:")
         xenv.indpr()
@@ -525,6 +528,9 @@ def timpl_xprenv\
         xenv.indpr()
         print("TIMPLallx.arg2:")
         t2jaglst_nind_xprenv(timp.arg2, dlta, xenv)
+        xenv.indpr()
+        print("TIMPLallx.arg3:")
+        d3eclist_nind_xprenv(timp.arg3, dlta, xenv)
     else:
         pass # timpl_xprenv: exhaustive matching
     return None # end-of-[timpl_xprenv(timp,xenv)
@@ -565,6 +571,15 @@ def d3ecl_xprenv\
         f"D3Cextern.arg1: {d3cl.arg1}")
         xenv.indpr()
         print("D3Cextern.arg2:")
+        d3ecl_nind_xprenv(d3cl.arg2, dlta, xenv)
+#
+    elif isinstance(d3cl, D3Ctmpsub):
+        print("D3Ctmpsub:")
+        xenv.indpr()
+        print("D3Ctmpsub.arg1:")
+        s2vtplst_nind_xprenv(d3cl.arg1, dlta, xenv)
+        xenv.indpr()
+        print("D3Ctmpsub.arg2:")
         d3ecl_nind_xprenv(d3cl.arg2, dlta, xenv)
 #
     elif isinstance(d3cl, D3Clocal0):

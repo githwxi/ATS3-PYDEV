@@ -89,6 +89,7 @@ def s2typ_xprenv\
 def s2typlst_xprenv\
 (t2ps: s2typlst, xenv: xprnv)->None:
     fnlist_foritm_e1nv(t2ps, xenv, s2typ_xprenv)
+    return None # end-of-[s2typlst_nind_xprenv(t2ps,dlta,xenv)]
 #
 ########################################################################
 #
@@ -101,6 +102,36 @@ def s2typlst_nind_xprenv\
 (t2ps: s2typlst, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     s2typlst_xprenv(t2ps, xenv); xenv.decby(dlta)
+#
+########################################################################
+########################################################################
+#
+def s2vtp_xprenv\
+(svtp: s2vtp, xenv: xprnv)->None:
+    dlta = 2
+    xenv.indpr(); print("S2VTP:")
+    s2var_nind_xprenv(svtp.svar, dlta, xenv)
+    s2typ_nind_xprenv(svtp.styp, dlta, xenv)
+    return None # end-of-[s2vtp_xprenv(svtp,xenv)]
+#    
+def s2vtplst_xprenv\
+(svts: s2vtplst, xenv: xprnv)->None:
+    fnlist_foritm_e1nv(svts, xenv, s2vtp_xprenv)
+    return None # end-of-[s2vtplst_xprenv(svts,xenv)]
+#
+########################################################################
+#
+def s2vtp_nind_xprenv\
+(svtp: s2vtp, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2vtp_xprenv(svtp, xenv); xenv.decby(dlta)
+    return None # end-of-[s2vtp_nind_xprenv(svtp,dlta,xenv)]
+#
+def s2vtplst_nind_xprenv\
+(svts: s2vtplst, dlta: sint, xenv: xprnv)->None:
+    xenv.incby(dlta)
+    s2vtplst_xprenv(svts, xenv); xenv.decby(dlta)
+    return None # end-of-[s2vtplst_nind_xprenv(svts,dlta,xenv)]
 #
 ########################################################################
 ########################################################################

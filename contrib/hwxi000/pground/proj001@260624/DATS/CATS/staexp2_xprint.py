@@ -25,6 +25,7 @@ from DATS.CATS.a3pydev_xprint import *
 def s2var_xprenv\
 (svar: s2var, xenv: xprnv)->None:
     xenv.indpr(); print(svar)
+    return None # end-of-[s2var_xprenv(svar,xenv)]
 #
 ########################################################################
 #
@@ -96,7 +97,7 @@ def s2explst_xprenv\
 #
 ########################################################################
 #
-def s2vxp_nind_xprenv\
+def s2var_nind_xprenv\
 (svar: s2var, dlta: sint, xenv: xprnv)->None:
     xenv.incby(dlta)
     s2var_xprenv(svar, xenv); xenv.decby(dlta)
