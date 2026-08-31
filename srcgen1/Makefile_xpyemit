@@ -72,11 +72,11 @@ $(patsubst %.dats, \
 ########################################################################
 ########################################################################
 #
-BUILD/PY/%_sats_out0.py: SATS/%.sats; \
-$(NODE) --stack-size=8801 $(XATSOPT_TCHECK01) $< > $@
+TCHECK01=npx @npmhwxi/xatsopt-tcheck01-ats2
+PYEMIT01=npx @npmhwxi/xats2py-pyemit01-ats2
 #
-BUILD/PY/%_dats_out0.py: DATS/%.dats; \
-$(NODE) --stack-size=8801 $(XATS2PY_PYEMIT01) $< > $@
+BUILD/PY/%_sats_out0.py: SATS/%.sats; $(TCHECK01) $< > $@
+BUILD/PY/%_dats_out0.py: DATS/%.dats; $(PYEMIT01) $< > $@
 #
 ########################################################################
 ########################################################################
@@ -103,13 +103,13 @@ $(OUT1DATS); $(CAT) $(OUT1DATS) > lib/libats3pydev.py
 ifndef \
 XATSOPT_TCHECK01
 XATSOPT_TCHECK01=\
-$(XATSHOME)/xassets/JS/xatsopt/xatsopt_tcheck01_ats2_opt1.js
+$(XATSHOME)/xassets/JS/xatsopt/bin/xatsopt_tcheck01_ats2_opt1.js
 endif ## (ifeq($(XATSOPT_TCHECK01),""))
 ########################################################################
 ifndef \
 XATS2PY_PYEMIT01
 XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats2_opt1.js
 endif ## (ifeq($(XATS2PY_PYEMIT01),""))
 ########################################################################
 ########################################################################

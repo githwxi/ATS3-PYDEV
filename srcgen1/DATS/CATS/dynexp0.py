@@ -12,6 +12,7 @@ from abc import ABC
 from enum import Enum
 from dataclasses import dataclass
 ########################################################################
+@dataclass
 class D0E000(ABC):
     pass
 type d0exp = D0E000
