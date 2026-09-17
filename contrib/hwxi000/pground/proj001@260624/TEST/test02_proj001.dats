@@ -12,9 +12,10 @@ Sat Jul 25 05:09:51 PM EDT 2026
 "prelude\
 /HATS/prelude_dats.hats"
 //
-#include
-"prelude\
-/HATS/prelude_JS_dats.hats"
+(* ****** ****** *)
+//
+#staload "./..\
+/DATS/proj001_tmplib.dats"
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -24,10 +25,8 @@ list_vt_inc1by
 (xs: !list_vt(sint)): void =
 (
 case+ xs of
-|
-list_vt_nil() => ()
-|
-list_vt_cons(!x1, xs) =>
+|list_vt_nil() => ()
+|list_vt_cons(!x1, xs) =>
 (x1 := x1 + 1; list_vt_inc1by(xs))
 )
 //
@@ -39,7 +38,7 @@ list_vt_3val(1, 2, 3)
 val () =
 let
 val ys = list_vt2t(xs)
-in
+in//let
   prints("xs = ", ys, "\n") end
 //
 val () =
@@ -48,7 +47,7 @@ val () =
 val () =
 let
 val ys = list_vt2t(xs)
-in
+in//let
   prints("xs = ", ys, "\n") end
 //
 (* ****** ****** *)
@@ -68,6 +67,11 @@ then n else fibo1(n-2)+fibo1(n-1))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [
- * ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/TEST/test02_proj001.dats] *)
 (***********************************************************************)
+(*
+end of [
+ATS3-PYDEV/contrib/hwxi000/pground/proj001@260624/TEST/test02_proj001.dats]
+*)
+(***********************************************************************)
+(***********************************************************************)
+
