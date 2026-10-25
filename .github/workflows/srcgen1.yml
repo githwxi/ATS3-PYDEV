@@ -34,8 +34,8 @@ jobs:
       - name: Generate compiler library and run srcgen1 tests
         run: ./travis-ci/test-srcgen1.sh
 
-      - name: Upload generated Python files
-        if: always()
+      - name: Upload generated Python files after failure
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: srcgen1-generated-python
