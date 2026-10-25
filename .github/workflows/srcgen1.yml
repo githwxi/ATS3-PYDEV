@@ -1,0 +1,22 @@
+name: srcgen1
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-srcgen1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Unpack srcgen2 compiler library
+        run: unzip -o externs/ATS3/srcgen2/lib/lib2xatsopt_opt0.py.zip -d externs/ATS3/srcgen2/lib
+
+      - name: Generate compiler library and run srcgen1 tests
+        run: ./travis-ci/test-srcgen1.sh
