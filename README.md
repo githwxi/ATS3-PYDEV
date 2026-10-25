@@ -2,6 +2,10 @@
 
 For developing ATS3 in Python
 
+## Build Status
+
+* [![srcgen1 CI](https://github.com/githwxi/ATS3-PYDEV/actions/workflows/srcgen1.yml/badge.svg)](https://github.com/githwxi/ATS3-PYDEV/actions/workflows/srcgen1.yml) Generates `ats3_pydev_lib2xatsopt.py` and runs the `srcgen1` tests.
+
 ## Project Description
 
 The main delivery of the project consists of some functions for
