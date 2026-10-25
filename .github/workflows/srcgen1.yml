@@ -11,9 +11,17 @@ permissions:
 jobs:
   test-srcgen1:
     runs-on: ubuntu-latest
+    env:
+      XATSHOME: ${{ github.workspace }}/XATSHOME
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Check out XATSHOME sources
+        uses: actions/checkout@v4
+        with:
+          repository: githwxi/XATSHOME
+          path: XATSHOME
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
