@@ -134,12 +134,16 @@ _(*otherwise*) => PY_D1Pa3src(loc0, dpat)
 val loc0 =
 loctn_pytrcpy(dpat.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d1pat_pytrcpy: dpat = ", dpat))
+*)
 //
+(*
 val (  ) =
 printsln("d1pat_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d1pat_pytrcpy(dpat)]
 //
@@ -162,12 +166,16 @@ _(*otherwise*) => PY_D1Ea3src(loc0, dexp)
 val loc0 =
 loctn_pytrcpy(dexp.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d1exp_pytrcpy: dexp = ", dexp))
+*)
 //
+(*
 val (  ) =
 printsln("d1exp_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d1exp_pytrcpy(dexp)]
 //
@@ -190,12 +198,16 @@ _(*otherwise*) => PY_D1Ca3src(loc0, d1cl)
 val loc0 =
 loctn_pytrcpy(d1cl.lctn((*0*)))
 //
+(*
 val (  ) =
 (
   printsln("d1ecl_pytrcpy: d1cl = ", d1cl))
+*)
 //
+(*
 val (  ) =
 printsln("d1ecl_pytrcpy: loc0 = ", PY_repr(loc0))
+*)
 //
 }(*where*)//end-of-[d1ecl_pytrcpy(d1cl)]
 //
